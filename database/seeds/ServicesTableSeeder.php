@@ -13,10 +13,10 @@ class ServicesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      for ($i=0; $i < 10; $i++) { 
-        $service = new Service();
-        $service->name = $faker->word;
-        $service->save();
-      }
+        for ($i=0; $i < 10; $i++) { 
+            $seed = new Service();
+            $seed->name = $faker->word;
+            $seed->save();
+        }
     }
 }

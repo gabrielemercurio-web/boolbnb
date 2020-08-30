@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMessagesTable extends Migration
+class UpdateHitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('home_id');
-            $table->string('sender_email');
-            $table->string('message');
+        Schema::table('hits', function (Blueprint $table) {
+            $table->foreignId('home_id')->after('id');
             // Foreign key reference
-            // $table->foreign('home_id')->constrained();
-            $table->timestamps();
+            $table->foreign('home_id')->references('id')->on('homes');
         });
     }
 
@@ -31,6 +27,9 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::table('hits', function (Blueprint $table) {
+            $table->dropForeign(['home_id']);
+            $table->dropColumn('home_id');
+        });
     }
 }
