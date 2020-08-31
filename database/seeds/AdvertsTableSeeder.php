@@ -14,14 +14,16 @@ class AdvertsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      for ($i=0; $i < 10; $i++) { 
-        $seed = new Advert();
         // Get collection of 'id' from payments table
         $payments = Payment::all()->pluck('id')->toArray();
-        $seed->payment_id = $faker->randomElement($payments);
-        $seed->duration_in_hrs = $faker->randomElement(['24', '48', '72']);//XXX:use days?
-        $seed->price = $faker->randomFloat(2,0,5);
-        $seed->save();
-      }
+        // Shuffle the order of id in $payments
+        shuffle($payments);
+        for ($i=0; $i < 10; $i++) { 
+            $seed = new Advert();
+            $seed->payment_id = $payments[$i];
+            $seed->duration_in_hrs = $faker->randomElement(['24', '48', '72']);//XXX:use days?
+            $seed->price = $faker->randomFloat(2,0,5);
+            $seed->save();
+        }
     }
 }

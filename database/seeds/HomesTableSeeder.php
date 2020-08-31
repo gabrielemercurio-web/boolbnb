@@ -14,11 +14,13 @@ class HomesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        // Get collection of 'id' from users table
+        $users = User::all()->pluck('id')->toArray();
+        // Shuffle the order of id in $users
+        shuffle($users);
         for ($i=0; $i < 10; $i++) { 
             $seed = new Home();
-            // Get collection of 'id' from users table
-            $users = User::all()->pluck('id')->toArray();
-            $seed->user_id = $faker->randomElement($users);
+            $seed->user_id = $users[$i];
             $seed->title = $faker->sentence(5);
             $seed->nr_of_rooms = $faker->randomDigit;
             $seed->nr_of_beds = $faker->randomDigit;
