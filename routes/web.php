@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('guest')->namespace('guest')->name('guest.')->group(function() {
+	Route::get('/', 'HomeController@homepage')->name('homepage');
+});
+
+// Auth::routes();
+
+Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(function() {
+	Route::get('/', 'HomeController@homepage')->name('homepage');
+	Route::resource('/homes', 'HomeController');
 });
