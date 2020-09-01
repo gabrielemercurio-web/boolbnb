@@ -1,11 +1,11 @@
 <?php
 
-use App\Home;
+use App\House;
 use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
-class HomesTableSeeder extends Seeder
+class HousesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class HomesTableSeeder extends Seeder
         // Get collection of 'id' from users table
         $users = User::all()->pluck('id')->toArray();
         for ($i=0; $i < 10; $i++) { 
-            $seed = new Home();
+            $seed = new House();
             $seed->user_id = $faker->randomElement($users);
             $seed->title = $faker->sentence(5);
             $seed->nr_of_rooms = $faker->randomDigit;

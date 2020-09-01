@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\upr;
 
 use Illuminate\Http\Request;
-use App\Home;
+use App\House;
 use App\Service;
-// use App\HomeService;
+// use App\HouseService;
 // use App\Payment;
 // use Faker\Generator as Faker;
 
-class HomeController extends Controller
+class HouseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-	
+        //
     }
 
     /**
@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('upr.homes.create');
+        return view('upr.houses.create');
     }
 
     /**
@@ -53,11 +53,11 @@ class HomeController extends Controller
 		]);
 
 		//TODO: address manipulation
-		$homeData = $request->all();//non all! in mezzo ci sono sia le cose che vanno in homes che quelle che vanno in services -> SEPARARE I CAMPI!
+		$houseData = $request->all();//non all! in mezzo ci sono sia le cose che vanno in houses che quelle che vanno in services -> SEPARARE I CAMPI!
 		// $serviceData = ???;
-		$newHome = new Home();
-		$newHome->fill($homeData);
-		$newHome->save();
+		$newHouse = new House();
+		$newHouse->fill($houseData);
+		$newHouse->save();
 
 		
     }
@@ -71,9 +71,9 @@ class HomeController extends Controller
     public function show($id)
     {
 		/**the list of services get grabbed from the frontend */
-		$home = Home::find($id);
-		if ($home) {
-			return view('upr.homes.show', compact('home'));
+		$house = House::find($id);
+		if ($house) {
+			return view('upr.houses.show', compact('house'));
 		} else {
 			return abort('404');
 		}
@@ -87,9 +87,9 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        $home = Home::find($id);
-		if ($home) {
-			return view('upr.homes.edit', compact('home'));
+        $house = House::find($id);
+		if ($house) {
+			return view('upr.houses.edit', compact('house'));
 		} else {
 			return abort('404');
 		}
@@ -119,9 +119,9 @@ class HomeController extends Controller
 		
 		//TODO: address manipulation
 		$data = $request->all();
-		$home = Home::find($id);
-		$home->update($data);
-		return redirect()->route('upr.homes.show', compact('home'));
+		$house = House::find($id);
+		$house->update($data);
+		return redirect()->route('upr.houses.show', compact('house'));
     }
 
     /**
@@ -132,8 +132,8 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-		$home = Home::find($id);
-		$home->delete();
-		return redirect()->route('upra.homes.index');
+		$house = House::find($id);
+		$house->delete();
+		return redirect()->route('upra.houses.index');
 	}
 }

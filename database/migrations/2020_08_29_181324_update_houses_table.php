@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateHomesTable extends Migration
+class UpdateHousesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class UpdateHomesTable extends Migration
      */
     public function up()
     {
-        Schema::table('homes', function (Blueprint $table) {
+        Schema::table('houses', function (Blueprint $table) {
             $table->foreignId('user_id')->after('id')->nullable();
             // Foreign key reference
             $table->foreign('user_id')->references('id')->on('users');
@@ -27,7 +27,7 @@ class UpdateHomesTable extends Migration
      */
     public function down()
     {
-        Schema::table('homes', function (Blueprint $table) {
+        Schema::table('houses', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropColumn('user_id');
         });

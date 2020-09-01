@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    public function home() {
-        return $this->belongsTo('App\Home');
+    public function house() {
+        return $this->belongsTo('App\House');
     }        
 }

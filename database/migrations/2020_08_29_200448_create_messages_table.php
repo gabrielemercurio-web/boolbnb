@@ -15,11 +15,11 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('home_id');
+            $table->foreignId('house_id');
             $table->string('sender_email', 360);
             $table->string('message', 2000);
             // Foreign key reference
-            $table->foreign('home_id')->references('id')->on('homes');
+            $table->foreign('house_id')->references('id')->on('houses');
             $table->timestamps();
         });
     }

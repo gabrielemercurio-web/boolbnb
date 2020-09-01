@@ -13,17 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+// Authentication scaffolding
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::prefix('guest')->namespace('guest')->name('guest.')->group(function() {
-	Route::get('/', 'HomeController@homepage')->name('homepage');
+	Route::get('/', 'HouseController@homepage')->name('homepage');
 });
 
-// Auth::routes();
-
 Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(function() {
-	Route::get('/', 'HomeController@homepage')->name('homepage');
-	Route::resource('/homes', 'HomeController');
+	Route::get('/', 'HouseController@homepage')->name('homepage');
+	Route::resource('/houses', 'HouseController');
 });
 
 Route::get('/payments', function () {
     return view('upra.payments.create');
 });
+
+

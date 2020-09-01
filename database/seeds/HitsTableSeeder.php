@@ -1,7 +1,7 @@
 <?php
 
 use App\Hit;
-use App\Home;
+use App\House;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
@@ -16,9 +16,9 @@ class HitsTableSeeder extends Seeder
     {
       for ($i=0; $i < 10; $i++) { 
         $seed = new Hit();
-        // Get collection of 'id' from homes table
-        $homes = Home::all()->pluck('id')->toArray();
-        $seed->home_id = $faker->randomElement($homes);
+        // Get collection of 'id' from houses table
+        $houses = House::all()->pluck('id')->toArray();
+        $seed->house_id = $faker->randomElement($houses);
         $seed->date = $faker->date;
         $seed->save();
       }

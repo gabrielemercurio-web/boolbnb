@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HomeService extends Model
+class HouseService extends Model
 {
-	protected $table = 'home_service';
+	protected $table = 'house_service';
 
-    public function homes() {
-		$this->belongsToMany('App\Home');
+    public function houses() {
+		$this->belongsToMany('App\House');
 	}
  
 	public function services() {

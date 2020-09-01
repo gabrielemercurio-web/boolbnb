@@ -10,7 +10,7 @@ class Payment extends Model
         return $this->belongsTo('App\Advert');
     }     
 
-    public function home() {
-        return $this->belongsTo('App\Home');
+    public function house() {
+        return $this->belongsTo('App\House');
     }     
 }

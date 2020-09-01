@@ -2,11 +2,11 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
-use App\Home;
+use App\House;
 use App\Service;
-use App\HomeService;
+use App\HouseService;
 
-class HomeServiceSeeder extends Seeder
+class HouseServiceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,18 +15,18 @@ class HomeServiceSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-		$homes = Home::all()->pluck('id')->toArray();
+		$houses = House::all()->pluck('id')->toArray();
 		$services = Service::all()->pluck('id')->toArray();
 
         $idsCombos = [];
 		for ($i=0; $i < 20; $i++) { 
-			$newHome = $faker->randomElement($homes);
+			$newHouse = $faker->randomElement($houses);
 			$newService = $faker->randomElement($services);
-			$newCombo = $newHome . '-' . $newService;
+			$newCombo = $newHouse . '-' . $newService;
 			if (!in_array($newCombo, $idsCombos)) {
 				array_push($idsCombos, $newCombo);
-				DB::table('home_service')->insert([
-					'home_id' => $newHome,
+				DB::table('house_service')->insert([
+					'house_id' => $newHouse,
 					'service_id' => $newService,
 				]);
 			}
