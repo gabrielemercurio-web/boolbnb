@@ -23,3 +23,7 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::get('/', 'HomeController@homepage')->name('homepage');
 	Route::resource('/homes', 'HomeController');
 });
+
+Route::get('/adv', function () {
+    return view('upra.adv.adv');
+});

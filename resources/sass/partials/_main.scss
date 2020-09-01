@@ -1,0 +1,130 @@
+.sponsor-wrapper{
+    height: 100vh;
+    width: 100%;
+    margin-top: 90px;
+}
+.sponsor-title{
+    background-color: white;
+    height: 200px;
+    width: 100%;
+    h1{
+        color:$main_color;
+        text-transform: uppercase;
+        font-size: 32px;
+    }
+    hr{
+        border: 1px solid $main_color;
+    }
+}
+
+.sponsor-price{
+    background-color: white;
+    height: 250px;
+    width: 100%;
+    p{
+        padding-right: 33px;
+        padding-top: $padding_top_bottom;
+        color: $main_color;
+        font-weight: bold;
+    }
+}
+
+.price-one, .price-second, .price-third{
+    margin-top: 16px;
+}
+.price-one button{
+    background-color: $main_color;
+    color: white;
+    padding-top: $padding_top_bottom;
+    padding-bottom: $padding_top_bottom;
+    padding-left: 19px;
+    padding-right: 18px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+.price-second button{
+    padding-left: 20px;
+}
+.price-second button, .price-third button{
+    color: $main_color;
+    padding-top: $padding_top_bottom;
+    padding-bottom: $padding_top_bottom;
+    padding-right: 14px;
+    border: 1px solid $main_color;
+    cursor: pointer;
+    font-weight: bold;
+}
+.price-third button{
+    padding-left: 10px;
+}
+.information-payments{
+    background-color: white;
+    height: 250px;
+    width: 100%;
+    p{
+        padding-right: 37px;
+        padding-top: $padding_top_bottom;
+        color: #22B4CE;
+        font-weight: bold;
+    }
+}
+.number-cc{
+    width: 311px;
+    display: inline-block;
+    color: #C9C9C9;
+}
+.date-and-cvc{
+    display: flex;
+    justify-content: center;
+}
+#number-cc{
+    border: 1px solid $main_color;
+    &::placeholder{
+        color: $color_rgba;
+    }
+}
+
+#date{
+    width: 235px;
+    border: 1px solid $main_color;
+    &::placeholder{
+        color: $color_rgba;
+    }
+}
+
+#cvc{
+    margin-left: 20px;
+    width: 58px;
+    border: 1px solid $main_color;
+    &::placeholder{
+        color: $color_rgba;
+    }
+}
+
+.btn-payments{
+    width: 313px;
+    background-color: $main_color;
+    border:none;
+    text-transform: uppercase;
+    padding-top: $padding_top_bottom;
+    padding-bottom: $padding_top_bottom;
+    font-weight: bold;
+    &:hover{
+        background-color: $main_color;
+    }
+}
+
+/*** RESPONSIVE ***/
+
+@media screen and (max-width: 477px){
+    .sponsor-price{
+        margin-top: -76px;
+    }
+}
+/*** for iphone 5/SE ***/
+@media screen and (max-width: 320px){
+    .information-payments p{
+        padding-top: 80px;
+    }
+}
