@@ -24,6 +24,6 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::resource('/homes', 'HomeController');
 });
 
-Route::get('/adv', function () {
-    return view('upra.adv.adv');
+Route::get('/payments', function () {
+    return view('upra.payments.create');
 });
