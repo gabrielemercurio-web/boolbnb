@@ -16,12 +16,10 @@ class AdvertsTableSeeder extends Seeder
     {
         // Get collection of 'id' from payments table
         $payments = Payment::all()->pluck('id')->toArray();
-        // Shuffle the order of id in $payments
-        shuffle($payments);
         for ($i=0; $i < 10; $i++) { 
             $seed = new Advert();
-            $seed->payment_id = $payments[$i];
-            $seed->duration_in_hrs = $faker->randomElement(['24', '48', '72']);//XXX:use days?
+            $seed->payment_id = $faker->randomElement($payments);
+            $seed->duration_in_days = $faker->randomElement(['1', '3', '6']);
             $seed->price = $faker->randomFloat(2,0,5);
             $seed->save();
         }

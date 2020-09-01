@@ -54,7 +54,7 @@ class HomeController extends Controller
 
 		//TODO: address manipulation
 		$homeData = $request->all();//non all! in mezzo ci sono sia le cose che vanno in homes che quelle che vanno in services -> SEPARARE I CAMPI!
-		$serviceData = ???;
+		// $serviceData = ???;
 		$newHome = new Home();
 		$newHome->fill($homeData);
 		$newHome->save();

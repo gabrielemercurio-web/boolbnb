@@ -18,9 +18,8 @@ class HomeServiceSeeder extends Seeder
 		$homes = Home::all()->pluck('id')->toArray();
 		$services = Service::all()->pluck('id')->toArray();
 
-
+        $idsCombos = [];
 		for ($i=0; $i < 20; $i++) { 
-			$idsCombos = [];
 			$newHome = $faker->randomElement($homes);
 			$newService = $faker->randomElement($services);
 			$newCombo = $newHome . '-' . $newService;
