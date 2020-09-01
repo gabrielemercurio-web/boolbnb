@@ -1,4 +1,4 @@
-@extends('upra.layouts.app');
+@extends('upra.layouts.app')
 
 @section('content')
     <div class="sponsor-wrapper">
