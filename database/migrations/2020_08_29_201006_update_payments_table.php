@@ -14,7 +14,7 @@ class UpdatePaymentsTable extends Migration
     public function up()
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->foreignId('home_id')->after('id');
+            $table->foreignId('home_id')->after('id')->nullable();
             // Foreign key reference
             $table->foreign('home_id')->references('id')->on('homes');
         });

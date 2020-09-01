@@ -14,7 +14,7 @@ class UpdateAdvertsTable extends Migration
     public function up()
     {
         Schema::table('adverts', function (Blueprint $table) {
-            $table->foreignId('payment_id')->after('id');
+            $table->foreignId('payment_id')->after('id')->nullable();
             // Foreign key reference
             $table->foreign('payment_id')->references('id')->on('payments');
         });

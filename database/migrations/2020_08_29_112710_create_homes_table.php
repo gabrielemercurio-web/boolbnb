@@ -25,7 +25,8 @@ class CreateHomesTable extends Migration
           $table->decimal('longitude');
           $table->string('image_path')->nullable();
           $table->boolean('visible')->default(true);
-          $table->boolean('advertised')->default(false);
+		  $table->boolean('advertised')->default(false);
+		  $table->string('description', 2000);
           $table->timestamps();
         });
     }
