@@ -31,7 +31,8 @@ class HomesTableSeeder extends Seeder
             $seed->longitude = $faker->longitude;
             $seed->image_path = $faker->imageUrl;
             $seed->visible = $faker->boolean;
-            $seed->advertised = $faker->boolean;
+			$seed->advertised = $faker->boolean;
+			$seed->description = $faker->sentence(50);
             $seed->save();
         }
     }
