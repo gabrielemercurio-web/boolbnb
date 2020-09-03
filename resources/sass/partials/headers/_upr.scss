@@ -11,10 +11,33 @@ header.bg-header {
 
         ul.nav {
             width: 100%;
-            
+
             li a {
                 color: #fff;
+                text-transform: uppercase;
+                font-size: 0.9rem;
             }
+        }
+
+        a.navbar-brand {
+            padding-top: 0px;
+        }
+
+        li.login,
+        li.signup {
+            border: 1px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul.navbar-nav li:not(:last-child) {
+            margin-right: 40px;
+        }
+
+        .login .nav-link,
+        .signup .nav-link {
+            padding: 0.25rem 1.8rem;
         }
     }
 

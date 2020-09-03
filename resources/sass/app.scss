@@ -1,8 +1,19 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
+@import url('https://fonts.googleapis.com/css?family=Nunito'); // <-- di Bootstrap ui
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap'; // <-- di Bootstrap ui
+
+// Variables
+@import 'variables'; // <-- di Bootstrap ui
+@import 'partials/variables';
+
+@import 'partials/mixins';
+
+// headers
+@import 'partials/headers/guest';
+@import 'partials/headers/upr';
+
+@import 'partials/main';
+
+@import 'partials/footer';
