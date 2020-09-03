@@ -27,6 +27,10 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 Route::get('/payments', function () {
     return view('upr.payments.create');
 });
+
 Route::get('/homepage', function () {
     return view('guest.houses.homepage');
+});
+Route::get('/upr/homepage', function () {
+    return view('upr.houses.homepage');
 });
