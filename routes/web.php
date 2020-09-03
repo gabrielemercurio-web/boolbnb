@@ -17,9 +17,7 @@ Auth::routes();
 // Authentication scaffolding
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('guest')->namespace('guest')->name('guest.')->group(function() {
 	Route::get('/', 'HouseController@homepage')->name('homepage');
-});
 
 Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(function() {
 	Route::get('/', 'HouseController@homepage')->name('homepage');
