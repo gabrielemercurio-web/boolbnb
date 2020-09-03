@@ -25,7 +25,7 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 });
 
 Route::get('/payments', function () {
-    return view('upra.payments.create');
+    return view('upr.payments.create');
 });
 
 
