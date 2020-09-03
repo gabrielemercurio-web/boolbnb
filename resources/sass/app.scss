@@ -4,6 +4,13 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap'; // <-- di Bootstrap ui
 
+$fa-font-path: 'fonts';
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
 // Variables
 @import 'variables'; // <-- di Bootstrap ui
 @import 'partials/variables';
