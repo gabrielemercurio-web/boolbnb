@@ -16119,6 +16119,27 @@ header.bg-header #nav-logo {
   padding: 0.3rem 1.5rem;
 }
 
+.search-house {
+  position: relative;
+  width: 100%;
+  border: 10px solid #22B4CE;
+}
+
+.search-house label {
+  position: absolute;
+  font-size: 0.9rem;
+  color: lightgray;
+  top: 25%;
+  left: 15px;
+}
+
+.search-house input {
+  width: calc(100% - 45px);
+  height: 40px;
+  border: 0px;
+  padding: 10px 15px;
+}
+
 .sponsor-wrapper {
   height: 100vh;
   width: 100%;
@@ -16500,3 +16521,16 @@ header.bg-header #nav-logo {
     width: 267px;
   }
 }
+
+footer {
+  background-color: #22B4CE;
+}
+
+#footer {
+  height: 150px;
+}
+
+#footer img {
+  width: 130px;
+}
+
