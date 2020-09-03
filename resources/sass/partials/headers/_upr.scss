@@ -1,0 +1,24 @@
+header.bg-header {
+    background-color: $main_color;
+    height: 90px;
+
+    .container, .row {
+        height: 100%;
+    }
+
+    nav.navbar {
+        width: 100%;
+
+        ul.nav {
+            width: 100%;
+            
+            li a {
+                color: #fff;
+            }
+        }
+    }
+
+    #nav-logo {
+        width: 100px;
+    }
+}

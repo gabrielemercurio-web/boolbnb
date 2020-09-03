@@ -1,20 +1,28 @@
-<div class="container">
+<header class="bg-header">
+
+  <div class="container">
     <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+          <img id="nav-logo" src="{{ asset('img/logo-boolbnb.svg') }}">
+        </a>
 
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav nav justify-content-end">
 
-            </div>
-        </nav>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Your Homes <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Messages</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+
     </div>
-</div>
+  </div>
+
+</header>
