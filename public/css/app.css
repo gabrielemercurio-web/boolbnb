@@ -16120,24 +16120,87 @@ header.bg-header #nav-logo {
 }
 
 .search-house {
-  position: relative;
-  width: 100%;
+  border-radius: 0px;
   border: 10px solid #22B4CE;
+  padding: 1px;
+  box-shadow: 0px 5px 20px 0px #0004;
+  margin-top: 100px;
 }
-
-.search-house label {
-  position: absolute;
-  font-size: 0.9rem;
-  color: lightgray;
-  top: 25%;
-  left: 15px;
-}
-
 .search-house input {
-  width: calc(100% - 45px);
-  height: 40px;
-  border: 0px;
-  padding: 10px 15px;
+  border-radius: 0px;
+  border: none;
+  outline: none;
+}
+.search-house input::-moz-placeholder {
+  color: lightgrey;
+  font-size: 0.85rem;
+}
+.search-house input:-ms-input-placeholder {
+  color: lightgrey;
+  font-size: 0.85rem;
+}
+.search-house input::-ms-input-placeholder {
+  color: lightgrey;
+  font-size: 0.85rem;
+}
+.search-house input::placeholder {
+  color: lightgrey;
+  font-size: 0.85rem;
+}
+.search-house input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.search-house button {
+  border-radius: 0px;
+  border: none;
+  background-color: #22B4CE;
+  color: #fff;
+  transition: 200ms;
+  outline: none;
+}
+.search-house button:hover {
+  opacity: 0.8;
+  background-color: #22B4CE;
+  border: none;
+  color: #fff;
+}
+.search-house button:active {
+  opacity: 0.8;
+  background-color: #22B4CE;
+  border: none;
+  transform: scale(0.9);
+}
+.search-house button:focus {
+  box-shadow: none;
+}
+
+.image-house img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.row-2 {
+  padding: 150px 0px;
+}
+
+.text-house {
+  padding: 20px 20px;
+}
+.text-house h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #22B4CE;
+  text-transform: uppercase;
+}
+.text-house p {
+  padding: 30px 0px;
+  margin: 0px;
+}
+.text-house div.sevices {
+  height: 120px;
 }
 
 .sponsor-wrapper {
@@ -16521,7 +16584,6 @@ header.bg-header #nav-logo {
     width: 267px;
   }
 }
-
 footer {
   background-color: #22B4CE;
 }
@@ -16529,8 +16591,6 @@ footer {
 #footer {
   height: 150px;
 }
-
 #footer img {
   width: 130px;
 }
-
