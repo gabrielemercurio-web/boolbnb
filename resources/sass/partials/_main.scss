@@ -42,9 +42,11 @@
     cursor: pointer;
     border: none;
     font-weight: bold;
+    outline: $outline_button;
 }
 .price-second button{
     padding-left: 20px;
+    outline: $outline_button;
 }
 .price-second button, .price-third button{
     color: $main_color;
@@ -57,6 +59,7 @@
 }
 .price-third button{
     padding-left: 10px;
+    outline: $outline_button;
 }
 .information-payments{
     background-color: white;
@@ -106,15 +109,20 @@
     width: 313px;
     background-color: $main_color;
     border:none;
+    cursor: pointer;
     text-transform: uppercase;
     padding-top: $padding_top_bottom;
     padding-bottom: $padding_top_bottom;
     font-weight: bold;
+    color: white;
     &:hover{
         background-color: $main_color;
     }
+    &:focus{
+        background-color: #22B4CE;
+        outline: $outline_button;
+    }
 }
-
 /*** RESPONSIVE ***/
 
 @media screen and (max-width: 477px){

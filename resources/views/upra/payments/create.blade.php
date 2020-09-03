@@ -29,7 +29,7 @@
                     <input type="password" class="form-control" id="date" placeholder="Data di scadenza">
                     <input type="password" class="form-control" id="cvc" placeholder="CVC">
                 </div>
-                <button type="submit" class="btn btn-primary btn-payments">Paga ora</button>
+                <button type="submit" class="btn-payments">Paga ora</button>
                 </form>
             </div>
         </div>

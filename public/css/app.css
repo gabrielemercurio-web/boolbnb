@@ -11029,10 +11029,12 @@ header.bg-header #nav-logo {
   cursor: pointer;
   border: none;
   font-weight: bold;
+  outline: none;
 }
 
 .price-second button {
   padding-left: 20px;
+  outline: none;
 }
 
 .price-second button,
@@ -11048,6 +11050,7 @@ header.bg-header #nav-logo {
 
 .price-third button {
   padding-left: 10px;
+  outline: none;
 }
 
 .information-payments {
@@ -11141,14 +11144,21 @@ header.bg-header #nav-logo {
   width: 313px;
   background-color: #22B4CE;
   border: none;
+  cursor: pointer;
   text-transform: uppercase;
   padding-top: 10px;
   padding-bottom: 10px;
   font-weight: bold;
+  color: white;
 }
 
 .btn-payments:hover {
   background-color: #22B4CE;
+}
+
+.btn-payments:focus {
+  background-color: #22B4CE;
+  outline: none;
 }
 
 /*** RESPONSIVE ***/
