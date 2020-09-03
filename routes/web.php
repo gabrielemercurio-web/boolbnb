@@ -27,9 +27,3 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 Route::get('/payments', function () {
     return view('upr.payments.create');
 });
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
