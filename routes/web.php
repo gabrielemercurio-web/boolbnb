@@ -32,8 +32,3 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::get('/stats', 'HitController@index')->name('hits.index');
 });
 
-
-
-Route::get('/show', function () {
-    return view('guest.houses.show');
-});
