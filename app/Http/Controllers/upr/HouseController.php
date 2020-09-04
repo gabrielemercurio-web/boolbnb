@@ -5,10 +5,6 @@ namespace App\Http\Controllers\upr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\House;
-use App\Service;
-// use App\HouseService;
-// use App\Payment;
-// use Faker\Generator as Faker;
 
 class HouseController extends Controller
 {
@@ -19,7 +15,8 @@ class HouseController extends Controller
      */
     public function index(Request $request)
     {
-        //
+		//grab id of current upr and make it match user_id
+		return view('guest.houses.show', compact('houses'));
     }
 
     /**
@@ -59,7 +56,7 @@ class HouseController extends Controller
 		$newHouse = new House();
 		$newHouse->fill($houseData);
 		$newHouse->save();
-
+		return redirect()->route('upr.houses.index');
 		
     }
 
@@ -71,7 +68,7 @@ class HouseController extends Controller
      */
     public function show($id)
     {
-		/**the list of services get grabbed from the frontend */
+		/**the list of services is grabbed from the frontend */
 		$house = House::find($id);
 		if ($house) {
 			return view('upr.houses.show', compact('house'));
@@ -122,7 +119,7 @@ class HouseController extends Controller
 		$data = $request->all();
 		$house = House::find($id);
 		$house->update($data);
-		return redirect()->route('upr.houses.show', compact('house'));
+		return redirect()->route('upr.houses.index');
     }
 
     /**
@@ -135,6 +132,16 @@ class HouseController extends Controller
     {
 		$house = House::find($id);
 		$house->delete();
-		return redirect()->route('upra.houses.index');
+		return redirect()->route('upr.houses.index');
+	}
+
+	public function homepage() {
+		$houses = House::where('advertised', true)->get();
+		return view('upr.houses.homepage', compact('houses'));
+	}
+
+	public function search() {
+		//TODO: add search mechanism
+		return view('upr.houses.search')
 	}
 }

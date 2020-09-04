@@ -17,10 +17,14 @@ Auth::routes();
 // Authentication scaffolding
 Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::get('/', 'HouseController@homepage')->name('homepage');
+Route::get('/', 'HouseController@homepage')->name('guest.homepage');
+Route::get('/search', 'HouseController@search')->name('guest.search');
+Route::get('/houses/{house}', 'HouseController@show')->name('guest.show');
 
+//UPR routes
 Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(function() {
-	Route::get('/', 'HouseController@homepage')->name('homepage');
+	Route::get('/', 'HouseController@homepage')->name('houses.homepage');
+	Route::get('/search', 'HouseController@search')->name('houses.search');
 	Route::resource('/houses', 'HouseController');
 });
 
@@ -28,9 +32,3 @@ Route::get('/payments', function () {
     return view('upr.payments.create');
 });
 
-Route::get('/homepage', function () {
-    return view('guest.houses.homepage');
-});
-Route::get('/upr/homepage', function () {
-    return view('upr.houses.homepage');
-});
