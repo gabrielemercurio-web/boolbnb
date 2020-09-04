@@ -26,9 +26,10 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::get('/', 'HouseController@homepage')->name('houses.homepage');
 	Route::get('/search', 'HouseController@search')->name('houses.search');
 	Route::resource('/houses', 'HouseController');
+	Route::get('/payments', 'PaymentController@index')->name('payments.index');
+	Route::get('/payments', 'PaymentController@create')->name('payments.create');
+	Route::post('/payments', 'PaymentController@store')->name('payments.store');
+	Route::get('/stats', 'HitController@index')->name('hits.index');
 });
 
-Route::get('/payments', function () {
-    return view('upr.payments.create');
-});
 

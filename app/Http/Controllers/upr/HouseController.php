@@ -16,7 +16,7 @@ class HouseController extends Controller
     public function index(Request $request)
     {
 		//grab id of current upr and make it match user_id
-		return view('guest.houses.show', compact('houses'));
+		return view('upr.houses.index', compact('houses'));
     }
 
     /**
@@ -142,6 +142,6 @@ class HouseController extends Controller
 
 	public function search() {
 		//TODO: add search mechanism
-		return view('upr.houses.search')
+		return view('upr.houses.search');
 	}
 }

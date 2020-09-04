@@ -24,6 +24,6 @@ class HouseController extends Controller
 	
 	public function search() {
 		//TODO: add search mechanism
-		return view('guest.houses.search')
+		return view('guest.houses.search');
 	}
-}
+};
