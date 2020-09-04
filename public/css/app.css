@@ -16579,10 +16579,13 @@ header.bg-header #nav-logo {
   -webkit-box-orient: vertical;
 }
 
+.secondo-appartamento {
+  margin-top: 30px;
+}
+
 .apartment-img {
   width: 100%;
   height: 200px;
-  background-color: red;
   position: relative;
 }
 
@@ -16605,6 +16608,31 @@ header.bg-header #nav-logo {
   margin-left: 2px;
 }
 
+.btn-color {
+  color: #22B4CE;
+  border-color: #22B4CE;
+}
+
+.btn-color:hover {
+  background-color: rgba(0, 0, 0, 0);
+  border-color: #22B4CE;
+  color: #22B4CE;
+}
+
+.btn-color:focus {
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show > .btn-outline-primary.dropdown-toggle {
+  background-color: rgba(0, 0, 0, 0);
+  border-color: #22B4CE;
+  color: #22B4CE;
+  box-shadow: none;
+  outline: none;
+}
+
 @media screen and (max-width: 765px) {
   .apartment-description, .secondo-appartamento {
     display: inline;
@@ -16612,6 +16640,7 @@ header.bg-header #nav-logo {
 
   .apartment, .apartment-due, .apartment-tre {
     display: contents;
+    margin-top: 25px;
   }
 
   .title {
@@ -16651,6 +16680,10 @@ header.bg-header #nav-logo {
     border: none;
     padding-left: 15px;
   }
+
+  .btn-color {
+    margin-bottom: 25px;
+  }
 }
 @media screen and (max-width: 477px) {
   .apartment-description, .secondo-appartamento {
@@ -16681,7 +16714,7 @@ header.bg-header #nav-logo {
   }
 
   .home-search input {
-    width: 299px;
+    width: 300px;
   }
 
   .icon i {
@@ -16696,6 +16729,42 @@ header.bg-header #nav-logo {
     padding-left: 9px;
     padding-top: 10px;
   }
+
+  .btn-color {
+    margin-bottom: 25px;
+  }
+}
+@media screen and (min-width: 668px) {
+  .apartment-img img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 375px) {
+  .apartment-img img {
+    width: 100%;
+  }
+
+  .home-search {
+    margin-top: 126px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .apartment-img img {
+    width: 100%;
+  }
+
+  .home-search {
+    margin-top: 206px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .apartment-img img {
+    width: 100%;
+  }
+
+  .btn-color {
+    margin-bottom: 25px;
+  }
 }
 /*** IPHONE 5/SE ******/
 @media screen and (max-width: 320px) {
@@ -16706,6 +16775,10 @@ header.bg-header #nav-logo {
 
   .home-search input {
     width: 267px;
+  }
+
+  .btn-color {
+    margin-bottom: 25px;
   }
 }
 footer {
