@@ -28,6 +28,7 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::resource('/houses', 'HouseController');
 	Route::get('/payments', 'PaymentController@index')->name('payments.index');
 	Route::get('/payments', 'PaymentController@create')->name('payments.create');
-	Route::post('/payments', 'PaymentController@store')->name('payments.store');
+    Route::post('/payments', 'PaymentController@store')->name('payments.store');
+    Route::get('/messages', 'MessageController@index')->name('messages.index');
 	Route::get('/stats', 'HitController@index')->name('hits.index');
 });
