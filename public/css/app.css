@@ -16177,10 +16177,6 @@ header.bg-header #nav-logo {
 
 .row-2 {
   padding: 150px 0px;
-  margin-bottom: 150px;
-}
-.row-2 #slider {
-  position: relative;
 }
 .row-2 #slider .prev,
 .row-2 #slider .next {
@@ -16203,6 +16199,7 @@ header.bg-header #nav-logo {
   right: 30px;
 }
 .row-2 #slider .images {
+  position: relative;
   width: 100%;
   height: 400px;
 }
@@ -16238,9 +16235,10 @@ header.bg-header #nav-logo {
   padding: 20px 20px;
 }
 .row-2 .text-house .fas {
+  width: 20px;
   font-size: 1rem;
   color: #22B4CE;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .row-2 .text-house h1 {
   font-size: 1.8rem;
@@ -16272,7 +16270,7 @@ header.bg-header #nav-logo {
   margin-bottom: 20px;
 }
 #map-contact .row-3 form {
-  width: 90%;
+  margin-bottom: 40px;
 }
 #map-contact .row-3 input {
   border: none;
@@ -16320,12 +16318,8 @@ header.bg-header #nav-logo {
   background-color: #fff;
   color: #22B4CE;
 }
-#map-contact .row-3 #map {
-  position: relative;
-}
 #map-contact .row-3 #map img {
-  position: absolute;
-  width: 100%;
+  max-width: 100%;
   height: 450px;
   -o-object-fit: cover;
      object-fit: cover;

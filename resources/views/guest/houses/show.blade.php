@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row row-1">
-            <div class="col-6 offset-3">
+            <div class="col-lg-6 offset-lg-3">
                 <div class="search-house input-group">
                     <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
@@ -15,16 +15,15 @@
         </div>
 
         <div class="row row-2">
-            <div id="slider" class=" col-md-6">
-
-                    <div class="prev">
-                        <i class="fas fa-chevron-circle-left"></i>
-                    </div>
-                    <div class="next">
-                        <i class="fas fa-chevron-circle-right"></i>
-                    </div>
+            <div id="slider" class=" col-lg-6">
 
                     <div class="images">
+                        <div class="prev">
+                            <i class="fas fa-chevron-circle-left"></i>
+                        </div>
+                        <div class="next">
+                            <i class="fas fa-chevron-circle-right"></i>
+                        </div>
                         <img class="visible" src="{{ asset('img/homepage.jpg') }}" alt="house">
                         <img class="" src="{{ asset('img/house-1.jpg') }}" alt="house">
                         <img class="" src="{{ asset('img/house-2.jpg') }}" alt="house">
@@ -37,18 +36,18 @@
 
             </div>
 
-            <div class="text-house col-md-6">
-                <h1>Apartment Title {{-- $house->title --}} </h1>
-                <small><i class="fas fa-map-marker-alt"></i>Place, Address</small>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias debitis optio fuga eveniet aut quia omnis officiis est minima commodi non, dolorem consectetur incidunt, quo dolores magni qui illum aliquid?</p>
+            <div class="text-house col-lg-6">
+                <h1>{{ $house->title }} </h1>
+                <small><i class="fas fa-map-marker-alt"></i>{{$house->address}}</small>
+            <p>{{ $house->description }}</p>
                 <div class="sevices d-flex flex-column flex-wrap">
-                    <span><i class="fas fa-door-open"></i>Rooms</span>
-                    <span><i class="fas fa-bed"></i>Beds</span>
-                    <span><i class="fas fa-bath"></i>Bathrooms</span>
-                    <span><i class="fas fa-border-style"></i>m2</span>
-                    <span><i class="fas fa-wifi"></i>Wifi</span>
+                    <span><i class="fas fa-door-open"></i>Rooms: {{ $house->nr_of_rooms }}</span>
+                    <span><i class="fas fa-bed"></i>Beds: {{ $house->nr_of_beds }}</span>
+                    <span><i class="fas fa-bath"></i>Bathrooms: {{ $house->nr_of_bathrooms }}</span>
+                    <span><i class="fas fa-border-style"></i>m<sup>2</sup>: {{ $house->square_mt }}</span>
+                    {{-- <span><i class="fas fa-wifi"></i>Wifi</span>
                     <span><i class="fas fa-parking"></i>Car Park</span>
-                    <span><i class="fas fa-user-check"></i>Reception</span>
+                    <span><i class="fas fa-user-check"></i>Reception</span> --}}
                 </div>
             </div>
         </div>
@@ -58,7 +57,7 @@
         <div class="container">
             <div class="row row-3">
 
-                <div id="contact" class="col-md-6">
+                <div id="contact" class="col-md-5">
                     <h1>Contact Owner</h1>
                     <form>
                         <div class="form-group">
@@ -72,7 +71,7 @@
                         </div>
                     </form>
                 </div>
-                <div id="map" class="col-md-6">
+                <div id="map" class="col-md-6 offset-md-1">
                     <img src="https://www.worldeasyguides.com/wp-content/uploads/2013/01/Place-Vendome-on-Map-of-Paris.jpg" alt="Map">
                 </div>
 

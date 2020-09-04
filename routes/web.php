@@ -31,4 +31,3 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::post('/payments', 'PaymentController@store')->name('payments.store');
 	Route::get('/stats', 'HitController@index')->name('hits.index');
 });
-
