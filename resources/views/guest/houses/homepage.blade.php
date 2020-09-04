@@ -19,77 +19,24 @@
                 <hr>
             </div>
             <div class="apartment-description">
-                <div class="apartment col-4">
-                    <div class="apartment-img">
-                        <img src="{{ asset('img/apartment-1.jpg') }}" class="img-fluid" alt="Responsive image">
-                        <p>Sponsered</p>
+                @forelse ($houses as $house)
+                    <div class="apartment col-4">
+                        <div class="apartment-img">
+                            <img src="{{ $house->image_path }}" class="img-fluid" alt="Responsive image">
+                            <p>Sponsored</p>
+                        </div>
+                        <div class="description-apartment">
+                            <h2>{{ $house->title }}</h2>
+                            <p>{{ $house->description }}</p>
+                            <a href="{{ route('guest.show', ['house' => $house->id]) }}">
+                                <button type="button" class="btn btn-outline-primary btn-color">Vedi dettagli appartamento</button>
+                            </a>
+                        </div>
                     </div>
-                    <div class="description-apartment">
-                        <h2>Titolo</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<a href="#"><button type="button" class="btn btn-outline-primary btn-color">Vedi dettagli appartamento</button></a>
-                    </div>
-
-                </div>
-                <div class="apartment-due col-4">
-                    <div class="apartment-img">
-						<img src="{{ asset('img/apartment-2.jpg') }}" class="img-fluid" alt="Responsive image">
-                        <p>Sponsered</p>
-                    </div>
-                    <div class="description-apartment">
-                        <h2>Titolo</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<a href="#"><button type="button" class="btn btn-outline-primary btn-color">Vedi dettagli appartamento</button></a>
-                    </div>
-                </div>
-                <div class="apartment-tre col-4">
-                    <div class="apartment-img">
-						<img src="{{ asset('img/apartment-3.jpg') }}" class="img-fluid" alt="Responsive image">
-                        <p>Sponsered</p>
-                    </div>
-                    <div class="description-apartment">
-                        <h2>Titolo</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<a href="#"><button type="button" class="btn btn-outline-primary btn-color">Vedi dettagli appartamento</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="apartment-description secondo-appartamento">
-                <div class="apartment col-4">
-                    <div class="apartment-img">
-						<img src="{{ asset('img/apartment-4.jpg') }}" class="img-fluid" alt="Responsive image">
-                        <p>Sponsered</p>
-                    </div>
-                    <div class="description-apartment">
-                        <h2>Titolo</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<a href="#"><button type="button" class="btn btn-outline-primary btn-color">Vedi dettagli appartamento</button></a>
-                    </div>
-                </div>
-                <div class="apartment-due col-4">
-                    <div class="apartment-img">
-						<img src="{{ asset('img/apartment-5.jpg') }}" class="img-fluid" alt="Responsive image">
-                        <p>Sponsered</p>
-                    </div>
-                    <div class="description-apartment">
-                        <h2>Titolo</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<a href="#"><button type="button" class="btn btn-outline-primary btn-color">Vedi dettagli appartamento</button></a>
-                    </div>
-                </div>
-                <div class="apartment-tre col-4">
-                    <div class="apartment-img">
-						<img src="{{ asset('img/apartment-6.jpg') }}" class="img-fluid" alt="Responsive image">
-                        <p>Sponsered</p>
-                    </div>
-                <div class="description-apartment">
-                    <h2>Titolo</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					<a href="#"><button type="button" class="btn btn-outline-primary btn-color">Vedi dettagli appartamento</button></a>
-                    </div>
-                </div>
+                @empty
+                    -
+                @endforelse
             </div>
         </div>
-
     </div>
 @endsection

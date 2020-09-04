@@ -16522,11 +16522,17 @@ readers do not read off random characters that represent icons */
 }
 .title hr {
   border: 1px solid #22B4CE;
+  margin-bottom: 0;
 }
 
 .apartment-description {
   display: flex;
+  flex-wrap: wrap;
   width: 95%;
+}
+
+.apartment {
+  margin-top: 30px;
 }
 
 .description-apartment p {
@@ -16534,10 +16540,6 @@ readers do not read off random characters that represent icons */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-}
-
-.secondo-appartamento {
-  margin-top: 30px;
 }
 
 .apartment-img {
@@ -16558,6 +16560,7 @@ readers do not read off random characters that represent icons */
   bottom: -9px;
   right: 16px;
   color: white;
+  text-shadow: 0 0 5px #000000, 0 0 5px #000000;
 }
 
 .description-apartment {
@@ -16593,7 +16596,7 @@ readers do not read off random characters that represent icons */
     display: inline;
   }
 
-  .apartment, .apartment-due, .apartment-tre {
+  .apartment {
     display: contents;
     margin-top: 25px;
   }

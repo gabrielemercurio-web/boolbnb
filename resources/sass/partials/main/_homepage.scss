@@ -58,12 +58,17 @@
     }
     hr{
         border: 1px solid #22B4CE;
+        margin-bottom: 0;
     }
 }
 
 .apartment-description{
     display: flex;
+    flex-wrap: wrap;
     width: 95%;
+}
+.apartment {
+    margin-top: 30px;
 }
 
 .description-apartment p{
@@ -71,9 +76,6 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-}
-.secondo-appartamento{
-    margin-top: 30px;
 }
 .apartment-img{
     width: 100%;
@@ -90,6 +92,7 @@
     bottom: -9px;
     right: 16px;
     color:white;
+    text-shadow: 0 0 5px #000000, 0 0 5px #000000;
 }
 .description-apartment{
     margin-top: 10px;
@@ -123,7 +126,7 @@
     .apartment-description, .secondo-appartamento {
         display: inline;
     }
-    .apartment, .apartment-due, .apartment-tre{
+    .apartment{
         display: contents;
         margin-top: 25px;
     }

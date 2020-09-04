@@ -8,7 +8,8 @@ use App\House;
 class HouseController extends Controller
 {
     public function homepage() {
-		return view('guest.houses.homepage');
+        $houses = House::where('advertised', true)->get();
+		return view('guest.houses.homepage', compact('houses'));
 	}
 
 	public function show($id)
