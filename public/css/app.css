@@ -16612,13 +16612,11 @@ header.bg-header #nav-logo {
   color: #22B4CE;
   border-color: #22B4CE;
 }
-
 .btn-color:hover {
   background-color: rgba(0, 0, 0, 0);
   border-color: #22B4CE;
   color: #22B4CE;
 }
-
 .btn-color:focus {
   background-color: rgba(0, 0, 0, 0);
   outline: none;
