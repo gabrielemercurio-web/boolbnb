@@ -33,3 +33,7 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 });
 
 
+
+Route::get('/show', function () {
+    return view('guest.houses.show');
+});
