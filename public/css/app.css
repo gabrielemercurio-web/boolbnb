@@ -16318,9 +16318,9 @@ header.bg-header #nav-logo {
   background-color: #fff;
   color: #22B4CE;
 }
-#map-contact .row-3 #map img {
-  max-width: 100%;
-  height: 450px;
+#map-contact .row-3 #my-maps img {
+  width: 100%;
+  height: 350px;
   -o-object-fit: cover;
      object-fit: cover;
   bottom: 0px;

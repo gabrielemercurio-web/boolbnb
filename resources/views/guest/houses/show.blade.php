@@ -15,7 +15,7 @@
         </div>
 
         <div class="row row-2">
-            <div id="slider" class=" col-lg-6">
+            <div id="slider" class="col-lg-6">
 
                     <div class="images">
                         <div class="prev">
@@ -24,9 +24,13 @@
                         <div class="next">
                             <i class="fas fa-chevron-circle-right"></i>
                         </div>
+
+
+                        {{-- <img class="visible" src="{{ $house->image_path }}" alt="img-house"> --}}
+
                         <img class="visible" src="{{ asset('img/homepage.jpg') }}" alt="house">
-                        <img class="" src="{{ asset('img/house-1.jpg') }}" alt="house">
-                        <img class="" src="{{ asset('img/house-2.jpg') }}" alt="house">
+                        <img src="{{ asset('img/house-1.jpg') }}" alt="house-1">
+                        <img src="{{ asset('img/house-2.jpg') }}" alt="house-2">
                         <div class="bullets">
                             <i class="fas fa-circle visible"></i>
                             <i class="fas fa-circle"></i>
@@ -71,12 +75,27 @@
                         </div>
                     </form>
                 </div>
-                <div id="map" class="col-md-6 offset-md-1">
+                <div id="my-maps" class="col-md-6 offset-md-1">
+                    {{-- <div id="map"></div> --}}
                     <img src="https://www.worldeasyguides.com/wp-content/uploads/2013/01/Place-Vendome-on-Map-of-Paris.jpg" alt="Map">
                 </div>
 
             </div>
         </div>
     </section>
+
+    {{-- <script>
+        let myCoordinates = [9.13568, 45.46163];
+​
+        let map = tt.map({
+            container: 'map',
+            key: 'dHdPC3sMtM3w3t96GhaYBGXj7BfGr0g0', //replace with own key
+            style: 'tomtom://vector/1/basic-main',
+            center: myCoordinates,
+            zoom: 15
+        });
+​
+        let marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
+    </script> --}}
 
 @endsection
