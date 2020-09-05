@@ -16057,6 +16057,62 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+header {
+  width: 100vw;
+  height: 90px;
+  background-color: #22B4CE;
+}
+header .container {
+  height: 100%;
+}
+header .container .row {
+  width: 100%;
+  height: 100%;
+}
+header .container nav {
+  width: 100%;
+  height: 100%;
+}
+header .container nav img {
+  width: 120px;
+}
+header .container nav ul {
+  width: 350px;
+}
+header .container nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .container nav ul li a {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0px;
+}
+header .container nav ul .header-logout {
+  padding: 5px 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: transparent;
+  transform: 200ms;
+}
+header .container nav ul .header-logout:hover {
+  background-color: #fff;
+  color: #22B4CE;
+}
+header .container nav ul .header-logout:hover a {
+  color: #22B4CE;
+}
+
 .row div.card {
   border: none;
   border-radius: 0px;
@@ -16277,14 +16333,15 @@ readers do not read off random characters that represent icons */
   border-radius: 0px;
   padding: 5px 20px;
   background-color: transparent;
+  transform: 200ms;
 }
 #map-contact .row-3 button:hover {
   background-color: #fff;
   color: #22B4CE;
 }
 #map-contact .row-3 #my-maps #map {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 350px;
 }
 
 .sponsor-wrapper {

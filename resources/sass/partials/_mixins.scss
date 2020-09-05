@@ -1,4 +1,4 @@
-@mixin my-button($border-color, $font-color,$bg-color, $bg-hover-color, $hover-font-color) {
+@mixin my-button($border-color, $font-color, $bg-color, $hover-bg-color, $hover-font-color) {
     font-size: 0.8rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -9,9 +9,12 @@
     border-radius: 0px;
     padding: 5px 20px;
     background-color: $bg-color;
+    transform: 200ms;
 
     &:hover {
-        background-color: $bg-hover-color;
+        background-color: $hover-bg-color;
         color: $hover-font-color;
     }
 }
+
+

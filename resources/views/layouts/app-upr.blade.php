@@ -25,36 +25,47 @@
 </head>
 <body>
     <div id="app">
-        <header class="container">
-			<div class="row">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<a class="navbar-brand" href="#">
-                    <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="">
-                    </a>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active">
-								<a class="nav-link" href="#">My Homes <span class="sr-only">(current)</span></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Messages</a>
-                            </li>
-                            <li class="nav-item dropdown"> {{-- Copiato e incollato dallo scaffolding Auth di Laravel --}}
-                                <a class="nav-link" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        {{-- LOGO --}}
+                        <a class="navbar-brand" href="#">
+                            <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="Boolbnb-logo">
+                        </a>
+                        {{-- BOTTONE MENU CHE APPARE NEL MOBILE --}}
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                            <ul class="navbar-nav d-flex justify-content-between">
 
-                            </li>
-						</ul>
-					</div>
-				</nav>
-			</div>
+                                <li class="nav-item active">
+                                    <a href="#">My Homes<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Messages</a>
+                                </li>
+                                {{-- LOGOUT Copiato e incollato dallo scaffolding Auth di Laravel --}}
+                                <li class="nav-item header-logout">
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+			    </div>
+            </div>
 		</header>
 
         <main class="py-4">
@@ -63,5 +74,36 @@
 
         @include('partials.footer.footer')
     </div>
+
+
+
+
+        {{-- <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="">
+            </a>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">My Homes <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Messages</a>
+                    </li>
+                    <li class="nav-item dropdown"> {{-- Copiato e incollato dallo scaffolding Auth di Laravel --}}
+                        {{-- <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
+                    </li>
+                </ul>
+            </div>
+        </nav> --}} --}}
 </body>
 </html>

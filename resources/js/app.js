@@ -8,6 +8,7 @@
 require('./bootstrap');
 require('./guest/show');
 require('./tomtom');
+import 'bootstrap';
 
 // **** window.Vue = require('vue');
 
