@@ -70,12 +70,21 @@
 .apartment {
     margin-top: 30px;
 }
-
+.description-apartment h2{
+    font-size: 23px;
+    height: 71px;
+    margin-top: 19px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 .description-apartment p{
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    height: 71px;
 }
 .apartment-img{
     width: 100%;
@@ -103,9 +112,9 @@
     border-color: #22B4CE;
 }
 .btn-color:hover{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #22B4CE;
     border-color: #22B4CE;
-    color: #22B4CE;
+    color: white;
 }
 .btn-color:focus{
     background-color: rgba(0,0,0,0);
