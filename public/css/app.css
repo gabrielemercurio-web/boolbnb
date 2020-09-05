@@ -16335,6 +16335,14 @@ readers do not read off random characters that represent icons */
   font-weight: bold;
   outline: none;
 }
+.price-one button:hover {
+  background-color: white;
+  color: #22B4CE;
+  border-color: #22B4CE;
+  color: #22B4CE;
+  border-color: #22B4CE;
+  border: 1px solid #22B4CE;
+}
 
 .price-second button {
   padding-left: 20px;
@@ -16349,6 +16357,14 @@ readers do not read off random characters that represent icons */
   border: 1px solid #22B4CE;
   cursor: pointer;
   font-weight: bold;
+}
+.price-second button:hover, .price-third button:hover {
+  background-color: #22B4CE;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  outline: none;
 }
 
 .price-third button {
@@ -16442,7 +16458,12 @@ readers do not read off random characters that represent icons */
   color: white;
 }
 .btn-payments:hover {
-  background-color: #22B4CE;
+  background-color: white;
+  color: #22B4CE;
+  border-color: #22B4CE;
+  color: #22B4CE;
+  border-color: #22B4CE;
+  border: 1px solid #22B4CE;
 }
 .btn-payments:focus {
   background-color: #22B4CE;

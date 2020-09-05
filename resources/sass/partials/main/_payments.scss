@@ -43,6 +43,14 @@
     border: none;
     font-weight: bold;
     outline: $outline_button;
+    &:hover{
+        background-color: white;
+        color: $main_color;
+        border-color: $main_color;
+        color: $main_color;
+        border-color: $main_color;
+        border: 1px solid $main_color;
+    }
 }
 .price-second button{
     padding-left: 20px;
@@ -56,6 +64,14 @@
     border: 1px solid $main_color;
     cursor: pointer;
     font-weight: bold;
+    &:hover{
+        background-color: $main_color;
+        color: white;
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+        outline: $outline_button;
+    }
 }
 .price-third button{
     padding-left: 10px;
@@ -116,10 +132,15 @@
     font-weight: bold;
     color: white;
     &:hover{
-        background-color: $main_color;
+        background-color: white;
+        color: $main_color;
+        border-color: $main_color;
+        color: $main_color;
+        border-color: $main_color;
+        border: 1px solid $main_color;
     }
     &:focus{
-        background-color: #22B4CE;
+        background-color: $main_color;
         outline: $outline_button;
     }
 }
