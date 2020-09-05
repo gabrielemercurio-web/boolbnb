@@ -16057,45 +16057,6 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
-header.bg-header {
-  background-color: #22B4CE;
-  height: 90px;
-}
-header.bg-header .container, header.bg-header .row {
-  height: 100%;
-}
-header.bg-header nav.navbar {
-  width: 100%;
-}
-header.bg-header nav.navbar ul.nav {
-  width: 100%;
-}
-header.bg-header nav.navbar ul.nav li a {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-header.bg-header nav.navbar a.navbar-brand {
-  padding-top: 0px;
-}
-header.bg-header nav.navbar li.login,
-header.bg-header nav.navbar li.signup {
-  border: 1px solid #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-header.bg-header nav.navbar ul.navbar-nav li:not(:last-child) {
-  margin-right: 40px;
-}
-header.bg-header nav.navbar .login .nav-link,
-header.bg-header nav.navbar .signup .nav-link {
-  padding: 0.25rem 1.8rem;
-}
-header.bg-header #nav-logo {
-  width: 100px;
-}
-
 .row div.card {
   border: none;
   border-radius: 0px;
@@ -16318,13 +16279,9 @@ header.bg-header #nav-logo {
   background-color: #fff;
   color: #22B4CE;
 }
-#map-contact .row-3 #my-maps img {
-  width: 100%;
-  height: 350px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  bottom: 0px;
-  box-shadow: 0px 0px 30px 0px #0004;
+#map-contact .row-3 #my-maps #map {
+  width: 500px;
+  height: 500px;
 }
 
 .sponsor-wrapper {
@@ -16612,11 +16569,13 @@ header.bg-header #nav-logo {
   color: #22B4CE;
   border-color: #22B4CE;
 }
+
 .btn-color:hover {
   background-color: rgba(0, 0, 0, 0);
   border-color: #22B4CE;
   color: #22B4CE;
 }
+
 .btn-color:focus {
   background-color: rgba(0, 0, 0, 0);
   outline: none;

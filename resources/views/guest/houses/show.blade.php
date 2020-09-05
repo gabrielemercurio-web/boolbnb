@@ -76,26 +76,24 @@
                     </form>
                 </div>
                 <div id="my-maps" class="col-md-6 offset-md-1">
-                    {{-- <div id="map"></div> --}}
-                    <img src="https://www.worldeasyguides.com/wp-content/uploads/2013/01/Place-Vendome-on-Map-of-Paris.jpg" alt="Map">
+                    <div id="map"></div>
+                    {{-- <img src="https://www.worldeasyguides.com/wp-content/uploads/2013/01/Place-Vendome-on-Map-of-Paris.jpg" alt="Map"> --}}
                 </div>
 
             </div>
         </div>
     </section>
 
-    {{-- <script>
+    <script>
         let myCoordinates = [9.13568, 45.46163];
-​
         let map = tt.map({
             container: 'map',
-            key: 'dHdPC3sMtM3w3t96GhaYBGXj7BfGr0g0', //replace with own key
+            key: '', //replace with own key
             style: 'tomtom://vector/1/basic-main',
             center: myCoordinates,
             zoom: 15
         });
-​
         let marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
-    </script> --}}
+    </script>
 
 @endsection
