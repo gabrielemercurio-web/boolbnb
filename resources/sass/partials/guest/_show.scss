@@ -191,18 +191,19 @@
         }
 
         button {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            border: 1px solid #fff;
-            color: #fff;
-            border-radius: 0px;
-            padding: 5px 20px;
+            @include my-button (#fff, #fff, transparent, #fff, $main_color)
+            // font-size: 0.8rem;
+            // text-transform: uppercase;
+            // font-weight: 700;
+            // border: 1px solid #fff;
+            // color: #fff;
+            // border-radius: 0px;
+            // padding: 5px 20px;
 
-            &:hover {
-                background-color: #fff;
-                color: $main_color;
-            }
+            // &:hover {
+            //     background-color: #fff;
+            //     color: $main_color;
+            // }
         }
 
         #my-maps {
