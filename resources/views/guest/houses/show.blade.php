@@ -83,18 +83,4 @@
             </div>
         </div>
     </section>
-
-    <script>
-		let long = Number("{{$house->longitude}}");
-        let lat = Number("{{$house->latitude}}");
-        let myCoordinates = [long, lat];
-        let map = tt.map({
-            container: 'map',
-            key: 'Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm', //replace with own key
-            style: 'tomtom://vector/1/basic-main',
-            center: myCoordinates,
-            zoom: 15
-        });
-        let marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
-    </script>
 @endsection

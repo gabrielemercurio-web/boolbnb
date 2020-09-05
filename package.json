@@ -41,5 +41,8 @@
     "bugs": {
         "url": "https://github.com/attraverso/boolbnb/issues"
     },
-    "homepage": "https://github.com/attraverso/boolbnb#readme"
+    "homepage": "https://github.com/attraverso/boolbnb#readme",
+    "dependencies": {
+        "fs": "0.0.1-security"
+    }
 }

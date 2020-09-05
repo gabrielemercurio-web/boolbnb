@@ -17,3 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
 mix.options({processCssUrls: false});
 
 mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/css/fonts')
+
+mix.webpackConfig({ node: { fs: "empty" } });

@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('./guest/show');
+require('./tomtom');
 
 // **** window.Vue = require('vue');
 
