@@ -1,0 +1,17 @@
+@mixin my-button($border-color, $font-color,$bg-color, $bg-hover-color, $hover-font-color) {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $border-color;
+    color: $font-color;
+    border-radius: 0px;
+    padding: 5px 20px;
+    background-color: $bg-color;
+
+    &:hover {
+        background-color: $bg-hover-color;
+        color: $hover-font-color;
+    }
+}
