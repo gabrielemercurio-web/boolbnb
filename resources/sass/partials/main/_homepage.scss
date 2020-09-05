@@ -101,18 +101,17 @@
 .btn-color{
     color:#22B4CE;
     border-color: #22B4CE;
-    &:hover{
-        background-color: rgba(0, 0, 0, 0);
-        border-color: #22B4CE;
-        color: #22B4CE;
-    }
-    &:focus{
-        background-color: rgba(0,0,0,0);
-        outline: none;
-        box-shadow: none;
-    }
 }
-
+.btn-color:hover{
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #22B4CE;
+    color: #22B4CE;
+}
+.btn-color:focus{
+    background-color: rgba(0,0,0,0);
+    outline: none;
+    box-shadow: none;
+}
 .btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle{
     background-color:rgba(0, 0, 0, 0) ;
     border-color: #22B4CE;

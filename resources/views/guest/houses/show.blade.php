@@ -88,7 +88,7 @@
         let myCoordinates = [9.13568, 45.46163];
         let map = tt.map({
             container: 'map',
-            key: 'dHdPC3sMtM3w3t96GhaYBGXj7BfGr0g0', //replace with own key
+            key: '', //replace with own key
             style: 'tomtom://vector/1/basic-main',
             center: myCoordinates,
             zoom: 15
