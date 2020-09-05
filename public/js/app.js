@@ -37277,6 +37277,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./guest/show */ "./resources/js/guest/show.js");
 
+__webpack_require__(/*! ./upr/header */ "./resources/js/upr/header.js");
+
 __webpack_require__(/*! ./tomtom */ "./resources/js/tomtom.js");
 
  // **** window.Vue = require('vue');
@@ -37430,22 +37432,41 @@ $(document).ready(function () {
   !*** ./resources/js/tomtom.js ***!
   \********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-/* WEBPACK VAR INJECTION */(function(process) {/* * Show map in house details page * */
+/* * Show map in house details page * */
 var _long = $('#my-maps').attr('data-longitude');
 
 var lat = $('#my-maps').attr('data-latitude');
 var myCoordinates = [_long, lat];
 var map = tt.map({
   container: 'map',
-  key: process.env.MIX_TOMTOM_API_KEY,
+  key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
   style: 'tomtom://vector/1/basic-main',
   center: myCoordinates,
   zoom: 15
 });
 var marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./resources/js/upr/header.js":
+/*!************************************!*\
+  !*** ./resources/js/upr/header.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('nav .nav-button-menu').click(function () {
+    // $('nav div').toggleClass('modal-menu');
+    if ($('nav div').hasClass('modal-menu')) {
+      $('nav div').removeClass('modal-menu');
+    } else {
+      $('nav div').addClass('modal-menu');
+    }
+  });
+});
 
 /***/ }),
 
@@ -37467,8 +37488,8 @@ var marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

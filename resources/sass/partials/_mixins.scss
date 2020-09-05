@@ -9,7 +9,7 @@
     border-radius: 0px;
     padding: 5px 20px;
     background-color: $bg-color;
-    transform: 200ms;
+    transition: 200ms;
 
     &:hover {
         background-color: $hover-bg-color;
