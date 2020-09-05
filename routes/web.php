@@ -34,3 +34,7 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::get('/stats', 'HitController@index')->name('hits.index');
 	Route::get('/stats', 'MessageController@index')->name('messages.index');
 });
+
+// Route::get('/messages', function () {
+//     return view('upr.messages.index');
+// });
