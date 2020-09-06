@@ -15,7 +15,7 @@ class HouseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         // grab id of current upr and make it match user_id
         $houses = DB::table('houses')
