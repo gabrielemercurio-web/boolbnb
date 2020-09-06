@@ -11,6 +11,9 @@ $fa-font-path: 'fonts';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 
+//TomTom Styling
+@import "@tomtom-international/web-sdk-maps";
+
 // Variables
 @import 'variables'; // <-- di Bootstrap ui
 @import 'partials/variables';

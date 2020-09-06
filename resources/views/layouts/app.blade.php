@@ -9,10 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    {{-- TOM-TOM --}}
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.37.2/maps/maps.css'/>
-	<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.64.0/maps/maps-web.min.js'></script>
-	<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.64.0/services/services-web.min.js"></script>
+    <!-- TomTom -->
+	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

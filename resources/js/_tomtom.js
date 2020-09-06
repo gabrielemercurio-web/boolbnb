@@ -1,5 +1,5 @@
-// import tt from '@tomtom-international/web-sdk-maps'
-// import tt from '@tomtom-international/web-sdk-services'
+import tt from '@tomtom-international/web-sdk-maps'
+import tts from '@tomtom-international/web-sdk-services'
 
 /* * * Show map in house details page * * */
 
@@ -25,22 +25,23 @@ function drawTomTomMap() {
 	let marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
 }
 
+
 /* * * Search function (homepage + search page) * * */
 $('.search-icon-hook').click((e) => {
-	// let test = event.target.
-	console.log(event.target);
+	//check what element was clicked to see whether you need to grab the input
+	// from the homepage or search page.
 	let searchSource = event.target.attributes['data-placement'].nodeValue;
 	callTomTomSearch(searchSource);
 })
 
 function callTomTomSearch(source) {
-	if (source == 'guest-homepage') {
+	if (source == 'guest-homepage' || 'upr-homepage') {
 		var userQuery = $('#homepage-house-search').val(); //OK
-	} else {
-		console.log('meh');
+	} else if (source == 'guest-search' || 'upr-search') {
+		console.log("haven't gotten that far yet ^^'");
 	}
 
-	tt.services.fuzzySearch({
+	tts.services.fuzzySearch({
 	key: process.env.MIX_TOMTOM_API_KEY,
 	query: userQuery,
 	})
@@ -54,3 +55,10 @@ function handleResults(result) {
 		console.log(result.results[0].position);
 	}
 };
+
+var from = turf.point([11.54073, 45.55292]);
+var to = turf.point([11.47973, 45.51564]);
+var options = {units: 'kilometers'};
+
+var distance = turf.distance(from, to, options);
+console.log('turf distance', distance);
