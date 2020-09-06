@@ -37257,6 +37257,71 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/_tomtom.js":
+/*!*********************************!*\
+  !*** ./resources/js/_tomtom.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// import tt from '@tomtom-international/web-sdk-maps'
+// import tt from '@tomtom-international/web-sdk-services'
+
+/* * * Show map in house details page * * */
+// check whether there's a map in the page so as not to call the function everywhere
+if ($('#map').length) {
+  drawTomTomMap();
+}
+
+function drawTomTomMap() {
+  var _long = $('#my-maps').attr('data-longitude');
+
+  var lat = $('#my-maps').attr('data-latitude');
+  var myCoordinates = [_long, lat];
+  var map = tt.map({
+    container: 'map',
+    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    style: 'tomtom://vector/1/basic-main',
+    center: myCoordinates,
+    zoom: 15
+  });
+  var marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
+}
+/* * * Search function (homepage + search page) * * */
+
+
+$('.search-icon-hook').click(function (e) {
+  // let test = event.target.
+  console.log(event.target);
+  var searchSource = event.target.attributes['data-placement'].nodeValue;
+  callTomTomSearch(searchSource);
+});
+
+function callTomTomSearch(source) {
+  if (source == 'guest-homepage') {
+    var userQuery = $('#homepage-house-search').val(); //OK
+  } else {
+    console.log('meh');
+  }
+
+  tt.services.fuzzySearch({
+    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    query: userQuery
+  }).go().then(handleResults);
+}
+
+function handleResults(result) {
+  console.log(result);
+
+  if (result) {
+    console.log(result.results[0].position);
+  }
+}
+
+;
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -37279,7 +37344,7 @@ __webpack_require__(/*! ./guest/show */ "./resources/js/guest/show.js");
 
 __webpack_require__(/*! ./upr/header */ "./resources/js/upr/header.js");
 
-__webpack_require__(/*! ./tomtom */ "./resources/js/tomtom.js");
+__webpack_require__(/*! ./_tomtom */ "./resources/js/_tomtom.js");
 
  // **** window.Vue = require('vue');
 
@@ -37427,29 +37492,6 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/tomtom.js":
-/*!********************************!*\
-  !*** ./resources/js/tomtom.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* * Show map in house details page * */
-var _long = $('#my-maps').attr('data-longitude');
-
-var lat = $('#my-maps').attr('data-latitude');
-var myCoordinates = [_long, lat];
-var map = tt.map({
-  container: 'map',
-  key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
-  style: 'tomtom://vector/1/basic-main',
-  center: myCoordinates,
-  zoom: 15
-});
-var marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
-
-/***/ }),
-
 /***/ "./resources/js/upr/header.js":
 /*!************************************!*\
   !*** ./resources/js/upr/header.js ***!
@@ -37488,8 +37530,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\0827_boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\0827_boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
