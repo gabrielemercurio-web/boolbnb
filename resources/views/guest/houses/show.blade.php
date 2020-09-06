@@ -6,12 +6,12 @@
 		{{-- SEARCHBAR --}}
         <div class="row row-1">
             <div class="col-lg-6 offset-lg-3">
-                <div class="search-house input-group">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" {{-- //XXX in che senso recipient's username? --}}aria-describedby="button-addon2">
+                <form action="route{{ ('') }}" method="GET" class="search-house input-group">
+                    <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                        <button class="btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
