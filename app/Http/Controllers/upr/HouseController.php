@@ -5,6 +5,8 @@ namespace App\Http\Controllers\upr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\House;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HouseController extends Controller
 {
@@ -15,7 +17,13 @@ class HouseController extends Controller
      */
     public function index(Request $request)
     {
-		//grab id of current upr and make it match user_id
+        // grab id of current upr and make it match user_id
+        $houses = DB::table('houses')
+            ->join('users', 'users.id', '=', 'houses.user_id')
+            ->where('houses.user_id', '=', Auth::user()->id)
+            ->orderBy('houses.created_at', 'DESC')
+            ->get();
+
 		return view('upr.houses.index', compact('houses'));
     }
 
