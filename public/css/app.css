@@ -16920,9 +16920,7 @@ header .container nav ul .header-logout:hover a {
 .search-house {
   border-radius: 0px;
   border: 10px solid #22B4CE;
-  padding: 1px;
   box-shadow: 0px 5px 20px 0px #0004;
-  margin-top: 100px;
 }
 .search-house input {
   border-radius: 0px;
@@ -16951,22 +16949,18 @@ header .container nav ul .header-logout:hover a {
 }
 .search-house button {
   border-radius: 0px;
-  border: none;
+  border: 1px solid #fff;
   background-color: #22B4CE;
   color: #fff;
   transition: 200ms;
   outline: none;
 }
 .search-house button:hover {
-  opacity: 0.8;
   background-color: #22B4CE;
-  border: none;
   color: #fff;
 }
 .search-house button:active {
-  opacity: 0.8;
   background-color: #22B4CE;
-  border: none;
   transform: scale(0.9);
 }
 .search-house button:focus {
@@ -17326,50 +17320,23 @@ header .container nav ul .header-logout:hover a {
 }
 
 .home {
-  height: 500px;
-  width: 95%;
-  position: relative;
-}
-
-.home-img img {
-  position: relative;
   width: 100%;
   height: 500px;
-}
-
-.home-search {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #22B4CE;
-  width: 518px;
-  height: 71px;
+  background-image: url("../img/house-1.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
-.home-search input {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 485px;
-  height: 40px;
-  border: none;
-  padding-left: 15px;
-}
 
-.icon i {
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: #0008;
   position: absolute;
-  right: 18px;
-  top: 29px;
-  color: white;
-  background-color: #22B4CE;
-  width: 39px;
-  height: 38px;
-  margin-top: -12px;
-  padding-left: 9px;
-  padding-top: 10px;
 }
 
 .title {

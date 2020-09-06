@@ -5,17 +5,16 @@
         <div class="container">
 			{{-- JUMBO --}}
             <div class="home">
-                <div class="home-img col-xs-12">
-                    <img src="{{ asset('img/homepage.jpg') }}" class="img-fluid" alt="image of a house">
-				</div>
-				{{-- SEARCHBAR --}}
-                <div class="home-search">
-                    <input type="text" id="homepage-house-search" name="" value="" placeholder="City or Address">
-                    <div class="icon search-icon-hook">
-                        <i class="fas fa-search" data-placement="guest-homepage"></i>
-                    </div>
+                <div class="overlay"></div>
+                <div class="col-lg-6">
+                    <form action="route{{ ('') }}" method="GET" class="search-house input-group">
+                        <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
                 </div>
-			</div>
+            </div>
 			{{-- PROMOTED HOUSES LIST --}}
             <div class="title text-center">
                 <h1>Places you might enjoy</h1>

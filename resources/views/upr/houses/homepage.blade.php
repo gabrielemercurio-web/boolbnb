@@ -5,14 +5,14 @@
 	<div class="home-wrapper">
         <div class="container">
             <div class="home">
-                <div class="home-img col-xs-12">
-                    <img src="{{ asset('img/homepage.jpg') }}" class="img-fluid" alt="Responsive image">
-                </div>
-                <div class="home-search">
-                    <input type="text" name="" value="" placeholder="Inserisci citta o regione">
-                    <div class="icon">
-                        <i class="fas fa-search"></i>
-                    </div>
+                <div class="overlay"></div>
+                <div class="col-lg-6">
+                    <form action="route{{ ('') }}" method="GET" class="search-house input-group">
+                        <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="title text-center">
