@@ -1,0 +1,13 @@
+html {
+    height: 100vh;
+}
+
+body {
+    min-height: 100%;
+
+    & > div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}

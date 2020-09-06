@@ -17,12 +17,12 @@ $fa-font-path: 'fonts';
 // Variables
 @import 'variables'; // <-- di Bootstrap ui
 @import 'partials/variables';
+@import 'partials/commons';
 
 @import 'partials/mixins';
 
-// headers
-@import 'partials/headers/guest';
-@import 'partials/headers/upr';
+// header
+@import 'partials/headers/headers';
 
 @import 'partials/guest/register';
 @import 'partials/guest/show';

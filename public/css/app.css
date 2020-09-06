@@ -16795,6 +16795,19 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
   margin: auto;
 }
 
+html {
+  height: 100vh;
+}
+
+body {
+  min-height: 100%;
+}
+body > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   width: 100vw;
   height: 90px;
@@ -16872,8 +16885,11 @@ header .container nav ul li a {
   text-transform: uppercase;
   padding: 0px;
 }
-header .container nav ul .header-logout {
+header .container nav ul .header-logout,
+header .container nav ul .header-login,
+header .container nav ul .header-signup {
   padding: 5px 20px;
+  cursor: pointer;
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -16886,12 +16902,19 @@ header .container nav ul .header-logout {
   background-color: transparent;
   transition: 200ms;
 }
-header .container nav ul .header-logout:hover {
+header .container nav ul .header-logout:hover,
+header .container nav ul .header-login:hover,
+header .container nav ul .header-signup:hover {
   background-color: #fff;
   color: #22B4CE;
 }
-header .container nav ul .header-logout:hover a {
+header .container nav ul .header-logout:hover a,
+header .container nav ul .header-login:hover a,
+header .container nav ul .header-signup:hover a {
   color: #22B4CE;
+}
+header .container nav ul .header-login {
+  margin-right: 30px;
 }
 
 .row div.card {
@@ -17047,7 +17070,6 @@ header .container nav ul .header-logout:hover a {
 }
 
 #map-contact {
-  width: 100vw;
   min-height: 300px;
   background-color: #22B4CE;
 }

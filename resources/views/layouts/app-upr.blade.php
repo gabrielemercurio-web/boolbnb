@@ -12,7 +12,7 @@
     {{-- TOM-TOM --}}
         <!-- TomTom -->
 	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-	
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -30,7 +30,7 @@
                 <div class="row">
                     <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
                         {{-- LOGO --}}
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="{{ route('upr.houses.homepage') }}">
                             <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="Boolbnb-logo">
                         </a>
                         {{-- BOTTONE MENU CHE APPARE NEL MOBILE --}}
@@ -42,14 +42,14 @@
                             <ul class="navbar-nav d-flex justify-content-between">
 
                                 <li class="nav-item active">
-                                    <a href="#">My Homes<span class="sr-only">(current)</span></a>
+                                    <a href="{{ route('upr.houses.index') }}">My Homes<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Messages</a>
+                                    <a href="{{ route('upr.messages.index') }}">Messages</a>
                                 </li>
                                 {{-- LOGOUT Copiato e incollato dallo scaffolding Auth di Laravel --}}
-                                <li class="nav-item header-logout">
-                                    <a href="{{ route('logout') }}"
+                                <li class="nav-item">
+                                    <a class="header-logout" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -74,36 +74,5 @@
 
         @include('partials.footer.footer')
     </div>
-
-
-
-
-        {{-- <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="">
-            </a>
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">My Homes <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Messages</a>
-                    </li>
-                    <li class="nav-item dropdown"> {{-- Copiato e incollato dallo scaffolding Auth di Laravel --}}
-                        {{-- <a class="nav-link" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-
-                    </li>
-                </ul>
-            </div>
-        </nav> --}}
 </body>
 </html>

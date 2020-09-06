@@ -81,9 +81,12 @@ header {
                     }
                 }
 
-                .header-logout {
+                .header-logout,
+                .header-login,
+                .header-signup {
 
                     padding: 5px 20px;
+                    cursor: pointer;
 
                     @include my-button(
                         #fff,
@@ -96,6 +99,10 @@ header {
                     &:hover a {
                         color: $main_color;
                     }
+                }
+
+                .header-login {
+                    margin-right: 30px;
                 }
             }
         }
