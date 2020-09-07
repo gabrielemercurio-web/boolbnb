@@ -29,23 +29,23 @@
 					<div class="form-group d-flex justify-content-between">
 						<div class="form-group">
 							<label for="house-nr_of_rooms">Rooms</label>
-							<input type="number" name="nr_of_rooms" class="form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('address') }}">
+							<input type="number" name="nr_of_rooms" class="form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('nr_of_rooms') }}">
 						</div>
 						<div class="form-group">
 							<label for="house-nr_of_beds">Beds</label>
-							<input type="number" name="nr_of_beds" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('address') }}">
+							<input type="number" name="nr_of_beds" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds') }}">
 						</div>
 						<div class="form-group">
 							<label for="house-nr_of_bathrooms">Bathroom</label>
-							<input type="number" name="nr_of_bathrooms" class="form-control" id="house-nr_of_bathrooms" placeholder="Bathroom" value="{{ old('address') }}">
+							<input type="number" name="nr_of_bathrooms" class="form-control" id="house-nr_of_bathrooms" placeholder="Bathroom" value="{{ old('nr_of_bathrooms') }}">
 						</div>
 						<div class="form-group">
 							<label for="house-square_mt">Metri quadrati</label>
-							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('address') }}">
+							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
 						</div>
 					</div>
 					<div>
-						<a href="#"><button type="submit" class="btn btn-primary">Upload Apartment</button></a>
+						<a href="{{ route('upr.houses.index') }}"><button type="submit" class="btn btn-primary">Upload Apartment</button></a>
 					</div>
 				</form>
 			</div>
