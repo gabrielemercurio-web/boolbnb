@@ -29,7 +29,7 @@
                 <div class="row">
                     <nav class="navbar navbar-expand-md navbar-light d-flex justify-content-between">
                         {{-- LOGO --}}
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="{{route('guest.homepage')}}">
                             <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="Boolbnb-logo">
                         </a>
                         {{-- BOTTONE MENU CHE APPARE NEL MOBILE --}}

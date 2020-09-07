@@ -59,7 +59,7 @@ class HouseController extends Controller
 		]);
 
 		//TODO: address manipulation
-		$houseData = $request->all();//non all! in mezzo ci sono sia le cose che vanno in houses che quelle che vanno in services -> SEPARARE I CAMPI!
+		$houseData = $request->all();//in mezzo ci sono sia le cose che vanno in houses che quelle che vanno in services -> SEPARARE I CAMPI!
 		// $serviceData = ???;
 		$newHouse = new House();
 		$newHouse->fill($houseData);
@@ -148,8 +148,10 @@ class HouseController extends Controller
 		return view('upr.houses.homepage', compact('houses'));
 	}
 
-	public function search() {
-		//TODO: add search mechanism
-		return view('upr.houses.search');
+	public function search(Request $request) {
+		$userQuery = $request->all();
+		//userQuery dentro ha solo l'indirizzo
+		return view('upr.houses.search', compact('userQuery'));
 	}
+
 }

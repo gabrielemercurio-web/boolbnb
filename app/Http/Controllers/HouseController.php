@@ -23,8 +23,9 @@ class HouseController extends Controller
 		}
 	}
 	
-	public function search() {
-		//TODO: add search mechanism
-		return view('guest.houses.search');
+	public function search(Request $request) {
+		$userQuery = $request->all();
+		//userQuery dentro ha solo l'indirizzo
+		return view('guest.houses.search', compact('userQuery'));
 	}
 };
