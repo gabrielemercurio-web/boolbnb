@@ -2,18 +2,20 @@ import tt from '@tomtom-international/web-sdk-maps'
 import tts from '@tomtom-international/web-sdk-services'
 
 /* * * Show map in house details page * * */
-
 // check whether there's a map in the page so as not to call the function everywhere
 if ($('#map').length) {
 	drawTomTomMap();
 }
-
+/* draw map from given coordinates */
 function drawTomTomMap() {
+	//grab coordinates from view
 	let long = $('#my-maps').attr('data-longitude');
 	let lat = $('#my-maps').attr('data-latitude');
 
+	//make it so tomtom can read them
 	let myCoordinates = [long, lat];
 
+	//grab a map centered on the given coordinates
 	let map = tt.map({
 		container: 'map',
 		key: process.env.MIX_TOMTOM_API_KEY,
@@ -22,28 +24,32 @@ function drawTomTomMap() {
 		zoom: 15
 	});
 
+	//add marker at the given coordinates
 	let marker = new tt.Marker().setLngLat(myCoordinates).addTo(map);
 }
 
 
-/* * * Search function (homepage + search page) * * */
+/* * * Search for user-given address and get back the coordinates * * */
+//when a search button is clicked, check which searchbar it refers to and grab its value
 $('.search-icon-hook').click((e) => {
-	//check what element was clicked to see whether you need to grab the input
-	// from the homepage or search page.
 	let searchSource = event.target.attributes['data-placement'].nodeValue;
-	callTomTomSearch(searchSource);
-})
-
-function callTomTomSearch(source) {
-	if (source == 'guest-homepage' || 'upr-homepage') {
+	//FIXME: switch statement?
+	if (searchSource == 'guest-homepage') {
 		var userQuery = $('#homepage-house-search').val(); //OK
-	} else if (source == 'guest-search' || 'upr-search') {
+	} else if (source == 'upr-homepage') {
+		console.log("haven't gotten that far yet ^^'");
+	} else if (source == 'guest-search') {
+		console.log("haven't gotten that far yet ^^'");
+	} else if (source == 'upr-search') {
 		console.log("haven't gotten that far yet ^^'");
 	}
+	callTomTomSearch(userQuery);
+})
 
+function callTomTomSearch(query) {
 	tts.services.fuzzySearch({
 	key: process.env.MIX_TOMTOM_API_KEY,
-	query: userQuery,
+	query: query,
 	})
 	.go()
 	.then(handleResults);
@@ -56,9 +62,36 @@ function handleResults(result) {
 	}
 };
 
-var from = turf.point([11.54073, 45.55292]);
-var to = turf.point([11.47973, 45.51564]);
-var options = {units: 'kilometers'};
+callHousesAPI()
+function callHousesAPI() {
+	$.ajax({
+		'url': 'http://localhost:8000/api/houses',
+		'method': 'GET',
+		'success': function(data) {
+			console.log('data', data);
+			data.data.forEach(house => {
+				let longitude = house.longitude;
+				let latitude = house.latitude;
+				let currentCoordinates = [longitude, latitude];
+				let currentDistance =get2PointsDistance(currentCoordinates);
+				if (currentDistance < 20) {
+					console.log(house.id);
+				}
+			});
+		},
+		'error': function() {
+			console.log('something went wrong');
+		}
 
-var distance = turf.distance(from, to, options);
+	})
+}
+
+function get2PointsDistance(toCoordinates) {
+let from = turf.point([9.13566, 45.56163]);
+let to = turf.point(toCoordinates);
+let options = {units: 'kilometers'};
+
+let distance = turf.distance(from, to, options);
 console.log('turf distance', distance);
+return distance;
+}
