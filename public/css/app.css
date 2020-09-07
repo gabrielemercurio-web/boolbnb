@@ -16803,7 +16803,8 @@ div#app {
   height: 100%;
 }
 
-main {
+main.py-4 {
+  margin: 100px 0px 50px 0px;
   min-height: calc(100% - 150px - 90px);
 }
 
@@ -17693,6 +17694,110 @@ header .container nav ul .header-login {
 .visible {
   background-color: #B8F0F5;
   cursor: pointer;
+}
+
+.card-upr {
+  margin-bottom: 70px;
+  transition: 200ms;
+  padding: 15px;
+}
+.card-upr:hover {
+  box-shadow: 0px 0px 40px 0px #0003;
+}
+.card-upr img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card-upr a {
+  color: #111;
+}
+.card-upr h1 {
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 30px 0px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.card-upr .button-my-homes {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card-upr .button-my-homes a {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.card-upr .button-my-homes a.btn-blue {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #22B4CE;
+  transition: 200ms;
+}
+.card-upr .button-my-homes a.btn-blue:hover {
+  background-color: #fff;
+  color: #22B4CE;
+}
+.card-upr .button-my-homes a.btn-white {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #main_color;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #fff;
+  transition: 200ms;
+}
+.card-upr .button-my-homes a.btn-white:hover {
+  background-color: #22B4CE;
+  color: #fff;
+}
+
+a.create-house {
+  color: #bbb;
+  width: 100%;
+  height: 350px;
+  border: 2px dashed #eee;
+  display: flex;
+  transition: 200ms;
+  outline: none;
+  text-decoration: none;
+}
+a.create-house:hover {
+  box-shadow: 0px 0px 40px 0px #0003;
+}
+a.create-house div {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  transition: 200ms;
+  border: 2px dashed #eee;
+}
+a.create-house div:hover {
+  transform: scale(1.2);
+}
+a.create-house div .fas {
+  margin: auto;
+  font-size: 1.3rem;
 }
 
 footer {

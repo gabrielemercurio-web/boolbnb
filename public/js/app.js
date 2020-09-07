@@ -37310,7 +37310,7 @@ function drawTomTomMap() {
   var myCoordinates = [_long, lat];
   var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
     container: 'map',
-    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
+    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
     style: 'tomtom://vector/1/basic-main',
     center: myCoordinates,
     zoom: 15
@@ -37335,7 +37335,7 @@ function callTomTomSearch(source) {
   }
 
   _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1___default.a.services.fuzzySearch({
-    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
+    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
     query: userQuery
   }).go().then(handleResults);
 }
@@ -37588,8 +37588,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
