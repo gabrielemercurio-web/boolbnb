@@ -1,13 +1,11 @@
-html {
+body {
     height: 100vh;
 }
 
-body {
-    min-height: 100%;
+div#app {
+    height: 100%;
+}
 
-    & > div {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
+main {
+    min-height: calc(100% - 150px - 90px);
 }

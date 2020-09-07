@@ -82,6 +82,7 @@
         </main>
 
         @include('partials.footer.footer')
+
     </div>
 </body>
 </html>
