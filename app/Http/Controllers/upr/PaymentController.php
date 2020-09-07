@@ -13,7 +13,7 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
 		$payments = Payment::all();
 		return view('upr.payments.index', compact('payments'));
@@ -26,7 +26,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('upr.houses.create');
+        return view('upr.payments.create');
 	}
 	
 	public function store()

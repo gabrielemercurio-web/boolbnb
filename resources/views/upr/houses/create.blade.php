@@ -6,10 +6,13 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="d-flex align-items-center">
-					<h1 class="mt-3 mb-3">New apartament </h1>
+					<h1 class="mt-3 mb-3">New apartment</h1>
 				</div>
 				<form action="{{ route('upr.houses.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
+                    <div class="form-group">
+                        <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
+                    </div>
 					<div class="form-group">
 						<label for="house-title">Title</label>
 						<input type="text" name="title" class="form-control" id="house-title" placeholder="Title" value="{{ old('title') }}">
@@ -24,7 +27,7 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Insert image</label>
-						<input type="file" name="image" class="form-control-file">
+						<input type="file" name="image_path" class="form-control-file">
 					</div>
 					<div class="form-group d-flex justify-content-between">
 						<div class="form-group">
@@ -42,10 +45,26 @@
 						<div class="form-group">
 							<label for="house-square_mt">Metri quadrati</label>
 							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
-						</div>
-					</div>
+                        </div> 
+                    </div>
+                    {{-- Da riempire con tomtom --}}
+                    <div class="form-group">
+                        <input type="text" name="latitude" value="45.46157" hidden>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="longitude" value="9.13695" hidden>
+                    </div>
+                    {{-- tomtom --}}
+                    {{-- CAMPI PROVVISORI --}}
+                    <div class="form-group">
+                        <input type="text" name="visible" value="1" hidden>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="advertised" value="1" hidden>
+                    </div>
+                    {{-- FINE CAMPI PROVVISORI --}}
 					<div>
-						<a href="{{ route('upr.houses.index') }}"><button type="submit" class="btn btn-primary">Upload Apartment</button></a>
+						<button type="submit" class="btn btn-primary">Upload Apartment</button>
 					</div>
 				</form>
 			</div>
