@@ -13,28 +13,28 @@
                         <a href="#">utenteinteressato@gmail.com</a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
-                            <span>18 giugno 2020</span>
+                            <span>18 giu 2020 - 18:30</span>
                         </div>
                     </div>
                     <div class="message">
                         <a href="#">utenteinteressato-1@gmail.com</a>
-                        <p>Ciao a tutti</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
-                            <span>18 giugno 2020</span>
+                            <span>20 mar 2020 - 15:45</span>
                         </div>
                     </div>
                     <div class="message">
                         <a href="#">utenteinteressato-2@gmail.com</a>
-                        <p>Ciao sono io</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
-                            <span>18 giugno 2020</span>
+                            <span>28 feb 2020 - 11:00</span>
                         </div>
                     </div>
                     <div class="message">
                         <a href="#">utenteinteressato-3@gmail.com</a>
-                        <p>Ciao a tutti ma proprio tutti</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
-                            <span>18 giugno 2020</span>
+                            <span>17 set 2020 - 09:15</span>
                         </div>
                     </div>
                 </div>
@@ -42,31 +42,31 @@
                     <div class="description active">
                         <div class="email-time">
                             <a href="#">utenteinteressato@gmail.com</a>
-                            <span>29 ago 2020 - 18:30</span>
+                            <span>18 giu 2020 - 18:30</span>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                     <div class="description">
                         <div class="email-time">
                             <a href="#">utenteinteressato-1@gmail.com</a>
-                            <span>29 ago 2020 - 18:30</span>
+                            <span>20 mar 2020 - 15:45</span>
                         </div>
-                        <p>Ciao a tutti</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
 
                     <div class="description">
                         <div class="email-time">
                             <a href="#">utenteinteressato-2@gmail.com</a>
-                            <span>29 ago 2020 - 18:30</span>
+                            <span>28 feb 2020 - 11:00</span>
                         </div>
-                        <p>Ciao sono io</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                     <div class="description">
                         <div class="email-time">
                                 <a href="#">utenteinteressato-3@gmail.com</a>
-                                <span>29 ago 2020 - 18:30</span>
+                                <span>17 set 2020 - 09:15</span>
                         </div>
-                        <p>Ciao a tutti ma proprio tutti</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
 
                 </div>

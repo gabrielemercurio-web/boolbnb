@@ -17612,11 +17612,9 @@ header .container nav ul .header-login {
   background-color: white;
   width: 100%;
 }
-
 .title h1 {
   color: #22B4CE;
 }
-
 .title hr {
   border: 1px solid #22B4CE;
 }
@@ -17645,23 +17643,24 @@ header .container nav ul .header-login {
   padding-left: 25px;
   padding-right: 25px;
 }
-
-.time {
-  float: right;
-}
-
 .message a {
   margin-top: 10px;
   color: black;
   font-weight: bold;
 }
-
+.message a:hover {
+  text-decoration: none;
+}
 .message p {
   margin-top: 15px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.time {
+  float: right;
 }
 
 .description {
@@ -17679,6 +17678,13 @@ header .container nav ul .header-login {
 .email-time {
   display: flex;
   justify-content: space-between;
+}
+.email-time a {
+  color: #333333;
+  text-decoration: none;
+}
+.email-time a:hover {
+  text-decoration: none;
 }
 
 .active {

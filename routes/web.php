@@ -36,10 +36,3 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::get('/stats', 'MessageController@index')->name('messages.index');
 
 });
-
-Route::get('/create', function () {
-    return view('upr.houses.create');
-});
-Route::get('/edit', function () {
-    return view('upr.houses.edit');
-});
