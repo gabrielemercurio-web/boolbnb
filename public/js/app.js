@@ -37419,6 +37419,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./guest/show */ "./resources/js/guest/show.js");
 
+__webpack_require__(/*! ./guest/messages */ "./resources/js/guest/messages.js");
+
+__webpack_require__(/*! ./guest/search */ "./resources/js/guest/search.js");
+
 __webpack_require__(/*! ./upr/header */ "./resources/js/upr/header.js");
 
 __webpack_require__(/*! ./_tomtom */ "./resources/js/_tomtom.js"); // **** window.Vue = require('vue');
@@ -37487,6 +37491,46 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/guest/messages.js":
+/*!****************************************!*\
+  !*** ./resources/js/guest/messages.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.message').click(function () {
+    var indice_contatto = $(this).index();
+    $('.description.active').removeClass('active');
+    $('.description').eq(indice_contatto).addClass('active');
+    $('.message.visible').removeClass('visible');
+    $('.message').eq(indice_contatto).addClass('visible');
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/guest/search.js":
+/*!**************************************!*\
+  !*** ./resources/js/guest/search.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// const Handlebars = require("handlebars");
+// var source = $('#house-card').html();
+// var template = Handlebars.compile(source);
+// var context = {
+//     'image_path': '',
+//     'title': 'Titolo'
+//     'description': 'Questo è il titolo'
+// }
+// var html = template(context);
+// $(".houses-grid-results").append(html);
+// // * * * AJAX * * *
 
 /***/ }),
 

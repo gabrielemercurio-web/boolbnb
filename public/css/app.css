@@ -16803,12 +16803,13 @@ div#app {
   height: 100%;
 }
 
-main {
+main.py-4 {
+  padding: 90px 0px 90px 0px !important;
   min-height: calc(100% - 150px - 90px);
 }
 
 header {
-  width: 100vw;
+  width: 100%;
   height: 90px;
   background-color: #22B4CE;
 }
@@ -17140,6 +17141,73 @@ header .container nav ul .header-login {
   height: 350px;
 }
 
+.home {
+  width: 100%;
+  height: 300px;
+  background-image: url("../img/house-4.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: #0008;
+  position: absolute;
+}
+
+.title {
+  width: 100%;
+  margin-top: 70px;
+}
+.title h1 {
+  color: #22B4CE;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: bold;
+}
+.title hr {
+  border: 1px solid #22B4CE;
+  margin-bottom: 0;
+}
+
+.filter-form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.filter-form .filter-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #22B4CE;
+  padding: 5px 20px;
+}
+.filter-form .filter-box input {
+  cursor: pointer;
+  margin-right: 5px;
+  border-color: #ddd;
+}
+.filter-form .filter-box label {
+  margin-bottom: 0px;
+  color: #22B4CE;
+  font-size: 0.9rem;
+}
+
+.handle-house-card p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .sponsor-wrapper {
   height: 100vh;
   width: 100%;
@@ -17337,10 +17405,8 @@ header .container nav ul .header-login {
 }
 .home-wrapper {
   width: 100%;
-  margin-top: 80px;
 }
-
-.home {
+.home-wrapper .home {
   width: 100%;
   height: 500px;
   background-image: url("../img/house-1.jpg");
@@ -17352,40 +17418,35 @@ header .container nav ul .header-login {
   justify-content: center;
   align-items: center;
 }
-
-.overlay {
+.home-wrapper .overlay {
   width: 100%;
   height: 100%;
   background-color: #0008;
   position: absolute;
 }
-
-.title {
+.home-wrapper .title {
   width: 95%;
   margin-top: 70px;
 }
-.title h1 {
+.home-wrapper .title h1 {
   color: #22B4CE;
   text-transform: uppercase;
   font-size: 32px;
   font-weight: bold;
 }
-.title hr {
+.home-wrapper .title hr {
   border: 1px solid #22B4CE;
   margin-bottom: 0;
 }
-
-.apartment-description {
+.home-wrapper .apartment-description {
   display: flex;
   flex-wrap: wrap;
   width: 95%;
 }
-
-.apartment {
+.home-wrapper .apartment {
   margin-top: 30px;
 }
-
-.description-apartment h2 {
+.home-wrapper .description-apartment h2 {
   font-size: 23px;
   height: 71px;
   margin-top: 19px;
@@ -17394,59 +17455,50 @@ header .container nav ul .header-login {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-
-.description-apartment p {
+.home-wrapper .description-apartment p {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   height: 71px;
 }
-
-.apartment-img {
+.home-wrapper .apartment-img {
   width: 100%;
   height: 200px;
   position: relative;
 }
-
-.apartment-img img {
+.home-wrapper .apartment-img img {
   height: 200px;
   width: 322px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-
-.apartment-img p {
+.home-wrapper .apartment-img p {
   position: absolute;
   bottom: -9px;
   right: 16px;
   color: white;
   text-shadow: 0 0 5px #000000, 0 0 5px #000000;
 }
-
-.description-apartment {
+.home-wrapper .description-apartment {
   margin-top: 10px;
   margin-left: 2px;
 }
-
-.btn-color {
+.home-wrapper .btn-color {
   color: #22B4CE;
   border-color: #22B4CE;
 }
-
-.btn-color:hover {
+.home-wrapper .btn-color:hover {
   background-color: #22B4CE;
   border-color: #22B4CE;
   color: white;
 }
-
-.btn-color:focus {
+.home-wrapper .btn-color:focus {
   background-color: rgba(0, 0, 0, 0);
   outline: none;
   box-shadow: none;
 }
-
-.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show > .btn-outline-primary.dropdown-toggle {
+.home-wrapper .btn-outline-primary:not(:disabled):not(.disabled).active, .home-wrapper .btn-outline-primary:not(:disabled):not(.disabled):active, .home-wrapper .show > .btn-outline-primary.dropdown-toggle {
   background-color: rgba(0, 0, 0, 0);
   border-color: #22B4CE;
   color: #22B4CE;
@@ -17612,18 +17664,15 @@ header .container nav ul .header-login {
   background-color: white;
   width: 100%;
 }
-
 .title h1 {
   color: #22B4CE;
 }
-
 .title hr {
   border: 1px solid #22B4CE;
 }
 
 .users-message {
   width: 100%;
-  height: 500px;
   display: flex;
 }
 
@@ -17645,23 +17694,24 @@ header .container nav ul .header-login {
   padding-left: 25px;
   padding-right: 25px;
 }
-
-.time {
-  float: right;
-}
-
 .message a {
   margin-top: 10px;
   color: black;
   font-weight: bold;
 }
-
+.message a:hover {
+  text-decoration: none;
+}
 .message p {
   margin-top: 15px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.time {
+  float: right;
 }
 
 .description {
@@ -17680,6 +17730,13 @@ header .container nav ul .header-login {
   display: flex;
   justify-content: space-between;
 }
+.email-time a {
+  color: #333333;
+  text-decoration: none;
+}
+.email-time a:hover {
+  text-decoration: none;
+}
 
 .active {
   display: block;
@@ -17688,6 +17745,119 @@ header .container nav ul .header-login {
 .visible {
   background-color: #B8F0F5;
   cursor: pointer;
+}
+
+div.my-home-title h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #22B4CE;
+}
+div.my-home-title hr {
+  border-color: #22B4CE;
+}
+
+.card-upr {
+  margin-bottom: 70px;
+  transition: 200ms;
+  padding: 15px;
+}
+.card-upr:hover {
+  box-shadow: 0px 0px 40px 0px #0003;
+}
+.card-upr img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card-upr a {
+  color: #111;
+}
+.card-upr h1 {
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 30px 0px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.card-upr .button-my-homes {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card-upr .button-my-homes a {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.card-upr .button-my-homes a.btn-blue {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #22B4CE;
+  transition: 200ms;
+}
+.card-upr .button-my-homes a.btn-blue:hover {
+  background-color: #fff;
+  color: #22B4CE;
+}
+.card-upr .button-my-homes a.btn-white {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #main_color;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #fff;
+  transition: 200ms;
+}
+.card-upr .button-my-homes a.btn-white:hover {
+  background-color: #22B4CE;
+  color: #fff;
+}
+
+a.create-house {
+  color: #22B4CE;
+  width: 100%;
+  height: 350px;
+  border: 2px dashed #eee;
+  display: flex;
+  transition: 200ms;
+  outline: none;
+  text-decoration: none;
+}
+a.create-house:hover {
+  box-shadow: 0px 0px 40px 0px #0003;
+}
+a.create-house div {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  transition: 200ms;
+  border: 2px dashed #eee;
+}
+a.create-house div:hover {
+  transform: scale(1.2);
+}
+a.create-house div .fas {
+  margin: auto;
+  font-size: 1.3rem;
 }
 
 footer {

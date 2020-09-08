@@ -65,17 +65,21 @@
 				{{-- SEND MESSAGE --}}
                 <div id="contact" class="col-md-5">
                     <h1>Contact Owner</h1>
-                    <form>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your email">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your message"></textarea>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn">Send</button>
-                        </div>
-                    </form>
+                <form method="POST" action="{{ route('guest.store') }}">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="house_id" value="{{ $house->id }}" hidden>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="sender_email" class="form-control" id="exampleFormControlInput1" placeholder="Your email">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" placeholder="Your message"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn">Send</button>
+                    </div>
+                </form>
 				</div>
 				{{-- MAP --}}
 				<div id="my-maps" class="col-md-6 offset-md-1" data-longitude="{{$house->longitude}}" data-latitude="{{$house->latitude}}">

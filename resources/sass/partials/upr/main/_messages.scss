@@ -6,18 +6,16 @@
 .title{
     background-color: white;
     width: 100%;
-}
-.title h1{
-    color:#22B4CE;
-}
-.title hr{
-    border: 1px solid #22B4CE;
+    h1{
+       color:#22B4CE;
+   }
+   hr{
+       border: 1px solid #22B4CE;
+   }
 }
 
 .users-message{
     width: 100%;
-
-    height: 500px;
     display: flex;
 }
 .messages{
@@ -36,22 +34,27 @@
     cursor:pointer;
     padding-left: 25px;
     padding-right: 25px;
+    a{
+        margin-top: 10px;
+        color: black;
+        font-weight: bold;
+        &:hover{
+            text-decoration: none;
+        }
+
+    }
+    p{
+        margin-top: 15px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
 }
 .time{
     float: right;
 }
-.message a{
-    margin-top: 10px;
-    color: black;
-    font-weight: bold;
-}
-.message p{
-    margin-top: 15px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
+
 .description{
     background-color: white;
     width: 100%;
@@ -65,6 +68,13 @@
 .email-time {
     display: flex;
     justify-content: space-between;
+    a{
+        color:#333333;
+        text-decoration: none;
+        &:hover{
+            text-decoration: none;
+        }
+    }
 }
 
 .active{

@@ -18,8 +18,8 @@ class HouseController extends Controller
     public function index()
     {
         // grab id of current upr and make it match user_id
-        $houses = DB::table('houses')
-            ->join('users', 'users.id', '=', 'houses.user_id')
+        $houses = DB::table('users')
+            ->join('houses', 'users.id', '=', 'houses.user_id')
             ->where('houses.user_id', '=', Auth::user()->id)
             ->orderBy('houses.created_at', 'DESC')
             ->get();
@@ -146,12 +146,30 @@ class HouseController extends Controller
 	public function homepage() {
 		$houses = House::where('advertised', true)->get();
 		return view('upr.houses.homepage', compact('houses'));
-	}
+    }
+    
+    public function toggleVisibility($id) {
+        $house = House::find($id);
 
+        if($house->visible == 0) {
+            $house->update(['visible'=> 1]);
+        } else {
+            $house->update(['visible'=> 0]);
+        }
+        return redirect()->back();
+    }
+
+<<<<<<< HEAD
 	public function search(Request $request) {
 		$userQuery = $request->all();
 		//userQuery dentro ha solo l'indirizzo
 		return view('upr.houses.search', compact('userQuery'));
+=======
+	public function search() {
+        
+        $services = Service::all();
+		return view('upr.houses.search', compact('services'));
+>>>>>>> 86dca8298914081f0f97f6fdd9341557f16eb8fc
 	}
 
 }

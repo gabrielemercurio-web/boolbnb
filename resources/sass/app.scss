@@ -26,9 +26,11 @@ $fa-font-path: 'fonts';
 
 @import 'partials/guest/register';
 @import 'partials/guest/show';
+@import 'partials/guest/search';
 
-@import 'partials/main/payments';
-@import 'partials/main/homepage';
-@import 'partials/main/messages';
+@import 'partials/upr/main/payments';
+@import 'partials/upr/main/homepage';
+@import 'partials/upr/main/messages';
+@import 'partials/upr/main/index';
 
 @import 'partials/footer';
