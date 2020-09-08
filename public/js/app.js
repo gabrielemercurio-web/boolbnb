@@ -37383,6 +37383,8 @@ __webpack_require__(/*! ./guest/show */ "./resources/js/guest/show.js");
 
 __webpack_require__(/*! ./guest/messages */ "./resources/js/guest/messages.js");
 
+__webpack_require__(/*! ./guest/search */ "./resources/js/guest/search.js");
+
 __webpack_require__(/*! ./upr/header */ "./resources/js/upr/header.js");
 
 __webpack_require__(/*! ./_tomtom */ "./resources/js/_tomtom.js"); // **** window.Vue = require('vue');
@@ -37470,6 +37472,35 @@ $(document).ready(function () {
     $('.message').eq(indice_contatto).addClass('visible');
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/guest/search.js":
+/*!**************************************!*\
+  !*** ./resources/js/guest/search.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// const Handlebars = require("handlebars");
+// var source = $('#filter').html();
+// var template = Handlebars.compile(source);
+// var context = {
+//     'title': 'Questo è il titolo',
+//     'body': 'Ciao, sono Gabriele'
+// }
+// var html = template(context);
+// $('.handlebars').append(html);
+// // * * * AJAX * * *
+// $.ajax({
+//     'url': '',
+//     'method': 'GET',
+//     'success': function (data){
+//     },
+//     'error': function(){
+//         console.log('Ajax error detected!');
+//     }
+// });
 
 /***/ }),
 

@@ -7,6 +7,7 @@ import "bootstrap";
 require('./bootstrap');
 require('./guest/show');
 require('./guest/messages');
+require('./guest/search');
 require('./upr/header');
 require('./_tomtom');
 
