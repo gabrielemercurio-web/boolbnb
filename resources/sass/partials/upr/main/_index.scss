@@ -12,7 +12,7 @@ div.my-home-title {
 }
 
 .card-upr {
-    
+
     margin-bottom: 70px;
     transition: 200ms;
     padding: 15px;
@@ -70,7 +70,7 @@ div.my-home-title {
                 $main_color
             )
         }
-        
+
         a.btn-white {
             @include my-button(
                 $main_color,
@@ -117,4 +117,18 @@ a.create-house {
         }
 
     }
+}
+.btn{
+    font-size: 0.8rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #22B4CE;
+        color: #fff;
+        border-radius: 0px;
+        padding: 5px 20px;
+        background-color: #22B4CE;
+        transition: 200ms;
+        margin-top: -12px;
 }
