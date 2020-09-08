@@ -18,8 +18,8 @@ class HouseController extends Controller
     public function index()
     {
         // grab id of current upr and make it match user_id
-        $houses = DB::table('houses')
-            ->join('users', 'users.id', '=', 'houses.user_id')
+        $houses = DB::table('users')
+            ->join('houses', 'users.id', '=', 'houses.user_id')
             ->where('houses.user_id', '=', Auth::user()->id)
             ->orderBy('houses.created_at', 'DESC')
             ->get();

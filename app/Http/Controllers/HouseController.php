@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\House;
+use App\Service;
 
 class HouseController extends Controller
 {
@@ -24,7 +25,8 @@ class HouseController extends Controller
 	}
 	
 	public function search() {
-		//TODO: add search mechanism
-		return view('guest.houses.search');
+        
+        $services = Service::all();
+		return view('guest.houses.search', compact('services'));
 	}
 };
