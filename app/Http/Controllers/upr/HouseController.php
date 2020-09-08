@@ -146,10 +146,22 @@ class HouseController extends Controller
 	public function homepage() {
 		$houses = House::where('advertised', true)->get();
 		return view('upr.houses.homepage', compact('houses'));
-	}
+    }
+    
+    public function toggleVisibility($id) {
+        $house = House::find($id);
+
+        if($house->visible == 0) {
+            $house->update(['visible'=> 1]);
+        } else {
+            $house->update(['visible'=> 0]);
+        }
+        return redirect()->back();
+    }
 
 	public function search() {
-		//TODO: add search mechanism
-		return view('upr.houses.search');
+        
+        $services = Service::all();
+		return view('upr.houses.search', compact('services'));
 	}
 }

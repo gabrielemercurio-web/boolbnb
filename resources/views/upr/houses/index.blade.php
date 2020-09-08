@@ -16,13 +16,17 @@
                             <a class="btn-blue">DELETE</a>
                             <a href="{{ route('upr.payments.create') }}" class="btn-white">PROMOTE</a>
                             <a class="btn-white">STATS</a>
-                            <a class="btn-white">DISABLE</a>
+                            @if($house->visible == true)
+                                <a href="{{ route('upr.houses.update', ['house' => $house->id]) }}" class="btn-white">HIDE HOME</a>
+                            @else 
+                                <a href="{{ route('upr.houses.update', ['house' => $house->id]) }}" class="btn-white">SHOW HOME</a>
+                            @endif
                         </div>
                     </div>
                 </div> 
-            @endforeach ($houses as $house)
+            @endforeach
 
-            <a href="{{ route('upr.houses.create') }}" class="create-house col-md-6" href="">
+            <a href="{{ route('upr.houses.create') }}" class="create-house col-md-6">
                 <div> <i class="fas fa-plus"></i> </div>
             </a>
         </div>
