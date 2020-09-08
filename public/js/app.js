@@ -37483,24 +37483,16 @@ $(document).ready(function () {
 /***/ (function(module, exports) {
 
 // const Handlebars = require("handlebars");
-// var source = $('#filter').html();
+// var source = $('#house-card').html();
 // var template = Handlebars.compile(source);
 // var context = {
-//     'title': 'Questo è il titolo',
-//     'body': 'Ciao, sono Gabriele'
+//     'image_path': '',
+//     'title': 'Titolo'
+//     'description': 'Questo è il titolo'
 // }
 // var html = template(context);
-// $('.handlebars').append(html);
+// $(".houses-grid-results").append(html);
 // // * * * AJAX * * *
-// $.ajax({
-//     'url': '',
-//     'method': 'GET',
-//     'success': function (data){
-//     },
-//     'error': function(){
-//         console.log('Ajax error detected!');
-//     }
-// });
 
 /***/ }),
 

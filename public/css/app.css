@@ -17176,6 +17176,38 @@ header .container nav ul .header-login {
   margin-bottom: 0;
 }
 
+.filter-form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.filter-form .filter-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #22B4CE;
+  padding: 5px 20px;
+}
+.filter-form .filter-box input {
+  cursor: pointer;
+  margin-right: 5px;
+  border-color: #ddd;
+}
+.filter-form .filter-box label {
+  margin-bottom: 0px;
+  color: #22B4CE;
+  font-size: 0.9rem;
+}
+
+.handle-house-card p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .sponsor-wrapper {
   height: 100vh;
   width: 100%;
