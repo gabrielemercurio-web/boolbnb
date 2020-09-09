@@ -17201,6 +17201,19 @@ header .container nav ul .header-login {
   font-size: 0.9rem;
 }
 
+.bg-sponsored {
+  width: 100vw;
+  min-height: 220px;
+  padding: 40px 0px;
+  background-color: rgba(34, 180, 206, 0.2);
+}
+.bg-sponsored p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .handle-house-card p {
   overflow: hidden;
   display: -webkit-box;
@@ -17757,7 +17770,7 @@ div.my-home-title hr {
 }
 
 .card-upr {
-  margin-bottom: 70px;
+  margin: 35px 0px;
   transition: 200ms;
   padding: 15px;
 }

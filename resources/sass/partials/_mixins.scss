@@ -17,4 +17,10 @@
     }
 }
 
+@mixin my-overflow-clamp($line-clamp){
 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $line-clamp;
+    -webkit-box-orient: vertical;
+}
