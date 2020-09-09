@@ -17,7 +17,7 @@
     }
 }
 
-.sponsor-price{
+.sponsor-plane{
     background-color: white;
     height: 250px;
     width: 100%;
@@ -28,55 +28,35 @@
         font-weight: bold;
     }
 }
-
-.price-one, .price-second, .price-third{
-    margin-top: 16px;
+.sponsor-price{
+    display: inline-block;
 }
-.price-one button{
-    background-color: $main_color;
-    color: white;
-    padding-top: $padding_top_bottom;
-    padding-bottom: $padding_top_bottom;
+
+.price button{
+    color: #22B4CE;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 19px;
     padding-right: 18px;
     cursor: pointer;
     border: none;
     font-weight: bold;
-    outline: $outline_button;
-    &:hover{
-        background-color: white;
-        color: $main_color;
-        border-color: $main_color;
-        color: $main_color;
-        border-color: $main_color;
-        border: 1px solid $main_color;
-    }
+    outline: none;
+    border: 1px solid #22B4CE;
 }
-.price-second button{
-    padding-left: 20px;
-    outline: $outline_button;
+.active button{
+    background-color: #22B4CE;
+    color: white;
 }
-.price-second button, .price-third button{
-    color: $main_color;
-    padding-top: $padding_top_bottom;
-    padding-bottom: $padding_top_bottom;
-    padding-right: 14px;
-    border: 1px solid $main_color;
-    cursor: pointer;
-    font-weight: bold;
-    &:hover{
-        background-color: $main_color;
-        color: white;
-        cursor: pointer;
-        border: none;
-        font-weight: bold;
-        outline: $outline_button;
-    }
+.third button{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
 }
-.price-third button{
-    padding-left: 10px;
-    outline: $outline_button;
+.second, .third{
+    padding-top: 19px;
 }
+
 .information-payments{
     background-color: white;
     height: 250px;
@@ -147,7 +127,7 @@
 /*** RESPONSIVE ***/
 
 @media screen and (max-width: 477px){
-    .sponsor-price{
+    .sponsor-plane{
         margin-top: -76px;
     }
 }
