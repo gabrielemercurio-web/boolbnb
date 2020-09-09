@@ -10,6 +10,7 @@
             <div class="users-message">
                 <div class="messages col-5">
                     <div class="message visible">
+                        <h2 class="hidden">Apartment 1</h2>
                         <a href="#">utenteinteressato@gmail.com</a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
@@ -17,6 +18,7 @@
                         </div>
                     </div>
                     <div class="message">
+                        <h2 class="hidden">Apartment 2</h2>
                         <a href="#">utenteinteressato-1@gmail.com</a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
@@ -24,6 +26,7 @@
                         </div>
                     </div>
                     <div class="message">
+                        <h2 class="hidden">Apartment 3</h2>
                         <a href="#">utenteinteressato-2@gmail.com</a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
@@ -31,6 +34,7 @@
                         </div>
                     </div>
                     <div class="message">
+                        <h2 class="hidden">Apartment 4</h2>
                         <a href="#">utenteinteressato-3@gmail.com</a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <div class="time">
