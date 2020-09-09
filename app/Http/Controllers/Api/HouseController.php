@@ -10,15 +10,19 @@ use App\House;
 
 class HouseController extends Controller
 {
+	// public function index() {
+	// 	$houses = House::select('id', 'longitude', 'latitude')->get();
+	// }
+
     public function index(Request $request) {
 		$input = $request->all();
 		$query = House::leftJoin('house_service', 'house_service.house_id', '=', 'houses.id');
 			/** rooms */
-		if (isset($input['search-nr-rooms']) && $input['search-nr-rooms'])
-			$query->where('houses.nr_of_rooms', '>=', $input['search-nr-rooms']);
+		if (isset($input['rooms']) && $input['rooms'])
+			$query->where('houses.nr_of_rooms', '>=', $input['rooms']);
 			/** beds */
-		if (isset($input['search-nr-beds']) && $input['search-nr-beds'])
-			$query->where('houses.nr_of_beds', '>=', $input['search-nr-beds']);
+		if (isset($input['beds']) && $input['beds'])
+			$query->where('houses.nr_of_beds', '>=', $input['beds']);
 			/** wifi */
 		if (isset($input['wifi']) && $input['wifi'])
 			$query->where('house_service.service_id', '=', '1');
