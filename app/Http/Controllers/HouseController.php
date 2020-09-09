@@ -24,16 +24,16 @@ class HouseController extends Controller
 		}
 	}
 	
-<<<<<<< HEAD
 	public function search(Request $request) {
-		$userQuery = $request->all();
-		//userQuery dentro ha solo l'indirizzo
-		return view('guest.houses.search', compact('userQuery'));
-=======
-	public function search() {
-        
-        $services = Service::all();
-		return view('guest.houses.search', compact('services'));
->>>>>>> 86dca8298914081f0f97f6fdd9341557f16eb8fc
+		//get the address inputed in homepage and show it in searchbar in search page
+		$userQuery = $request->user_search_address;
+		//grab advertised houses to show on top
+		//TODO: randomize houses
+		$houses = House::where('visible', '1')
+					->where('advertised', '1')
+					->limit(6)
+					->get();
+		$services = Service::all();
+		return view('guest.houses.search', compact('userQuery', 'houses', 'services'));
 	}
 };

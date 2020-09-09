@@ -159,17 +159,10 @@ class HouseController extends Controller
         return redirect()->back();
     }
 
-<<<<<<< HEAD
 	public function search(Request $request) {
 		$userQuery = $request->all();
 		//userQuery dentro ha solo l'indirizzo
 		return view('upr.houses.search', compact('userQuery'));
-=======
-	public function search() {
-        
-        $services = Service::all();
-		return view('upr.houses.search', compact('services'));
->>>>>>> 86dca8298914081f0f97f6fdd9341557f16eb8fc
 	}
 
 }
