@@ -17621,7 +17621,6 @@ header .container nav ul .header-login {
   margin-left: 2px;
 }
 .home-wrapper .btn-color {
-  color: #22B4CE;
   border-color: #22B4CE;
 }
 .home-wrapper .btn-color:hover {
@@ -17642,154 +17641,6 @@ header .container nav ul .header-login {
   outline: none;
 }
 
-@media screen and (max-width: 765px) {
-  .apartment-description, .secondo-appartamento {
-    display: inline;
-  }
-
-  .apartment {
-    display: contents;
-    margin-top: 25px;
-  }
-
-  .title {
-    width: 100%;
-    margin-top: 150px;
-  }
-
-  .home {
-    display: contents;
-  }
-
-  .home-img img {
-    width: 500px;
-    height: 300px;
-  }
-
-  .home-search {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #22B4CE;
-    width: 495px;
-    height: 71px;
-    display: flex;
-    align-items: center;
-    margin-top: 99px;
-  }
-
-  .home-search input {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 463px;
-    height: 40px;
-    border: none;
-    padding-left: 15px;
-  }
-
-  .btn-color {
-    margin-bottom: 25px;
-  }
-}
-@media screen and (max-width: 477px) {
-  .apartment-description, .secondo-appartamento {
-    display: inline;
-  }
-
-  .apartment, .apartment-due, .apartment-tre {
-    display: contents;
-  }
-
-  .description-apartment {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .title {
-    width: 100%;
-    margin-top: 150px;
-  }
-
-  .home {
-    display: contents;
-  }
-
-  .home-search {
-    margin-top: 194px;
-    width: 329px;
-  }
-
-  .home-search input {
-    width: 300px;
-  }
-
-  .icon i {
-    position: absolute;
-    right: 15px;
-    top: 29px;
-    color: white;
-    background-color: #22B4CE;
-    width: 39px;
-    height: 38px;
-    margin-top: -12px;
-    padding-left: 9px;
-    padding-top: 10px;
-  }
-
-  .btn-color {
-    margin-bottom: 25px;
-  }
-}
-@media screen and (min-width: 668px) {
-  .apartment-img img {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 375px) {
-  .apartment-img img {
-    width: 100%;
-  }
-
-  .home-search {
-    margin-top: 126px;
-  }
-}
-@media screen and (max-width: 360px) {
-  .apartment-img img {
-    width: 100%;
-  }
-
-  .home-search {
-    margin-top: 206px;
-  }
-}
-@media screen and (max-width: 414px) {
-  .apartment-img img {
-    width: 100%;
-  }
-
-  .btn-color {
-    margin-bottom: 25px;
-  }
-}
-/*** IPHONE 5/SE ******/
-@media screen and (max-width: 320px) {
-  .home-search {
-    margin-top: 248px;
-    width: 295px;
-  }
-
-  .home-search input {
-    width: 267px;
-  }
-
-  .btn-color {
-    margin-bottom: 25px;
-  }
-}
 .your-messages {
   width: 100%;
   margin-top: 70px;
@@ -17818,14 +17669,6 @@ header .container nav ul .header-login {
   margin-top: 31px;
 }
 
-.hidden {
-  display: none;
-}
-
-.description-message {
-  height: 100%;
-}
-
 .message {
   height: 170px;
   border: 1px solid black;
@@ -17850,8 +17693,21 @@ header .container nav ul .header-login {
   -webkit-box-orient: vertical;
 }
 
+.visible {
+  background-color: #B8F0F5;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 .time {
   float: right;
+}
+
+.description-message {
+  height: 100%;
 }
 
 .description {
@@ -17861,9 +17717,12 @@ header .container nav ul .header-login {
   display: none;
   padding-top: 30px;
 }
-
 .description p {
   margin-top: 20px;
+}
+
+.active {
+  display: block;
 }
 
 .email-time {
@@ -17878,78 +17737,6 @@ header .container nav ul .header-login {
   text-decoration: none;
 }
 
-.active {
-  display: block;
-}
-
-.visible {
-  background-color: #B8F0F5;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 765px) {
-  .title {
-    margin-top: 30px;
-  }
-
-  .message {
-    height: 200px;
-    width: 581px;
-  }
-  .message p {
-    margin-top: 15px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-
-  .description-message {
-    display: none;
-  }
-
-  .users-message {
-    max-width: 100%;
-  }
-}
-@media screen and (max-width: 477px) {
-  .title {
-    margin-top: 30px;
-  }
-
-  .messages {
-    max-width: 100%;
-    margin-top: 15px;
-  }
-
-  .message {
-    height: 166px;
-    width: 321px;
-    margin-top: 30px;
-  }
-  .message p {
-    margin-top: 7px;
-  }
-
-  .description-message {
-    display: none;
-  }
-
-  .hidden {
-    display: block;
-    color: #22B4CE;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 22px;
-  }
-}
-@media screen and (max-width: 320px) {
-  .message {
-    height: 186px;
-    width: 291px;
-    margin-top: 30px;
-  }
-}
 div.my-home-title h1 {
   font-size: 1.8rem;
   font-weight: 700;

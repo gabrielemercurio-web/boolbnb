@@ -21,8 +21,9 @@
                 <hr>
             </div>
             <div class="apartment-description">
+				<div class="row">
                 @forelse ($houses as $house)
-                    <div class="apartment col-4">
+                    <div class="apartment col-lg-4 col-md-6">
                         <div class="apartment-img">
                             <img src="{{ $house->image_path }}" class="img-fluid" alt="image of the house">
                             <p>Sponsored</p>
@@ -40,5 +41,6 @@
                 @endforelse
             </div>
         </div>
+		</div>
 	</div>
 @endsection

@@ -7,10 +7,10 @@
     background-color: white;
     width: 100%;
     h1{
-       color:#22B4CE;
+       color:$main_color;
    }
    hr{
-       border: 1px solid #22B4CE;
+       border: 1px solid $main_color;
    }
 }
 
@@ -23,13 +23,7 @@
     height: 100%;
     margin-top: 31px;
 }
-.hidden{
-    display: none;
-}
 
-.description-message{
-    height: 100%;
-}
 .message{
     height: 170px;
     border:1px solid black;
@@ -54,19 +48,31 @@
         -webkit-box-orient: vertical;
     }
 }
+.visible{
+    background-color: #B8F0F5;
+    cursor: pointer;
+}
+.hidden{
+    display: none;
+}
 .time{
     float: right;
 }
-
+.description-message{
+    height: 100%;
+}
 .description{
     background-color: white;
     width: 100%;
     height: 300px;
     display: none;
     padding-top: 30px;
+    p{
+        margin-top: 20px;
+    }
 }
-.description p{
-    margin-top: 20px;
+.active{
+    display: block;
 }
 .email-time {
     display: flex;
@@ -75,116 +81,67 @@
         color:#333333;
         text-decoration: none;
         &:hover{
-            text-decoration: none;
+        text-decoration: none;
         }
     }
 }
 
-.active{
-    display: block;
-}
-.visible{
-    background-color: #B8F0F5;
-    cursor: pointer;
-}
-@media screen and (max-width: 765px) {
-    .title{
-        margin-top: 30px;
-    }
-    .message{
-        height: 200px;
-        width: 581px;
-        p{
-            margin-top: 15px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-    }
-    .description-message{
-        display: none;
-    }
-    .users-message{
-        max-width: 100%;
-    }
-}
-@media screen and (max-width: 477px){
-
-    .title{
-        margin-top: 30px;
-    }
-    .messages{
-        max-width: 100%;
-        margin-top: 15px;
-    }
-    .message{
-        height: 166px;
-        width: 321px;
-        margin-top: 30px;
-        p{
-            margin-top: 7px;
-        }
-    }
-    .description-message{
-        display: none;
-    }
-    .hidden{
-        display: block;
-        color:#22B4CE;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 22px;
-    }
-}
-@media screen and (max-width: 320px){
-    .message{
-        height: 186px;
-        width: 291px;
-        margin-top: 30px;
-    }
-}
 
 
-// @media screen and (min-width: 668px){
-//     .apartment-img img{
-//         width: 100%;
+// @media screen and (max-width: 765px) {
+//     .title{
+//         margin-top: 30px;
+//     }
+//     .message{
+//         height: 200px;
+//         width: 581px;
+//         p{
+//             margin-top: 15px;
+//             overflow: hidden;
+//             display: -webkit-box;
+//             -webkit-line-clamp: 2;
+//             -webkit-box-orient: vertical;
+//         }
+//     }
+//     .description-message{
+//         display: none;
+//     }
+//     .users-message{
+//         max-width: 100%;
 //     }
 // }
-// @media screen and(max-width: 375px){
-//     .apartment-img img{
-//         width: 100%;
+// @media screen and (max-width: 477px){
+//
+//     .title{
+//         margin-top: 30px;
 //     }
-//     .home-search{
-//         margin-top: 126px;
+//     .messages{
+//         max-width: 100%;
+//         margin-top: 15px;
+//     }
+//     .message{
+//         height: 166px;
+//         width: 321px;
+//         margin-top: 30px;
+//         p{
+//             margin-top: 7px;
+//         }
+//     }
+//     .description-message{
+//         display: none;
+//     }
+//     .hidden{
+//         display: block;
+//         color:#22B4CE;
+//         text-transform: uppercase;
+//         font-weight: bold;
+//         font-size: 22px;
 //     }
 // }
-// @media screen and(max-width: 360px){
-//     .apartment-img img{
-//         width: 100%;
-//     }
-//     .home-search{
-//         margin-top: 206px;
-//     }
-// }
-// @media screen and(max-width: 414px){
-//     .apartment-img img{
-//         width: 100%;
-//     }
-//     .btn-color{
-//         margin-bottom: 25px;
-//     }
-// }
-// /*** IPHONE 5/SE ******/
 // @media screen and (max-width: 320px){
-//     .home-search{
-//         margin-top: 248px;
-//         width: 295px;
-//     }
-//     .home-search input{
-//         width: 267px;
-//     }
-//     .btn-color{
-//         margin-bottom: 25px;
+//     .message{
+//         height: 186px;
+//         width: 291px;
+//         margin-top: 30px;
 //     }
 // }

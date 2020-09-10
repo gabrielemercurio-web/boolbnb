@@ -27,13 +27,13 @@
         width: 95%;
         margin-top: 70px;
         h1{
-            color:#22B4CE;
+            color:$main_color;
             text-transform: uppercase;
             font-size: 32px;
             font-weight: bold;
         }
         hr{
-            border: 1px solid #22B4CE;
+            border: 1px solid $main_color;
             margin-bottom: 0;
         }
     }
@@ -84,12 +84,12 @@
         margin-left: 2px;
     }
     .btn-color{
-        color:#22B4CE;
-        border-color: #22B4CE;
+        // color:#22B4CE;
+        border-color: $main_color;
     }
     .btn-color:hover{
-        background-color: #22B4CE;
-        border-color: #22B4CE;
+        background-color: $main_color;
+        border-color: $main_color;
         color: white;
     }
     .btn-color:focus{
@@ -99,143 +99,143 @@
     }
     .btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle{
         background-color:rgba(0, 0, 0, 0) ;
-        border-color: #22B4CE;
-        color: #22B4CE;
+        border-color: $main_color;
+        color: $main_color;
         box-shadow: none;
         outline: none;
     }
 }
 
 
-
-@media screen and (max-width: 765px) {
-    .apartment-description, .secondo-appartamento {
-        display: inline;
-    }
-    .apartment{
-        display: contents;
-        margin-top: 25px;
-    }
-    .title{
-        width: 100%;
-        margin-top: 150px;
-    }
-    .home{
-        display: contents;
-    }
-    .home-img img{
-        width: 500px;
-        height: 300px;
-    }
-    .home-search{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #22B4CE;
-        width: 495px;
-        height: 71px;
-        display: flex;
-        align-items: center;
-        margin-top: 99px;
-    }
-
-    .home-search input{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 463px;
-        height: 40px;
-        border: none;
-        padding-left: 15px;
-    }
-    .btn-color{
-        margin-bottom: 25px;
-    }
-}
-@media screen and (max-width: 477px){
-    .apartment-description, .secondo-appartamento {
-        display: inline;
-    }
-    .apartment, .apartment-due, .apartment-tre{
-        display: contents;
-    }
-    .description-apartment{
-        display: flex;
-        flex-direction: column;
-    }
-    .title{
-        width: 100%;
-        margin-top: 150px;
-    }
-    .home{
-        display: contents;
-    }
-    .home-search{
-        margin-top: 194px;
-        width: 329px;
-    }
-    .home-search input{
-        width: 300px;
-    }
-    .icon i{
-        position: absolute;
-        right: 15px;
-        top: 29px;
-        color: white;
-        background-color: #22B4CE;
-        width: 39px;
-        height: 38px;
-        margin-top: -12px;
-        padding-left: 9px;
-        padding-top: 10px;
-    }
-    .btn-color{
-        margin-bottom: 25px;
-    }
-}
-
-
-@media screen and (min-width: 668px){
-    .apartment-img img{
-        width: 100%;
-    }
-}
-@media screen and(max-width: 375px){
-    .apartment-img img{
-        width: 100%;
-    }
-    .home-search{
-        margin-top: 126px;
-    }
-}
-@media screen and(max-width: 360px){
-    .apartment-img img{
-        width: 100%;
-    }
-    .home-search{
-        margin-top: 206px;
-    }
-}
-@media screen and(max-width: 414px){
-    .apartment-img img{
-        width: 100%;
-    }
-    .btn-color{
-        margin-bottom: 25px;
-    }
-}
-/*** IPHONE 5/SE ******/
-@media screen and (max-width: 320px){
-    .home-search{
-        margin-top: 248px;
-        width: 295px;
-    }
-    .home-search input{
-        width: 267px;
-    }
-    .btn-color{
-        margin-bottom: 25px;
-    }
-}
+//
+// @media screen and (max-width: 765px) {
+//     .apartment-description, .secondo-appartamento {
+//         display: inline;
+//     }
+//     .apartment{
+//         display: contents;
+//         margin-top: 25px;
+//     }
+//     .title{
+//         width: 100%;
+//         margin-top: 150px;
+//     }
+//     .home{
+//         display: contents;
+//     }
+//     .home-img img{
+//         width: 500px;
+//         height: 300px;
+//     }
+//     .home-search{
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//         background-color: #22B4CE;
+//         width: 495px;
+//         height: 71px;
+//         display: flex;
+//         align-items: center;
+//         margin-top: 99px;
+//     }
+//
+//     .home-search input{
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//         width: 463px;
+//         height: 40px;
+//         border: none;
+//         padding-left: 15px;
+//     }
+//     .btn-color{
+//         margin-bottom: 25px;
+//     }
+// }
+// @media screen and (max-width: 477px){
+//     .apartment-description, .secondo-appartamento {
+//         display: inline;
+//     }
+//     .apartment, .apartment-due, .apartment-tre{
+//         display: contents;
+//     }
+//     .description-apartment{
+//         display: flex;
+//         flex-direction: column;
+//     }
+//     .title{
+//         width: 100%;
+//         margin-top: 150px;
+//     }
+//     .home{
+//         display: contents;
+//     }
+//     .home-search{
+//         margin-top: 194px;
+//         width: 329px;
+//     }
+//     .home-search input{
+//         width: 300px;
+//     }
+//     .icon i{
+//         position: absolute;
+//         right: 15px;
+//         top: 29px;
+//         color: white;
+//         background-color: #22B4CE;
+//         width: 39px;
+//         height: 38px;
+//         margin-top: -12px;
+//         padding-left: 9px;
+//         padding-top: 10px;
+//     }
+//     .btn-color{
+//         margin-bottom: 25px;
+//     }
+// }
+//
+//
+// @media screen and (min-width: 668px){
+//     .apartment-img img{
+//         width: 100%;
+//     }
+// }
+// @media screen and(max-width: 375px){
+//     .apartment-img img{
+//         width: 100%;
+//     }
+//     .home-search{
+//         margin-top: 126px;
+//     }
+// }
+// @media screen and(max-width: 360px){
+//     .apartment-img img{
+//         width: 100%;
+//     }
+//     .home-search{
+//         margin-top: 206px;
+//     }
+// }
+// @media screen and(max-width: 414px){
+//     .apartment-img img{
+//         width: 100%;
+//     }
+//     .btn-color{
+//         margin-bottom: 25px;
+//     }
+// }
+// /*** IPHONE 5/SE ******/
+// @media screen and (max-width: 320px){
+//     .home-search{
+//         margin-top: 248px;
+//         width: 295px;
+//     }
+//     .home-search input{
+//         width: 267px;
+//     }
+//     .btn-color{
+//         margin-bottom: 25px;
+//     }
+// }
