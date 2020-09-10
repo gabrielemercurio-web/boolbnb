@@ -1,6 +1,6 @@
 import tt from '@tomtom-international/web-sdk-maps';
 import tts from '@tomtom-international/web-sdk-services';
-import sb from '@tomtom-international/web-sdk-plugin-searchbox';
+// import sb from '@tomtom-international/web-sdk-plugin-searchbox';
 // import { use } from 'vue/types/umd';
 
 const OWN_HOUSES_API_URL = 'http://localhost:8000/api/houses';
@@ -36,26 +36,26 @@ function drawTomTomMap() {
 /* * * ADDRESS SEARCH FUNCTIONALITIES * * */
 
 
+/* tomtom autocomplete through searchbox plugin*/
+// function tomtomAutocomplete() {
+//     let acSearchBox = new sb(tts.services, {
+//         minNumberOfCharacters: 2,
+//         labels: {
+//             placeholder: "Search"
+// 		},
+// 		searchOptions: {
+// 			key: process.env.MIX_TOMTOM_API_KEY,
+// 			language: 'en-US'
+// 		},
+// 		autocompleteOptions: {
+// 			key: process.env.MIX_TOMTOM_API_KEY,
+// 			language: 'en-US'
+// 		},
+//         noResultsMessage: "No results found.",
+//     });
 
-// function initApplication() {
-    let acSearchBox = new sb(tts.services, {
-        minNumberOfCharacters: 2,
-        labels: {
-            placeholder: "Search"
-		},
-		searchOptions: {
-			key: process.env.MIX_TOMTOM_API_KEY,
-			language: 'en-GB'
-		},
-		autocompleteOptions: {
-			key: process.env.MIX_TOMTOM_API_KEY,
-			language: 'en-GB'
-		},
-        noResultsMessage: "No results found.",
-    });
-
-    // acSearchBox.on("tomtom.searchbox.resultselected", onSearchBoxResult);
-    document.getElementById("search-panel").append(acSearchBox.getSearchBoxHTML());
+//     // acSearchBox.on("tomtom.searchbox.resultselected", onSearchBoxResult);
+//     document.getElementById("search-panel").append(acSearchBox.getSearchBoxHTML());
 // }
 
 
@@ -76,9 +76,8 @@ $('#guest-search-btn').click(function() {
 
 /* call on tomtom API */
 function callTomTomSearch(query) {
-	tts.services.autocomplete({
+	tts.services.fuzzySearch({
 	key: process.env.MIX_TOMTOM_API_KEY,
-	language: en-us,
 	query: query,
 	})
 	.go()
