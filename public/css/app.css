@@ -17681,9 +17681,8 @@ header .container nav ul .header-login {
 }
 
 .messages {
-  margin-left: -13px;
   height: 100%;
-  margin-top: 31px;
+  margin-top: 22px;
 }
 
 .message {
@@ -17754,6 +17753,47 @@ header .container nav ul .header-login {
   text-decoration: none;
 }
 
+@media screen and (max-width: 477px) {
+  .description-message {
+    display: none;
+  }
+
+  .hidden {
+    display: block;
+    color: #22B4CE;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .message {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 986px) {
+  .description-message {
+    display: none;
+  }
+
+  .hidden {
+    display: block;
+    color: #22B4CE;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .message {
+    height: 200px;
+    margin-top: 20px;
+  }
+}
+@media screen and (min-width: 320px) {
+  .message {
+    margin-top: 7px;
+    height: 215px;
+  }
+}
 div.my-home-title h1 {
   font-size: 1.8rem;
   font-weight: 700;
