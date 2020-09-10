@@ -17561,7 +17561,7 @@ header .container nav ul .header-login {
   position: absolute;
 }
 .home-wrapper .title {
-  width: 95%;
+  width: 100%;
   margin-top: 70px;
 }
 .home-wrapper .title h1 {
@@ -17577,7 +17577,7 @@ header .container nav ul .header-login {
 .home-wrapper .apartment-description {
   display: flex;
   flex-wrap: wrap;
-  width: 95%;
+  width: 100%;
 }
 .home-wrapper .apartment {
   margin-top: 30px;
@@ -17612,7 +17612,7 @@ header .container nav ul .header-login {
 .home-wrapper .apartment-img p {
   position: absolute;
   bottom: -9px;
-  right: 16px;
+  right: 32px;
   color: white;
   text-shadow: 0 0 5px #000000, 0 0 5px #000000;
 }
@@ -17622,6 +17622,11 @@ header .container nav ul .header-login {
 }
 .home-wrapper .btn-color {
   border-color: #22B4CE;
+}
+.home-wrapper #button-addon2 {
+  right: 0px;
+  bottom: -12px;
+  height: 38px;
 }
 .home-wrapper .btn-color:hover {
   background-color: #22B4CE;
