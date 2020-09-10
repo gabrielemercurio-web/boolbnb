@@ -66,7 +66,7 @@
 				{{-- SEND MESSAGE --}}
                 <div id="contact" class="col-md-5">
                     <h1>Contact Owner</h1>
-                <form method="POST" action="{{ route('guest.store') }}">
+                <form method="POST" action="{{ route('upr.messages.store') }}" class="form-messages">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="house_id" value="{{ $house->id }}" hidden>

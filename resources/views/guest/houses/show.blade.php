@@ -4,16 +4,16 @@
 
     <div class="container">
 		{{-- SEARCHBAR --}}
-        <div class="row row-1">
+        {{-- <div class="row row-1">
             <div class="col-lg-6 offset-lg-3">
-                <form action="{{-- route('') --}}" method="GET" class="search-house input-group">
+                <form action="{{ route('') }}" method="GET" class="search-house input-group">
                     <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon222">
                     <div class="input-group-append">
                         <button class="btn" type="submit" id="button-addon222"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
 
         <div class="row row-2">
 			{{-- IMAGE SLIDER --}}
@@ -65,24 +65,27 @@
 				{{-- SEND MESSAGE --}}
                 <div id="contact" class="col-md-5">
                     <h1>Contact Owner</h1>
-                <form method="POST" action="{{ route('guest.store') }}">
+                <form method="POST" action="{{ route('guest.messages.store') }}" class="form-messages">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="house_id" value="{{ $house->id }}" hidden>
                     </div>
+
                     <div class="form-group">
-                        <input type="email" name="sender_email" class="form-control" id="exampleFormControlInput1" placeholder="Your email">
+                        <input type="email" name="sender_email" class="form-control" id="sender-email-1" placeholder="Your email">
                     </div>
+
                     <div class="form-group">
-                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" placeholder="Your message"></textarea>
+                        <textarea class="form-control" name="message" id="text-message-1" rows="3" placeholder="Your message"></textarea>
                     </div>
+
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn">Send</button>
                     </div>
                 </form>
 				</div>
 				{{-- MAP --}}
-				<div id="my-maps" class="col-md-6 offset-md-1" data-longitude="{{$house->longitude}}" data-latitude="{{$house->latitude}}">
+				<div id="my-maps" class="col-md-6 offset-md-1" data-longitude="{{ $house->longitude }}" data-latitude="{{$house->latitude}}">
                     <div id="map"></div>
                     {{-- <img src="https://www.worldeasyguides.com/wp-content/uploads/2013/01/Place-Vendome-on-Map-of-Paris.jpg" alt="Map"> --}}
                 </div>

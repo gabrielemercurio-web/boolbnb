@@ -37295,8 +37295,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tomtom-international/web-sdk-services */ "./node_modules/@tomtom-international/web-sdk-services/dist/services.min.js");
 /* harmony import */ var _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1__);
 
+ // import sb from '@tomtom-international/web-sdk-plugin-searchbox';
+// import { use } from 'vue/types/umd';
 
-/* * * Show map in house details page * * */
+var OWN_HOUSES_API_URL = 'http://localhost:8000/api/houses';
+/* * * SHOW MAP * * */
 // check whether there's a map in the page so as not to call the function everywhere
 
 if ($('#map').length) {
@@ -37315,7 +37318,7 @@ function drawTomTomMap() {
 
   var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
     container: 'map',
-    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    key: "dHdPC3sMtM3w3t96GhaYBGXj7BfGr0g0",
     style: 'tomtom://vector/1/basic-main',
     center: myCoordinates,
     zoom: 15
@@ -37323,74 +37326,120 @@ function drawTomTomMap() {
 
   var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.Marker().setLngLat(myCoordinates).addTo(map);
 }
-/* * * Search for user-given address and get back the coordinates * * */
-//when a search button is clicked, check which searchbar it refers to and grab its value
+/* * * ADDRESS SEARCH FUNCTIONALITIES * * */
+
+/* tomtom autocomplete through searchbox plugin*/
+// function tomtomAutocomplete() {
+//     let acSearchBox = new sb(tts.services, {
+//         minNumberOfCharacters: 2,
+//         labels: {
+//             placeholder: "Search"
+// 		},
+// 		searchOptions: {
+// 			key: process.env.MIX_TOMTOM_API_KEY,
+// 			language: 'en-US'
+// 		},
+// 		autocompleteOptions: {
+// 			key: process.env.MIX_TOMTOM_API_KEY,
+// 			language: 'en-US'
+// 		},
+//         noResultsMessage: "No results found.",
+//     });
+//     // acSearchBox.on("tomtom.searchbox.resultselected", onSearchBoxResult);
+//     document.getElementById("search-panel").append(acSearchBox.getSearchBoxHTML());
+// }
+
+/** search page, search for input from homepage */
 
 
-$('.search-icon-hook').click(function (e) {
-  var searchSource = event.target.attributes['data-placement'].nodeValue; //FIXME: switch statement?
+if ($('#guest-search').length) {
+  var query = $('#guest-search').attr('data-user-query');
+  console.log('SP query: ', query);
+  callTomTomSearch(query);
+}
+/* search page - on click on search, get data from tomtom */
+//TODO: add search via enter key
 
-  if (searchSource == 'guest-homepage') {
-    var userQuery = $('#homepage-house-search').val(); //OK
-  } else if (source == 'upr-homepage') {
-    console.log("haven't gotten that far yet ^^'");
-  } else if (source == 'guest-search') {
-    console.log("haven't gotten that far yet ^^'");
-  } else if (source == 'upr-search') {
-    console.log("haven't gotten that far yet ^^'");
-  }
 
-  callTomTomSearch(userQuery);
+$('#guest-search-btn').click(function () {
+  var query = $('.searchbars').val();
+  console.log('HP query', query); //FIXME: change when the actual view is ready
+
+  callTomTomSearch(query);
 });
+/* call on tomtom API */
 
 function callTomTomSearch(query) {
   _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1___default.a.services.fuzzySearch({
-<<<<<<< HEAD
-    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    key: "dHdPC3sMtM3w3t96GhaYBGXj7BfGr0g0",
     query: query
-=======
-    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
-    query: userQuery
->>>>>>> master
   }).go().then(handleResults);
 }
+/* grab starting coordinates */
+
 
 function handleResults(result) {
   console.log(result);
 
   if (result) {
-    console.log(result.results[0].position);
+    //get latitude and longitude from the results and combine them to be passed on
+    var longitude = result.results[0].position.lng;
+    var latitude = result.results[0].position.lat;
+    var startingCoordinates = [longitude, latitude];
+    $('#guest-search').attr('data-coordinates-from', startingCoordinates);
+    var radius = 200;
+    ; //get all houses within a certain radius
+
+    callHousesAPI(startingCoordinates, radius, '');
   }
 }
 
 ;
-callHousesAPI();
+/* call the internal API that returns a list of houses */
 
-function callHousesAPI() {
+function callHousesAPI(fromCoordinates, radius, query) {
   $.ajax({
-    'url': 'http://localhost:8000/api/houses',
+    'url': OWN_HOUSES_API_URL + query,
     'method': 'GET',
     'success': function success(data) {
-      console.log('data', data);
-      data.data.forEach(function (house) {
-        var longitude = house.longitude;
-        var latitude = house.latitude;
-        var currentCoordinates = [longitude, latitude];
-        var currentDistance = get2PointsDistance(currentCoordinates);
+      if (data != '[]') {
+        console.log('data', data); // console.log('id', data.id);
 
-        if (currentDistance < 20) {
-          console.log(house.id);
+        var previousID = 0;
+
+        for (var i = 0; i < data.data.length; i++) {
+          var house = data.data[i];
+          var currentID = house.id;
+
+          if (currentID != previousID) {
+            var _ref;
+
+            previousID = currentID;
+            var longitude = house.longitude;
+            var latitude = house.latitude; // console.log('long', house.longitude);
+            // console.log('lat', house.latitude);
+
+            var currentCoordinates = [longitude, latitude];
+            var currentDistance = get2PointsDistance(fromCoordinates, currentCoordinates);
+
+            if ((_ref = currentDistance < radius) !== null && _ref !== void 0 ? _ref : 20) {
+              console.log('visible house: ', house.id);
+            }
+          }
         }
-      });
+      } else {//WRITE STH LIKE 'NO MATCHES FOR UR SRCH' IN PAGE
+      }
     },
     'error': function error() {
       console.log('something went wrong');
     }
   });
 }
+/* use turf.js to get the distance between two sets of coordinates */
 
-function get2PointsDistance(toCoordinates) {
-  var from = turf.point([9.13566, 45.56163]);
+
+function get2PointsDistance(fromCoordinates, toCoordinates) {
+  var from = turf.point(fromCoordinates);
   var to = turf.point(toCoordinates);
   var options = {
     units: 'kilometers'
@@ -37399,6 +37448,40 @@ function get2PointsDistance(toCoordinates) {
   console.log('turf distance', distance);
   return distance;
 }
+/** on change
+ * prendo le coordinate dall'input nascosto
+ * le passo a callHousesAPI
+ * prendere l'input cambiato
+ * metterlo come chiave/valore in un oggetto
+ * far girare .param per costruire la query
+ */
+
+
+var filterQueryObj = {};
+$('.search-filters').change(function (e) {
+  var coordinates = $('#guest-search').attr('data-coordinates-from').split(',');
+
+  if ($(this).hasClass('checked')) {
+    $(this).removeClass('checked');
+    delete filterQueryObj[e.target.name];
+    console.log('query DEL obj: ', filterQueryObj);
+    var queryString = '?' + $.param(filterQueryObj);
+    console.log('query -', queryString);
+    callHousesAPI(coordinates, '10000', queryString);
+  } else {
+    $(this).addClass('checked');
+    console.log('changed!', e.target); // let newFilter = e.target.name;
+    // console.log('new filter: ', newFilter);
+
+    filterQueryObj[e.target.name] = 'on';
+    console.log('query ADD obj: ', filterQueryObj);
+
+    var _queryString = '?' + $.param(filterQueryObj);
+
+    console.log('query +', _queryString);
+    callHousesAPI(coordinates, '10000', _queryString);
+  }
+});
 
 /***/ }),
 
@@ -37675,8 +37758,10 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\0827_boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\0827_boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+
+
 /***/ })
 
 /******/ });

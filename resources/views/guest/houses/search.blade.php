@@ -83,12 +83,12 @@
         <div class="handle-house-card card-upr col-lg-4 col-md-6">
             <img src="@{{}}" alt="house">
             <div>
-                <a href="route('upr.houses.show', ['house' => $house->id])#">
+                <a href="@{{}}">
                     <h1>@{{}}</h1>
                 </a>
                 <p>@{{}}</p>
             </div>
         </div>
-    </script> --}}
+    </script>
 
 @endsection
