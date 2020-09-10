@@ -17358,6 +17358,12 @@ header .container nav ul .header-login {
   -webkit-box-orient: vertical;
 }
 
+#guest-search-btn {
+  right: 0px;
+  bottom: -12px;
+  height: 38px;
+}
+
 .handle-house-card p {
   overflow: hidden;
   display: -webkit-box;
