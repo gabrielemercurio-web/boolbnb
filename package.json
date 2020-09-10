@@ -46,6 +46,7 @@
         "@tomtom-international/web-sdk-maps": "^5.64.0",
         "@tomtom-international/web-sdk-plugin-searchbox": "^2.24.2",
         "@tomtom-international/web-sdk-services": "^5.64.0",
+        "braintree": "^2.24.0",
         "fs": "0.0.1-security",
         "handlebars": "^4.7.6",
         "jquery-validation": "^1.19.2"
