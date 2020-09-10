@@ -35,7 +35,7 @@
                     </div>
 					<div class="form-group">
 						<label for="image">Insert image</label>
-						<input type="file" name="image" class="form-control-file">
+						<input type="file" name="image" class="form-control-file" id="image">
 						<p>Copertina attuale</p>
                         <img src="{{ asset('storage/' . $house->image_path) }}" class="img-thumbnail" alt="">
 					</div>

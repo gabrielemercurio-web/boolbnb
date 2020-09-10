@@ -7,7 +7,7 @@
             <div class="home">
                 <div class="overlay"></div>
                 <div class="col-lg-6">
-                    <form action="route{{ ('') }}" method="GET" class="search-house input-group">
+                    <form action="{{-- route('') --}}" method="GET" class="search-house input-group">
                         <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon2">
                         <div class="input-group-append">
                             <button class="btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>

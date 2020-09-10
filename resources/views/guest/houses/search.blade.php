@@ -47,12 +47,11 @@
         </div>
     </div> {{-- END CONTAINER --}}
 
-
                                     {{-- SEZIONE CASE SPONSORIZZATE --}}
     <div class="bg-sponsored">
         <div class="container">
             <div class="row">
-                @foreach ($houses as $house)
+                @forelse ($houses as $house)
                     <div class="card-upr col-lg-4 col-md-6">
                         <a href="{{-- route('guest.houses.show', ['houses' => $house->id]) --}}#">
                             <img src="{{ $house->image_path }}" alt="house">
@@ -60,7 +59,9 @@
                             <p>{{ $house->description }}</p>
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <p>Your search returned no results.</p>
+                @endforelse ($houses as $house)
             </div>
         </div>
     </div>

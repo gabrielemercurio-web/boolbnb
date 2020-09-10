@@ -27,7 +27,7 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Insert image</label>
-						<input type="file" name="image_path" class="form-control-file">
+						<input type="file" name="image_path" class="form-control-file" id="image">
 					</div>
 					<div class="form-group d-flex justify-content-between">
 						<div class="form-group">
@@ -45,7 +45,7 @@
 						<div class="form-group">
 							<label for="house-square_mt">Metri quadrati</label>
 							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
-                        </div> 
+                        </div>
                     </div>
                     {{-- Da riempire con tomtom --}}
                     <div class="form-group">

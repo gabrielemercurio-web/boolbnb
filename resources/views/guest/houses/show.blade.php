@@ -6,10 +6,10 @@
 		{{-- SEARCHBAR --}}
         <div class="row row-1">
             <div class="col-lg-6 offset-lg-3">
-                <form action="route{{ ('') }}" method="GET" class="search-house input-group">
-                    <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon2">
+                <form action="{{-- route('') --}}" method="GET" class="search-house input-group">
+                    <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon222">
                     <div class="input-group-append">
-                        <button class="btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                        <button class="btn" type="submit" id="button-addon222"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
             </div>
@@ -18,7 +18,7 @@
         <div class="row row-2">
 			{{-- IMAGE SLIDER --}}
             <div id="slider" class="col-lg-6">
-
+                {{--
 				<div class="images">
 					<div class="prev">
 						<i class="fas fa-chevron-circle-left"></i>
@@ -27,32 +27,32 @@
 						<i class="fas fa-chevron-circle-right"></i>
 					</div>
 
-					{{-- <img class="visible" src="{{ $house->image_path }}" alt="img-house"> --}}
-
-					<img class="visible" src="{{ asset('img/homepage.jpg') }}" alt="house">
-					<img src="{{ asset('img/house-1.jpg') }}" alt="house-1">
-					<img src="{{ asset('img/house-2.jpg') }}" alt="house-2">
-					<div class="bullets">
-						<i class="fas fa-circle visible"></i>
-						<i class="fas fa-circle"></i>
-						<i class="fas fa-circle"></i>
-					</div>
-				</div>
+                    @forelse ($houses as $house)
+                        <img class="" src="{{-- $house->image_path --}}{{--" alt="img-house">
+                        <div class="bullets">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    @empty
+                        <img class="" src="{{ asset('img/house-2.jpg')}}" alt="img-house">
+                    @endforelse
+                </div>
+                --}}
+                <img class="images" src="{{ $house->image_path }}" alt="img-house">
             </div>
 
 			{{-- HOUSE INFO --}}
             <div class="text-house col-lg-6">
                 <h1>{{ $house->title }} </h1>
-                <small><i class="fas fa-map-marker-alt"></i>{{$house->address}}</small>
+                <small><i class="fas fa-map-marker-alt"></i>{{ $house->address }}</small>
             	<p>{{ $house->description }}</p>
                 <div class="sevices d-flex flex-column flex-wrap">
                     <span><i class="fas fa-door-open"></i>Rooms: {{ $house->nr_of_rooms }}</span>
                     <span><i class="fas fa-bed"></i>Beds: {{ $house->nr_of_beds }}</span>
                     <span><i class="fas fa-bath"></i>Bathrooms: {{ $house->nr_of_bathrooms }}</span>
                     <span><i class="fas fa-border-style"></i>m<sup>2</sup>: {{ $house->square_mt }}</span>
-                    {{-- <span><i class="fas fa-wifi"></i>Wifi</span>
+                    <span><i class="fas fa-wifi"></i>Wifi</span>
                     <span><i class="fas fa-parking"></i>Car Park</span>
-                    <span><i class="fas fa-user-check"></i>Reception</span> --}}
+                    <span><i class="fas fa-user-check"></i>Reception</span>
                 </div>
             </div>
         </div>
