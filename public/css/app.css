@@ -17134,6 +17134,12 @@ header .container nav ul .header-login {
   box-shadow: none;
 }
 
+#button-addon4 {
+  right: 0px;
+  bottom: -12px;
+  height: 38px;
+}
+
 .row-2 {
   padding: 150px 0px;
 }
@@ -17594,7 +17600,7 @@ header .container nav ul .header-login {
   margin-top: 19px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .home-wrapper .description-apartment p {
@@ -17629,7 +17635,7 @@ header .container nav ul .header-login {
 .home-wrapper .btn-color {
   border-color: #22B4CE;
 }
-.home-wrapper #button-addon2 {
+.home-wrapper #button-addon2, .home-wrapper #button-addon3 {
   right: 0px;
   bottom: -12px;
   height: 38px;
