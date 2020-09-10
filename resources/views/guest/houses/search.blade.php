@@ -23,6 +23,8 @@
                 <hr>
             </div>
         </div>
+
+                                        {{-- SEZIONE FILTRI --}}
         <div class="row">
             <div class="col-10 offset-1">
 
@@ -43,9 +45,29 @@
 
             </div>
         </div>
+    </div> {{-- END CONTAINER --}}
 
-        {{--  Case sponsorizzate --}}
 
+                                    {{-- SEZIONE CASE SPONSORIZZATE --}}
+    <div class="bg-sponsored">
+        <div class="container">
+            <div class="row">
+                @foreach ($houses as $house)
+                    <div class="card-upr col-lg-4 col-md-6">
+                        <a href="{{-- route('guest.houses.show', ['houses' => $house->id]) --}}#">
+                            <img src="{{ $house->image_path }}" alt="house">
+                            <h1>{{ $house->title }}</h1>
+                            <p>{{ $house->description }}</p>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+
+                                    {{-- SEZIONE RISULTATI RICERCA --}}
+    <div class="container">
         <div class="row houses-grid-results"> {{-- Cards delle Case provenienti da una chiamata AJAX in "search.js" --}}
             {{-- @forelse ($houses as $house) --}}
 
@@ -54,7 +76,9 @@
         </div>
     </div>
 
-    {{-- <script id="house-card" type="text/x-handlebars-template">
+                                    {{-- SCRIPT HANDLEBARS --}}
+
+    <script id="house-card" type="text/x-handlebars-template">
         <div class="handle-house-card card-upr col-lg-4 col-md-6">
             <img src="@{{}}" alt="house">
             <div>

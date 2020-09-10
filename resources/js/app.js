@@ -9,6 +9,7 @@ require('./guest/show');
 require('./guest/messages');
 require('./guest/search');
 require('./upr/header');
+require('./upr/adv');
 require('./_tomtom');
 
 // **** window.Vue = require('vue');

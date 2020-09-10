@@ -17201,6 +17201,19 @@ header .container nav ul .header-login {
   font-size: 0.9rem;
 }
 
+.bg-sponsored {
+  width: 100vw;
+  min-height: 220px;
+  padding: 40px 0px;
+  background-color: rgba(34, 180, 206, 0.2);
+}
+.bg-sponsored p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .handle-house-card p {
   overflow: hidden;
   display: -webkit-box;
@@ -17228,25 +17241,24 @@ header .container nav ul .header-login {
   border: 1px solid #22B4CE;
 }
 
-.sponsor-price {
+.sponsor-plane {
   background-color: white;
   height: 250px;
   width: 100%;
 }
-.sponsor-price p {
+.sponsor-plane p {
   padding-right: 33px;
   padding-top: 10px;
   color: #22B4CE;
   font-weight: bold;
 }
 
-.price-one, .price-second, .price-third {
-  margin-top: 16px;
+.sponsor-price {
+  display: inline-block;
 }
 
-.price-one button {
-  background-color: #22B4CE;
-  color: white;
+.price button {
+  color: #22B4CE;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 19px;
@@ -17255,42 +17267,22 @@ header .container nav ul .header-login {
   border: none;
   font-weight: bold;
   outline: none;
-}
-.price-one button:hover {
-  background-color: white;
-  color: #22B4CE;
-  border-color: #22B4CE;
-  color: #22B4CE;
-  border-color: #22B4CE;
   border: 1px solid #22B4CE;
 }
 
-.price-second button {
-  padding-left: 20px;
-  outline: none;
-}
-
-.price-second button, .price-third button {
-  color: #22B4CE;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 14px;
-  border: 1px solid #22B4CE;
-  cursor: pointer;
-  font-weight: bold;
-}
-.price-second button:hover, .price-third button:hover {
+.active button {
   background-color: #22B4CE;
   color: white;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  outline: none;
 }
 
-.price-third button {
-  padding-left: 10px;
-  outline: none;
+.third button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.second, .third {
+  padding-top: 19px;
 }
 
 .information-payments {
@@ -17393,7 +17385,7 @@ header .container nav ul .header-login {
 
 /*** RESPONSIVE ***/
 @media screen and (max-width: 477px) {
-  .sponsor-price {
+  .sponsor-plane {
     margin-top: -76px;
   }
 }
@@ -17682,6 +17674,10 @@ header .container nav ul .header-login {
   margin-top: 31px;
 }
 
+.hidden {
+  display: none;
+}
+
 .description-message {
   height: 100%;
 }
@@ -17747,6 +17743,69 @@ header .container nav ul .header-login {
   cursor: pointer;
 }
 
+@media screen and (max-width: 765px) {
+  .title {
+    margin-top: 30px;
+  }
+
+  .message {
+    height: 200px;
+    width: 581px;
+  }
+  .message p {
+    margin-top: 15px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .description-message {
+    display: none;
+  }
+
+  .users-message {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 477px) {
+  .title {
+    margin-top: 30px;
+  }
+
+  .messages {
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .message {
+    height: 166px;
+    width: 321px;
+    margin-top: 30px;
+  }
+  .message p {
+    margin-top: 7px;
+  }
+
+  .description-message {
+    display: none;
+  }
+
+  .hidden {
+    display: block;
+    color: #22B4CE;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .message {
+    height: 186px;
+    width: 291px;
+    margin-top: 30px;
+  }
+}
 div.my-home-title h1 {
   font-size: 1.8rem;
   font-weight: 700;
@@ -17757,7 +17816,7 @@ div.my-home-title hr {
 }
 
 .card-upr {
-  margin-bottom: 70px;
+  margin: 35px 0px;
   transition: 200ms;
   padding: 15px;
 }
@@ -17858,6 +17917,21 @@ a.create-house div:hover {
 a.create-house div .fas {
   margin: auto;
   font-size: 1.3rem;
+}
+
+.btn {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #22B4CE;
+  transition: 200ms;
+  margin-top: -12px;
 }
 
 footer {

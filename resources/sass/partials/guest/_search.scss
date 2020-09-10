@@ -65,12 +65,21 @@
 
 }
 
+.bg-sponsored {
+    width: 100vw;
+    min-height: 220px;
+    padding: 40px 0px;
+    background-color: rgba(34,180,206,0.2);
+
+    p {
+        @include my-overflow-clamp(3)
+    }
+}
+
+
 .handle-house-card {
 
     p {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
+        @include my-overflow-clamp(3)
     }
 }

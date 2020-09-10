@@ -37315,7 +37315,7 @@ function drawTomTomMap() {
 
   var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
     container: 'map',
-    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
     style: 'tomtom://vector/1/basic-main',
     center: myCoordinates,
     zoom: 15
@@ -37345,8 +37345,13 @@ $('.search-icon-hook').click(function (e) {
 
 function callTomTomSearch(query) {
   _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1___default.a.services.fuzzySearch({
+<<<<<<< HEAD
     key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
     query: query
+=======
+    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
+    query: userQuery
+>>>>>>> master
   }).go().then(handleResults);
 }
 
@@ -37424,6 +37429,8 @@ __webpack_require__(/*! ./guest/messages */ "./resources/js/guest/messages.js");
 __webpack_require__(/*! ./guest/search */ "./resources/js/guest/search.js");
 
 __webpack_require__(/*! ./upr/header */ "./resources/js/upr/header.js");
+
+__webpack_require__(/*! ./upr/adv */ "./resources/js/upr/adv.js");
 
 __webpack_require__(/*! ./_tomtom */ "./resources/js/_tomtom.js"); // **** window.Vue = require('vue');
 
@@ -37611,6 +37618,25 @@ $(document).ready(function () {
 
 /***/ }),
 
+/***/ "./resources/js/upr/adv.js":
+/*!*********************************!*\
+  !*** ./resources/js/upr/adv.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.price').click(function () {
+    console.log('click');
+    var indice_contatto = $(this).index();
+    console.log(indice_contatto);
+    $('.price.active').removeClass('active');
+    $('.price').eq(indice_contatto).addClass('active');
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/upr/header.js":
 /*!************************************!*\
   !*** ./resources/js/upr/header.js ***!
@@ -37651,8 +37677,6 @@ $(document).ready(function () {
 
 __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\0827_boolbnb\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\0827_boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
-
-
 /***/ })
 
 /******/ });

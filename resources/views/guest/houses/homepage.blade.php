@@ -30,7 +30,7 @@
                         <div class="description-apartment">
                             <h2>{{ $house->title }}</h2>
                             <p>{{ $house->description }}</p>
-                            <a href="{{ route('guest.show', ['house' => $house->id]) }}">
+                            <a href="{{ route('guest.houses.show', ['house' => $house->id]) }}">
                                 <button type="button" class="btn btn-outline-primary btn-color">Access house details</button>
                             </a>
                         </div>
