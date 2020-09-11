@@ -2,6 +2,9 @@ import tt from '@tomtom-international/web-sdk-maps';
 import tts from '@tomtom-international/web-sdk-services';
 // import sb from '@tomtom-international/web-sdk-plugin-searchbox';
 // import { use } from 'vue/types/umd';
+const Handlebars = require("handlebars");
+const template = Handlebars.compile("Name: {{name}}");
+// console.log(template({ name: "Nils" }));
 
 const OWN_HOUSES_API_URL = 'http://localhost:8000/api/houses';
 
@@ -68,7 +71,7 @@ if ($('#guest-search').length) {
 
 /* search page - on click on search, get data from tomtom */
 //TODO: add search via enter key
-$('#guest-search-btn').click(function() {
+$('#guest-search-btn').on('click', function() {
 	let query = $('.searchbars').val();
 	console.log('HP query', query); //FIXME: change when the actual view is ready
 	callTomTomSearch(query);
@@ -93,7 +96,7 @@ function handleResults(result) {
 		let latitude = result.results[0].position.lat;
 		let startingCoordinates = [longitude, latitude];
 		$('#guest-search').attr('data-coordinates-from', startingCoordinates);
-		let radius = 200;
+		let radius = 15000;
 		;
 		//get all houses within a certain radius
 		callHousesAPI(startingCoordinates, radius, '');	
@@ -110,6 +113,7 @@ function callHousesAPI(fromCoordinates, radius, query) {
 				console.log('data', data);
 				// console.log('id', data.id);
 				let previousID = 0;
+				let distanceRef = 0;
 				for (let i = 0; i < data.data.length; i++) {
 					const house = data.data[i];
 					let currentID = house.id;
@@ -122,8 +126,12 @@ function callHousesAPI(fromCoordinates, radius, query) {
 						// console.log('lat', house.latitude);
 						let currentCoordinates = [longitude, latitude];
 						let currentDistance = get2PointsDistance(fromCoordinates, currentCoordinates);
+						console.log('distance: ', currentDistance);
 						if (currentDistance < radius ?? 20) {
 							console.log('visible house: ', house.id);
+							house.distance = currentDistance;
+							data.data.sort(compare);
+							console.log(data.data);
 						}
 					}
 				}
@@ -158,7 +166,7 @@ return distance;
  */
 let filterQueryObj = {}
 
- $('.search-filters').change(function(e) {
+ $('.search-filters').on('change', function(e) {
 	let coordinates = $('#guest-search').attr('data-coordinates-from').split(',');
 	if ($(this).hasClass('checked')) {
 		$(this).removeClass('checked');
@@ -179,3 +187,16 @@ let filterQueryObj = {}
 		callHousesAPI(coordinates, '10000', queryString);
 	}
  })
+
+ /** sort houses to find the nearest */
+ function compare( a, b ) {
+	if ( a.distance < b.distance ){
+	  return -1;
+	}
+	if ( a.distance > b.distance ){
+	  return 1;
+	}
+	return 0;
+  }
+  
+ 
