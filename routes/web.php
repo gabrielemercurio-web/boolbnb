@@ -32,8 +32,8 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
 	Route::get('/payments/create', 'PaymentController@create')->name('payments.create');
     Route::post('/payments', 'PaymentController@store')->name('payments.store');
     Route::get('/messages', 'MessageController@index')->name('messages.index');
-    Route::post('/messages', 'MessageController@store')->name('messages.store');
-    Route::get('/stats', 'HitController@index')->name('hits.index');
+    Route::post('/sendmessage', 'MessageController@store')->name('messages.store');
+    Route::get('/stats/{house}', 'HitController@index')->name('hits.index');
     Route::get('/toggle/{house}', 'HouseController@toggleVisibility')->name('houses.update');
 
 });

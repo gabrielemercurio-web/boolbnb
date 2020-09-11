@@ -19,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/houses', 'Api\Housecontroller@index')->name('api.houses.index');
+Route::get('/hits/{house}', 'Api\Hitcontroller@index')->name('api.hits.index');
+Route::get('/messages/{house}', 'Api\Messagecontroller@index')->name('api.messages.index');

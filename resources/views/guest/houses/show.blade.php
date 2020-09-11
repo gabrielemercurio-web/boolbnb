@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@php
+
+    $hostname = $_ENV['DB_HOST'];
+    $db_user = $_ENV['DB_USERNAME'];
+    $db_pass = $_ENV['DB_PASSWORD'];
+    $db_name = $_ENV['DB_DATABASE'];
+
+    $connection = mysqli_connect($hostname, $db_user, $db_pass, $db_name);
+    
+    $query = "INSERT INTO `hits` (`house_id`, `created_at`) VALUES ($house->id, CURRENT_TIMESTAMP)";
+    $result = mysqli_query($connection, $query);
+
+@endphp
+
 @section('content')
 
     <div class="container">

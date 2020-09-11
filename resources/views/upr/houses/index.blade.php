@@ -26,7 +26,7 @@
                                 <input type="submit" class="btn btn-small btn-info delete "value="Delete">
                             </form>
                             <a href="{{ route('upr.payments.create') }}" class="btn-white">PROMOTE</a>
-                            <a class="btn-white">STATS</a>
+                            <a href="{{ route('upr.hits.index', ['house' => $house->id]) }}" class="btn-white">STATS</a>
                             @if($house->visible == true)
                                 <a href="{{ route('upr.houses.update', ['house' => $house->id]) }}" class="btn-white">HIDE HOME</a>
                             @else
