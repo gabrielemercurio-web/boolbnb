@@ -26,14 +26,12 @@
 
                                         {{-- SEZIONE FILTRI --}}
         <div class="row">
-            <div class="col-10 offset-1">
+            <div id="search-filter" class="">
 
-                <form action="" class="filter-form" style="display:block">
-					<div class="filter-box">
-						<input type="number" class="search-filters" name="rooms">
-						<input type="number" class="search-filters" name="beds">
-						<input type="number" class="search-filters" name="distance">
-					</div>
+                <form class="filter-form">
+                    <input type="number" class="filter-box search-filters" name="rooms" placeholder="N. rooms...">
+                    <input type="number" class="filter-box search-filters" name="beds" placeholder="N. beds...">
+                    <input type="number" class="filter-box search-filters" name="distance" placeholder="Distance(km)...">
                     @foreach ( $services as $service )
                         <div class="filter-box">
                             <input type="checkbox" class="search-filters" id="{{ $service->name }}" name="{{ strtolower($service->name) }}">

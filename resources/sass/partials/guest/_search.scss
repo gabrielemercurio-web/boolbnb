@@ -36,35 +36,52 @@
     }
 }
 
-.filter-form {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    .filter-box {
+// * * * SEZIONE FILTRI
+#search-filter { 
+    .filter-form {
+        margin-top: 50px;
+        margin-bottom: 50px;
         display: flex;
-        align-items: center;
         justify-content: center;
-        border: 1px solid $main_color;
-        padding: 5px 20px;
+        align-items: center;
+        flex-wrap: wrap;
 
-        input {
-            cursor: pointer;
-            margin-right: 5px;
-            border-color: #ddd;
+        .filter-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $main_color;
+            padding: 5px 20px;
+
+            &::placeholder {
+                color: #ccc;
+                font-size: 0.9rem;
+            }
+
+            input {
+                cursor: pointer;
+                margin-right: 5px;
+                border-color: #ddd;
+            }
+
+            label {
+                margin-bottom: 0px;
+                color: $main_color;
+                font-size: 0.9rem;
+            }
         }
 
-        label {
-            margin-bottom: 0px;
-            color: $main_color;
-            font-size: 0.9rem;
+        input.filter-box {
+            width: 150px;
+            height: 34px;
         }
     }
-
 }
 
+
+
+// SEZIONE CASE SPONSORIZZATE
 .bg-sponsored {
     width: 100vw;
     min-height: 220px;
