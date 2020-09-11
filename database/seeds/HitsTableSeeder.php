@@ -19,7 +19,6 @@ class HitsTableSeeder extends Seeder
         // Get collection of 'id' from houses table
         $houses = House::all()->pluck('id')->toArray();
         $seed->house_id = $faker->randomElement($houses);
-        $seed->date = $faker->date;
         $seed->save();
       }
     }

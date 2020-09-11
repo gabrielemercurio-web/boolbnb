@@ -15,8 +15,9 @@ class UpdatePaymentsTable extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             $table->foreignId('house_id')->after('id')->nullable();
-            // Foreign key reference
-            $table->foreign('house_id')->references('id')->on('houses');
+			$table->foreign('house_id')->references('id')->on('houses');
+			$table->foreignId('advert_id')->after('id')->nullable();
+            $table->foreign('advert_id')->references('id')->on('adverts');
         });
     }
 
@@ -29,7 +30,9 @@ class UpdatePaymentsTable extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             $table->dropForeign(['house_id']);
-            $table->dropColumn('house_id');
+			$table->dropColumn('house_id');
+			$table->dropForeign(['advert']);
+            $table->dropColumn('advert');
         });
     }
 }

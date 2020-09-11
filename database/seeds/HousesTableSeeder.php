@@ -20,9 +20,9 @@ class HousesTableSeeder extends Seeder
             $seed = new House();
             $seed->user_id = $faker->randomElement($users);
             $seed->title = $faker->sentence(5);
-            $seed->nr_of_rooms = $faker->randomDigit;
-            $seed->nr_of_beds = $faker->randomDigit;
-            $seed->nr_of_bathrooms = $faker->randomDigit;
+            $seed->nr_of_rooms = $faker->randomDigitNot(0);
+            $seed->nr_of_beds = $faker->randomDigitNot(0);
+            $seed->nr_of_bathrooms = $faker->randomDigitNot(0);
             $seed->square_mt = $faker->randomNumber(2);
             $seed->address = $faker->address;
             $seed->latitude = $faker->latitude;
