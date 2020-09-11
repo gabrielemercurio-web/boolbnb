@@ -17269,6 +17269,11 @@ header .container nav ul .header-login {
 #map-contact .row-3 textarea::placeholder {
   color: lightgray;
 }
+#map-contact .row-3 .error {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0px;
+}
 #map-contact .row-3 button {
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -17281,6 +17286,7 @@ header .container nav ul .header-login {
   padding: 5px 20px;
   background-color: transparent;
   transition: 200ms;
+  margin-top: 0px;
 }
 #map-contact .row-3 button:hover {
   background-color: #fff;

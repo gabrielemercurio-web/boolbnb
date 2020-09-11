@@ -4,6 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import "bootstrap";
+// import $ from "jquery";
+// window.$ = window.jQuery = $;
+import "jquery";
+import "jquery-validation";
 require('./bootstrap');
 require('./guest/show');
 require('./guest/messages');

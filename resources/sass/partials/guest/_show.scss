@@ -187,13 +187,22 @@
             }
         }
 
+        .error {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0px;
+        }
+
         button {
             @include my-button (
                 #fff,
                 #fff,
                 transparent,
                 #fff,
-                $main_color)
+                $main_color
+            );
+
+            margin-top: 0px;
         }
 
         #my-maps {

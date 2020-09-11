@@ -66,16 +66,16 @@
 				{{-- SEND MESSAGE --}}
                 <div id="contact" class="col-md-5">
                     <h1>Contact Owner</h1>
-                <form method="POST" action="{{ route('upr.messages.store') }}" class="form-messages">
+                <form method="POST" action="{{ route('upr.messages.store') }}" name="form-validate" class="form-messages">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="house_id" value="{{ $house->id }}" hidden>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="sender_email" class="form-control" id="exampleFormControlInput1" placeholder="Your email">
+                        <input required type="email" name="email" class="form-control" id="sendler-email" placeholder="Your email">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" placeholder="Your message"></textarea>
+                        <textarea required class="form-control" name="message" id="message" rows="3" placeholder="Your message"></textarea>
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn">Send</button>

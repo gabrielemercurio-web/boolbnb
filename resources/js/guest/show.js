@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    /* **************
     //Slider con immagini House che scorrono cliccando sulle freccie
     // intercettare il click sulla classe .prev
     $("#slider .prev").click(function() {
@@ -99,6 +99,50 @@ $(document).ready(function() {
         // Aggiungo la classe visible all'immagine recuperata
         nuova_immagine.addClass("visible");
     });
-});
+    ***************** */
 
 
+// * * * FUNZIONE PER LA VALIDAZIONE DEL MESSAGGIO IN SHOW.BLADE * * *
+
+    $(".form-messages").validate({
+        rules: {
+            email: {
+                required: true,
+                rangelength: [3, 350] // min e max dell'email.
+            },
+
+            message: {
+                required: true,
+                rangelength: [50, 2000] // min e max del messaggio.
+            }
+        },
+        messages: {
+            email: {
+                required: "Please enter your email."
+            },
+
+            message: {
+                required: "Enter your message: min 50, max 2000 characters.",
+                
+                // Conteggio dei caratteri correnti inseriti.
+                // Testo che appare nel DOM solo quando non si rispettano
+                // i parametri min e max del messaggio.
+                rangelength: function(range, input) {
+                    return [
+                        'Min ',
+                        range[0],
+                        ', Max ',
+                        range[1],
+                        '. You have typed ',
+                        $(input).val().length,
+                        ' characters.'                                
+                    ].join('');
+
+                }
+                
+            }
+        }
+    });
+
+    
+}); // * * * END of $(document).ready * * *
