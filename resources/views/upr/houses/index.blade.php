@@ -21,9 +21,9 @@
                             <a href="{{ route('upr.houses.edit', ['house'=>$house->id]) }}" class="btn-blue">UPDATE</a>
                             {{-- <a href="{{ route('upr.houses.index', ['house'=>$house->id]) }}" onclick="return confirm(' Do you want to delete?');" class="btn-blue">DELETE</a> --}}
                             <form class="d-inline" action="{{ route('upr.houses.destroy', ['house' => $house->id]) }}" method="post">
-                                  @csrf
-                                  @method('DELETE')
-                                <input type="submit" class="btn btn-small btn-info delete "value="Delete">
+                                @csrf
+                                @method('DELETE')
+                                  <button  id="btnDelete" type="submit" onclick= "return confirm('Are You Sure Want to Delete?')" class="btn btn-warning btn-lg delete">Delete</button>
                             </form>
                             <a href="{{ route('upr.payments.create') }}" class="btn-white">PROMOTE</a>
                             <a href="{{ route('upr.hits.index', ['house' => $house->id]) }}" class="btn-white">STATS</a>

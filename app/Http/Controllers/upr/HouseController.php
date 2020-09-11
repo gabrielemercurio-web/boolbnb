@@ -68,7 +68,7 @@ class HouseController extends Controller
 		$newHouse->image_path = Storage::put('uploads', $houseData['cover_image']);
 		$newHouse->save();
 		return redirect()->route('upr.houses.index');
-		
+
     }
 
     /**
@@ -125,7 +125,7 @@ class HouseController extends Controller
 			'advertised' => 'required|boolean',
 			'description' => 'max:2000',
 		]);
-		
+
 		//TODO: address manipulation
 		$data = $request->all();
 		$house = House::find($id);
@@ -150,7 +150,7 @@ class HouseController extends Controller
 		$houses = House::where('advertised', true)->get();
 		return view('upr.houses.homepage', compact('houses'));
     }
-    
+
     public function toggleVisibility($id) {
         $house = House::find($id);
 

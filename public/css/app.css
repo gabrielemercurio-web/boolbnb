@@ -17332,29 +17332,50 @@ header .container nav ul .header-login {
   margin-bottom: 0;
 }
 
-.filter-form {
+#search-filter .filter-form {
   margin-top: 50px;
   margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
-.filter-form .filter-box {
+#search-filter .filter-form .filter-box {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #22B4CE;
   padding: 5px 20px;
 }
-.filter-form .filter-box input {
+#search-filter .filter-form .filter-box::-moz-placeholder {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+#search-filter .filter-form .filter-box:-ms-input-placeholder {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+#search-filter .filter-form .filter-box::-ms-input-placeholder {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+#search-filter .filter-form .filter-box::placeholder {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+#search-filter .filter-form .filter-box input {
   cursor: pointer;
   margin-right: 5px;
   border-color: #ddd;
 }
-.filter-form .filter-box label {
+#search-filter .filter-form .filter-box label {
   margin-bottom: 0px;
   color: #22B4CE;
   font-size: 0.9rem;
+}
+#search-filter .filter-form input.filter-box {
+  width: 150px;
+  height: 34px;
 }
 
 .bg-sponsored {
@@ -17881,6 +17902,43 @@ div.my-home-title hr {
 .card-upr .button-my-homes a.btn-white:hover {
   background-color: #22B4CE;
   color: #fff;
+}
+
+.delete {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #22B4CE;
+  transition: 200ms;
+}
+.delete:hover {
+  background-color: #fff;
+  color: #22B4CE;
+}
+
+.delete:hover {
+  text-decoration: underline;
+  border-color: #22B4CE;
+}
+
+.btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
+  color: white;
+  background-color: #22B4CE;
+  border-color: #22B4CE;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+
+.btn-warning:focus, .btn-warning.focus {
+  color: white;
+  background-color: #22B4CE;
+  border-color: #22B4CE;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
 }
 
 a.create-house {

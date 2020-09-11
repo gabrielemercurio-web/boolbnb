@@ -82,7 +82,36 @@ div.my-home-title {
         }
     }
 }
+.delete{
+    @include my-button(
+        $main_color,
+        #fff,
+        $main_color,
+        #fff,
+        $main_color
 
+    )
+    // &:hover{
+    // //     text-decoration: underline;
+    // //     border-color: #22B4CE;
+    // // }
+}
+.delete:hover{
+    text-decoration: underline;
+    border-color: #22B4CE;
+}
+.btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
+    color: white;
+    background-color: #22B4CE;
+    border-color: #22B4CE;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+.btn-warning:focus, .btn-warning.focus {
+    color: white;
+    background-color: #22B4CE;
+    border-color: #22B4CE;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
 a.create-house {
     color: $main_color;
     width: 100%;
