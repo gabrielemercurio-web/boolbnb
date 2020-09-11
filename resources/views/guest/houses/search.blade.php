@@ -70,10 +70,7 @@
                                     {{-- SEZIONE RISULTATI RICERCA --}}
     <div class="container">
         <div class="row houses-grid-results"> {{-- Cards delle Case provenienti da una chiamata AJAX in "search.js" --}}
-            {{-- @forelse ($houses as $house) --}}
-
-            {{-- @empty --}}
-            {{-- @endforelse --}}
+            
         </div>
     </div>
 
@@ -81,12 +78,14 @@
 
     <script id="house-card" type="text/x-handlebars-template">
         <div class="handle-house-card card-upr col-lg-4 col-md-6">
-            <img src="@{{}}" alt="house">
+            <img src="@{{ image }}" alt="house">
             <div>
-                <a href="@{{}}">
-                    <h1>@{{}}</h1>
+                <a href="@{{ route }}">
+                    <h1>@{{ title }}</h1>
                 </a>
-                <p>@{{}}</p>
+                <p>@{{ description }}</p>
+                <p>@{{ distance }}</p>
+                
             </div>
         </div>
     </script>
