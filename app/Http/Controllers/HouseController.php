@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace App\Http\Controllers;
 
@@ -31,7 +31,7 @@ class HouseController extends Controller
 		//TODO: randomize houses
 		$houses = House::where('visible', '1')
 					->where('advertised', '1')
-					->limit(6)
+					->limit(3)
 					->get();
 		$services = Service::all();
 		return view('guest.houses.search', compact('userQuery', 'houses', 'services'));

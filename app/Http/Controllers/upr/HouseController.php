@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\House;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\support\facades\Storage;
 
 class HouseController extends Controller
 {
@@ -63,6 +64,7 @@ class HouseController extends Controller
 		// $serviceData = ???;
 		$newHouse = new House();
 		$newHouse->fill($houseData);
+		$newHouse->image_path = Storage::put('uploads', $houseData['cover_image']);
 		$newHouse->save();
 		return redirect()->route('upr.houses.index');
 		
@@ -160,9 +162,16 @@ class HouseController extends Controller
     }
 
 	public function search(Request $request) {
-		$userQuery = $request->all();
-		//userQuery dentro ha solo l'indirizzo
-		return view('upr.houses.search', compact('userQuery'));
+		//get the address inputed in homepage and show it in searchbar in search page
+		$userQuery = $request->user_search_address;
+		//grab advertised houses to show on top
+		//TODO: randomize houses
+		$houses = House::where('visible', '1')
+					->where('advertised', '1')
+					->limit(3)
+					->get();
+		$services = Service::all();
+		return view('guest.houses.search', compact('userQuery', 'houses', 'services'));
 	}
 
 }

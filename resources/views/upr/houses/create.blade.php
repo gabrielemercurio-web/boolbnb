@@ -27,7 +27,7 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Insert image</label>
-						<input type="file" name="image_path" class="form-control-file" id="image">
+						<input type="file" name="cover_image" class="form-control-file" id="image" value="{{ old('cover_image') }}">
 					</div>
 					<div class="form-group d-flex justify-content-between">
 						<div class="form-group">

@@ -12,7 +12,7 @@
         <div class="row">
             @foreach ($houses as $house)
                 <div class="card-upr col-md-6">
-                    <img src="{{ $house->image_path }}" alt="house">
+                    <img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
                     <div>
                         <a href="{{ route('upr.houses.show', ['house' => $house->id]) }}">
                             <h1>{{ $house->title }}</h1>
