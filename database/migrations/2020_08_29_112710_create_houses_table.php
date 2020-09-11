@@ -21,8 +21,8 @@ class CreateHousesTable extends Migration
           $table->tinyInteger('nr_of_bathrooms')->nullable();
           $table->smallInteger('square_mt')->nullable();
           $table->string('address');
-          $table->decimal('latitude');
           $table->decimal('longitude');
+          $table->decimal('latitude');
           $table->string('image_path')->nullable();
           $table->boolean('visible')->default(true);
 		  $table->boolean('advertised')->default(false);

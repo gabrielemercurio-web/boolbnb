@@ -18,8 +18,10 @@ class HitsTableSeeder extends Seeder
         $seed = new Hit();
         // Get collection of 'id' from houses table
         $houses = House::all()->pluck('id')->toArray();
-        $seed->house_id = $faker->randomElement($houses);
-        $seed->save();
+		DB::table('hits')->insert([
+			'house_id' => $faker->randomElement($houses),
+			'created_at' => $faker->dateTime('now', null),
+		]);
       }
     }
 }

@@ -15,7 +15,7 @@ class CreateHitsTable extends Migration
     {
         Schema::create('hits', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->dateTime('created_at', 0);
         });
     }
 
