@@ -130,14 +130,41 @@ function callHousesAPI(fromCoordinates, radius, query) {
 						if (currentDistance < radius ?? 20) {
 							console.log('visible house: ', house.id);
 							house.distance = currentDistance;
-							data.data.sort(compare);
+
+							var sortedData = data.data.sort(compare);
 							console.log(data.data);
 						}
 					}
 				}
+
+				// let previousSortedID = 0;
+				for (let i = 0; i < sortedData.length; i++) {
+					
+					const sortedHouse = sortedData[i];
+					// let currentSortedID = house.id;
+					// if (currentSortedID != previousSortedID) {
+					// 	previousSortedID = currentSortedID;
+					
+					var source = $("#house-card").html();
+					var template = Handlebars.compile(source);
+
+					var context = {
+						image: house.image_path,
+						route: "http://localhost:8000/houses/" + house.id,
+						title: house.title, 
+						description: house.description,
+						distance: house.distance
+					};
+
+					var html = template(context);
+					$('.houses-grid-results').append(html);
+				// }
+
 			} else {
 				//WRITE STH LIKE 'NO MATCHES FOR UR SRCH' IN PAGE
 			}
+
+
 		},
 		'error': function() {
 			console.log('something went wrong');
