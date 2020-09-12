@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\House;
 use App\Service;
+use App\Hit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\support\facades\Storage;
@@ -82,6 +83,12 @@ class HouseController extends Controller
 		/**the list of services is grabbed from the frontend */
 		$house = House::find($id);
 		if ($house) {
+			$hit = new Hit();
+			$hit->timestamps = false;
+			$hit->house_id = $id;
+			$hit->created_at = now();
+			$hit->save();
+
 			return view('upr.houses.show', compact('house'));
 		} else {
 			return abort('404');
@@ -165,6 +172,7 @@ class HouseController extends Controller
 	public function search(Request $request) {
 		//get the address inputed in homepage and show it in searchbar in search page
 		$userQuery = $request->user_search_address;
+		$source = $request->search_source;
 		//grab advertised houses to show on top
 		//TODO: randomize houses
 		$houses = House::where('visible', '1')
@@ -172,7 +180,13 @@ class HouseController extends Controller
 					->limit(3)
 					->get();
 		$services = Service::all();
-		return view('guest.houses.search', compact('userQuery', 'houses', 'services'));
+		$data = [
+			'userQuery' => $userQuery,
+			'houses' => $houses,
+			'services' => $services,
+			'source' => $source,
+		];
+		return view('guest.houses.search', $data);
 	}
 
 }
