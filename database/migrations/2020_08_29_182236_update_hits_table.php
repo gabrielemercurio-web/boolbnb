@@ -16,7 +16,7 @@ class UpdateHitsTable extends Migration
         Schema::table('hits', function (Blueprint $table) {
             $table->foreignId('house_id')->after('id')->nullable();
             // Foreign key reference
-            $table->foreign('house_id')->references('id')->on('houses');
+            $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
         });
     }
 
