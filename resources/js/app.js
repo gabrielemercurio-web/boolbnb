@@ -3,10 +3,8 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-// import $ from "jquery";
-// window.$ = window.jQuery = $;
-// import "jquery";
-// import "jquery-validation";
+
+import "jquery-validation";
 import "bootstrap";
 require('./bootstrap');
 require('./guest/show');
