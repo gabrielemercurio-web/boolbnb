@@ -17904,6 +17904,7 @@ div.my-home-title hr {
   color: #fff;
 }
 
+/*** BTN DELETE ***/
 .delete {
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -17922,11 +17923,13 @@ div.my-home-title hr {
   color: #22B4CE;
 }
 
+/***HOVER***/
 .delete:hover {
   text-decoration: underline;
   border-color: #22B4CE;
 }
 
+/*** ACTIVE ***/
 .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
   color: white;
   background-color: #22B4CE;
@@ -17934,11 +17937,43 @@ div.my-home-title hr {
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
 }
 
+/*** FOCUS ***/
 .btn-warning:focus, .btn-warning.focus {
   color: white;
   background-color: #22B4CE;
   border-color: #22B4CE;
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+
+/*** BTN UPLOAD ***/
+/***HOVER***/
+.upload:hover {
+  background-color: #22B4CE;
+  outline: none;
+  border-color: #22B4CE;
+}
+
+/*** ACTIVE ***/
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  color: white;
+  background-color: #22B4CE;
+  border-color: #22B4CE;
+}
+
+/*** FOCUS ***/
+.btn-primary:focus, .btn-primary.focus {
+  color: white;
+  background-color: #22B4CE;
+  border-color: #22B4CE;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+
+/*** BTN EDIT ***/
+/***HOVER***/
+.edit:hover {
+  background-color: #22B4CE;
+  outline: none;
+  border-color: #22B4CE;
 }
 
 a.create-house {

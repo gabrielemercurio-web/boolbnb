@@ -64,7 +64,7 @@
                     </div>
                     {{-- FINE CAMPI PROVVISORI --}}
 					<div>
-						<button type="submit" class="btn btn-primary">Upload Apartment</button>
+						<button type="submit" class="btn btn-primary upload">Upload Apartment</button>
 					</div>
 				</form>
 			</div>

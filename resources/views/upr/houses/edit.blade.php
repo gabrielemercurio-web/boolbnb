@@ -58,7 +58,7 @@
 						</div>
 					</div>
                     <div>
-                        <button type="submit" class="btn btn-primary">Save Apartment</button>
+                        <button type="submit" class="btn btn-primary edit">Save Apartment</button>
                     </div>
                 </form>
             </div>

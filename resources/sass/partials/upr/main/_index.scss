@@ -82,7 +82,10 @@ div.my-home-title {
         }
     }
 }
-.delete{
+
+/*** BTN DELETE ***/
+
+.delete {
     @include my-button(
         $main_color,
         #fff,
@@ -91,27 +94,80 @@ div.my-home-title {
         $main_color
 
     )
-    // &:hover{
-    // //     text-decoration: underline;
-    // //     border-color: #22B4CE;
-    // // }
 }
-.delete:hover{
+
+
+/***HOVER***/
+
+.delete:hover {
     text-decoration: underline;
-    border-color: #22B4CE;
+    border-color: $main_color;
 }
+
+/*** ACTIVE ***/
+
 .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
     color: white;
-    background-color: #22B4CE;
-    border-color: #22B4CE;
+    background-color: $main_color;
+    border-color: $main_color;
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
 }
+
+/*** FOCUS ***/
+
 .btn-warning:focus, .btn-warning.focus {
     color: white;
-    background-color: #22B4CE;
-    border-color: #22B4CE;
+    background-color: $main_color;
+    border-color: $main_color;
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
 }
+
+/*** BTN UPLOAD ***/
+
+/***HOVER***/
+
+.upload {
+
+    &:hover {
+        background-color: $main_color;
+        outline: none;
+        border-color: $main_color;
+    }
+
+}
+
+/*** ACTIVE ***/
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: white;
+    background-color: $main_color;
+    border-color: $main_color;
+}
+
+/*** FOCUS ***/
+
+.btn-primary:focus, .btn-primary.focus {
+    color: white;
+    background-color: $main_color;
+    border-color: $main_color;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+
+/*** BTN EDIT ***/
+
+/***HOVER***/
+
+.edit{
+
+    &:hover {
+        background-color: $main_color;
+        outline: none;
+        border-color: $main_color;
+    }
+
+}
+
+
 a.create-house {
     color: $main_color;
     width: 100%;
