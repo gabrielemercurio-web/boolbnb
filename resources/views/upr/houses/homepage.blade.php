@@ -9,7 +9,10 @@
 				<div class="overlay"></div>
 				<div class="col-lg-6">
 					<form action="{{ route('upr.houses.search') }}" method="GET" class="search-house input-group">
-						<input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon3">
+						{{-- hidden input needed to recognize search source --}}
+						<input type="text" name="search_source" value="guest-homepage" style="display:none">
+						{{-- SEARCHBAR --}}
+						<input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon3" name="user_search_address">
 						<div class="input-group-append">
 							<button class="btn" type="submit" id="button-addon3"><i class="fas fa-search"></i></button>
 						</div>
@@ -26,7 +29,7 @@
                 @forelse ($houses as $house)
                     <div class="apartment col-lg-4 col-md-6">
                         <div class="apartment-img">
-                            <img src="{{ $house->image_path }}" class="img-fluid" alt="image of the house">
+                            <img src="{{ asset('storage/' . $house->image_path) }}" class="img-fluid" alt="image of the house">
                             <p>Sponsored</p>
                         </div>
                         <div class="description-apartment">

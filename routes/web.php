@@ -34,6 +34,6 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
     Route::get('/messages', 'MessageController@index')->name('messages.index');
     Route::post('/sendmessage', 'MessageController@store')->name('messages.store');
     Route::get('/stats/{house}', 'HitController@index')->name('hits.index');
-    Route::get('/toggle/{house}', 'HouseController@toggleVisibility')->name('houses.update');
+    Route::get('/toggle/{house}', 'HouseController@toggleVisibility')->name('houses.toggle');
 
 });

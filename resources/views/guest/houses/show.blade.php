@@ -1,19 +1,5 @@
 @extends('layouts.app')
 
-@php
-
-    $hostname = $_ENV['DB_HOST'];
-    $db_user = $_ENV['DB_USERNAME'];
-    $db_pass = $_ENV['DB_PASSWORD'];
-    $db_name = $_ENV['DB_DATABASE'];
-
-    $connection = mysqli_connect($hostname, $db_user, $db_pass, $db_name);
-    
-    $query = "INSERT INTO `hits` (`house_id`, `created_at`) VALUES ($house->id, CURRENT_TIMESTAMP)";
-    $result = mysqli_query($connection, $query);
-
-@endphp
-
 @section('content')
 
     <div class="container">
@@ -51,7 +37,9 @@
                     @endforelse
                 </div>
                 --}}
-                <img class="images" src="{{ $house->image_path }}" alt="img-house">
+                {{-- <img class="images" src="{{ $house->image_path }}" alt="img-house"> --}}
+                <img class="images" src="{{ asset('storage/' . $house->image_path) }}" alt="img-house">
+                {{-- <img class="images" src="{{ asset('storage/' . $house->image_path) }}" alt="img-house"> --}}
             </div>
 
 			{{-- HOUSE INFO --}}
@@ -101,9 +89,7 @@
 				{{-- MAP --}}
 				<div id="my-maps" class="col-md-6 offset-md-1" data-longitude="{{ $house->longitude }}" data-latitude="{{$house->latitude}}">
                     <div id="map"></div>
-                    {{-- <img src="https://www.worldeasyguides.com/wp-content/uploads/2013/01/Place-Vendome-on-Map-of-Paris.jpg" alt="Map"> --}}
                 </div>
-
             </div>
 		</div>
     </section>

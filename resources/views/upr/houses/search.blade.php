@@ -1,4 +1,3 @@
-{{-- pagina con risultati della ricerca effettuata --}}
 @extends('layouts.app-upr')
 
 @section('content')
@@ -8,24 +7,37 @@
                 <div class="overlay"></div>
                 <div class="col-lg-6">
 					{{-- SEARCHBAR --}}
-                    <form action="{{ route('guest.search') }}" method="GET" class="search-house input-group">
-                        <input type="text" class="form-control searchbars" id="guest-search" placeholder="Search..." aria-describedby="searchbar" data-user-query="{{ $userQuery}} " data-coordinates-from="">
+                    <form action="{{ route('upr.houses.search') }}" method="GET" class="search-house input-group">
+                        <input type="text" class="form-control searchbars" id="upr-search" placeholder="Search..." aria-describedby="searchbar" data-user-query="{{ $userQuery }}" data-search-source="{{ $source }}" data-coordinates-from="">
                         <div class="input-group-append">
-                            <button class="btn" type="submit" id="guest-search-btn"><i class="fas fa-search" data-placement="searchguest"></i></button>
+                            <button class="btn search-btn" type="submit"><i class="fas fa-search" data-placement="searchupr"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
         <div class="row">
-            {{-- PROMOTED HOUSES LIST --}}
-            <div class="title col-12">
-                <h1>SEARCH RESULTS</h1>
-                <hr>
-            </div>
-        </div>
+		
+		{{-- SEZIONE CASE SPONSORIZZATE --}}
+		<div class="bg-sponsored">
+			<div class="container">
+				<div class="row">
+					@forelse ($houses as $house)
+						<div class="card-upr col-lg-4 col-md-6">
+							<a href="{{route('upr.houses.show', ['house' => $house->id])}}">
+								<img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
+								<h1>{{ $house->title }}</h1>
+								<p>{{ $house->description }}</p>
+							</a>
+						</div>
+					@empty
+						<p>Your search returned no results.</p>
+					@endforelse ($houses as $house)
+				</div>
+			</div>
+		</div>
 
-                                        {{-- SEZIONE FILTRI --}}
+		{{-- SEZIONE FILTRI --}}
         <div class="row">
             <div id="search-filter" class="">
 
@@ -53,7 +65,7 @@
                 @forelse ($houses as $house)
                     <div class="card-upr col-lg-4 col-md-6">
                         <a href="{{-- route('guest.houses.show', ['houses' => $house->id]) --}}#">
-                            <img src="{{ $house->image_path }}" alt="house">
+                            <img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
                             <h1>{{ $house->title }}</h1>
                             <p>{{ $house->description }}</p>
                         </a>
@@ -80,11 +92,11 @@
             <img src="@{{ image }}" alt="house">
             <div>
                 <a href="@{{ route }}">
-                    <h1>@{{ title }}</h1>
+                    <h1 class="hbs-title">@{{ title }}</h1>
                 </a>
-                <p>@{{ description }}</p>
-                <p>@{{ distance }}</p>
-                
+                <p class="hbs-description">@{{ description }}</p>
+                <p class="hbs-distance">@{{ distance }}</p>
+                <p class="hbs-id">@{{ id }}</p>
             </div>
         </div>
     </script>

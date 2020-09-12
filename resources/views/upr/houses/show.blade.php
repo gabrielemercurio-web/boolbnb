@@ -38,7 +38,8 @@
                     @endforelse
                 </div>
                 --}}
-                <img class="images" src="{{ asset('storage/' . $house->cover_image) }}" alt="img-house">
+                {{-- <img class="images" src="{{ $house->image_path }}" alt="img-house"> --}}
+                <img class="images" src="{{ asset('storage/' . $house->image_path) }}" alt="img-house">
             </div>
 
 			{{-- HOUSE INFO --}}
