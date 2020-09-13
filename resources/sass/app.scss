@@ -18,9 +18,8 @@ $fa-font-path: 'fonts';
 // Variables
 @import 'variables'; // <-- di Bootstrap ui
 @import 'partials/variables';
-@import 'partials/commons';
-
 @import 'partials/mixins';
+@import 'partials/commons';
 
 // header
 @import 'partials/headers/headers';

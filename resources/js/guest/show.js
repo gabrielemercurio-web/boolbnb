@@ -106,7 +106,7 @@ $(document).ready(function() {
 
     $(".form-messages").validate({
         rules: {
-            email: {
+            sender_email: {
                 required: true,
                 rangelength: [3, 350] // min e max dell'email.
             },
@@ -117,13 +117,13 @@ $(document).ready(function() {
             }
         },
         messages: {
-            email: {
+            sender_email: {
                 required: "Please enter your email."
             },
 
             message: {
                 required: "Enter your message: min 50, max 2000 characters.",
-                
+
                 // Conteggio dei caratteri correnti inseriti.
                 // Testo che appare nel DOM solo quando non si rispettano
                 // i parametri min e max del messaggio.
@@ -135,14 +135,14 @@ $(document).ready(function() {
                         range[1],
                         '. You have typed ',
                         $(input).val().length,
-                        ' characters.'                                
+                        ' characters.'
                     ].join('');
 
                 }
-                
+
             }
         }
     });
 
-    
+
 }); // * * * END of $(document).ready * * *

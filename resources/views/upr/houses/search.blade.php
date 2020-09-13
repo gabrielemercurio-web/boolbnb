@@ -16,26 +16,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-		
-		{{-- SEZIONE CASE SPONSORIZZATE --}}
-		<div class="bg-sponsored">
-			<div class="container">
-				<div class="row">
-					@forelse ($houses as $house)
-						<div class="card-upr col-lg-4 col-md-6">
-							<a href="{{route('upr.houses.show', ['house' => $house->id])}}">
-								<img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
-								<h1>{{ $house->title }}</h1>
-								<p>{{ $house->description }}</p>
-							</a>
-						</div>
-					@empty
-						<p>Your search returned no results.</p>
-					@endforelse ($houses as $house)
-				</div>
-			</div>
-		</div>
 
 		{{-- SEZIONE FILTRI --}}
         <div class="row">
@@ -59,17 +39,16 @@
     </div> {{-- END CONTAINER --}}
 
                                     {{-- SEZIONE CASE SPONSORIZZATE --}}
+
     <div class="bg-sponsored">
         <div class="container">
             <div class="row">
                 @forelse ($houses as $house)
-                    <div class="card-upr col-lg-4 col-md-6">
-                        <a href="{{-- route('guest.houses.show', ['houses' => $house->id]) --}}#">
-                            <img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
-                            <h1>{{ $house->title }}</h1>
-                            <p>{{ $house->description }}</p>
-                        </a>
-                    </div>
+                    <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
+                        <img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
+                        <h1>{{ $house->title }}</h1>
+                        <p>{{ $house->description }}</p>
+                    </a>
                 @empty
                     <p>Your search returned no results.</p>
                 @endforelse ($houses as $house)
@@ -81,7 +60,7 @@
                                     {{-- SEZIONE RISULTATI RICERCA --}}
     <div class="container">
         <div class="row houses-grid-results"> {{-- Cards delle Case provenienti da una chiamata AJAX in "search.js" --}}
-            
+
         </div>
     </div>
 

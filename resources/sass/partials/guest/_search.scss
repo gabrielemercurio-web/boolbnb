@@ -38,7 +38,7 @@
 
 
 // * * * SEZIONE FILTRI
-#search-filter { 
+#search-filter {
     .filter-form {
         margin-top: 50px;
         margin-bottom: 50px;
@@ -87,10 +87,6 @@
     min-height: 220px;
     padding: 40px 0px;
     background-color: rgba(34,180,206,0.2);
-
-    p {
-        @include my-overflow-clamp(3)
-    }
 }
 
 #guest-search-btn{
@@ -98,6 +94,7 @@
     bottom: -12px;
     height: 38px;
 }
+
 .handle-house-card {
 
     p {

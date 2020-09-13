@@ -24,21 +24,16 @@
             <div class="apartment-description">
 				<div class="row">
                 @forelse ($houses as $house)
-                    <div class="apartment col-lg-4 col-md-6">
-                        <div class="apartment-img">
-                            <img src="{{ asset('storage/' . $house->image_path) }}" class="img-fluid" alt="image of the house">
+                    <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
+                        <img src="{{ asset('storage/' . $house->image_path) }}" alt="image of house" class="apartment-img">
+                        <h1>{{ $house->title }}</h1>
+                        <p>{{ $house->description }}</p>
+                        <div class="sponsored d-flex justify-content-end">
                             <p>Sponsored</p>
                         </div>
-                        <div class="description-apartment">
-                            <h2>{{ $house->title }}</h2>
-                            <p>{{ $house->description }}</p>
-                            <a href="{{ route('guest.show', ['house' => $house->id]) }}">
-                                <button type="button" class="btn btn-outline-primary btn-color">Access house details</button>
-                            </a>
-                        </div>
-                    </div>
+                    </a>
                 @empty
-                    -
+                    <p>Your search returned no results.</p>
                 @endforelse
             </div>
         </div>
