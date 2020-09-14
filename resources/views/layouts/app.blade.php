@@ -14,7 +14,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-	
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -52,7 +52,32 @@
                                         </li>
                                     @endif
                                 @else
-                                    <li class="nav-item dropdown">
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav d-flex justify-content-between">
+
+                                            <li class="nav-item active">
+                                                <a href="{{ route('upr.houses.index') }}">My Homes<span class="sr-only">(current)</span></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{ route('upr.messages.index') }}">Messages</a>
+                                            </li>
+                                            {{-- LOGOUT Copiato e incollato dallo scaffolding Auth di Laravel --}}
+                                            <li class="nav-item">
+                                                <a class="header-logout" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    {{-- <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->first_name }}
                                         </a>
@@ -68,7 +93,7 @@
                                                 @csrf
                                             </form>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                 @endguest
                             </ul>
                         </div>
