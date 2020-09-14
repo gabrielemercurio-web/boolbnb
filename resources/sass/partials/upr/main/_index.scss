@@ -11,23 +11,12 @@ div.my-home-title {
     }
 }
 
-/*** BTN DELETE ***/
 
-.delete {
-    @include my-button(
-        $main_color,
-        #fff,
-        $main_color,
-        #fff,
-        $main_color
-    )
-}
+
 
 
 // * * * STILE DELLE CARDS IN PARTIALS/COMMONS.SCSS
 
-
-/***HOVER***/
 
 
 .button-my-homes {
@@ -63,27 +52,28 @@ div.my-home-title {
     }
 }
 
-.delete:hover {
-    text-decoration: underline;
+                    /*** BTN DELETE ***/
+
+#btnDelete{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-width: 1px;
+    border-style: solid;
     border-color: $main_color;
-}
-
-/*** ACTIVE ***/
-
-.btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
-    color: white;
-    background-color: $main_color;
-    border-color: $main_color;
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
-}
-
-/*** FOCUS ***/
-
-.btn-warning:focus, .btn-warning.focus {
-    color: white;
-    background-color: $main_color;
-    border-color: $main_color;
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    padding: 5px 20px;
+    background-color: white;
+    transition: 200ms;
+    margin-top: -12px;
+    color:black;
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+    }
+    &:hover {
+        background-color: $main_color;
+        color: white;
+    }
 }
 
 /*** BTN UPLOAD ***/

@@ -44498,7 +44498,7 @@ $(document).ready(function () {
   // * * * FUNZIONE PER LA VALIDAZIONE DEL MESSAGGIO IN SHOW.BLADE * * *
   $(".form-messages").validate({
     rules: {
-      email: {
+      sender_email: {
         required: true,
         rangelength: [3, 350] // min e max dell'email.
 
@@ -44510,7 +44510,7 @@ $(document).ready(function () {
       }
     },
     messages: {
-      email: {
+      sender_email: {
         required: "Please enter your email."
       },
       message: {
@@ -44535,7 +44535,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-if ($('canvas').length) {
+if ($('canvas').length > 1) {
   var house_id = $('h1').attr('data-house-id');
   printMsgChart(house_id);
   printHitChart(house_id);
