@@ -14,18 +14,19 @@ class HouseController extends Controller
     public function index(Request $request) {
 		// $input = $request->all();
 		// $services = $request['services'];
-		$services = explode(',', $request['services']);
 		// $services = [1,6];
 		// dd($services);
-
+		
 		$query = House::with('services')
-			->where('nr_of_rooms', '>=', $request->rooms ?? 0)
-			->where('nr_of_beds', '>=', $request->beds ?? 0);
-
-		foreach ($services as $service) {
-			$query->whereHas('services', function($q) use ($service) {
-				$q->where('services.id', $service);
-			});
+		->where('nr_of_rooms', '>=', $request->rooms ?? 0)
+		->where('nr_of_beds', '>=', $request->beds ?? 0);
+		if ($request['services']) {
+			$services = explode(',', $request['services']);
+			foreach ($services as $service) {
+				$query->whereHas('services', function($q) use ($service) {
+					$q->where('services.id', $service);
+				});
+			}
 		}
 			
 		$houses = $query->get();
