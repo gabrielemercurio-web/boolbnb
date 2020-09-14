@@ -17941,27 +17941,20 @@ div.my-home-title hr {
   color: white;
 }
 
-/*** BTN UPLOAD ***/
-/***HOVER***/
-.upload:hover {
-  background-color: #22B4CE;
-  outline: none;
+/***  BTN UPLOAD   ***/
+#btnUpload {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
   border-color: #22B4CE;
-}
-
-/*** ACTIVE ***/
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #22B4CE;
+  transition: 200ms;
+  margin-top: -12px;
   color: white;
-  background-color: #22B4CE;
-  border-color: #22B4CE;
-}
-
-/*** FOCUS ***/
-.btn-primary:focus, .btn-primary.focus {
-  color: white;
-  background-color: #22B4CE;
-  border-color: #22B4CE;
-  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
 }
 
 /*** BTN EDIT ***/
