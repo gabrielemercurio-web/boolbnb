@@ -1,4 +1,4 @@
-if ($('canvas').length) {
+if ($('canvas').length > 1) {
     let house_id = $('h1').attr('data-house-id');
 	printMsgChart(house_id);
 	printHitChart(house_id);

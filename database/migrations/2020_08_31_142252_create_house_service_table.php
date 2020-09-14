@@ -15,9 +15,9 @@ class CreateHouseServiceTable extends Migration
     {
         Schema::create('house_service', function (Blueprint $table) {
 			$table->unsignedBigInteger('house_id');
-			$table->foreign('house_id')->references('id')->on('houses');
+			$table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
 			$table->unsignedBigInteger('service_id');
-			$table->foreign('service_id')->references('id')->on('services');
+			$table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
 			$table->primary(['house_id', 'service_id']);
         });
     }
