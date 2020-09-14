@@ -4,45 +4,55 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use App\House;
 
 class HouseController extends Controller
 {
 
     public function index(Request $request) {
-		$input = $request->all();
-		$query = House::leftJoin('house_service', 'house_service.house_id', '=', 'houses.id');
-			/** rooms */
-		if (isset($input['rooms']) && $input['rooms'])
-			$query->where('houses.nr_of_rooms', '>=', $input['rooms']);
-			/** beds */
-		if (isset($input['beds']) && $input['beds'])
-			$query->where('houses.nr_of_beds', '>=', $input['beds']);
-			/** wifi */
-		if (isset($input['wifi']) && $input['wifi'])
-			$query->where('house_service.service_id', '=', '1');
-			/** swimming pool */
-		if (isset($input['pool']) && $input['pool'])
-			$query->where('house_service.service_id', '=', '2');
-			/** parking spot */
-		if (isset($input['parking']) && $input['parking'])
-			$query->where('house_service.service_id', '=', '5');
-			/** concierge */
-		if (isset($input['concierge']) && $input['concierge'])
-			$query->where('house_service.service_id', '=', $input['concierge']);
-			/** sauna */
-		if (isset($input['sauna']) && $input['sauna'])
-            $query->where('house_service.service_id', '=', '8');
-			/** sea view */
-		if (isset($input['sea-view']) && $input['sea-view'])
-            $query->where('house_service.service_id', '=',  '6');
+		// $input = $request->all();
+		// $services = $request['services'];
+		$services = explode(',', $request['services']);
+		// $services = [1,6];
+		// dd($services);
+
+		$query = House::with('services')
+			->where('nr_of_rooms', '>=', $request->rooms ?? 0)
+			->where('nr_of_beds', '>=', $request->beds ?? 0);
+
+		foreach ($services as $service) {
+			$query->whereHas('services', function($q) use ($service) {
+				$q->where('services.id', $service);
+			});
+		}
+			
 		$houses = $query->get();
 		return response()->json([
 			'success' => true,
 			'count' => $houses->count(),
 			'data' => $houses,
 		]);
-		// return new HouseResource(House::find(1));
-		// return HouseResource::collection($houses);
+
 	}
+
+	/* get distance */
+	public static function vincentyGreatCircleDistance(
+			$latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371)
+		{
+			// convert from degrees to radians
+			$latFrom = deg2rad($latitudeFrom);
+			$lonFrom = deg2rad($longitudeFrom);
+			$latTo = deg2rad($latitudeTo);
+			$lonTo = deg2rad($longitudeTo);
+		
+			$lonDelta = $lonTo - $lonFrom;
+			$a = pow(cos($latTo) * sin($lonDelta), 2) +
+			pow(cos($latFrom) * sin($latTo) - sin($latFrom) * cos($latTo) * cos($lonDelta), 2);
+			$b = sin($latFrom) * sin($latTo) + cos($latFrom) * cos($latTo) * cos($lonDelta);
+		
+			$angle = atan2(sqrt($a), $b);
+			return $angle * $earthRadius;
+		}
 }
