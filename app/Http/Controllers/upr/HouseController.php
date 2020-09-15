@@ -126,8 +126,6 @@ class HouseController extends Controller
 			'square_mt' => 'integer',
 			'address' => 'required',
 			'image_path' => 'image',
-			'visible' => 'required|boolean',
-			'advertised' => 'required|boolean',
 			'description' => 'max:2000',
 		]);
 

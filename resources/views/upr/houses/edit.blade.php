@@ -7,7 +7,8 @@
             <div class="col-12">
                 <div class="d-flex align-items-center">
                     <h1 class="mt-3 mb-3">Edit Apartment</h1>
-                </div>
+				</div>
+				{{-- ERROR HANDLING --}}
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -16,11 +17,11 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+				@endif
+				{{-- MAIN FORM --}}
                 <form id="form-edit" action="{{ route('upr.houses.update', ['house' => $house->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    {{-- old si usa per la validazione, senza old nel value scrivere value = $movie->title --}}
                     <div class="form-group">
                         <label for="house-title">Title</label>
                         <input type="text" name="title" class="form-control" id="house-title" placeholder="Title" value="{{ old('title', $house->title) }}">
@@ -30,13 +31,12 @@
                         <textarea type="text" name="description" class="form-control" id="house-description" placeholder="Description">{{ old('description', $house->description)}}</textarea>
                     </div>
                     <div class="form-group">
-						<label for="house-address">Address</label>
-						<input type="text" name="address" class="form-control" id="house-address" placeholder="Address" value="{{ old('address', $house->address) }}">
+						<label for="house-address" class="house-autosearch">Current address: {{ old('address', $house->address)}}</label>
                     </div>
 					<div class="form-group">
-						<label for="image">Insert image</label>
+						<label for="image">Add image</label>
 						<input type="file" name="image" class="form-control-file" id="image">
-						<p>Copertina attuale</p>
+						<p>Current image:</p>
                         <img src="{{ asset('storage/' . $house->image_path) }}" class="img-thumbnail" alt="">
 					</div>
 					<div class="form-group d-flex justify-content-between">
@@ -57,8 +57,14 @@
 							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt', $house->square_mt) }}">
 						</div>
 					</div>
+					{{-- Hidden values for storing address-related values --}}
+                    <div class="form-group">
+						<input type="text" name="latitude" value="{{ old('latitude', $house->latitude) }}" hidden>
+						<input type="text" name="longitude" value="{{ old('longitude', $house->longitude) }}" hidden>
+						<input type="text" name="address" value="{{ old('address', $house->address) }}" hidden>
+                    </div>
                     <div>
-                        <button type="submit" id="btnEdit" class="btn btn-primary">Save Apartment</button>
+                        <button type="submit" id="btnEdit" class="btn btn-primary">Update Home</button>
                     </div>
                 </form>
             </div>

@@ -13,7 +13,7 @@ $fa-font-path: 'fonts';
 
 //TomTom Styling
 @import "@tomtom-international/web-sdk-maps";
-@import "node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox";
+@import "@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox";
 
 // Variables
 @import 'variables'; // <-- di Bootstrap ui

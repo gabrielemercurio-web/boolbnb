@@ -8,6 +8,7 @@
 				<div class="d-flex align-items-center">
 					<h1 class="mt-3 mb-3">New apartment</h1>
 				</div>
+				{{-- ERROR HANDLING --}}
 				@if ($errors->any())
 					<div class="alert alert-danger">
 						<ul>
@@ -17,6 +18,7 @@
 						</ul>
 					</div>
 				@endif
+				{{-- MAIN FORM --}}
 				<form id="form-create" action="{{ route('upr.houses.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
                     <div class="form-group">
@@ -31,7 +33,7 @@
 						<textarea type="text" name="description" class="form-control" id="house-description" placeholder="Description" required>{{ old('description') }}</textarea>
 					</div>
 					<div class="form-group">
-						<label for="house-address" id="house-autosearch" value="{{ old('address')}}">Address</label>
+						<label for="house-address" class="house-autosearch" value="{{ old('address')}}">Address</label>
 						
 					</div>
 					<div class="form-group">
@@ -56,14 +58,14 @@
 							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
                         </div>
                     </div>
-                    {{-- Hidden values for storing coordinates matching the home address --}}
+                    {{-- Hidden values for storing address-related values --}}
                     <div class="form-group">
 						<input type="text" name="latitude" value="{{ old('latitude') }}" hidden>
 						<input type="text" name="longitude" value="{{ old('longitude') }}" hidden>
 						<input type="text" name="address" value="{{ old('address') }}" hidden>
                     </div>
                 	<div>
-						<button type="submit" id="btnUpload" class="btn btn-primary">Upload Apartment</button>
+						<button type="submit" id="btnUpload" class="btn btn-primary">Add home</button>
 					</div>
 				</form>
 			</div>

@@ -192,5 +192,5 @@ function callFiltering(query) {
 		$('input[name=latitude]').attr('value', latitude);
 		$('input[name=address]').attr('value', address);
 	});
-    document.getElementById("house-autosearch").append(acSearchBox.getSearchBoxHTML());
+    $(".house-autosearch").append(acSearchBox.getSearchBoxHTML());
 // }
