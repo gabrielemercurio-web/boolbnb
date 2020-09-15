@@ -25,10 +25,8 @@ class HouseServiceSeeder extends Seeder
 			$newCombo = $newHouse . '-' . $newService;
 			if (!in_array($newCombo, $idsCombos)) {
 				array_push($idsCombos, $newCombo);
-				DB::table('house_service')->insert([
-					'house_id' => $newHouse,
-					'service_id' => $newService,
-				]);
+				$house = House::find($newHouse);
+				$house->services()->attach($newService);
 			}
 		}
     }

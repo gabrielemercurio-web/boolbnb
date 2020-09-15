@@ -18,14 +18,14 @@
                             <h1>{{ $house->title }}</h1>
                         </a>
                         <div class="button-my-homes">
-                            <a href="{{ route('upr.houses.edit', ['house'=>$house->id]) }}" class="btn-blue">UPDATE</a>
+                            <a href="{{ route('upr.houses.edit', ['house'=>$house->id]) }}" class="btn-white">UPDATE</a>
                             {{-- <a href="{{ route('upr.houses.index', ['house'=>$house->id]) }}" onclick="return confirm(' Do you want to delete?');" class="btn-blue">DELETE</a> --}}
                             <form class="d-inline" action="{{ route('upr.houses.destroy', ['house' => $house->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                  <button  id="btnDelete" type="submit" onclick= "return confirm('Are you sure you want to delete this?')" class="btn btn-warning btn-lg delete">Delete</button>
+                                  <button  id="btnDelete" type="submit" onclick= "return confirm('Are you sure you want to delete this?')" class="btn btn-warning btn-lg btn-white">Delete</button>
                             </form>
-                            <a href="{{ route('upr.payments.create') }}" class="btn-white">PROMOTE</a>
+                            <a href="{{ route('upr.payments.create') }}" class="btn-blue">PROMOTE</a>
                             <a href="{{ route('upr.hits.index', ['house' => $house->id]) }}" class="btn-white">STATS</a>
                             @if($house->visible == true)
                                 <a href="{{ route('upr.houses.update', ['house' => $house->id]) }}" class="btn-white">HIDE HOME</a>

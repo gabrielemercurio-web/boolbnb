@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('sender_email', 360);
             $table->string('message', 2000);
             // Foreign key reference
-            $table->foreign('house_id')->references('id')->on('houses');
+            $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -16952,6 +16952,54 @@ main.py-4 {
   min-height: calc(100% - 150px - 90px);
 }
 
+a {
+  color: #111;
+  text-decoration: none;
+}
+a:hover {
+  color: #111;
+  text-decoration: none;
+}
+
+.card-upr {
+  margin: 35px 0px;
+  transition: 300ms;
+  padding: 15px;
+}
+.card-upr:hover {
+  box-shadow: 0px 0px 40px 0px #0003;
+  color: #111;
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.02);
+}
+.card-upr img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card-upr h1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 30px 0px;
+}
+.card-upr p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.card-upr div.sponsored p {
+  color: #22B4CE;
+}
+
 header {
   width: 100%;
   height: 90px;
@@ -17383,12 +17431,6 @@ header .container nav ul .header-login {
   min-height: 220px;
   padding: 40px 0px;
   background-color: rgba(34, 180, 206, 0.2);
-}
-.bg-sponsored p {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
 
 #guest-search-btn {
@@ -17830,46 +17872,18 @@ div.my-home-title hr {
   border-color: #22B4CE;
 }
 
-.card-upr {
-  margin: 35px 0px;
-  transition: 200ms;
-  padding: 15px;
-}
-.card-upr:hover {
-  box-shadow: 0px 0px 40px 0px #0003;
-}
-.card-upr img {
-  width: 100%;
-  height: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.card-upr a {
-  color: #111;
-}
-.card-upr h1 {
-  height: 60px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 30px 0px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.card-upr .button-my-homes {
+.button-my-homes {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
-.card-upr .button-my-homes a {
+.button-my-homes a {
   margin-bottom: 10px;
   cursor: pointer;
 }
-.card-upr .button-my-homes a.btn-blue {
+.button-my-homes a.btn-blue {
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -17882,11 +17896,11 @@ div.my-home-title hr {
   background-color: #22B4CE;
   transition: 200ms;
 }
-.card-upr .button-my-homes a.btn-blue:hover {
+.button-my-homes a.btn-blue:hover {
   background-color: #fff;
   color: #22B4CE;
 }
-.card-upr .button-my-homes a.btn-white {
+.button-my-homes a.btn-white {
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -17899,73 +17913,48 @@ div.my-home-title hr {
   background-color: #fff;
   transition: 200ms;
 }
-.card-upr .button-my-homes a.btn-white:hover {
+.button-my-homes a.btn-white:hover {
   background-color: #22B4CE;
   color: #fff;
 }
 
 /*** BTN DELETE ***/
-.delete {
+#btnDelete {
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
   border-width: 1px;
   border-style: solid;
   border-color: #22B4CE;
-  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: white;
+  transition: 200ms;
+  margin-top: -12px;
+  color: black;
+}
+#btnDelete:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+#btnDelete:hover {
+  background-color: #22B4CE;
+  color: white;
+}
+
+/***  BTN UPLOAD   ***/
+#btnUpload {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #22B4CE;
   border-radius: 0px;
   padding: 5px 20px;
   background-color: #22B4CE;
   transition: 200ms;
-}
-.delete:hover {
-  background-color: #fff;
-  color: #22B4CE;
-}
-
-/***HOVER***/
-.delete:hover {
-  text-decoration: underline;
-  border-color: #22B4CE;
-}
-
-/*** ACTIVE ***/
-.btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
+  margin-top: -12px;
   color: white;
-  background-color: #22B4CE;
-  border-color: #22B4CE;
-  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
-}
-
-/*** FOCUS ***/
-.btn-warning:focus, .btn-warning.focus {
-  color: white;
-  background-color: #22B4CE;
-  border-color: #22B4CE;
-  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
-}
-
-/*** BTN UPLOAD ***/
-/***HOVER***/
-.upload:hover {
-  background-color: #22B4CE;
-  outline: none;
-  border-color: #22B4CE;
-}
-
-/*** ACTIVE ***/
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
-  color: white;
-  background-color: #22B4CE;
-  border-color: #22B4CE;
-}
-
-/*** FOCUS ***/
-.btn-primary:focus, .btn-primary.focus {
-  color: white;
-  background-color: #22B4CE;
-  border-color: #22B4CE;
-  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
 }
 
 /*** BTN EDIT ***/

@@ -15,9 +15,9 @@ class UpdatePaymentsTable extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             $table->foreignId('house_id')->after('id')->nullable();
-			$table->foreign('house_id')->references('id')->on('houses');
+			$table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
 			$table->foreignId('advert_id')->after('id')->nullable();
-            $table->foreign('advert_id')->references('id')->on('adverts');
+            $table->foreign('advert_id')->references('id')->on('adverts')->onDelete('cascade');
         });
     }
 

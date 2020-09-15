@@ -4,76 +4,36 @@
     <div class="your-messages">
         <div class="container">
             <div class="title">
-                <h1>Your-message</h1>
+                <h1>Your messages</h1>
                 <hr>
             </div>
             <div class="users-message">
-                <div class="row">
+                <div class="row col-lg-12">
                     <div class="messages col-lg-5">
-                        <div class="message visible">
-                            <h2 class="hidden">Apartment 1</h2>
-                            <a href="#">utenteinteressato@gmail.com</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <div class="time">
-                                <span>18 giu 2020 - 18:30</span>
+                        @forelse ($messages as $message)
+                            <div class="message @if ($loop->first) visible @endif">
+                                <h2 class="hidden">Apartment {{ $message->house_id }}</h2>
+                                <a href="mailto:{{ $message->sender_email }}">{{ $message->sender_email }}</a>
+                                <p>{{ $message->message }}</p>
+                                <div class="time">
+                                    <span>{!! htmlspecialchars_decode(date('j<\s\up>S</\s\up> F Y h:i A', strtotime($message->created_at))) !!}</span>
+                                </div>
                             </div>
+                        @empty 
+                            <p>There are no messages available in the inbox.</p>
+                        @endforelse
                     </div>
-                    <div class="message">
-                        <h2 class="hidden">Apartment 2</h2>
-                        <a href="#">utenteinteressato-1@gmail.com</a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <div class="time">
-                            <span>20 mar 2020 - 15:45</span>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <h2 class="hidden">Apartment 3</h2>
-                        <a href="#">utenteinteressato-2@gmail.com</a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <div class="time">
-                            <span>28 feb 2020 - 11:00</span>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <h2 class="hidden">Apartment 4</h2>
-                        <a href="#">utenteinteressato-3@gmail.com</a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <div class="time">
-                            <span>17 set 2020 - 09:15</span>
-                        </div>
-                    </div>
-                </div>
+                   
                 <div class="description-message col-lg-7">
-                    <div class="description active">
-                        <div class="email-time">
-                            <a href="#">utenteinteressato@gmail.com</a>
-                            <span>18 giu 2020 - 18:30</span>
+                    @foreach ($messages as $message)
+                        <div class="description @if ($loop->first) active @endif">
+                            <div class="email-time">
+                                <a href="mailto:{{ $message->sender_email }}">{{ $message->sender_email }}</a>
+                                <span>{!! htmlspecialchars_decode(date('j<\s\up>S</\s\up> F Y h:i A', strtotime($message->created_at))) !!}</span>
+                            </div>
+                            <p>{{ $message->message }}</p>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <div class="description">
-                        <div class="email-time">
-                            <a href="#">utenteinteressato-1@gmail.com</a>
-                            <span>20 mar 2020 - 15:45</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-
-                    <div class="description">
-                        <div class="email-time">
-                            <a href="#">utenteinteressato-2@gmail.com</a>
-                            <span>28 feb 2020 - 11:00</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <div class="description">
-                        <div class="email-time">
-                                <a href="#">utenteinteressato-3@gmail.com</a>
-                                <span>17 set 2020 - 09:15</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
             </div>
