@@ -17616,8 +17616,12 @@ header .container nav ul .header-login {
 }
 /*** for iphone 5/SE ***/
 @media screen and (max-width: 320px) {
+  .sponsor-title {
+    margin-top: -40px;
+  }
+
   .information-payments p {
-    padding-top: 80px;
+    padding-top: 20px;
   }
 }
 .home-wrapper {
