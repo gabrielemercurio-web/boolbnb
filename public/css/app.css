@@ -17962,12 +17962,25 @@ div.my-home-title hr {
   margin-top: 3px;
 }
 
-/*** BTN EDIT ***/
-/***HOVER***/
-.edit:hover {
+/*** PAGINA EDIT DI UPR/INDEX ***/
+#form-edit #btnEdit:hover {
   background-color: #22B4CE;
   outline: none;
   border-color: #22B4CE;
+}
+#form-edit #btnEdit:active {
+  background-color: #22B4CE;
+  border-color: #22B4CE;
+}
+#form-edit #btnEdit:focus {
+  background-color: #22B4CE;
+  border-color: #22B4CE;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+#form-edit label.error {
+  font-size: 0.9rem;
+  color: darkred;
+  margin-top: 3px;
 }
 
 a.create-house {

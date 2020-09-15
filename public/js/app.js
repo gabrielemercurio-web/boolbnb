@@ -44067,7 +44067,7 @@ function drawTomTomMap() {
 
   var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
     container: 'map',
-    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
     style: 'tomtom://vector/1/basic-main',
     center: myCoordinates,
     zoom: 15
@@ -44101,7 +44101,7 @@ $('.search-btn').on('click', function () {
 
 function callTomTomSearch(query) {
   _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1___default.a.services.fuzzySearch({
-    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
     query: query
   }).go().then(handleResults);
 }
@@ -44538,10 +44538,10 @@ $(document).ready(function () {
       var pallino_corrente = $(
           ".fa-circle.visible"
       );
-       // rimuovo la classe .visible all'img corrente
+        // rimuovo la classe .visible all'img corrente
       img_corrente.removeClass("visible");
       pallino_corrente.removeClass("visible");
-       // intercettare l'immagine successiva
+        // intercettare l'immagine successiva
       var img_precedente = img_corrente.prev(
           "img"
       );
@@ -44561,24 +44561,24 @@ $(document).ready(function () {
           );
       }
   });
-   // intercettare il click sulla classe .next
+    // intercettare il click sulla classe .next
   $("#slider .next").click(function() {
       // intercettare l'immagine con la classe .visible
       var img_corrente = $("img.visible");
       var pallino_corrente = $(
           ".fa-circle.visible"
       );
-       // rimuovo la classe .visible all'img corrente
+        // rimuovo la classe .visible all'img corrente
       img_corrente.removeClass("visible");
       pallino_corrente.removeClass("visible");
-       // intercettare l'immagine successiva
+        // intercettare l'immagine successiva
       var img_successiva = img_corrente.next(
           "img"
       );
       var pallino_successivo = pallino_corrente.next(
           ".fa-circle"
       );
-       // aggiungo la classe .visible a img_successiva
+        // aggiungo la classe .visible a img_successiva
       // Se img_successiva è l'ultima si ricomincia da capo
       if (img_successiva.length != 0) {
           img_successiva.addClass("visible");
@@ -44591,28 +44591,28 @@ $(document).ready(function () {
           );
       }
   });
-   // Click sul bullet per selezionale la slide relativa
+    // Click sul bullet per selezionale la slide relativa
   $(".bullets .fa-circle").click(function() {
       // recupero l'immagine corrente
       var immagine_corrente = $("img.visible");
-       // recupero il pallino corrente
+        // recupero il pallino corrente
       var pallino_corrente = $(
           ".fa-circle.visible"
       );
-       // Elimino la classe visible all'immagine corrente
+        // Elimino la classe visible all'immagine corrente
       immagine_corrente.removeClass("visible");
-       // Elimino la classe visible al pallino corrente
+        // Elimino la classe visible al pallino corrente
       pallino_corrente.removeClass("visible");
-       // Aggiungo la classe visible al pallino su cui l'utente ha cliccato
+        // Aggiungo la classe visible al pallino su cui l'utente ha cliccato
       $(this).addClass("visible");
-       // Recupero l'immagine corrispondente al pallino su cui l'utente ha cliccato
+        // Recupero l'immagine corrispondente al pallino su cui l'utente ha cliccato
       // Recupero la posizione del pallino su cui l'utente ha cliccato
       var posizione = $(this).index();
-       // Recupero l'immagine con la stessa posizione del pallino
+        // Recupero l'immagine con la stessa posizione del pallino
       var nuova_immagine = $(".images img").eq(
           posizione
       );
-       // Aggiungo la classe visible all'immagine recuperata
+        // Aggiungo la classe visible all'immagine recuperata
       nuova_immagine.addClass("visible");
   });
   ***************** */
@@ -44921,8 +44921,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

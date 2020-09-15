@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('upr.houses.update', ['house' => $house->id]) }}" method="post" enctype="multipart/form-data">
+                <form id="form-edit" action="{{ route('upr.houses.update', ['house' => $house->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     {{-- old si usa per la validazione, senza old nel value scrivere value = $movie->title --}}
@@ -58,7 +58,7 @@
 						</div>
 					</div>
                     <div>
-                        <button type="submit" class="btn btn-primary edit">Save Apartment</button>
+                        <button type="submit" id="btnEdit" class="btn btn-primary">Save Apartment</button>
                     </div>
                 </form>
             </div>

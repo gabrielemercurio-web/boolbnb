@@ -104,22 +104,33 @@ div.my-home-title {
 }
 
 
+                 /*** PAGINA EDIT DI UPR/INDEX ***/
 
 
+#form-edit{
 
-/*** BTN EDIT ***/
-
-/***HOVER***/
-
-.edit{
-
-    &:hover {
+    #btnEdit:hover{
         background-color: $main_color;
         outline: none;
         border-color: $main_color;
     }
-
+    #btnEdit:active{
+        background-color: $main_color;
+        border-color: $main_color;
+    }
+    #btnEdit:focus{
+        background-color: $main_color;
+        border-color: $main_color;
+        box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+    }
+    label.error {
+        font-size: 0.9rem;
+        color: darkred;
+        margin-top: 3px;
+    }
 }
+
+
 
 
 a.create-house {
