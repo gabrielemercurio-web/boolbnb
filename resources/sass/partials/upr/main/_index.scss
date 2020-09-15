@@ -77,22 +77,36 @@ div.my-home-title {
 }
 
 
-                   /***  BTN UPLOAD   ***/
+                   /*** PAGINA CREATE DI UPR/INDEX ***/
 
-#btnUpload{
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $main_color;
-    border-radius: 0px;
-    padding: 5px 20px;
-    background-color: $main_color;
-    transition: 200ms;
-    margin-top: -12px;
-    color:white;
+#form-create {
+
+    #btnUpload {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        border-width: 1px;
+        border-style: solid;
+        border-color: $main_color;
+        border-radius: 0px;
+        padding: 5px 20px;
+        background-color: $main_color;
+        transition: 200ms;
+        margin-top: -12px;
+        color:white;
+    }
+
+    label.error {
+        font-size: 0.9rem;
+        color: darkred;
+        margin-top: 3px;
+    }
 }
+
+
+
+
+
 /*** BTN EDIT ***/
 
 /***HOVER***/
@@ -112,14 +126,16 @@ a.create-house {
     color: $main_color;
     width: 100%;
     height: 350px;
-    border: 2px dashed #eee;
+    border: 2px dashed #d7d7d7;
     display: flex;
     transition: 200ms;
     outline: none;
     text-decoration: none;
 
     &:hover {
-        box-shadow: 0px 0px 40px 0px #0003;
+        box-shadow: 0px 0px 40px 0px #0002;
+        transform: scale(1.01);
+        border: none;
     }
 
 
@@ -143,7 +159,8 @@ a.create-house {
 
     }
 }
-.btn{
+
+.btn {
     font-size: 0.8rem;
         text-transform: uppercase;
         font-weight: 700;

@@ -10,6 +10,7 @@ require('./bootstrap');
 require('./guest/show');
 require('./guest/messages');
 require('./upr/header');
+require('./upr/create-validation');
 require('./upr/adv');
 require('./_tomtom');
 require('./hits');

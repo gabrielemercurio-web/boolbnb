@@ -8,18 +8,18 @@
 				<div class="d-flex align-items-center">
 					<h1 class="mt-3 mb-3">New apartment</h1>
 				</div>
-				<form action="{{ route('upr.houses.store') }}" method="post" enctype="multipart/form-data">
+				<form id="form-create" action="{{ route('upr.houses.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
                     <div class="form-group">
                         <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
                     </div>
 					<div class="form-group">
 						<label for="house-title">Title</label>
-						<input type="text" name="title" class="form-control" id="house-title" placeholder="Title" value="{{ old('title') }}">
+						<input type="text" name="title" class="form-control" id="house-title" placeholder="Title" value="{{ old('title') }}" required>
 					</div>
 					<div class="form-group">
 						<label for="house-description">Description</label>
-						<textarea type="text" name="description" class="form-control" id="house-description" placeholder="Description">{{ old('description') }}</textarea>
+						<textarea type="text" name="description" class="form-control" id="house-description" placeholder="Description" required>{{ old('description') }}</textarea>
 					</div>
 					<div class="form-group">
 						<label for="house-address">Address</label>

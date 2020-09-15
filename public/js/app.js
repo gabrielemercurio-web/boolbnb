@@ -44045,16 +44045,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
-var template = Handlebars.compile("Name: {{name}}"); // console.log(template({ name: "Nils" }));
-
 var OWN_HOUSES_API_URL = 'http://localhost:8000/api/houses';
-/* * * SHOW MAP * * */
-// check whether there's a map in the page so as not to call the function everywhere
+/* * * DRAW MAP IN SHOW VIEW * * */
+
+/** check whether there's supposed to be a map in the page so as not to call
+ * the function everywhere */
 
 if ($('#map').length) {
   drawTomTomMap();
 }
-/* draw map from given coordinates */
+/* draw map from stored coordinates */
 
 
 function drawTomTomMap() {
@@ -44063,11 +44063,11 @@ function drawTomTomMap() {
 
   var lat = $('#my-maps').attr('data-latitude'); //make it so tomtom can read them
 
-  var myCoordinates = [_long, lat]; //grab a map centered on the given coordinates
+  var myCoordinates = [_long, lat]; //draw a map centered on the given coordinates
 
   var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
     container: 'map',
-    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
+    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
     style: 'tomtom://vector/1/basic-main',
     center: myCoordinates,
     zoom: 15
@@ -44077,7 +44077,148 @@ function drawTomTomMap() {
 }
 /* * * ADDRESS SEARCH FUNCTIONALITIES * * */
 
-/* tomtom autocomplete through searchbox plugin*/
+/** in search views, if redirected from homepage: grab input and start search */
+
+
+if ($('.searchbars').length && $('.searchbars').attr('data-search-source') == 'guest-homepage' || $('.searchbars').length && $('.searchbars').attr('data-search-source') == 'upr-homepage') {
+  console.log('data-search-source: ', $('.searchbars').attr('data-search-source')); //grab and execute the query that was inputed in the homepage
+
+  var query = $('.searchbars').attr('data-user-query');
+  console.log('SP guest query: ', query);
+  callTomTomSearch(query);
+}
+/* in search views - on click on search icon, start new search */
+//TODO: add search via enter key - it's already there somehow?
+
+
+$('.search-btn').on('click', function () {
+  var query = $('.searchbars').val();
+  console.log('SP query', query); //FIXME: change when the actual view is ready
+
+  callTomTomSearch(query);
+});
+/* call tomtom API to get address coordinates */
+
+function callTomTomSearch(query) {
+  _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1___default.a.services.fuzzySearch({
+    key: "Vn26cA8knt2E8sl0WBEWvAgWGRUf59mm",
+    query: query
+  }).go().then(handleResults);
+}
+/* manage tomtom api response: grab the coordinates of the provided address */
+
+
+function handleResults(result) {
+  console.log('handleResults argument: ', result);
+
+  if (result) {
+    /* get latitude and longitude */
+    var longitude = result.results[0].position.lng;
+    var latitude = result.results[0].position.lat;
+    /* store them in data attributes for later use*/
+
+    $('.searchbars').attr('data-coordinates-long', longitude);
+    $('.searchbars').attr('data-coordinates-lat', latitude);
+    /* start ajax call*/
+
+    getFiltersValues();
+  }
+}
+
+;
+/* on click on 'update filters' button, get the values of the filter inputs*/
+
+$('.search-update-btn').on('click', function () {
+  getFiltersValues();
+});
+/* get the value of all filter inputs and combine them in a query string*/
+
+function getFiltersValues() {
+  /* create reference object to store query string parameters*/
+  var queryStringObject = {};
+  /* get all the values from the filters */
+
+  queryStringObject.longitude = $('.searchbars').attr('data-coordinates-long');
+  queryStringObject.latitude = $('.searchbars').attr('data-coordinates-lat');
+  /* only add optional filters if requested by the user */
+  //TODO: figure out whether we need to make these deletable from the query string, too
+
+  if ($('#filter-rooms').val() != '') {
+    queryStringObject.rooms = $('#filter-rooms').val();
+  }
+
+  if ($('#filter-beds').val() != '') {
+    queryStringObject.beds = $('#filter-beds').val();
+  }
+
+  if ($('#filter-distance').val() != '') {
+    queryStringObject.distance = $('#filter-distance').val();
+  }
+  /* build string of services in '1,2,3' format*/
+
+
+  queryStringObject['services'] = '';
+  $.each($("input[name='services']:checked"), function () {
+    queryStringObject['services'] += $(this).val() + ',';
+  });
+  /* only pass the services key if at least one service is flagged */
+
+  if (queryStringObject.services.length == '') {
+    delete queryStringObject['services'];
+  } // console.log('services ajax: ', queryStringObject['services']);
+
+
+  var queryString = '?' + $.param(queryStringObject); // console.log('query obj: ', queryStringObject);
+  // console.log('query str', queryString);
+
+  callFiltering(queryString);
+}
+
+function callFiltering(query) {
+  console.log('callFiltering was called!');
+  $.ajax({
+    'url': OWN_HOUSES_API_URL + query,
+    'method': 'GET',
+    'traditional': true,
+    'success': function success(data) {
+      console.log('ajax success data: ', data);
+      $('.handle-house-card').remove();
+
+      if (data != '[]') {
+        // console.log('data', data.data);
+        // console.log('id', data.id);
+        var previousID = 0;
+
+        for (var i = 0; i < data.data.length; i++) {
+          // console.log('data length', data.data.length);
+          var house = data.data[i];
+          /** HANDLEBARS */
+
+          var source = $('.house-card-template').html();
+          var template = Handlebars.compile(source);
+          var context = {
+            image: house.image_path,
+            route: 'http://localhost:8000/houses/' + house.id,
+            title: house.title,
+            description: house.description,
+            distance: house.distance,
+            id: house.id
+          };
+          var html = template(context);
+          $('.houses-grid-results').append(html);
+        }
+      } else {//WRITE STH LIKE 'NO MATCHES FOR UR SRCH' IN PAGE
+      }
+
+      ;
+    },
+    'error': function error(e) {
+      console.log('error? ', e);
+      console.log('callFiltering ajax: something went wrong');
+    }
+  });
+}
+/* TOMTOM AUTOCOMPLETE THROUGH SEARCHBOX PLUGIN*/
 // function tomtomAutocomplete() {
 //     let acSearchBox = new sb(tts.services, {
 //         minNumberOfCharacters: 2,
@@ -44097,182 +44238,160 @@ function drawTomTomMap() {
 //     // acSearchBox.on("tomtom.searchbox.resultselected", onSearchBoxResult);
 //     document.getElementById("search-panel").append(acSearchBox.getSearchBoxHTML());
 // }
-
-/** search page, search for input from homepage */
-
-
-if ($('#guest-search').length) {
-  var query = $('#guest-search').attr('data-user-query');
-  console.log('SP query: ', query);
-  callTomTomSearch(query);
-}
-/* search page - on click on search, get data from tomtom */
-//TODO: add search via enter key
-
-
-$('#guest-search-btn').on('click', function () {
-  var query = $('.searchbars').val();
-  console.log('HP query', query); //FIXME: change when the actual view is ready
-
-  callTomTomSearch(query);
-});
-/* call on tomtom API */
-
-function callTomTomSearch(query) {
-  _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_1___default.a.services.fuzzySearch({
-    key: "I6GZvq8GU0zPdxy4iJ2eVdkwgejAyjMq",
-    query: query
-  }).go().then(handleResults);
-}
-/* grab starting coordinates */
-
-
-function handleResults(result) {
-  console.log(result);
-
-  if (result) {
-    //get latitude and longitude from the results and combine them to be passed on
-    var longitude = result.results[0].position.lng;
-    var latitude = result.results[0].position.lat;
-    var startingCoordinates = [longitude, latitude];
-    $('#guest-search').attr('data-coordinates-from', startingCoordinates);
-    var radius = 15000;
-    ; //get all houses within a certain radius
-
-    callHousesAPI(startingCoordinates, radius, '');
-  }
-}
-
-;
-/* call the internal API that returns a list of houses */
-
-function callHousesAPI(fromCoordinates, radius, query) {
-  $.ajax({
-    'url': OWN_HOUSES_API_URL + query,
-    'method': 'GET',
-    'success': function success(data) {
-      if (data != '[]') {
-        console.log('data', data); // console.log('id', data.id);
-
-        var previousID = 0;
-        var distanceRef = 0;
-
-        for (var i = 0; i < data.data.length; i++) {
-          var house = data.data[i];
-          var currentID = house.id;
-
-          if (currentID != previousID) {
-            var _ref;
-
-            previousID = currentID;
-            var longitude = house.longitude;
-            var latitude = house.latitude; // console.log('long', house.longitude);
-            // console.log('lat', house.latitude);
-
-            var currentCoordinates = [longitude, latitude];
-            var currentDistance = get2PointsDistance(fromCoordinates, currentCoordinates);
-            console.log('distance: ', currentDistance);
-
-            if ((_ref = currentDistance < radius) !== null && _ref !== void 0 ? _ref : 20) {
-              console.log('visible house: ', house.id);
-              house.distance = currentDistance;
-              var sortedData = data.data.sort(compare);
-              console.log(data.data);
-            }
-          }
-        }
-
-        var previousSortedID = 0;
-
-        for (var _i = 0; _i < sortedData.length; _i++) {
-          var sortedHouse = sortedData[_i];
-          var currentSortedID = sortedHouse.id;
-
-          if (currentSortedID != previousSortedID) {
-            previousSortedID = currentSortedID;
-            var source = $("#house-card").html();
-            var template = Handlebars.compile(source);
-            var context = {
-              image: sortedHouse.image_path,
-              route: "http://localhost:8000/houses/" + sortedHouse.id,
-              title: sortedHouse.title,
-              description: sortedHouse.description,
-              distance: sortedHouse.distance
-            };
-            var html = template(context);
-            $('.houses-grid-results').append(html);
-          }
-        }
-      } else {//WRITE STH LIKE 'NO MATCHES FOR UR SRCH' IN PAGE
-      }
-
-      ;
-    },
-    'error': function error() {
-      console.log('something went wrong');
-    }
-  });
-}
-/* use turf.js to get the distance between two sets of coordinates */
-
-
-function get2PointsDistance(fromCoordinates, toCoordinates) {
-  var from = turf.point(fromCoordinates);
-  var to = turf.point(toCoordinates);
-  var options = {
-    units: 'kilometers'
-  };
-  var distance = turf.distance(from, to, options);
-  console.log('turf distance', distance);
-  return distance;
-}
-/** on change
- * prendo le coordinate dall'input nascosto
- * le passo a callHousesAPI
- * prendere l'input cambiato
- * metterlo come chiave/valore in un oggetto
- * far girare .param per costruire la query
- */
-
-
-var filterQueryObj = {};
-$('.search-filters').on('change', function (e) {
-  var coordinates = $('#guest-search').attr('data-coordinates-from').split(',');
-
-  if ($(this).hasClass('checked')) {
-    $(this).removeClass('checked');
-    delete filterQueryObj[e.target.name];
-    console.log('query DEL obj: ', filterQueryObj);
-    var queryString = '?' + $.param(filterQueryObj);
-    console.log('query -', queryString);
-    callHousesAPI(coordinates, '10000', queryString);
-  } else {
-    $(this).addClass('checked');
-    console.log('changed!', e.target); // let newFilter = e.target.name;
-    // console.log('new filter: ', newFilter);
-
-    filterQueryObj[e.target.name] = 'on';
-    console.log('query ADD obj: ', filterQueryObj);
-
-    var _queryString = '?' + $.param(filterQueryObj);
-
-    console.log('query +', _queryString);
-    callHousesAPI(coordinates, '10000', _queryString);
-  }
-});
-/** sort houses to find the nearest */
-
-function compare(a, b) {
-  if (a.distance < b.distance) {
-    return -1;
-  }
-
-  if (a.distance > b.distance) {
-    return 1;
-  }
-
-  return 0;
-}
+// /** FIRST AJAX ATTEMPT, DISTANCE & SORTING DONE IN JS */
+// function callHousesAPI(fromCoordinates, radius, query) {
+// 	$.ajax({
+// 		'url': OWN_HOUSES_API_URL + query,
+// 		'method': 'GET',
+// 		'data': {
+// 			'rooms': '3',
+// 			'beds': '2',
+// 			'services': '1,6',
+// 		},
+// 		'success': function(data) {
+// 			if (data != '[]') {
+// 				console.log('data', data);
+// 				// console.log('id', data.id);
+// 				let previousID = 0;
+// 				for (let i = 0; i < data.data.length; i++) {
+// 					const house = data.data[i];
+// 					/** make sure you only grab each house once */
+// 					let currentID = house.id;
+// 					if (currentID != previousID) {
+// 						previousID = currentID;
+// 						/** grab coordinates and make them readable for turf.js, then feed them to it */
+// 						let longitude = house.longitude;
+// 						let latitude = house.latitude;
+// 						// console.log('long', house.longitude);
+// 						// console.log('lat', house.latitude);
+// 						let currentCoordinates = [longitude, latitude];
+// 						let currentDistance = get2PointsDistance(fromCoordinates, currentCoordinates);
+// 						console.log('distance: ', currentDistance);
+// 						/** if the current house is within the requested distance, sort houses by distance from starting point */
+// 						if (currentDistance < radius ?? 20) {
+// 							console.log('visible house: ', house.id);
+// 							house.distance = currentDistance;
+// 							var sortedData = data.data.sort(compare);
+// 							console.log(data.data);
+// 						}
+// 					}
+// 				}
+// 				/** once sorted, make sure you only grab the same house once, then print in page through handlebars */
+// 				let previousSortedID = 0;
+// 				for (let i = 0; i < sortedData.length; i++) {
+// 					const sortedHouse = sortedData[i];
+// 					let currentSortedID = sortedHouse.id;
+// 					if (currentSortedID != previousSortedID) {
+// 						previousSortedID = currentSortedID;
+// 					var source = $('.house-card').html();
+// 					var template = Handlebars.compile(source);
+// 					var context = {
+// 						image: sortedHouse.image_path,
+// 						route: 'http://localhost:8000/houses/' + sortedHouse.id,
+// 						title: sortedHouse.title, 
+// 						description: sortedHouse.description,
+// 						distance: sortedHouse.distance,
+// 						id: sortedHouse.id,
+// 					};
+// 					var html = template(context);
+// 					$('.houses-grid-results').append(html);
+// 					}
+// 				}
+// 			} else {
+// 				//WRITE STH LIKE 'NO MATCHES FOR UR SRCH' IN PAGE
+// 			};
+// 		},
+// 		'error': function() {
+// 			console.log('something went wrong');
+// 		}
+// 	})
+// }
+// /** TURF.JS FOR GETTING DISTANCE BETWEEN 2 SETS OF COORDINATES IN JS */
+// /* use turf.js to get the distance between two sets of coordinates */
+// function get2PointsDistance(fromCoordinates, toCoordinates) {
+// 	let from = turf.point(fromCoordinates);
+// 	let to = turf.point(toCoordinates);
+// 	let options = {units: 'kilometers'};
+// 	let distance = turf.distance(from, to, options);
+// 	console.log('turf distance', distance);
+// 	return distance;
+// }
+// 
+//  /** OBJECT SORTING FUNCTION */
+//  function compare( a, b ) {
+// 	if ( a.distance < b.distance ){
+// 	  	return -1;
+// 	}
+// 	if ( a.distance > b.distance ){
+// 	 	return 1;
+// 	}
+// 	return 0;
+// };
+// /** QUERY STRING BUILDER REFERENCE - CAN'T USE THIS!! */
+// var queryStringObject = {};
+// $(".getfilter").on('click', function(){
+// 	var name = $(this).attr('name');
+// 	queryStringObject[name] = [];
+// 	$.each($("input[name='"+$(this).attr('name')+"']:checked"), function(){
+// 		queryStringObject[name].push($(this).val());
+// 	});
+// 	if(queryStringObject[name].length == 0){
+// 		delete queryStringObject[name];
+// 	}
+// 	var queryString = "";
+// 	for (var key in queryStringObject) {
+// 		if(queryString==''){
+// 			queryString +="?"+key+"=";
+// 		} else {
+// 			queryString +="&"+key+"=";
+// 		}
+// 		var queryValue = "";
+// 		for (var i in queryStringObject[key]) {
+// 			if(queryValue==''){
+// 				queryValue += queryStringObject[key][i];
+// 			} else {
+// 				queryValue += "~"+queryStringObject[key][i];
+// 			}
+// 		}
+// 		queryString += queryValue;
+// 	}
+// 	console.log(queryStringObject);
+// 	console.log(queryString);
+// 	if (history.pushState) {
+// 		var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + queryString;
+// 		window.history.pushState({path:newurl},'',newurl);
+// 	}
+// });
+// /**QUERY STRING BUILDER ATTEMPT 1 */
+// /** on change
+//  * prendo le coordinate dall'input nascosto
+//  * le passo a callHousesAPI
+//  * prendere l'input cambiato
+//  * metterlo come chiave/valore in un oggetto
+//  * far girare .param per costruire la query
+//  */
+// let filterQueryObj = {}
+// $('.search-filters').on('change', function(e) {
+// 	let coordinates = $('#guest-search').attr('data-coordinates-from').split(',');
+// 	if ($(this).hasClass('checked')) {
+// 		$(this).removeClass('checked');
+// 		delete filterQueryObj[e.target.name];
+// 		console.log('query DEL obj: ', filterQueryObj);
+// 		let queryString = '?' + $.param(filterQueryObj);
+// 		console.log('query -', queryString);
+// 		callHousesAPI(coordinates, '10000', queryString);
+// 	} else {
+// 		$(this).addClass('checked');
+// 		console.log('changed!', e.target);
+// 		// let newFilter = e.target.name;
+// 		// console.log('new filter: ', newFilter);
+// 		filterQueryObj[e.target.name] = 'on';
+// 		console.log('query ADD obj: ', filterQueryObj);
+// 		let queryString = '?' + $.param(filterQueryObj);
+// 		console.log('query +', queryString);
+// 		callHousesAPI(coordinates, '10000', queryString);
+// 	}
+// 	})
 
 /***/ }),
 
@@ -44307,6 +44426,8 @@ __webpack_require__(/*! ./guest/show */ "./resources/js/guest/show.js");
 __webpack_require__(/*! ./guest/messages */ "./resources/js/guest/messages.js");
 
 __webpack_require__(/*! ./upr/header */ "./resources/js/upr/header.js");
+
+__webpack_require__(/*! ./upr/create-validation */ "./resources/js/upr/create-validation.js");
 
 __webpack_require__(/*! ./upr/adv */ "./resources/js/upr/adv.js");
 
@@ -44417,10 +44538,10 @@ $(document).ready(function () {
       var pallino_corrente = $(
           ".fa-circle.visible"
       );
-        // rimuovo la classe .visible all'img corrente
+       // rimuovo la classe .visible all'img corrente
       img_corrente.removeClass("visible");
       pallino_corrente.removeClass("visible");
-        // intercettare l'immagine successiva
+       // intercettare l'immagine successiva
       var img_precedente = img_corrente.prev(
           "img"
       );
@@ -44440,24 +44561,24 @@ $(document).ready(function () {
           );
       }
   });
-    // intercettare il click sulla classe .next
+   // intercettare il click sulla classe .next
   $("#slider .next").click(function() {
       // intercettare l'immagine con la classe .visible
       var img_corrente = $("img.visible");
       var pallino_corrente = $(
           ".fa-circle.visible"
       );
-        // rimuovo la classe .visible all'img corrente
+       // rimuovo la classe .visible all'img corrente
       img_corrente.removeClass("visible");
       pallino_corrente.removeClass("visible");
-        // intercettare l'immagine successiva
+       // intercettare l'immagine successiva
       var img_successiva = img_corrente.next(
           "img"
       );
       var pallino_successivo = pallino_corrente.next(
           ".fa-circle"
       );
-        // aggiungo la classe .visible a img_successiva
+       // aggiungo la classe .visible a img_successiva
       // Se img_successiva è l'ultima si ricomincia da capo
       if (img_successiva.length != 0) {
           img_successiva.addClass("visible");
@@ -44470,28 +44591,28 @@ $(document).ready(function () {
           );
       }
   });
-    // Click sul bullet per selezionale la slide relativa
+   // Click sul bullet per selezionale la slide relativa
   $(".bullets .fa-circle").click(function() {
       // recupero l'immagine corrente
       var immagine_corrente = $("img.visible");
-        // recupero il pallino corrente
+       // recupero il pallino corrente
       var pallino_corrente = $(
           ".fa-circle.visible"
       );
-        // Elimino la classe visible all'immagine corrente
+       // Elimino la classe visible all'immagine corrente
       immagine_corrente.removeClass("visible");
-        // Elimino la classe visible al pallino corrente
+       // Elimino la classe visible al pallino corrente
       pallino_corrente.removeClass("visible");
-        // Aggiungo la classe visible al pallino su cui l'utente ha cliccato
+       // Aggiungo la classe visible al pallino su cui l'utente ha cliccato
       $(this).addClass("visible");
-        // Recupero l'immagine corrispondente al pallino su cui l'utente ha cliccato
+       // Recupero l'immagine corrispondente al pallino su cui l'utente ha cliccato
       // Recupero la posizione del pallino su cui l'utente ha cliccato
       var posizione = $(this).index();
-        // Recupero l'immagine con la stessa posizione del pallino
+       // Recupero l'immagine con la stessa posizione del pallino
       var nuova_immagine = $(".images img").eq(
           posizione
       );
-        // Aggiungo la classe visible all'immagine recuperata
+       // Aggiungo la classe visible all'immagine recuperata
       nuova_immagine.addClass("visible");
   });
   ***************** */
@@ -44716,6 +44837,52 @@ $(document).ready(function () {
 
 /***/ }),
 
+/***/ "./resources/js/upr/create-validation.js":
+/*!***********************************************!*\
+  !*** ./resources/js/upr/create-validation.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $("#form-create").validate({
+    rules: {
+      title: {
+        required: true
+      },
+      description: {
+        required: true
+      },
+      address: {
+        required: true
+      },
+      cover_image: {
+        required: true
+      },
+      nr_of_rooms: {
+        required: true
+      },
+      nr_of_beds: {
+        required: true
+      },
+      nr_of_bathrooms: {
+        required: true
+      },
+      square_mt: {
+        required: true
+      }
+    },
+    messages: {
+      title: "Please, specify a title",
+      description: {
+        required: "Description needs. Min 50, max 5000 characters."
+      }
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/upr/header.js":
 /*!************************************!*\
   !*** ./resources/js/upr/header.js ***!
@@ -44754,8 +44921,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Esercizi\Nuova cartella\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean_php/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
