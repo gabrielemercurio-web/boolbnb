@@ -7,17 +7,17 @@
                 <div class="overlay"></div>
                 <div class="col-lg-6">
 					{{-- SEARCHBAR --}}
-                    <form action="{{ route('upr.houses.search') }}" method="GET" class="search-house input-group">
-                        <input type="text" class="form-control searchbars" id="upr-search" placeholder="Search..." aria-describedby="searchbar" data-user-query="{{ $userQuery }}" data-search-source="{{ $source }}" data-coordinates-from="">
+                    <form class="search-house input-group">
+                        <input type="text" class="form-control searchbars" id="upr-search" placeholder="Search..." data-user-query="{{ $userQuery }}" data-search-source="{{ $source }}">
                         <div class="input-group-append">
-                            <button class="btn search-btn" type="submit"><i class="fas fa-search" data-placement="searchupr"></i></button>
+                            <button type="button" class="btn search-btn"><i class="fas fa-search" data-placement="searchupr"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
-		{{-- SEZIONE FILTRI --}}
+		{{-- FILTERS --}}
         <div class="row">
             <div id="search-filter" class="">
 
@@ -27,18 +27,18 @@
                     <input type="number" class="filter-box search-filters" name="distance" placeholder="Distance(km)...">
                     @foreach ( $services as $service )
                         <div class="filter-box">
-                            <input type="checkbox" class="search-filters" id="{{ $service->name }}" name="{{ strtolower($service->name) }}">
+                            <input type="checkbox" class="search-filters" value="{{ $service->id) }}" name="services">
                             <label for="">{{ $service->name }}</label>
                         </div>
                     @endforeach
-                    {{-- <button type="submit" value="Submit">Apply Filters</button> --}}
+                    <button type="button" class="search-update-btn">Apply Filters</button>
                 </form>
 
             </div>
         </div>
     </div> {{-- END CONTAINER --}}
 
-                                    {{-- SEZIONE CASE SPONSORIZZATE --}}
+    {{-- ADVERTISED HOMES --}}
 
     <div class="bg-sponsored">
         <div class="container">
@@ -51,24 +51,24 @@
                     </a>
                 @empty
                     <p>Your search returned no results.</p>
-                @endforelse ($houses as $house)
+                @endforelse
             </div>
         </div>
     </div>
 
 
-                                    {{-- SEZIONE RISULTATI RICERCA --}}
+    {{-- SEARCH RESULTS - filled by Handlebars after ajax call to the internal API --}}
     <div class="container">
-        <div class="row houses-grid-results"> {{-- Cards delle Case provenienti da una chiamata AJAX in "search.js" --}}
+        <div class="row houses-grid-results">
 
         </div>
     </div>
 
-                                    {{-- SCRIPT HANDLEBARS --}}
+    {{-- HANDLEBARS --}}
 
-    <script id="house-card" type="text/x-handlebars-template">
+    <script class="house-card-template" type="text/x-handlebars-template">
         <div class="handle-house-card card-upr col-lg-4 col-md-6">
-            <img src="@{{ image }}" alt="house">
+            <img src="{{ asset('storage')}}/@{{image}}" alt="house">
             <div>
                 <a href="@{{ route }}">
                     <h1 class="hbs-title">@{{ title }}</h1>

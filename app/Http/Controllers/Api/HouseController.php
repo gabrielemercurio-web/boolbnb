@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\DB;
 use App\House;
 
 class HouseController extends Controller
@@ -22,24 +20,42 @@ class HouseController extends Controller
 		->where('nr_of_beds', '>=', $request->beds ?? 0);
 		if ($request['services']) {
 			$services = explode(',', $request['services']);
+			/** imperfect solution: the query builder adds an extra comma at the end of
+			 * the services string, which creates an extra array element
+			 * that has to be removed */
+			array_pop($services);
 			foreach ($services as $service) {
 				$query->whereHas('services', function($q) use ($service) {
 					$q->where('services.id', $service);
 				});
 			}
 		}
-			
-		$houses = $query->get();
+		/** list of houses filtered by given parameters (not distance) */
+		$filteredHouses = $query->get();
+		
+		/** only keep the homes located within the requested distance */
+		$matchingHouses = [];
+		$standardRadius = 20000;
+		foreach ($filteredHouses as $house) {
+			$twoPointsDistance = self::getDistance($request['longitude'], $request['latitude'], $house->longitude, $house->latitude);
+			if ($request->distance == null && $twoPointsDistance < $standardRadius) {
+				array_push($matchingHouses, $house);
+			} else if ($twoPointsDistance < $request->distance) {
+				array_push($matchingHouses, $house);
+			}
+		}
+
 		return response()->json([
 			'success' => true,
-			'count' => $houses->count(),
-			'data' => $houses,
+			'count' => count($matchingHouses),
+			'data' => $matchingHouses,
 		]);
+
 
 	}
 
-	/* get distance */
-	public static function vincentyGreatCircleDistance(
+	/* get distance between two sets of coordinates, using the Vincenty formula*/
+	protected static function getDistance(
 			$latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371)
 		{
 			// convert from degrees to radians
