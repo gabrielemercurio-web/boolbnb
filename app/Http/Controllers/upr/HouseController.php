@@ -37,7 +37,9 @@ class HouseController extends Controller
      */
     public function create()
     {
-        return view('upr.houses.create');
+        $services = Service::all();
+
+        return view('upr.houses.create', compact('services'));
     }
 
     /**
@@ -104,8 +106,9 @@ class HouseController extends Controller
     public function edit($id)
     {
         $house = House::find($id);
+        $services = Service::all();
 		if ($house) {
-			return view('upr.houses.edit', compact('house'));
+			return view('upr.houses.edit', compact('house', 'services'));
 		} else {
 			return abort('404');
 		}
