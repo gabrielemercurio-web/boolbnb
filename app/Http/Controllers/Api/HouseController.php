@@ -38,6 +38,7 @@ class HouseController extends Controller
 		$standardRadius = 20000;
 		foreach ($filteredHouses as $house) {
 			$twoPointsDistance = self::getDistance($request['longitude'], $request['latitude'], $house->longitude, $house->latitude);
+			$house->distance = $twoPointsDistance;
 			if ($request->distance == null && $twoPointsDistance < $standardRadius) {
 				array_push($matchingHouses, $house);
 			} else if ($twoPointsDistance < $request->distance) {
@@ -45,13 +46,13 @@ class HouseController extends Controller
 			}
 		}
 
+		usort($matchingHouses, "self::cmp");
+
 		return response()->json([
 			'success' => true,
 			'count' => count($matchingHouses),
 			'data' => $matchingHouses,
 		]);
-
-
 	}
 
 	/* get distance between two sets of coordinates, using the Vincenty formula*/
@@ -72,4 +73,12 @@ class HouseController extends Controller
 			$angle = atan2(sqrt($a), $b);
 			return $angle * $earthRadius;
 		}
+
+	/* order matching houses by distance */
+	protected static function cmp($a, $b) {
+		if ($a->distance == $b->distance) {
+			return 0;
+		}
+		return ($a->distance < $b->distance) ? -1 : 1;
+	}
 }
