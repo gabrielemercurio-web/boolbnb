@@ -56,6 +56,15 @@
 							<label for="house-square_mt">Metri quadrati</label>
 							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt', $house->square_mt) }}">
 						</div>
+
+					</div>
+					{{-- Checkbox services --}}
+					<div class="form-check form-check-inline d-flex justify-content-around">
+						<label for="house-service">Servizi :</label>
+						@foreach ($services as $service)
+							<input class="form-check-input" type="checkbox" id="house-service" value="{{ $service->id }} {{ $service->id == $house->service_id ? 'selected': ''}}">
+							<label class="form-check-label" for="house-service">{{ $service->name }}</label>
+						@endforeach
 					</div>
 					{{-- Hidden values for storing address-related values --}}
                     <div class="form-group">

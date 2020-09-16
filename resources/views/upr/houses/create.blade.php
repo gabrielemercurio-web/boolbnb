@@ -34,7 +34,7 @@
 					</div>
 					<div class="form-group">
 						<label for="house-address" class="house-autosearch" value="{{ old('address')}}">Address</label>
-						
+
 					</div>
 					<div class="form-group">
 						<label for="image">Add image</label>
@@ -57,7 +57,18 @@
 							<label for="house-square_mt">Square meters</label>
 							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
                         </div>
+
                     </div>
+
+										{{-- Checkbox services --}}
+					<div class="form-check form-check-inline d-flex justify-content-around">
+						<label for="house-service">Servizi :</label>
+						@foreach ($services as $service)
+							<input class="form-check-input" type="checkbox" id="house-service" value="{{ $service->id }}">
+							<label class="form-check-label" for="house-service">{{ $service->name }}</label>
+						@endforeach
+					</div>
+
                     {{-- Hidden values for storing address-related values --}}
                     <div class="form-group">
 						<input type="text" name="latitude" value="{{ old('latitude') }}" hidden>
@@ -72,5 +83,5 @@
 
 		</div>
 	</div>
-	
+
 @endsection
