@@ -50,13 +50,15 @@ class HouseController extends Controller
     {
 		$request->validate([
 			'title' => 'required|max:250',
-			'nr_of_rooms' => 'required|integer',
-			'nr_of_beds' => 'required|integer',
-			'nr_of_bathrooms' => 'integer',
-			'square_mt' => 'integer',
+			'nr_of_rooms' => 'required|integer|min:0',
+			'nr_of_beds' => 'required|integer|min:0',
+			'nr_of_bathrooms' => 'integer|min:0',
+			'square_mt' => 'integer|min:1',
 			'address' => 'required',
 			'image_path' => 'image',
 			'description' => 'max:2000',
+			'longitude' => 'digits_between:6,8',
+			'latitude' => 'digits_between:6,7',
 		]);
 
 		//TODO: address manipulation
@@ -120,13 +122,15 @@ class HouseController extends Controller
     {
         $request->validate([
 			'title' => 'required|max:250',
-			'nr_of_rooms' => 'required|integer',
-			'nr_of_beds' => 'required|integer',
-			'nr_of_bathrooms' => 'integer',
-			'square_mt' => 'integer',
+			'nr_of_rooms' => 'required|integer|min:0',
+			'nr_of_beds' => 'required|integer|min:0',
+			'nr_of_bathrooms' => 'integer|min:0',
+			'square_mt' => 'integer|min:1',
 			'address' => 'required',
 			'image_path' => 'image',
 			'description' => 'max:2000',
+			'longitude' => 'digits_between:6,8',
+			'latitude' => 'digits_between:6,7',
 		]);
 
 		//TODO: address manipulation
