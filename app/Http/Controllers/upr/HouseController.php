@@ -59,8 +59,8 @@ class HouseController extends Controller
 			'address' => 'required',
 			'image_path' => 'image',
 			'description' => 'max:2000',
-			'longitude' => 'digits_between:6,8',
-			'latitude' => 'digits_between:6,7',
+			// 'longitude' => 'digits_between:6,8',
+			// 'latitude' => 'digits_between:6,7',
 		]);
 
 		//TODO: address manipulation
@@ -132,8 +132,8 @@ class HouseController extends Controller
 			'address' => 'required',
 			'image_path' => 'image',
 			'description' => 'max:2000',
-			'longitude' => 'digits_between:6,8',
-			'latitude' => 'digits_between:6,7',
+			// 'longitude' => 'digits_between:6,8',
+			// 'latitude' => 'digits_between:6,7',
 		]);
 
 		//TODO: address manipulation
