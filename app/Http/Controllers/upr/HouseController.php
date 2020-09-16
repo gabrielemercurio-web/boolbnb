@@ -70,6 +70,10 @@ class HouseController extends Controller
 		$newHouse->fill($houseData);
 		$newHouse->image_path = Storage::put('uploads', $houseData['cover_image']);
 		$newHouse->save();
+		if (!empty($houseData['services_ids'])) {
+			$newHouse->services()->sync($houseData['services_ids']);
+    	}
+
 		return redirect()->route('upr.houses.index');
 
     }
@@ -136,10 +140,14 @@ class HouseController extends Controller
 			// 'latitude' => 'digits_between:6,7',
 		]);
 
-		//TODO: address manipulation
 		$data = $request->all();
 		$house = House::find($id);
 		$house->update($data);
+		if (!empty($data['services_ids'])) {
+			$house->services()->sync($data['services_ids']);
+    	} else {
+			$house->services()->sync([]);
+		}
 		return redirect()->route('upr.houses.index');
     }
 

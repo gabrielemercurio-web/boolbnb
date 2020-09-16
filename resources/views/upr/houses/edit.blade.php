@@ -49,21 +49,27 @@
 							<input type="number" name="nr_of_beds" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds', $house->nr_of_beds) }}">
 						</div>
 						<div class="form-group">
-							<label for="house-nr_of_bathrooms">Bathroom</label>
+							<label for="house-nr_of_bathrooms">Bathrooms</label>
 							<input type="number" name="nr_of_bathrooms" class="form-control" id="house-nr_of_bathrooms" placeholder="Bathroom" value="{{ old('nr_of_bathrooms', $house->nr_of_bathrooms) }}">
 						</div>
 						<div class="form-group">
-							<label for="house-square_mt">Metri quadrati</label>
+							<label for="house-square_mt">Square meters</label>
 							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt', $house->square_mt) }}">
 						</div>
 
 					</div>
-					{{-- Checkbox services --}}
+					{{-- SERVICES CHECKBOXES --}}
 					<div class="form-check form-check-inline d-flex justify-content-around">
-						<label for="house-service">Servizi :</label>
+						<label for="house-service">Features:</label>
 						@foreach ($services as $service)
-							<input class="form-check-input" type="checkbox" id="house-service" value="{{ $service->id }} {{ $service->id == $house->service_id ? 'selected': ''}}">
-							<label class="form-check-label" for="house-service">{{ $service->name }}</label>
+							<input class="form-check-input" type="checkbox" id="house-services" name="services_ids[]" value="{{ $service->id }}"
+							@if ($errors->any())
+								{{in_array($service->id, old('services_ids', [])) ? 'checked' : ''}}
+							@else
+								{{$house->services->contains($service) ? 'checked' : ''}}	
+							@endif
+							>
+							<label class="form-check-label" for="house-service">{{ ucfirst($service->name) }}</label>
 						@endforeach
 					</div>
 					{{-- Hidden values for storing address-related values --}}
