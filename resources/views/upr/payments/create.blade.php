@@ -24,7 +24,7 @@
                 </div>
                 <div class="information-payments text-center">
                     <p>2 - Inserisci i tuoi dati di pagamento</p>
-                    <form>
+                    {{-- <form>
                     <div class="form-group number-cc">
                         <input type="email" class="form-control" id="number-cc" aria-describedby="emailHelp" placeholder="Numero CC *">
                     </div>
@@ -34,6 +34,14 @@
                     </div>
                         <button type="submit" class= "btn-payments">Paga ora</button>
 
+                    </form> --}}
+                    <form action="{{ route('upr.payments.checkout') }}" id="payment-form" method="post">
+                        @csrf
+                        <div id="dropin-wrapper">
+                            <div id="dropin-container"></div>
+                            <input id="nonce" name="payment_method_nonce" hidden>
+                            <button id="payment-submit" type="submit">Submit payment</button>
+                        </div>
                     </form>
                 </div>
             </div>

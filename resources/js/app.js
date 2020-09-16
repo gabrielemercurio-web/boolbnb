@@ -13,6 +13,7 @@ require('./upr/header');
 require('./upr/create-validation');
 require('./upr/adv');
 require('./_tomtom');
+require('./_braintree');
 require('./hits');
 
 // **** window.Vue = require('vue');

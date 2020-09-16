@@ -5,6 +5,7 @@ namespace App\Http\Controllers\upr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Payment;
+use Braintree;
 
 class PaymentController extends Controller
 {
@@ -35,4 +36,19 @@ class PaymentController extends Controller
 		return redirect()->route('upr.payments.index');
 	}
 
+    public function checkout(Request $request)
+    {
+        $payload = $request->input('payload', false);
+        $nonce = $request->payment_method_nonce;
+
+        $status = Braintree\Transaction::sale([
+	        'amount' => '10.00',
+	        'paymentMethodNonce' => $nonce,
+	        'options' => [
+	           'submitForSettlement' => True
+	        ]
+        ]);
+
+        return response()->json($status);
+    }
 }
