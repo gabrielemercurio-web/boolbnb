@@ -1,35 +1,29 @@
-var button = document.querySelector('#payment-submit');
-  braintree.dropin.create({
+braintree.dropin.create({
     // Insert your tokenization key here
     authorization: 'sandbox_w3dfnx46_6hqm567rbwp58h5h',
     container: '#dropin-container'
-  }, function (createErr, instance) {
-    button.addEventListener('click', function () {
-      instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-        // When the user clicks on the 'Submit payment' button this code will send the
-        // encrypted payment information in a variable called a payment method nonce
-        $.ajax({
-          type: 'POST',
-          url: 'http:localhost:8000/upr/payments/checkout',
-          data: {'paymentMethodNonce': payload.nonce}
-        }).done(function(result) {
-          // Tear down the Drop-in UI
-          instance.teardown(function (teardownErr) {
-            if (teardownErr) {
-              console.error('Could not tear down Drop-in UI!');
-            } else {
-              console.info('Drop-in UI has been torn down!');
-              // Remove the 'Submit payment' button
-              $('#payment-submit').remove();
-            }
-          });
-          if (result.success) {
-            $('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
-          } else {
-            console.log(result);
-            $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
-          }
+}, function (createErr, instance) {
+    $('#payment-submit').on('click', function () {
+        instance.requestPaymentMethod(function (err, payload) {
+            let amount = $("input[name='payment_amount']").val();
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8000/upr/payments/checkout',
+                data: {payload, amount: amount},
+                success: function(response) {
+                    if (response.success) {
+                        alert('Payment successfull!');
+                    } else {
+                        alert('Payment failed');
+                    }
+                },
+                dataType: 'json'
+              });
         });
-      });
     });
-  });
+});
+
+$('.advert-type').on('click', function(e) {
+    var adv_amount = $(e.target).val();
+    $('#payment-amount').val(adv_amount);
+})

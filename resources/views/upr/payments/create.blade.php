@@ -5,21 +5,19 @@
         <div class="container">
             <div class="row">
                 <div class="sponsor-title">
-                    <h1>Sponsor Apartment 1</h1>
+                    <h1>Sponsor Apartment {{ $house->id }}</h1>
                     <hr>
                 </div>
                 <div class="sponsor-plane text-center">
                     <p>1 - Scegli il piano di sponsorizzazione</p>
                     <div class="sponsor-price">
-                        <div class="price active">
-                            <button>2,99€ per 24 ore di sponsorizzazione</button>
-                        </div>
-                        <div class="price second">
-                            <button>5,99€ per 72 ore di sponsorizzazione</button>
-                        </div>
-                        <div class="price third">
-                            <button>9,99€ per 144 ore di sponsorizzazione</button>
-                        </div>
+                        @foreach ($adverts as $advert)
+                            <div class="price">
+                                <button class="advert-type" value="{{ $advert->price }}">
+                                    {{ $advert->price }}€ per {{ $advert->duration_in_days * 24 }} ore di sponsorizzazione
+                                </button>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="information-payments text-center">
@@ -35,14 +33,26 @@
                         <button type="submit" class= "btn-payments">Paga ora</button>
 
                     </form> --}}
-                    <form action="{{ route('upr.payments.checkout') }}" id="payment-form" method="post">
-                        @csrf
-                        <div id="dropin-wrapper">
-                            <div id="dropin-container"></div>
-                            <input id="nonce" name="payment_method_nonce" hidden>
-                            <button id="payment-submit" type="submit">Submit payment</button>
+                    {{-- @if (session('success_message'))
+                        <div>
+                            {{ session('success_message') }}
                         </div>
-                    </form>
+                    @endif
+
+                    @if (count($errors) > 0)
+                        <div>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif --}}
+                    <input id="payment-amount" name="payment_amount" hidden>
+                    <div id="dropin-wrapper">
+                        <div id="dropin-container"></div>
+                        <button id="payment-submit" type="submit">Submit payment</button>
+                    </div>
                 </div>
             </div>
         </div>

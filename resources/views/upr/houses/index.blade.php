@@ -25,7 +25,7 @@
                                 @method('DELETE')
                                   <button  id="btnDelete" type="submit" onclick= "return confirm('Are you sure you want to delete this?')" class="btn btn-warning btn-lg btn-white">Delete</button>
                             </form>
-                            <a href="{{ route('upr.payments.create') }}" class="btn-blue">PROMOTE</a>
+                            <a href="{{ route('upr.payments.create', ['house' => $house->id]) }}" class="btn-blue">PROMOTE</a>
                             <a href="{{ route('upr.hits.index', ['house' => $house->id]) }}" class="btn-white">STATS</a>
                             @if($house->visible == true)
                                 <a href="{{ route('upr.houses.update', ['house' => $house->id]) }}" class="btn-white">HIDE HOME</a>

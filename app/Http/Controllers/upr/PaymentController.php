@@ -5,7 +5,9 @@ namespace App\Http\Controllers\upr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Payment;
-use Braintree;
+use App\House;
+use App\Advert;
+use Braintree\Transaction as Braintree_Transaction;
 
 class PaymentController extends Controller
 {
@@ -25,9 +27,11 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('upr.payments.create');
+        $house = House::find($id);
+        $adverts = Advert::all();
+        return view('upr.payments.create', compact('house', 'adverts'));
 	}
 	
 	public function store()
@@ -36,19 +40,19 @@ class PaymentController extends Controller
 		return redirect()->route('upr.payments.index');
 	}
 
-    public function checkout(Request $request)
-    {
+    public function checkout(Request $request) {
+        $amount = $request->amount;
         $payload = $request->input('payload', false);
-        $nonce = $request->payment_method_nonce;
+        $nonce = $payload['nonce'];
 
-        $status = Braintree\Transaction::sale([
-	        'amount' => '10.00',
-	        'paymentMethodNonce' => $nonce,
-	        'options' => [
-	           'submitForSettlement' => True
-	        ]
+        $status = Braintree_Transaction::sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+            'submitForSettlement' => True
+            ]
         ]);
-
+        
         return response()->json($status);
     }
 }
