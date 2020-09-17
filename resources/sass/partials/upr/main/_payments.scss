@@ -133,7 +133,10 @@
 }
 /*** for iphone 5/SE ***/
 @media screen and (max-width: 320px){
+    .sponsor-title{
+        margin-top: -40px;
+    }
     .information-payments p{
-        padding-top: 80px;
+        padding-top: 20px;
     }
 }
