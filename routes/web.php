@@ -30,7 +30,7 @@ Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(
     Route::resource('/houses', 'HouseController');
 	Route::get('/payments', 'PaymentController@index')->name('payments.index');
     Route::get('/payments/create/{house}', 'PaymentController@create')->name('payments.create');
-    Route::post('/payments/checkout', 'PaymentController@checkout')->name('payments.checkout');
+    Route::post('/payments/checkout/{house}', 'PaymentController@checkout')->name('payments.checkout');
     Route::post('/payments', 'PaymentController@store')->name('payments.store');
     Route::get('/messages', 'MessageController@index')->name('messages.index');
     Route::post('/sendmessage', 'MessageController@store')->name('messages.store');

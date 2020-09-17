@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Payment;
 use App\House;
 use App\Advert;
-use Illuminate\Support\Facades\Auth;
 use Braintree\Transaction as Braintree_Transaction;
 
 class PaymentController extends Controller
@@ -41,7 +40,7 @@ class PaymentController extends Controller
 		return redirect()->route('upr.payments.index');
 	}
 
-    public function checkout(Request $request) {
+    public function checkout(Request $request, $id) {
         $amount = $request->payment_amount;
         $nonce = $request->payment_method_nonce;
 
@@ -54,7 +53,23 @@ class PaymentController extends Controller
         ]);
 
         if ($status->success) {
-            $transaction = $status->transaction;
+			$transaction = $status->transaction;
+			$newPayment = new Payment();
+			switch ($amount) {
+				case '2,99':
+					$newPayment->advert_id = 1;
+					break;
+				case '5.99':
+					$newPayment->advert_id = 2;
+					break;
+				case '9.99':
+					$newPayment->advert_id = 3;
+					break;
+			}
+			$newPayment->house_id = $id;
+			$newPayment->status = $transaction->status;
+			$newPayment->payment_id = $transaction->id;
+			$newPayment->save();
     
             return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
         } else {

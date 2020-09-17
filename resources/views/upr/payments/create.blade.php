@@ -48,7 +48,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('upr.payments.checkout') }}" method="POST" id="payment-form">
+                    <form action="{{ route('upr.payments.checkout', ['house' => $house->id]) }}" method="POST" id="payment-form">
                         @csrf
                         <input id="payment-amount" name="payment_amount" hidden>
                         <input id="nonce" name="payment_method_nonce" hidden>
