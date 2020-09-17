@@ -33,7 +33,7 @@
                         <button type="submit" class= "btn-payments">Paga ora</button>
 
                     </form> --}}
-                    {{-- @if (session('success_message'))
+                    @if (session('success_message'))
                         <div>
                             {{ session('success_message') }}
                         </div>
@@ -47,12 +47,16 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif --}}
-                    <input id="payment-amount" name="payment_amount" hidden>
-                    <div id="dropin-wrapper">
-                        <div id="dropin-container"></div>
-                        <button id="payment-submit" type="submit">Submit payment</button>
-                    </div>
+                    @endif
+                    <form action="{{ route('upr.payments.checkout') }}" method="POST" id="payment-form">
+                        @csrf
+                        <input id="payment-amount" name="payment_amount" hidden>
+                        <input id="nonce" name="payment_method_nonce" hidden>
+                        <div id="dropin-wrapper">
+                            <div id="dropin-container"></div>
+                            <button id="payment-submit" type="submit">Submit payment</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

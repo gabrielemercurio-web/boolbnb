@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Payment;
 use App\House;
 use App\Advert;
+use Illuminate\Support\Facades\Auth;
 use Braintree\Transaction as Braintree_Transaction;
 
 class PaymentController extends Controller
@@ -41,18 +42,29 @@ class PaymentController extends Controller
 	}
 
     public function checkout(Request $request) {
-        $amount = $request->amount;
-        $payload = $request->input('payload', false);
-        $nonce = $payload['nonce'];
+        $amount = $request->payment_amount;
+        $nonce = $request->payment_method_nonce;
 
         $status = Braintree_Transaction::sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
             'options' => [
-            'submitForSettlement' => True
+                'submitForSettlement' => true
             ]
         ]);
-        
-        return response()->json($status);
+
+        if ($status->success) {
+            $transaction = $status->transaction;
+    
+            return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
+        } else {
+            $errorString = "";
+    
+            foreach ($status->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+
+            return back()->withErrors('An error occurred with the message: ' . $status->message);
+        }
     }
 }

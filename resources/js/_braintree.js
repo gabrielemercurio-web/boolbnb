@@ -1,24 +1,25 @@
+var form = document.querySelector('#payment-form');
 braintree.dropin.create({
     // Insert your tokenization key here
     authorization: 'sandbox_w3dfnx46_6hqm567rbwp58h5h',
     container: '#dropin-container'
 }, function (createErr, instance) {
-    $('#payment-submit').on('click', function () {
+    if (createErr) {
+        console.log('Create Error', createErr);
+        return;
+    }
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
         instance.requestPaymentMethod(function (err, payload) {
-            let amount = $("input[name='payment_amount']").val();
-            $.ajax({
-                type: 'GET',
-                url: 'http://localhost:8000/upr/payments/checkout',
-                data: {payload, amount: amount},
-                success: function(response) {
-                    if (response.success) {
-                        alert('Payment successfull!');
-                    } else {
-                        alert('Payment failed');
-                    }
-                },
-                dataType: 'json'
-              });
+            if (err) {
+                console.log('Request Payment Method Error', err);
+                return;
+            }
+
+            $('#nonce').val(payload.nonce);
+
+            form.submit();       
         });
     });
 });

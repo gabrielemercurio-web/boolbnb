@@ -32,7 +32,7 @@
     display: inline-block;
 }
 
-.price button{
+.price button, #payment-submit {
     color: #22B4CE;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -43,18 +43,19 @@
     font-weight: bold;
     outline: none;
     border: 1px solid #22B4CE;
+    margin: 7px 0;
 }
+
 .active button{
     background-color: #22B4CE;
     color: white;
 }
-.third button{
+
+.advert-type {
+    width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 10px;
-}
-.second, .third{
-    padding-top: 19px;
 }
 
 .information-payments{
