@@ -9,6 +9,23 @@
                     <hr>
                 </div>
                 <div class="sponsor-plane text-center">
+                    {{-- PAYMENT MESSAGES  --}}
+                    @if (session('success_message'))
+                        <div>
+                            {{ session('success_message') }}
+                        </div>
+                    @endif
+
+                    @if (count($errors) > 0)
+                        <div>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                        {{-- END PAYMENT MESSAGES --}}
                     <p>1 - Scegli il piano di sponsorizzazione</p>
                     <div class="sponsor-price">
                         @foreach ($adverts as $advert)
@@ -33,21 +50,6 @@
                         <button type="submit" class= "btn-payments">Paga ora</button>
 
                     </form> --}}
-                    @if (session('success_message'))
-                        <div>
-                            {{ session('success_message') }}
-                        </div>
-                    @endif
-
-                    @if (count($errors) > 0)
-                        <div>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <form action="{{ route('upr.payments.checkout', ['house' => $house->id]) }}" method="POST" id="payment-form">
                         @csrf
                         <input id="payment-amount" name="payment_amount" hidden>

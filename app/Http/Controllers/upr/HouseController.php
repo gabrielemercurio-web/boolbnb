@@ -196,8 +196,8 @@ class HouseController extends Controller
 		foreach ($advertisedHomes as $advertisedHome) {
 			if ($advertisedHome->advertised == 1) {
                 $advertisedId = $advertisedHome->house_id;
-                $house = House::find($advertisedId);
-                $house->update(['advertised' => 0]);
+                $advertHouse = House::find($advertisedId);
+                $advertHouse->update(['advertised' => 0]);
 			}
 		}
 	

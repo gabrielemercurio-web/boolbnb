@@ -77,7 +77,7 @@ class PaymentController extends Controller
 			$newPayment->payment_id = $transaction->id;
 			$newPayment->save();
     
-            return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
+            return back()->with('success_message', 'Transaction successful.');
         } else {
             $errorString = "";
     
