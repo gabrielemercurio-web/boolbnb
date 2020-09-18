@@ -17929,6 +17929,14 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
   .description-message {
     display: none;
   }
+
+  .hidden {
+    display: block;
+    color: #22B4CE;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+  }
 }
 @media screen and (min-width: 361px) and (max-width: 991px) {
   .message p {
@@ -17942,10 +17950,26 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
   .description-message {
     display: none;
   }
+
+  .hidden {
+    display: block;
+    color: #22B4CE;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+  }
 }
 @media screen and (max-width: 320px) {
   .message {
     width: 280px;
+  }
+
+  .hidden {
+    display: block;
+    color: #22B4CE;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
   }
 }
 div.my-home-title h1 {
