@@ -1,10 +1,18 @@
+
 header {
-    width:100%;
+    width:100vw;
     height: 90px;
     background-color: $main_color;
+    position: relative;
+
+    a.open-hamburger-menu{
+        display: none;
+    }
 
     .container {
         height: 100%;
+        display: flex;
+        align-items: center;
 
         .row {
             width: 100%;
@@ -34,78 +42,177 @@ header {
                 flex-grow: 0;
             }
 
-            .modal-menu {
-                position: absolute;
-                width: 100%;
-                top: 90px;
-                z-index: 10;
+            .nav-right {
 
-                ul {
-                    background-color: $main_color;
-                    width: auto;
-                    height: 120px;
+                margin-right: -30px; // per allineare il menù al container
 
-                    .header-logout {
-
-                        @include my-button(
-                            transparent,
-                            #fff,
-                            transparent,
-                            transparent,
-                            #fff
-                        );
-
-                        &:hover a {
-                            color: #fff;
-                        }
-                    }
-                }
-            }
-
-
-            ul{
-                width: 350px;
-
-                li {
-
+                ul.nav-desktop {
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-between;
                     align-items: center;
 
-                    a {
-                        font-weight: 700;
-                        font-size: 0.9rem;
-                        color: #fff;
-                        text-transform: uppercase;
-                        padding: 0px;
+                    min-width: 220px;
+                    margin-top: 0; // This is an edit for browser correction
+                    margin-bottom: 0; // This is an edit for browser correction
+                    padding-inline-start: 0px; // This is an edit for browser correction
+
+                    li.nav-item {
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+
+                        a {
+                            font-weight: 700;
+                            font-size: 0.9rem;
+                            color: #fff;
+                            text-transform: uppercase;
+                            padding: 5px 30px;
+                        }
                     }
-                }
-
-                .header-logout,
-                .header-login,
-                .header-signup {
-
-                    padding: 5px 20px;
-                    cursor: pointer;
-
-                    @include my-button(
-                        #fff,
-                        #fff,
-                        transparent,
-                        #fff,
-                        $main_color
-                    );
-
-                    &:hover a {
-                        color: $main_color;
-                    }
-                }
-
-                .header-login {
-                    margin-right: 30px;
                 }
             }
         }
     }
 }
 
+
+
+.header-logout,
+.header-login,
+.header-signup {
+
+    width: 130px;
+    cursor: pointer;
+
+    @include my-button(
+        #fff,
+        #fff,
+        transparent,
+        #fff,
+        $main_color
+    );
+
+    padding: 0px;
+}
+
+header .container nav .nav-right ul.nav-desktop li.header-logout:hover a,
+header .container nav .nav-right ul.nav-desktop li.header-login:hover a,
+header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
+    color: $main_color;
+}
+
+.header-login,
+.menu-messages {
+    margin-right: 40px;
+}
+
+.menu-my-home:hover::before,
+.menu-messages:hover::before {
+    content:'';
+    height: 2px;
+    bottom: 0px;
+    background-color: #fff;
+    position: absolute;
+    animation-name: hover-nav-item;
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    z-index: 1000;
+}
+
+@keyframes hover-nav-item {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 50px;
+    }
+}
+
+.hamburger-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $main_color;
+    padding: 20px;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+
+    & li {
+        margin: 15px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.header-logout a:hover,
+        &.header-login a:hover,
+        &.header-signup a:hover {
+            color: $main_color;
+        }
+    }
+
+    & li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 5px 30px;
+    }
+
+    .navbar-brand {
+        margin-right: 0px;
+
+        img {
+            margin-bottom: 100px;
+            width: 130px;
+        }
+    }
+}
+
+.close-hamburger-menu {
+    position: fixed;
+    top: 0px;
+    right: 20px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.my-active {
+    display: flex;
+}
+
+
+
+@media screen and (max-width: 992px) {
+
+    header .container nav .nav-right ul.nav-desktop {
+        display: none;
+    }
+
+    header a.open-hamburger-menu {
+        display: block;
+        cursor: pointer;
+
+        & .fas {
+            color: #fff;
+            padding: 10px;
+            background-color: #0001;
+        }
+    }
+
+    header .container nav .nav-right ul:not(.hamburger-menu) {
+        justify-content: flex-end;
+        min-width: 50px;
+    }
+
+}

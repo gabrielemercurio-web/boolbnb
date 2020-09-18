@@ -2,14 +2,14 @@
     font-size: 0.8rem;
     text-transform: uppercase;
     font-weight: 700;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     border-color: $border-color;
     color: $font-color;
     border-radius: 0px;
     padding: 5px 20px;
     background-color: $bg-color;
-    transition: 200ms;
+    transition: 300ms;
 
     &:hover {
         background-color: $hover-bg-color;

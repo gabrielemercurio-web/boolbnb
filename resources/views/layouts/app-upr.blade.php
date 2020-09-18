@@ -10,14 +10,20 @@
 
     {{-- TOM-TOM --}}
 	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-	
+
+    {{-- JQUERY VALIDATION --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    {{-- <script src='https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js'></script> --}}
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-	
+
     {{-- CHARTJS --}}
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-	
+
     {{-- MOMENTJS --}}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 	{{-- BRAINTREE --}}
@@ -31,52 +37,134 @@
     <div id="app">
         <header>
             <div class="container">
+
                 <div class="row">
-                    <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
+                    <nav class="navbar nav d-flex justify-content-between align-items-center">
                         {{-- LOGO --}}
-                        <a class="navbar-brand" href="{{ route('upr.houses.homepage') }}">
+                        <a class="navbar-brand" href="{{ route('guest.homepage') }}">
                             <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="Boolbnb-logo">
                         </a>
-                        {{-- BOTTONE MENU CHE APPARE NEL MOBILE --}}
-                        <button class="nav-button-menu navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav d-flex justify-content-between">
+                        <div class="nav-right">
 
-                                <li class="nav-item active">
-                                    <a href="{{ route('upr.houses.index') }}">My Homes<span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('upr.messages.index') }}">Messages</a>
-                                </li>
-                                {{-- LOGOUT Copiato e incollato dallo scaffolding Auth di Laravel --}}
-                                <li class="nav-item">
-                                    <a class="header-logout" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                            <!-- Right Side Of Navbar -->
+                            <ul class="nav-desktop">
+                                <!-- Authentication Links -->
+                                @guest
+                            {{-- GUEST DESKTOP --}}
+                                    <li class="nav-item header-login">
+                                        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item header-signup">
+                                            <a href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                                        </li>
+                                    @endif
+                            {{-- END GUEST DESKTOP --}}
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                @else
 
-                                </li>
+                            {{-- UPR DESKTOP --}}
+                                    <li class="nav-item active menu-my-home">
+                                        <a href="{{ route('upr.houses.index') }}"> MY HOMES </a>
+                                    </li>
+
+                                    <li class="nav-item menu-messages">
+                                        <a href="{{ route('upr.messages.index') }}"> MESSAGES </a>
+                                    </li>
+                            {{-- LOGOUT Copiato e incollato dallo scaffolding Auth di Laravel --}}
+                                    <li class="nav-item header-logout">
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                            {{-- END UPR DESKTOP --}}
+
+                                @endguest
 
                             </ul>
-                        </div>
+
+
+
+                            <a class="open-hamburger-menu" href="#">
+                                <i class="fas fa-bars"></i> {{-- * * * ICONA PER HAMBURGER MENU * * * --}}
+                            </a>
+
+{{-- HAMBUNGER MENU --}}
+                            <ul class="hamburger-menu">
+
+                            {{-- LOGO --}}
+                                <li>
+                                    <a class="navbar-brand" href="{{ route('guest.homepage') }}">
+                                        <img src="{{ asset('img/logo-boolbnb.svg') }}" alt="Boolbnb-logo">
+                                    </a>
+                                </li>
+
+                            {{-- HEADER GUEST MOBILE --}}
+                                @guest
+                                    <li class="menu-item header-login">
+                                        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="menu-item header-signup">
+                                            <a href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                                        </li>
+                                    @endif
+                            {{-- END HEADER GUEST MOBILE --}}
+
+                                    <li class="close-hamburger-menu">
+                                        <i class="fas fa-times"></i> {{-- * * * ICONA "X" PER CHIUDERE HAMBURGER MENU * * * --}}
+                                    </li>
+
+                                @else
+
+                                {{-- HEADER UPR MOBILE --}}
+                                    <li class="nav-item active menu-my-home">
+                                        <a href="{{ route('upr.houses.index') }}"> MY HOMES </a>
+                                    </li>
+
+                                    <li class="nav-item menu-messages">
+                                        <a href="{{ route('upr.messages.index') }}"> MESSAGES </a>
+                                    </li>
+                                {{-- LOGOUT Copiato e incollato dallo scaffolding Auth di Laravel --}}
+                                    <li class="nav-item header-logout">
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                {{-- END HEADER UPR MOBILE --}}
+
+                                    <li class="close-hamburger-menu">
+                                        <i class="fas fa-times"></i> {{-- * * * ICONA "X" PER CHIUDERE HAMBURGER MENU * * * --}}
+                                    </li>
+
+                                @endguest
+                            </ul>
+
+                        </div> {{-- END NAV-RIGHT --}}
                     </nav>
-			    </div>
-            </div>
-		</header>
+                </div> {{-- END MY-ROW --}}
+            </div> {{-- END CONTAINER --}}
+        </header>
 
         <main class="py-4">
             @yield('content')
         </main>
 
         @include('partials.footer.footer')
+
     </div>
 </body>
 </html>

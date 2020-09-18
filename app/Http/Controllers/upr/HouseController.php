@@ -41,7 +41,9 @@ class HouseController extends Controller
      */
     public function create()
     {
-        return view('upr.houses.create');
+        $services = Service::all();
+
+        return view('upr.houses.create', compact('services'));
     }
 
     /**
@@ -61,8 +63,8 @@ class HouseController extends Controller
 			'address' => 'required',
 			'image_path' => 'image',
 			'description' => 'max:2000',
-			'longitude' => 'digits_between:6,8',
-			'latitude' => 'digits_between:6,7',
+			// 'longitude' => 'digits_between:6,8',
+			// 'latitude' => 'digits_between:6,7',
 		]);
 
 		//TODO: address manipulation
@@ -72,6 +74,10 @@ class HouseController extends Controller
 		$newHouse->fill($houseData);
 		$newHouse->image_path = Storage::put('uploads', $houseData['cover_image']);
 		$newHouse->save();
+		if (!empty($houseData['services_ids'])) {
+			$newHouse->services()->sync($houseData['services_ids']);
+    	}
+
 		return redirect()->route('upr.houses.index');
 
     }
@@ -108,8 +114,9 @@ class HouseController extends Controller
     public function edit($id)
     {
         $house = House::find($id);
+        $services = Service::all();
 		if ($house) {
-			return view('upr.houses.edit', compact('house'));
+			return view('upr.houses.edit', compact('house', 'services'));
 		} else {
 			return abort('404');
 		}
@@ -135,10 +142,14 @@ class HouseController extends Controller
 			'description' => 'max:2000',
 		]);
 
-		//TODO: address manipulation
 		$data = $request->all();
 		$house = House::find($id);
 		$house->update($data);
+		if (!empty($data['services_ids'])) {
+			$house->services()->sync($data['services_ids']);
+    	} else {
+			$house->services()->sync([]);
+		}
 		return redirect()->route('upr.houses.index');
     }
 
