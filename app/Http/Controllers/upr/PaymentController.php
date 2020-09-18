@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Payment;
 use App\House;
 use App\Advert;
-use Braintree\Transaction as Braintree_Transaction;
+use Illuminate\Support\Facades\Auth;
+use Braintree\Transaction as Transaction;
 
 class PaymentController extends Controller
 {
@@ -44,19 +45,24 @@ class PaymentController extends Controller
         $amount = $request->payment_amount;
         $nonce = $request->payment_method_nonce;
 
-        $status = Braintree_Transaction::sale([
+        $status = Transaction::sale([
             'amount' => $amount,
-            'paymentMethodNonce' => $nonce,
+			'paymentMethodNonce' => $nonce,
+			'customer' => [
+				'firstName' => Auth::user()->first_name,
+				'lastName' => Auth::user()->last_name,
+				'email' => Auth::user()->email,
+			],
             'options' => [
                 'submitForSettlement' => true
-            ]
-        ]);
+			]
+		]);
 
         if ($status->success) {
 			$transaction = $status->transaction;
 			$newPayment = new Payment();
 			switch ($amount) {
-				case '2,99':
+				case '2.99':
 					$newPayment->advert_id = 1;
 					break;
 				case '5.99':

@@ -5,11 +5,15 @@ namespace App\Http\Controllers\upr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\House;
+use App\Payment;
 use App\Service;
 use App\Hit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\support\facades\Storage;
+use Braintree\Transaction as Transaction;
+use Braintree\TransactionSearch as TransactionSearch;
+use Illuminate\Support\Carbon;
 
 class HouseController extends Controller
 {
@@ -129,8 +133,6 @@ class HouseController extends Controller
 			'address' => 'required',
 			'image_path' => 'image',
 			'description' => 'max:2000',
-			'longitude' => 'digits_between:6,8',
-			'latitude' => 'digits_between:6,7',
 		]);
 
 		//TODO: address manipulation
@@ -154,8 +156,44 @@ class HouseController extends Controller
 	}
 
 	public function homepage() {
-		$houses = House::where('advertised', true)->get();
-		return view('upr.houses.homepage', compact('houses'));
+		$payments = Payment::where('status', '=', 'submitted_for_settlement')->get();
+		foreach ($payments as $payment) {
+			$transaction = Transaction::find($payment->payment_id);
+			
+			$payment->update(['status' => $transaction->status]);
+			if ($payment->status == 'settled') {
+				// var_dump("I'm in!");
+				$payment->house->update(['advertised' => 1]);
+				// var_dump($payment->house);
+				$payment->update(['starting_datetime' => Carbon::now()]);
+				switch ($payment->advert_id) {
+					case 1:
+						$payment->update(['expiration_datetime' => Carbon::now()->addDays(1)]);
+						break;
+					case 2:
+						$payment->update(['expiration_datetime' => Carbon::now()->addDays(3)]);
+						break;
+					case 3:
+						$payment->update(['expiration_datetime' => Carbon::now()->addDays(6)]);
+						break;
+				}
+			}
+		}
+
+		$advertisedHomes = House::where('advertised', 1)->get();
+		foreach ($advertisedHomes as $advertisedHouse) {
+			foreach ($advertisedHouse->payments as $payment) {
+				if ($payment->expiration_datetime < Carbon::now()) {
+					$payment->house->update(['advertised' => 0]);
+				}
+			}
+		}
+		
+	
+		$houses = House::where('advertised', true)
+			->where('visible', 1)
+			->get();
+		return view('upr.houses.homepage', compact('houses', 'payments'));
     }
 
     public function toggleVisibility($id) {
