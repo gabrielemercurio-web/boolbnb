@@ -7,6 +7,7 @@ import "jquery";
 import "jquery-validation";
 import "bootstrap";
 require('./bootstrap');
+require('./filters_search');
 require('./guest/show');
 require('./guest/messages');
 require('./upr/header');
