@@ -44039,6 +44039,44 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/_braintree.js":
+/*!************************************!*\
+  !*** ./resources/js/_braintree.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var form = document.querySelector('#payment-form');
+braintree.dropin.create({
+  // Insert your tokenization key here
+  authorization: 'sandbox_w3dfnx46_6hqm567rbwp58h5h',
+  container: '#dropin-container'
+}, function (createErr, instance) {
+  if (createErr) {
+    console.log('Create Error', createErr);
+    return;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    instance.requestPaymentMethod(function (err, payload) {
+      if (err) {
+        console.log('Request Payment Method Error', err);
+        return;
+      }
+
+      $('#nonce').val(payload.nonce);
+      form.submit();
+    });
+  });
+});
+$('.advert-type').on('click', function (e) {
+  var adv_amount = $(e.target).val();
+  $('#payment-amount').val(adv_amount);
+});
+
+/***/ }),
+
 /***/ "./resources/js/_tomtom.js":
 /*!*********************************!*\
   !*** ./resources/js/_tomtom.js ***!
@@ -44303,6 +44341,8 @@ __webpack_require__(/*! ./upr/adv */ "./resources/js/upr/adv.js");
 
 __webpack_require__(/*! ./_tomtom */ "./resources/js/_tomtom.js");
 
+__webpack_require__(/*! ./_braintree */ "./resources/js/_braintree.js");
+
 __webpack_require__(/*! ./hits */ "./resources/js/hits.js"); // **** window.Vue = require('vue');
 
 /**
@@ -44383,7 +44423,7 @@ $(document).ready(function () {
   $('.message').click(function () {
     var indice_contatto = $(this).index();
     $('.description.active').removeClass('active');
-    $('.description').eq(indice_contatto).addClass('active');
+    $('.description').eq(indice_contatto).addClass('active hidden');
     $('.message.visible').removeClass('visible');
     $('.message').eq(indice_contatto).addClass('visible');
   });
@@ -44697,9 +44737,7 @@ function printBarChart(object) {
 
 $(document).ready(function () {
   $('.price').click(function () {
-    console.log('click');
     var indice_contatto = $(this).index();
-    console.log(indice_contatto);
     $('.price.active').removeClass('active');
     $('.price').eq(indice_contatto).addClass('active');
   });
@@ -44761,13 +44799,20 @@ $(document).ready(function () {
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  $('nav .nav-button-menu').click(function () {
-    // $('nav div').toggleClass('modal-menu');
-    if ($('nav div').hasClass('modal-menu')) {
-      $('nav div').removeClass('modal-menu');
-    } else {
-      $('nav div').addClass('modal-menu');
-    }
+  // *** Hamburger Menu OPEN e CLOSE + LINK
+  // Cliccando sul menu hamburger, si attiva il menu modale e
+  // vengono nascoste le sezioni della pagina per evitare che si possa 
+  // continuare a scrollare verso il footer con il menu modale attivo
+  // e così evitare conseguenti errori e bug di visualizzazione
+  $(".open-hamburger-menu").click(function () {
+    $("header .container nav .nav-right ul.hamburger-menu").addClass("my-active");
+    $('.nav-brand, main, footer').hide();
+  }); // Cliccando sulle voci di menu e sulla "X", scompare il menu modale 
+  // e riappaiono le sezioni della pagina nascoste precedentemente
+
+  $(".close-hamburger-menu, .hamburger-menu .menu-item").click(function () {
+    $('.nav-brand, main, footer').show();
+    $("header .container nav .nav-right ul.hamburger-menu").removeClass("my-active");
   });
 });
 

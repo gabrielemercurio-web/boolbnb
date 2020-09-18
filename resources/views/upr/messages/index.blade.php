@@ -14,16 +14,16 @@
                             <div class="message @if ($loop->first) visible @endif">
                                 <h2 class="hidden">Apartment {{ $message->house_id }}</h2>
                                 <a href="mailto:{{ $message->sender_email }}">{{ $message->sender_email }}</a>
-                                <p>{{ $message->message }}</p>
+                                <p class="transition">{{ $message->message }} </p>
                                 <div class="time">
                                     <span>{!! htmlspecialchars_decode(date('j<\s\up>S</\s\up> F Y h:i A', strtotime($message->created_at))) !!}</span>
                                 </div>
                             </div>
-                        @empty 
+                        @empty
                             <p>There are no messages available in the inbox.</p>
                         @endforelse
                     </div>
-                   
+
                 <div class="description-message col-lg-7">
                     @foreach ($messages as $message)
                         <div class="description @if ($loop->first) active @endif">

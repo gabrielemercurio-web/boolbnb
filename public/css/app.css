@@ -16971,7 +16971,8 @@ a:hover {
   color: #111;
   text-decoration: none;
   cursor: pointer;
-  transform: scale(1.01);
+  transform: scale(1.02);
+  z-index: 10;
 }
 .card-upr img {
   width: 100%;
@@ -17001,12 +17002,18 @@ a:hover {
 }
 
 header {
-  width: 100%;
+  width: 100vw;
   height: 90px;
   background-color: #22B4CE;
+  position: relative;
+}
+header a.open-hamburger-menu {
+  display: none;
 }
 header .container {
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 header .container .row {
   width: 100%;
@@ -17031,84 +17038,175 @@ header .container nav button.navbar-toggler {
 header .container nav .navbar-collapse {
   flex-grow: 0;
 }
-header .container nav .modal-menu {
-  position: absolute;
-  width: 100%;
-  top: 90px;
-  z-index: 10;
+header .container nav .nav-right {
+  margin-right: -30px;
 }
-header .container nav .modal-menu ul {
-  background-color: #22B4CE;
-  width: auto;
-  height: 120px;
+header .container nav .nav-right ul.nav-desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 220px;
+  margin-top: 0;
+  margin-bottom: 0;
+  -webkit-padding-start: 0px;
+          padding-inline-start: 0px;
 }
-header .container nav .modal-menu ul .header-logout {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  color: #fff;
-  border-radius: 0px;
-  padding: 5px 20px;
-  background-color: transparent;
-  transition: 200ms;
-}
-header .container nav .modal-menu ul .header-logout:hover {
-  background-color: transparent;
-  color: #fff;
-}
-header .container nav .modal-menu ul .header-logout:hover a {
-  color: #fff;
-}
-header .container nav ul {
-  width: 350px;
-}
-header .container nav ul li {
+header .container nav .nav-right ul.nav-desktop li.nav-item {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-header .container nav ul li a {
+header .container nav .nav-right ul.nav-desktop li.nav-item a {
   font-weight: 700;
   font-size: 0.9rem;
   color: #fff;
   text-transform: uppercase;
-  padding: 0px;
+  padding: 5px 30px;
 }
-header .container nav ul .header-logout,
-header .container nav ul .header-login,
-header .container nav ul .header-signup {
-  padding: 5px 20px;
+
+.header-logout,
+.header-login,
+.header-signup {
+  width: 130px;
   cursor: pointer;
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: #fff;
   color: #fff;
   border-radius: 0px;
   padding: 5px 20px;
   background-color: transparent;
-  transition: 200ms;
+  transition: 300ms;
+  padding: 0px;
 }
-header .container nav ul .header-logout:hover,
-header .container nav ul .header-login:hover,
-header .container nav ul .header-signup:hover {
+.header-logout:hover,
+.header-login:hover,
+.header-signup:hover {
   background-color: #fff;
   color: #22B4CE;
 }
-header .container nav ul .header-logout:hover a,
-header .container nav ul .header-login:hover a,
-header .container nav ul .header-signup:hover a {
+
+header .container nav .nav-right ul.nav-desktop li.header-logout:hover a,
+header .container nav .nav-right ul.nav-desktop li.header-login:hover a,
+header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
   color: #22B4CE;
 }
-header .container nav ul .header-login {
-  margin-right: 30px;
+
+.header-login,
+.menu-messages {
+  margin-right: 40px;
 }
 
+.menu-my-home:hover::before,
+.menu-messages:hover::before {
+  content: "";
+  height: 2px;
+  bottom: 0px;
+  background-color: #fff;
+  position: absolute;
+  -webkit-animation-name: hover-nav-item;
+          animation-name: hover-nav-item;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  z-index: 1000;
+}
+
+@-webkit-keyframes hover-nav-item {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 50px;
+  }
+}
+
+@keyframes hover-nav-item {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 50px;
+  }
+}
+.hamburger-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #22B4CE;
+  padding: 20px;
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.hamburger-menu li {
+  margin: 15px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hamburger-menu li.header-logout a:hover, .hamburger-menu li.header-login a:hover, .hamburger-menu li.header-signup a:hover {
+  color: #22B4CE;
+}
+.hamburger-menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 5px 30px;
+}
+.hamburger-menu .navbar-brand {
+  margin-right: 0px;
+}
+.hamburger-menu .navbar-brand img {
+  margin-bottom: 100px;
+  width: 130px;
+}
+
+.close-hamburger-menu {
+  position: fixed;
+  top: 0px;
+  right: 20px;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.my-active {
+  display: flex;
+}
+
+@media screen and (max-width: 992px) {
+  header .container nav .nav-right ul.nav-desktop {
+    display: none;
+  }
+
+  header a.open-hamburger-menu {
+    display: block;
+    cursor: pointer;
+  }
+  header a.open-hamburger-menu .fas {
+    color: #fff;
+    padding: 10px;
+    background-color: #0001;
+  }
+
+  header .container nav .nav-right ul:not(.hamburger-menu) {
+    justify-content: flex-end;
+    min-width: 50px;
+  }
+}
 .row div.card {
   border: none;
   border-radius: 0px;
@@ -17326,14 +17424,14 @@ header .container nav ul .header-login {
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: #fff;
   color: #fff;
   border-radius: 0px;
   padding: 5px 20px;
   background-color: transparent;
-  transition: 200ms;
+  transition: 300ms;
   margin-top: 0px;
 }
 #map-contact .row-3 button:hover {
@@ -17482,7 +17580,7 @@ header .container nav ul .header-login {
   display: inline-block;
 }
 
-.price button {
+.price button, #payment-submit {
   color: #22B4CE;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -17493,6 +17591,7 @@ header .container nav ul .header-login {
   font-weight: bold;
   outline: none;
   border: 1px solid #22B4CE;
+  margin: 7px 0;
 }
 
 .active button {
@@ -17500,14 +17599,11 @@ header .container nav ul .header-login {
   color: white;
 }
 
-.third button {
+.advert-type {
+  width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
-}
-
-.second, .third {
-  padding-top: 19px;
 }
 
 .information-payments {
@@ -17733,8 +17829,7 @@ header .container nav ul .header-login {
 
 .your-messages {
   width: 100%;
-  margin-top: 70px;
-  height: 900px;
+  margin-top: -51px;
 }
 
 .title {
@@ -17742,10 +17837,9 @@ header .container nav ul .header-login {
   width: 100%;
 }
 .title h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
   color: #22B4CE;
-}
-.title hr {
-  border: 1px solid #22B4CE;
 }
 
 .users-message {
@@ -17754,12 +17848,11 @@ header .container nav ul .header-login {
 }
 
 .messages {
-  height: 100%;
   margin-top: 22px;
 }
 
 .message {
-  height: 170px;
+  margin-top: 13px;
   border: 1px solid black;
   padding-top: 8px;
   cursor: pointer;
@@ -17792,17 +17885,12 @@ header .container nav ul .header-login {
 }
 
 .time {
-  float: right;
-}
-
-.description-message {
-  height: 100%;
+  margin-left: 148px;
 }
 
 .description {
   background-color: white;
   width: 100%;
-  height: 300px;
   display: none;
   padding-top: 30px;
 }
@@ -17826,45 +17914,38 @@ header .container nav ul .header-login {
   text-decoration: none;
 }
 
-@media screen and (max-width: 477px) {
+@media screen and (max-width: 360px) {
+  .message {
+    width: 315px;
+  }
+  .message p {
+    margin-top: 15px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: inherit;
+  }
+
   .description-message {
     display: none;
   }
-
-  .hidden {
-    display: block;
-    color: #22B4CE;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 22px;
-  }
-
-  .message {
-    height: 200px;
-  }
 }
-@media screen and (max-width: 986px) {
+@media screen and (min-width: 361px) and (max-width: 991px) {
+  .message p {
+    margin-top: 15px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: inherit;
+  }
+
   .description-message {
     display: none;
   }
-
-  .hidden {
-    display: block;
-    color: #22B4CE;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 22px;
-  }
-
-  .message {
-    height: 200px;
-    margin-top: 20px;
-  }
 }
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 320px) {
   .message {
-    margin-top: 7px;
-    height: 215px;
+    width: 280px;
   }
 }
 div.my-home-title h1 {
@@ -17891,14 +17972,14 @@ div.my-home-title hr {
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: #22B4CE;
   color: #fff;
   border-radius: 0px;
   padding: 5px 20px;
   background-color: #22B4CE;
-  transition: 200ms;
+  transition: 300ms;
 }
 .button-my-homes a.btn-blue:hover {
   background-color: #fff;
@@ -17908,14 +17989,14 @@ div.my-home-title hr {
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: #22B4CE;
   color: #main_color;
   border-radius: 0px;
   padding: 5px 20px;
   background-color: #fff;
-  transition: 200ms;
+  transition: 300ms;
 }
 .button-my-homes a.btn-white:hover {
   background-color: #22B4CE;
@@ -17962,7 +18043,7 @@ div.my-home-title hr {
 }
 #form-create label.error {
   font-size: 0.9rem;
-  color: darkred;
+  color: #c90000;
   margin-top: 3px;
 }
 

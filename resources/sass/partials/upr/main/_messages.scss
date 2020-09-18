@@ -1,16 +1,14 @@
 .your-messages{
     width: 100%;
-    margin-top: 70px;
-    height: 900px;
+    margin-top: -51px;
 }
 .title{
     background-color: white;
     width: 100%;
     h1{
-       color:$main_color;
-   }
-   hr{
-       border: 1px solid $main_color;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: $main_color;
    }
 }
 
@@ -19,12 +17,12 @@
     display: flex;
 }
 .messages{
-    height: 100%;
     margin-top: 22px;
 }
 
 .message{
-    height: 170px;
+    // height: 170px;
+    margin-top: 13px;
     border:1px solid black;
     padding-top: 8px;
     cursor:pointer;
@@ -55,15 +53,11 @@
     display: none;
 }
 .time{
-    float: right;
-}
-.description-message{
-    height: 100%;
+    margin-left: 148px;
 }
 .description{
     background-color: white;
     width: 100%;
-    height: 300px;
     display: none;
     padding-top: 30px;
     p{
@@ -85,42 +79,75 @@
     }
 }
 
-@media screen and (max-width: 477px){
-
+// @media screen and (max-width: 477px){
+//
+//     .description-message{
+//         display: none;
+//     }
+//     .hidden{
+//         display: block;
+//         color:#22B4CE;
+//         text-transform: uppercase;
+//         font-weight: bold;
+//         font-size: 22px;
+//     }
+//     .message{
+//         height: 200px;
+//     }
+// }
+// @media screen and (max-width: 986px){
+//
+//     .description-message{
+//         display: none;
+//     }
+//     .hidden{
+//         display: block;
+//         color:#22B4CE;
+//         text-transform: uppercase;
+//         font-weight: bold;
+//         font-size: 22px;
+//     }
+//     .message{
+//         height: 200px;
+//         margin-top: 20px;
+//     }
+// }
+// @media screen and (min-width: 320px){
+//     .message{
+//         margin-top: 7px;
+//         height: 215px;
+//     }
+// }
+@media screen and (max-width: 360px){
+    .message{
+        width: 315px;
+        p{
+            margin-top: 15px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: inherit;
+        }
+    }
     .description-message{
         display: none;
     }
-    .hidden{
-        display: block;
-        color:#22B4CE;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 22px;
-    }
-    .message{
-        height: 200px;
-    }
-}
-@media screen and (max-width: 986px){
 
+}
+@media screen and(min-width:361px)and (max-width: 991px){
+    .message p{
+        margin-top: 15px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: inherit;
+    }
     .description-message{
         display: none;
     }
-    .hidden{
-        display: block;
-        color:#22B4CE;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 22px;
-    }
-    .message{
-        height: 200px;
-        margin-top: 20px;
-    }
 }
-@media screen and (min-width: 320px){
+@media screen and (max-width: 320px){
     .message{
-        margin-top: 7px;
-        height: 215px;
+        width: 280px;
     }
 }
