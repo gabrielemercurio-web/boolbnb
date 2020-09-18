@@ -45,7 +45,7 @@ header {
             .nav-right {
 
                 margin-right: -30px; // per allineare il menù al container
-                
+
                 ul.nav-desktop {
                     display: flex;
                     justify-content: space-between;
@@ -118,6 +118,7 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
     animation-name: hover-nav-item;
     animation-duration: 0.4s;
     animation-fill-mode: both;
+    z-index: 1000;
 }
 
 @keyframes hover-nav-item {
@@ -150,6 +151,12 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.header-logout a:hover,
+        &.header-login a:hover,
+        &.header-signup a:hover {
+            color: $main_color;
+        }
     }
 
     & li a {
@@ -158,10 +165,6 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
         font-weight: 700;
         font-size: 0.9rem;
         padding: 5px 30px;
-
-        &:hover{
-            color: $main_color;
-        }
     }
 
     .navbar-brand {
@@ -170,7 +173,7 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
         img {
             margin-bottom: 100px;
             width: 130px;
-        } 
+        }
     }
 }
 
@@ -199,7 +202,7 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
     header a.open-hamburger-menu {
         display: block;
         cursor: pointer;
-        
+
         & .fas {
             color: #fff;
             padding: 10px;

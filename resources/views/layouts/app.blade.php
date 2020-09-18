@@ -110,15 +110,15 @@
                                     <li class="close-hamburger-menu">
                                         <i class="fas fa-times"></i> {{-- * * * ICONA "X" PER CHIUDERE HAMBURGER MENU * * * --}}
                                     </li>
-                                    
+
                                 @else
 
                                 {{-- HEADER UPR MOBILE --}}
-                                    <li class="nav-item active">
+                                    <li class="nav-item active menu-my-home">
                                         <a href="{{ route('upr.houses.index') }}"> MY HOMES </a>
                                     </li>
 
-                                    <li class="nav-item">
+                                    <li class="nav-item menu-messages">
                                         <a href="{{ route('upr.messages.index') }}"> MESSAGES </a>
                                     </li>
                                 {{-- LOGOUT Copiato e incollato dallo scaffolding Auth di Laravel --}}
