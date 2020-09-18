@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\support\facades\Storage;
 use Braintree\Transaction as Transaction;
-use Braintree\TransactionSearch as TransactionSearch;
 use Illuminate\Support\Carbon;
 
 class HouseController extends Controller
@@ -63,8 +62,6 @@ class HouseController extends Controller
 			'address' => 'required',
 			'image_path' => 'image',
 			'description' => 'max:2000',
-			// 'longitude' => 'digits_between:6,8',
-			// 'latitude' => 'digits_between:6,7',
 		]);
 
 		//TODO: address manipulation
@@ -191,15 +188,17 @@ class HouseController extends Controller
 			}
 		}
 
-		$advertisedHomes = House::where('advertised', 1)->get();
-		foreach ($advertisedHomes as $advertisedHouse) {
-			foreach ($advertisedHouse->payments as $payment) {
-				if ($payment->expiration_datetime < Carbon::now()) {
-					$payment->house->update(['advertised' => 0]);
-				}
+		$advertisedHomes = House::leftJoin('payments', 'houses.id', '=', 'payments.house_id')
+			->where('advertised', 1)
+			->where('starting_datetime', '>', Carbon::now()->subDays(7))
+			->where('expiration_datetime', '<', Carbon::now())
+			->get();
+			dd($advertisedHomes);
+		foreach ($advertisedHomes as $advertisedHome) {
+			if ($payment->house->advertised == 1) {
+				$payment->house->update(['advertised' => 0]);
 			}
 		}
-		
 	
 		$houses = House::where('advertised', true)
 			->where('visible', 1)

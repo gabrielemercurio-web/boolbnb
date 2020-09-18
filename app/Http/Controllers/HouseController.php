@@ -4,13 +4,54 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\House;
+use App\Payment;
 use App\Service;
 use App\Hit;
+use Braintree\Transaction as Transaction;
+use Illuminate\Support\Carbon;
 
 class HouseController extends Controller
 {
     public function homepage() {
-        $houses = House::where('advertised', true)->get();
+        $payments = Payment::where('status', '=', 'submitted_for_settlement')->get();
+		foreach ($payments as $payment) {
+			$transaction = Transaction::find($payment->payment_id);
+			
+			$payment->update(['status' => $transaction->status]);
+			if ($payment->status == 'settled') {
+				// var_dump("I'm in!");
+				$payment->house->update(['advertised' => 1]);
+				// var_dump($payment->house);
+				$payment->update(['starting_datetime' => Carbon::now()]);
+				switch ($payment->advert_id) {
+					case 1:
+						$payment->update(['expiration_datetime' => Carbon::now()->addDays(1)]);
+						break;
+					case 2:
+						$payment->update(['expiration_datetime' => Carbon::now()->addDays(3)]);
+						break;
+					case 3:
+						$payment->update(['expiration_datetime' => Carbon::now()->addDays(6)]);
+						break;
+				}
+			}
+		}
+
+		$advertisedHomes = House::leftJoin('payments', 'houses.id', '=', 'payments.house_id')
+			->where('advertised', 1)
+			->where('starting_datetime', '>', Carbon::now()->subDays(7))
+			->where('expiration_datetime', '<', Carbon::now())
+			->get();
+			dd($advertisedHomes);
+		foreach ($advertisedHomes as $advertisedHome) {
+			if ($payment->house->advertised == 1) {
+				$payment->house->update(['advertised' => 0]);
+			}
+		}
+	
+		$houses = House::where('advertised', true)
+			->where('visible', 1)
+			->get();
 		return view('guest.houses.homepage', compact('houses'));
 	}
 
