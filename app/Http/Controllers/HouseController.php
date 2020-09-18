@@ -44,8 +44,10 @@ class HouseController extends Controller
 			->get();
 			dd($advertisedHomes);
 		foreach ($advertisedHomes as $advertisedHome) {
-			if ($payment->house->advertised == 1) {
-				$payment->house->update(['advertised' => 0]);
+			if ($advertisedHome->advertised == 1) {
+                $advertisedId = $advertisedHome->house_id;
+                $house = House::find($advertisedId);
+                $house->update(['advertised' => 0]);
 			}
 		}
 	

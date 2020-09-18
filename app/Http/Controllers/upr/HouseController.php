@@ -193,10 +193,11 @@ class HouseController extends Controller
 			->where('starting_datetime', '>', Carbon::now()->subDays(7))
 			->where('expiration_datetime', '<', Carbon::now())
 			->get();
-			dd($advertisedHomes);
 		foreach ($advertisedHomes as $advertisedHome) {
-			if ($payment->house->advertised == 1) {
-				$payment->house->update(['advertised' => 0]);
+			if ($advertisedHome->advertised == 1) {
+                $advertisedId = $advertisedHome->house_id;
+                $house = House::find($advertisedId);
+                $house->update(['advertised' => 0]);
 			}
 		}
 	
