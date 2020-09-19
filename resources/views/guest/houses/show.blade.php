@@ -17,25 +17,6 @@
         <div class="row row-2">
 			{{-- IMAGE SLIDER --}}
             <div id="slider" class="col-lg-6">
-                {{--
-				<div class="images">
-					<div class="prev">
-						<i class="fas fa-chevron-circle-left"></i>
-					</div>
-					<div class="next">
-						<i class="fas fa-chevron-circle-right"></i>
-					</div>
-
-                    @forelse ($houses as $house)
-                        <img class="" src="{{-- $house->image_path --}}{{--" alt="img-house">
-                        <div class="bullets">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                    @empty
-                        <img class="" src="{{ asset('img/house-2.jpg')}}" alt="img-house">
-                    @endforelse
-                </div>
-                --}}
                 {{-- <img class="images" src="{{ $house->image_path }}" alt="img-house"> --}}
                 <img class="images" src="{{ asset('storage/' . $house->image_path) }}" alt="img-house">
                 {{-- <img class="images" src="{{ asset('storage/' . $house->image_path) }}" alt="img-house"> --}}
