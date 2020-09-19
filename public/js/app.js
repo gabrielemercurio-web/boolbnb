@@ -44046,30 +44046,33 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var form = document.querySelector('#payment-form');
-braintree.dropin.create({
-  // Insert your tokenization key here
-  authorization: 'sandbox_w3dfnx46_6hqm567rbwp58h5h',
-  container: '#dropin-container'
-}, function (createErr, instance) {
-  if (createErr) {
-    console.log('Create Error', createErr);
-    return;
-  }
+if ($('#dropin-wrapper').length) {
+  var form = document.querySelector('#payment-form');
+  braintree.dropin.create({
+    // Insert your tokenization key here
+    authorization: 'sandbox_5r4xtvqt_3qf8jdpmb5q9kfss',
+    container: '#dropin-container'
+  }, function (createErr, instance) {
+    if (createErr) {
+      console.log('Create Error', createErr);
+      return;
+    }
 
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    instance.requestPaymentMethod(function (err, payload) {
-      if (err) {
-        console.log('Request Payment Method Error', err);
-        return;
-      }
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      instance.requestPaymentMethod(function (err, payload) {
+        if (err) {
+          console.log('Request Payment Method Error', err);
+          return;
+        }
 
-      $('#nonce').val(payload.nonce);
-      form.submit();
+        $('#nonce').val(payload.nonce);
+        form.submit();
+      });
     });
   });
-});
+}
+
 $('.advert-type').on('click', function (e) {
   var adv_amount = $(e.target).val();
   $('#payment-amount').val(adv_amount);
@@ -44329,6 +44332,8 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./filters_search */ "./resources/js/filters_search.js");
+
 __webpack_require__(/*! ./guest/show */ "./resources/js/guest/show.js");
 
 __webpack_require__(/*! ./guest/messages */ "./resources/js/guest/messages.js");
@@ -44409,6 +44414,42 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/filters_search.js":
+/*!****************************************!*\
+  !*** ./resources/js/filters_search.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.btn-filters').click(function () {
+    $('.bg-filters-form').addClass('active');
+    $('form.form').addClass('active');
+  });
+  $('.search-update-btn').click(function () {
+    $('.bg-filters-form').removeClass('active');
+    $('form.form').removeClass('active');
+  });
+  $('.bg-filters-form').click(function () {
+    $('.bg-filters-form').removeClass('active');
+    $('form.form').removeClass('active');
+  });
+  $("form.form").validate({
+    rules: {
+      services: {
+        min: 1
+      }
+    },
+    messages: {
+      services: {
+        min: "Value must be greater than 0."
+      }
+    }
+  });
+});
 
 /***/ }),
 

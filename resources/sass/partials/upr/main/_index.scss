@@ -137,6 +137,9 @@ div.my-home-title {
         transition: 200ms;
         margin-top: -12px;
         color:white;
+        &:focus{
+            box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0); 
+        }
     }
 
     label.error {
@@ -144,7 +147,14 @@ div.my-home-title {
         color: #c90000;
         margin-top: 3px;
     }
+    .form-check-inline .form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: 46px;
+    margin-left: 0;
+    }
 }
+
 
 
                  /*** PAGINA EDIT DI UPR/INDEX ***/

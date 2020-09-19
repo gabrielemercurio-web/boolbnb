@@ -61,11 +61,12 @@
                     </div>
 
 					{{-- SERVICES --}}
+					<label for="house-services">Features:</label>
 					<div class="form-check form-check-inline d-flex justify-content-around">
-						<label for="house-services">Features:</label>
 						@foreach ($services as $service)
-							<input class="form-check-input" type="checkbox" id="house-services" name="{{'services_ids[]'}}" value="{{ $service->id }}" {{in_array($service->id, old('services_ids', [])) ? 'checked' : ''}}>
 							<label class="form-check-label" for="house-service">{{ ucfirst($service->name) }}</label>
+							<input class="form-check-input" type="checkbox" id="house-services" name="{{'services_ids[]'}}" value="{{ $service->id }}" {{in_array($service->id, old('services_ids', [])) ? 'checked' : ''}}>
+
 						@endforeach
 					</div>
 

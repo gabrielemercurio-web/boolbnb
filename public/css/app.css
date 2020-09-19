@@ -16962,21 +16962,24 @@ a:hover {
 }
 
 .card-upr {
-  margin: 35px 0px;
   transition: 300ms;
   padding: 15px;
+  height: clamp(520px, 52vh, 700px);
+  background-color: #e6fbff;
+  border: 10px solid #fff;
 }
 .card-upr:hover {
-  box-shadow: 0px 0px 40px 0px #0002;
+  box-shadow: 0px 0px 40px 0px #0004;
   color: #111;
   text-decoration: none;
   cursor: pointer;
   transform: scale(1.02);
   z-index: 10;
+  border-color: #e6fbff;
 }
 .card-upr img {
   width: 100%;
-  height: 300px;
+  height: clamp(180px, 40%, 300px);
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -16999,6 +17002,14 @@ a:hover {
 }
 .card-upr div.sponsored p {
   color: #22B4CE;
+}
+
+.card-upr.card-upr-sponsored {
+  background-color: #fff;
+  border-color: #e6fbff;
+}
+.card-upr.card-upr-sponsored:hover {
+  border-color: #fff;
 }
 
 header {
@@ -17443,14 +17454,15 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
   height: 350px;
 }
 
-.home {
+.jumbo-search {
   width: 100%;
-  height: 300px;
+  height: clamp(150px, 30vh, 300px);
   background-image: url("../img/house-4.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  margin: 50px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17478,57 +17490,139 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
   margin-bottom: 0;
 }
 
-#search-filter .filter-form {
-  margin-top: 50px;
-  margin-bottom: 50px;
+#search-filter {
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
-#search-filter .filter-form .filter-box {
+#search-filter .btn-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 40px 0px 40px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #22B4CE;
+  transition: 300ms;
+}
+#search-filter .btn-filters:hover {
+  background-color: #fff;
+  color: #22B4CE;
+}
+#search-filter .btn-filters .fas {
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+#search-filter .active {
+  display: flex;
+}
+
+.bg-filters-form {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+}
+
+form.form {
+  width: 280px;
+  display: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 2px solid #22B4CE;
+  padding: 50px;
+  background-color: #fff;
+  box-shadow: 0px 0px 40px 0px #0004;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 55;
+}
+form.form button {
+  width: 100%;
+  margin-top: 20px;
+  outline: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #22B4CE;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px 20px;
+  background-color: #22B4CE;
+  transition: 300ms;
+}
+form.form button:hover {
+  background-color: #fff;
+  color: #22B4CE;
+}
+form.form input {
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #22B4CE;
+}
+form.form label.error {
+  font-size: 0.7rem;
+  color: #c90000;
+}
+form.form #filter-distance {
+  margin-bottom: 20px;
+}
+form.form .filter-box {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 1px solid #22B4CE;
+  justify-content: flex-start;
   padding: 5px 20px;
 }
-#search-filter .filter-form .filter-box::-moz-placeholder {
+form.form .filter-box::-moz-placeholder {
   color: #ccc;
   font-size: 0.9rem;
 }
-#search-filter .filter-form .filter-box:-ms-input-placeholder {
+form.form .filter-box:-ms-input-placeholder {
   color: #ccc;
   font-size: 0.9rem;
 }
-#search-filter .filter-form .filter-box::-ms-input-placeholder {
+form.form .filter-box::-ms-input-placeholder {
   color: #ccc;
   font-size: 0.9rem;
 }
-#search-filter .filter-form .filter-box::placeholder {
+form.form .filter-box::placeholder {
   color: #ccc;
   font-size: 0.9rem;
 }
-#search-filter .filter-form .filter-box input {
-  cursor: pointer;
-  margin-right: 5px;
-  border-color: #ddd;
+form.form .filter-box input {
+  margin-right: 8px;
+  border-radius: 0;
+  width: 15px;
+  height: 15px;
 }
-#search-filter .filter-form .filter-box label {
+form.form .filter-box label {
   margin-bottom: 0px;
   color: #22B4CE;
   font-size: 0.9rem;
 }
-#search-filter .filter-form input.filter-box {
-  width: 150px;
-  height: 34px;
-}
 
 .bg-sponsored {
-  width: 100vw;
-  min-height: 220px;
-  padding: 40px 0px;
-  background-color: rgba(34, 180, 206, 0.2);
+  height: clamp(500px, 60%, 550px);
+  padding: clamp(5px, 2%, 35px);
+  background-color: #e6fbff;
 }
 
 #guest-search-btn {
@@ -17972,27 +18066,60 @@ header .container nav .nav-right ul.nav-desktop li.header-signup:hover a {
     font-size: 22px;
   }
 }
-div.my-home-title h1 {
+div.my-home-title span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+div.my-home-title span h1 {
   font-size: 1.8rem;
   font-weight: 700;
   color: #22B4CE;
+}
+div.my-home-title span a {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  transition: 200ms;
+  border: 2px dashed #eee;
+  color: #22B4CE;
+}
+div.my-home-title span a:hover {
+  transform: scale(1.2);
+}
+div.my-home-title span a .fas {
+  margin: auto;
+  font-size: 0.9rem;
 }
 div.my-home-title hr {
   border-color: #22B4CE;
 }
 
+.card-upr-index {
+  height: clamp(620px, 55vh, 750px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .button-my-homes {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  flex-direction: column;
 }
-.button-my-homes a {
-  margin-bottom: 10px;
+.button-my-homes a, .button-my-homes button {
+  margin-bottom: 5px;
   cursor: pointer;
 }
 .button-my-homes a.btn-blue {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -18010,13 +18137,17 @@ div.my-home-title hr {
   color: #22B4CE;
 }
 .button-my-homes a.btn-white {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
   border-width: 2px;
   border-style: solid;
   border-color: #22B4CE;
-  color: #main_color;
+  color: #22B4CE;
   border-radius: 0px;
   padding: 5px 20px;
   background-color: #fff;
@@ -18029,6 +18160,7 @@ div.my-home-title hr {
 
 /*** BTN DELETE ***/
 #btnDelete {
+  width: 150px;
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -18039,8 +18171,7 @@ div.my-home-title hr {
   padding: 5px 20px;
   background-color: white;
   transition: 200ms;
-  margin-top: -12px;
-  color: black;
+  color: #22B4CE;
 }
 #btnDelete:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
@@ -18065,10 +18196,19 @@ div.my-home-title hr {
   margin-top: -12px;
   color: white;
 }
+#form-create #btnUpload:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
 #form-create label.error {
   font-size: 0.9rem;
   color: #c90000;
   margin-top: 3px;
+}
+#form-create .form-check-inline .form-check-input {
+  position: static;
+  margin-top: 0;
+  margin-right: 46px;
+  margin-left: 0;
 }
 
 /*** PAGINA EDIT DI UPR/INDEX ***/
@@ -18095,8 +18235,7 @@ div.my-home-title hr {
 a.create-house {
   color: #22B4CE;
   width: 100%;
-  height: 350px;
-  border: 2px dashed #d7d7d7;
+  height: clamp(620px, 55vh, 750px);
   display: flex;
   transition: 200ms;
   outline: none;
@@ -18136,7 +18275,6 @@ a.create-house div .fas {
   padding: 5px 20px;
   background-color: #22B4CE;
   transition: 200ms;
-  margin-top: -12px;
 }
 
 footer {
