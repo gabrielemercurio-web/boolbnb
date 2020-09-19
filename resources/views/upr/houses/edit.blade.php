@@ -59,17 +59,18 @@
 
 					</div>
 					{{-- SERVICES CHECKBOXES --}}
+					<label for="house-service">Features:</label>
 					<div class="form-check form-check-inline d-flex justify-content-around">
-						<label for="house-service">Features:</label>
 						@foreach ($services as $service)
+							<label class="form-check-label" for="house-service">{{ ucfirst($service->name) }}</label>
 							<input class="form-check-input" type="checkbox" id="house-services" name="services_ids[]" value="{{ $service->id }}"
 							@if ($errors->any())
 								{{in_array($service->id, old('services_ids', [])) ? 'checked' : ''}}
 							@else
-								{{$house->services->contains($service) ? 'checked' : ''}}	
+								{{$house->services->contains($service) ? 'checked' : ''}}
 							@endif
 							>
-							<label class="form-check-label" for="house-service">{{ ucfirst($service->name) }}</label>
+
 						@endforeach
 					</div>
 					{{-- Hidden values for storing address-related values --}}
