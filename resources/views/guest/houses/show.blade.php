@@ -71,6 +71,30 @@
                     <div id="map"></div>
                 </div>
             </div>
+
+
+                {{-- PROMOTED HOUSES LIST --}}
+            {{-- <div class="apartment-description">
+				<div class="row">
+                    <div class="title text-center">
+                        <h1>Places you might enjoy</h1>
+                        <hr>
+                    </div>
+
+                    @forelse ($houses as $house)
+                        <a href="{{route('upr.houses.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
+                            <img src="{{ asset('storage/' . $house->image_path) }}" alt="image of house" class="apartment-img">
+                            <h1>{{ $house->title }}</h1>
+                            <p>{{ $house->description }}</p>
+                            <div class="sponsored d-flex justify-content-end">
+                                <p>Sponsored</p>
+                            </div>
+                        </a>
+                    @empty
+                        <p>Your search returned no results.</p>
+                    @endforelse
+                </div>
+            </div> --}}
 		</div>
     </section>
 @endsection

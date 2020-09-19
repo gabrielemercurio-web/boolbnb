@@ -130,36 +130,48 @@ div.my-home-title {
 
 #form-create {
 
-    #btnUpload {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        font-weight: 700;
-        border-width: 1px;
-        border-style: solid;
-        border-color: $main_color;
-        border-radius: 0px;
-        padding: 5px 20px;
-        background-color: $main_color;
-        transition: 200ms;
-        margin-top: -12px;
-        color:white;
-        &:focus{
-            box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0); 
-        }
-    }
-
     label.error {
         font-size: 0.9rem;
         color: #c90000;
         margin-top: 3px;
     }
-    .form-check-inline .form-check-input {
-    position: static;
-    margin-top: 0;
-    margin-right: 46px;
-    margin-left: 0;
+
+    // Per settare la larghezza dell'input 
+    // proveniente da TomTom
+    .tt-search-box {
+        width: clamp(288px, 35vw, 1000px);
+    }
+
+    .form-check-inline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        div {
+            width: 180px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .services-numbers {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #btnUpload {
+        @include my-button (
+            $main_color,
+            #fff,
+            $main_color,
+            #fff,
+            $main_color
+        );
     }
 }
+
 
 
 
@@ -182,15 +194,13 @@ div.my-home-title {
         border-color: $main_color;
         box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
     }
+
     label.error {
         font-size: 0.9rem;
         color: darkred;
         margin-top: 3px;
     }
 }
-
-
-
 
 a.create-house {
     color: $main_color;
@@ -207,7 +217,6 @@ a.create-house {
         transform: scale(1.01);
         border: none;
     }
-
 
     div {
         width: 70px;
@@ -228,19 +237,4 @@ a.create-house {
         }
 
     }
-}
-
-.btn {
-    font-size: 0.8rem;
-        text-transform: uppercase;
-        font-weight: 700;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #22B4CE;
-        color: #fff;
-        border-radius: 0px;
-        padding: 5px 20px;
-        background-color: #22B4CE;
-        transition: 200ms;
-        // margin-top: -12px;
 }

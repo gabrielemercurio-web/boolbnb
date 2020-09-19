@@ -40,20 +40,21 @@
 						<label for="image">Add image</label>
 						<input type="file" accept=".jpg,.jpeg,.png" name="cover_image" class="form-control-file" id="image" value="{{ old('cover_image') }}">
 					</div>
-					<div class="form-group d-flex justify-content-between">
-						<div class="form-group">
+					
+					<div class="row form-group services-numbers">
+						<div class="form-group col-md-6 col-lg-3">
 							<label for="house-nr_of_rooms">Rooms</label>
 							<input type="number" name="nr_of_rooms" min="0" class="form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('nr_of_rooms') }}">
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-6 col-lg-3">
 							<label for="house-nr_of_beds">Beds</label>
 							<input type="number" name="nr_of_beds" min="0" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds') }}">
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-6 col-lg-3">
 							<label for="house-nr_of_bathrooms">Bathrooms</label>
 							<input type="number" name="nr_of_bathrooms" min="0" class="form-control" id="house-nr_of_bathrooms" placeholder="Bathroom" value="{{ old('nr_of_bathrooms') }}">
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-6 col-lg-3">
 							<label for="house-square_mt">Square meters</label>
 							<input type="text" name="square_mt" class="form-control" min="1" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
                         </div>
@@ -61,12 +62,15 @@
                     </div>
 
 					{{-- SERVICES --}}
-					<label for="house-services">Features:</label>
-					<div class="form-check form-check-inline d-flex justify-content-around">
+					<div> 
+						<label for="house-services">FEATURES:</label>
+					</div>
+					<div class="form-check form-check-inline">
 						@foreach ($services as $service)
-							<label class="form-check-label" for="house-service">{{ ucfirst($service->name) }}</label>
-							<input class="form-check-input" type="checkbox" id="house-services" name="{{'services_ids[]'}}" value="{{ $service->id }}" {{in_array($service->id, old('services_ids', [])) ? 'checked' : ''}}>
-
+							<div>
+								<input class="form-check-input" type="checkbox" id="house-services" name="{{'services_ids[]'}}" value="{{ $service->id }}" {{in_array($service->id, old('services_ids', [])) ? 'checked' : ''}}>
+								<label class="form-check-label" for="house-service">{{ ucfirst($service->name) }}</label>
+							</div>
 						@endforeach
 					</div>
 
@@ -77,7 +81,7 @@
 						<input type="text" name="address" value="{{ old('address') }}" hidden>
                     </div>
                 	<div>
-						<button type="submit" id="btnUpload" class="btn btn-primary">Add home</button>
+						<button type="submit" id="btnUpload">Add home</button>
 					</div>
 				</form>
 			</div>
