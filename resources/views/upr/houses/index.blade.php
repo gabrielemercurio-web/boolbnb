@@ -31,9 +31,9 @@
                             <a href="{{ route('upr.payments.create', ['house' => $house->id]) }}" class="btn-blue">PROMOTE</a>
                             <a href="{{ route('upr.hits.index', ['house' => $house->id]) }}" class="btn-white">STATS</a>
                             @if($house->visible == true)
-                                <a href="{{ route('upr.houses.update', ['house' => $house->id]) }}" class="btn-white">HIDE HOME</a>
+                                <a href="{{ route('upr.houses.toggle', ['house' => $house->id]) }}" class="btn-white">HIDE HOME</a>
                             @else
-                                <a href="{{ route('upr.houses.update', ['house' => $house->id]) }}" class="btn-white">SHOW HOME</a>
+                                <a href="{{ route('upr.houses.toggle', ['house' => $house->id]) }}" class="btn-white">SHOW HOME</a>
                             @endif
                         </div>
                     </div>
