@@ -29,7 +29,7 @@ a {
 .card-upr {
     transition: 300ms;
     padding: 15px;
-    height: clamp(520px, 52vh, 700px);
+    height: auto;
     background-color: #e6fbff;
     border: 10px solid #fff;
 
@@ -43,13 +43,13 @@ a {
         border-color: #e6fbff;
     }
 
-    & img {
+    img {
         width: 100%;
-        height: clamp(180px, 40%, 300px);
+        height: clamp(180px, 20vh, 300px);
         object-fit: cover;
     }
 
-    & h1 {
+    h1 {
         @include my-overflow-clamp(2);
         height: 60px;
         font-size: 1.5rem;
@@ -58,11 +58,11 @@ a {
         margin: 30px 0px;
     }
 
-    & p {
+    p {
         @include my-overflow-clamp(3);
     }
 
-    & div.sponsored p {
+    div.sponsored p {
         color: $main_color;
     }
 }

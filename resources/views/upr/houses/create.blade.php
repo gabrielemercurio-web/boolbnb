@@ -38,24 +38,24 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Add image</label>
-						<input type="file" name="cover_image" class="form-control-file" id="image" value="{{ old('cover_image') }}">
+						<input type="file" accept=".jpg,.jpeg,.png" name="cover_image" class="form-control-file" id="image" value="{{ old('cover_image') }}">
 					</div>
 					<div class="form-group d-flex justify-content-between">
 						<div class="form-group">
 							<label for="house-nr_of_rooms">Rooms</label>
-							<input type="number" name="nr_of_rooms" class="form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('nr_of_rooms') }}">
+							<input type="number" name="nr_of_rooms" min="0" class="form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('nr_of_rooms') }}">
 						</div>
 						<div class="form-group">
 							<label for="house-nr_of_beds">Beds</label>
-							<input type="number" name="nr_of_beds" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds') }}">
+							<input type="number" name="nr_of_beds" min="0" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds') }}">
 						</div>
 						<div class="form-group">
 							<label for="house-nr_of_bathrooms">Bathrooms</label>
-							<input type="number" name="nr_of_bathrooms" class="form-control" id="house-nr_of_bathrooms" placeholder="Bathroom" value="{{ old('nr_of_bathrooms') }}">
+							<input type="number" name="nr_of_bathrooms" min="0" class="form-control" id="house-nr_of_bathrooms" placeholder="Bathroom" value="{{ old('nr_of_bathrooms') }}">
 						</div>
 						<div class="form-group">
 							<label for="house-square_mt">Square meters</label>
-							<input type="text" name="square_mt" class="form-control" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
+							<input type="text" name="square_mt" class="form-control" min="1" id="house-square_mt" placeholder="m2" value="{{ old('square_mt') }}">
                         </div>
 
                     </div>

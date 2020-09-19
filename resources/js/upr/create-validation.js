@@ -1,40 +1,66 @@
 $(document).ready(function(){
 
     $("#form-create").validate({
-
         rules: {
             title: {
                 required: true,
+                rangelength: [1, 250]
             },
             description: {
-                required: true,
+                maxlength: 2000
             },
             address: {
-                required: true,
+                required: true
             },
             cover_image: {
-                required: true,
+                extension: "png|jpg|jpeg"
             },
             nr_of_rooms: {
                 required: true,
+                number: true,
+                min: 0
             },
             nr_of_beds: {
                 required: true,
+                number: true,
+                min: 0
             },
             nr_of_bathrooms: {
-                required: true,
+                number: true,
+                min: 0
             },
             square_mt: {
-                required: true,
-            },
+                number: true,
+                min: 1
+            }
         },
         messages: {
-            title: "Please, specify a title",
+            title: {
+                required: "Please, specify a title.",
+                rangelength: "Min 1, max 250 characters."
+            },
             description: {
-                required: "Description needs. Min 50, max 5000 characters.",
+                maxlength: "Max 2000 characters."
+            },
+            address: {
+                required: "Address required."
+            },
+            cover_image: {
+                extension: "Only .png, .jpg and .jpeg files allowed."
+            },
+            nr_of_rooms: {
+                required: "Number of rooms required."
+            },
+            nr_of_beds: {
+                required: "Number of beds required."
+            },
+            nr_of_bathrooms: {
+                number: "Only positive numbers."
+            },
+            square_mt: {
+                number: "Only numbers greater than one."
             }
         }
-
     });
 
 });
