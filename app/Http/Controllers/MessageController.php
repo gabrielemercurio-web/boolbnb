@@ -21,6 +21,6 @@ class MessageController extends Controller
         $new_message->fill($data);
         $new_message->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Your message was sent!');
     }
 }

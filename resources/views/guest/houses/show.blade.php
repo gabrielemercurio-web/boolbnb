@@ -4,6 +4,11 @@
 
 @section('content')
     <div class="container">
+		@if(session()->has('message'))
+			<div class="alert alert-success">
+				{{ session()->get('message') }}
+			</div>
+		@endif
         <div class="row row-2">
 			{{-- HOUSE IMAGE --}}
             <div id="slider" class="col-lg-6">
