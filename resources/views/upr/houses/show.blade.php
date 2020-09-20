@@ -67,7 +67,11 @@
                         <input type="text" name="house_id" value="{{ $house->id }}" hidden>
                     </div>
                     <div class="form-group">
-                        <input required type="email" name="sender_email" class="form-control" id="sender-email" placeholder="Your email">
+						@guest
+    		                <input required type="email" name="sender_email" class="form-control" id="sender-email" placeholder="Your email">
+						@else
+							<input required type="email" name="sender_email" class="form-control" id="sender-email" value=" {{Auth::user()->email}} ">
+						@endguest
                     </div>
                     <div class="form-group">
                         <textarea required class="form-control" name="message" id="message" rows="3" placeholder="Your message"></textarea>

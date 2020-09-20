@@ -47,7 +47,11 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="email" name="sender_email" class="form-control" id="sender-email-1" placeholder="Your email">
+                        @guest
+    		                <input required type="email" name="sender_email" class="form-control" id="sender-email" placeholder="Your email">
+						@else
+							<input required type="email" name="sender_email" class="form-control" id="sender-email" value=" {{Auth::user()->email}} ">
+						@endguest
                     </div>
 
                     <div class="form-group">
