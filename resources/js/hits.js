@@ -47,25 +47,25 @@ function printHitChart(id) {
 function getMonthlyMsgs(object) {
     // initialize object
     var monthlyMsgs = {
-        'January': 0,
-        'February': 0,
-        'March': 0,
-        'April': 0,
+        'Jan': 0,
+        'Feb': 0,
+        'Mar': 0,
+        'Apr': 0,
         'May': 0,
-        'June': 0,
-        'July': 0,
-        'August': 0,
-        'September': 0,
-        'October': 0,
-        'November': 0,
-        'December': 0
+        'Jun': 0,
+        'Jul': 0,
+        'Aug': 0,
+        'Sep': 0,
+        'Oct': 0,
+        'Nov': 0,
+        'Dec': 0
     };
 
     for(var i = 0; i < object.length; i++) {
         // get single message
         var message = object[i];
         // get month string from created_at
-        var month = moment(message.created_at, "YYYY-MM-DD HH:mm:ss").format('MMMM');
+        var month = moment(message.created_at, "YYYY-MM-DD HH:mm:ss").format('MMM');
         // add 1 to its month
         monthlyMsgs[month] += 1;
     }
@@ -75,25 +75,25 @@ function getMonthlyMsgs(object) {
 function getMonthlyHits(object) {
     // initialize object
     var monthlyHits = {
-        'January': 0,
-        'February': 0,
-        'March': 0,
-        'April': 0,
+        'Jan': 0,
+        'Feb': 0,
+        'Mar': 0,
+        'Apr': 0,
         'May': 0,
-        'June': 0,
-        'July': 0,
-        'August': 0,
-        'September': 0,
-        'October': 0,
-        'November': 0,
-        'December': 0
+        'Jun': 0,
+        'Jul': 0,
+        'Aug': 0,
+        'Sep': 0,
+        'Oct': 0,
+        'Nov': 0,
+        'Dec': 0
     };
 
     for(var i = 0; i < object.length; i++) {
         // get single hit
         var hit = object[i];
         // get month string from created_at
-        var month = moment(hit.created_at, "YYYY-MM-DD HH:mm:ss").format('MMMM');
+        var month = moment(hit.created_at, "YYYY-MM-DD HH:mm:ss").format('MMM');
         // add 1 to its month
         monthlyHits[month] += 1;
     }
@@ -114,8 +114,9 @@ function printLineChart(object) {
             datasets: [{
                 label: 'Messages',
                 data: values,
+                pointBackgroundColor: 'rgba(34, 180, 206, 1)',
                 backgroundColor: [
-                    'rgba(184, 240, 245, 1)',
+                    'rgba(184, 240, 245, 0.5)',
                 ],
                 borderColor: [
                     'rgba(34, 180, 206, 1)',
@@ -124,10 +125,26 @@ function printLineChart(object) {
             }]
         },
         options: {
-            title: {
-                display: true,
-                text: ''
-            }
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function(value) {if (value % 1 === 0) {return value;}}
+                    },
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(184, 240, 245, 0.5)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }]
+            },
+            maintainAspectRatio: false,
+            responsive: true
         }
     });
 }
@@ -152,10 +169,27 @@ function printBarChart(object) {
             }]
         },
         options: {
-            title: {
-                display: true,
-                text: ''
-            }
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function(value) {if (value % 1 === 0) {return value;}}
+                    },
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(184, 240, 245, 0.5)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }]
+            },
+            maintainAspectRatio: false,
+            responsive: true
         }
     });
 }
