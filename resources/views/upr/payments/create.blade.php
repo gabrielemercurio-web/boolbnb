@@ -14,17 +14,19 @@
                     {{-- PAYMENT MESSAGES  --}}
                     @if (session('success_message'))
                         <div>
-                            {{ session('success_message') }}
+                            <div class="alert alert alert-success">
+                                {{ session('success_message') }}
+                            </div>
                         </div>
                     @endif
 
                     @if (count($errors) > 0)
                         <div>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-warning">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
                         </div>
                     @endif
 

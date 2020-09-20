@@ -12,7 +12,7 @@ class HousesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         // Get collection of 'id' from users table
         // $users = User::all()->pluck('id')->toArray();
@@ -36,7 +36,6 @@ class HousesTableSeeder extends Seeder
 
         $houses = [
             [   
-                'user_id' => '1',
                 'title' => 'Beautiful Loft',
                 'address' => 'Via San Maurilio, 23, 20123 Milan',
                 'nr_of_rooms' => 4,
@@ -52,7 +51,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [   
-                'user_id' => '3',
                 'title' => 'Ottimo',
                 'address' => 'Via Valfurva, 2, 20162 Milan',
                 'nr_of_rooms' => 6,
@@ -68,7 +66,6 @@ class HousesTableSeeder extends Seeder
                 
             ],
             [
-                'user_id' => '7',
                 'title' => 'MARINA - 30 meters from Central Station',
                 'address' => 'Via Ciro Menotti, 4, 20129 Milan',
                 'nr_of_rooms' => 3,
@@ -83,7 +80,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '9',
                 'title' => 'Apartment with balcony near city centre',
                 'address' => 'Viale Renato Serra, 14, 20148 Milan',
                 'nr_of_rooms' => 5,
@@ -98,7 +94,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '9',
                 'title' => 'Single room, included breakfast :)',
                 'address' => 'Via Alserio, 1, 20159 Milan',
                 'nr_of_rooms' => 1,
@@ -113,7 +108,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '10',
                 'title' => 'Clean cozy room with private balcony for women',
                 'address' => 'Via Giuseppe Giusti, 5, 20900 Monza',
                 'nr_of_rooms' => 3,
@@ -128,7 +122,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '3',
                 'title' => 'Cozy Apartment, in between Milano, Como & Lecco',
                 'address' => 'Via Antonio Fogazzaro, 1, 20900 Monza',
                 'nr_of_rooms' => 6,
@@ -143,7 +136,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '2',
                 'title' => 'Studio Flat apartment with private parking',
                 'address' => 'Viale Elvezia, 14, 20900 Monza',
                 'nr_of_rooms' => 1,
@@ -158,7 +150,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '2',
                 'title' => 'Renovated 1bdr',
                 'address' => 'Via Giuseppe Sirtori, 12, 20900 Monza',
                 'nr_of_rooms' => 4,
@@ -173,7 +164,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '4',
                 'title' => 'Appartamento moderno a due passi dal centro',
                 'address' => 'Via Vittorio Emanuele II, 43, 20900 Monza',
                 'nr_of_rooms' => 6,
@@ -188,7 +178,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '5',
                 'title' => 'Lovely apartment well served',
                 'address' => 'Via Giacomo Matteotti, 12, 20090 Assago',
                 'nr_of_rooms' => 4,
@@ -203,7 +192,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '8',
                 'title' => 'All u need is ... here!!!',
                 'address' => 'Via Papa Giovanni XXIII, 1, 20090 Assago',
                 'nr_of_rooms' => 1,
@@ -218,7 +206,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '6',
                 'title' => 'Private room for One/two',
                 'address' => 'Via Duccio di Buoninsegna, 11, 20090 Assago',
                 'nr_of_rooms' => 1,
@@ -233,7 +220,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '2',
                 'title' => 'Apartment with private bathroom and balcony',
                 'address' => 'Via Europa, 18, 20097 San Donato Milanese',
                 'nr_of_rooms' => 3,
@@ -248,7 +234,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '6',
                 'title' => 'Stanza singola in Via F. Maritano',
                 'address' => 'Via Piave, 13, 20097 San Donato Milanese',
                 'nr_of_rooms' => 1,
@@ -263,7 +248,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '5',
                 'title' => 'Quiet and comfortable room',
                 'address' => 'Via Enrico Mattei, 56, 20097 San Donato Milanese',
                 'nr_of_rooms' => 6,
@@ -278,7 +262,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '10',
                 'title' => 'Simple & Comfortable apartment vicino POLICLINICO',
                 'address' => 'Via della Libertà, 29, 20097 San Donato Milanese',
                 'nr_of_rooms' => 1,
@@ -293,7 +276,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '4',
                 'title' => 'Ampio bilocale San Donato Milanese',
                 'address' => 'Via John Fitzgerald Kennedy, 24, 20097 San Donato Milanese',
                 'nr_of_rooms' => 2,
@@ -308,7 +290,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '7',
                 'title' => 'Camera matrimoniale a san donato milanese',
                 'address' => 'Via Rodolfo Morandi, 13, 20097 San Donato Milanese',
                 'nr_of_rooms' => 2,
@@ -323,7 +304,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '7',
                 'title' => 'Lucy Home in Old Town Pavia',
                 'address' => 'Via Camillo Campari, 71, 27100 Pavia',
                 'nr_of_rooms' => 5,
@@ -338,7 +318,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '9',
                 'title' => 'si affitta posto solo a donna',
                 'address' => 'Via Saverio Griffini, 48, 27100 Pavia',
                 'nr_of_rooms' => 2,
@@ -354,7 +333,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '1',
                 'title' => 'Vaccari Apartment',
                 'address' => 'Via Ponte Vecchio, 40, 27100 Pavia',
                 'nr_of_rooms' => 4,
@@ -370,7 +348,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 1,
             ],
             [
-                'user_id' => '2',
                 'title' => 'Grazioso bilocale in centro',
                 'address' => 'Via Severino Capsoni, 14, 27100 Pavia',
                 'nr_of_rooms' => 2,
@@ -386,7 +363,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '7',
                 'title' => 'cozy home near dome-heart of pavia-',
                 'address' => 'Via Pasquale Del Giudice, 2, 27100 Pavia',
                 'nr_of_rooms' => 3,
@@ -401,7 +377,6 @@ class HousesTableSeeder extends Seeder
                 'advertised' => 0,
             ],
             [
-                'user_id' => '3',
                 'title' => 'A due passi dal centro',
                 'address' => 'Via Gerolamo Cardano, 41, 27100 Pavia',
                 'nr_of_rooms' => 4,
@@ -422,7 +397,7 @@ class HousesTableSeeder extends Seeder
         $users = User::all()->pluck('id')->toArray();
         foreach ($houses as $house) { 
             $newHouse = new House();
-            $newHouse->user_id = $house['user_id'];
+            $newHouse->user_id = $faker->randomElement($users);
             $newHouse->title = $house['title'];
             $newHouse->nr_of_rooms = $house['nr_of_rooms'];
             $newHouse->nr_of_beds = $house['nr_of_rooms'];
