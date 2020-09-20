@@ -88,7 +88,8 @@ class HouseController extends Controller
 		//TODO: randomize houses
 		$houses = House::where('visible', '1')
                     ->where('advertised', '1')
-                    ->random(3)
+                    ->inRandomOrder()
+					->limit(3)
 					->get();
 		//get all services, to print filter input items
 		$services = Service::all();
