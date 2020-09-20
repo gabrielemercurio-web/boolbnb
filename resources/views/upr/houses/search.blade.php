@@ -1,5 +1,7 @@
 @extends('layouts.app-upr')
 
+@section('page-title', 'Search Homes | Boolbnb')
+
 @section('content')
 	<div class="container">
         <div class="row">
@@ -39,19 +41,16 @@
     </div> {{-- END CONTAINER --}}
 
     {{-- ADVERTISED HOMES --}}
-
     <div class="bg-sponsored">
         <div class="container">
             <div class="row">
-                @forelse ($houses as $house)
+                @foreach ($houses as $house)
                     <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
                         <img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
                         <h1>{{ $house->title }}</h1>
                         <p>{{ $house->description }}</p>
                     </a>
-                @empty
-                    <p>Your search returned no results.</p>
-                @endforelse
+                @endforeach
             </div>
         </div>
     </div>
@@ -64,8 +63,7 @@
         </div>
     </div>
 
-    {{-- HANDLEBARS --}}
-
+    {{-- HANDLEBARS TEMPLATE --}}
     <script class="house-card-template" type="text/x-handlebars-template">
         <div class="handle-house-card card-upr col-lg-4 col-md-6">
             <img src="{{ asset('storage')}}/@{{image}}" alt="house">

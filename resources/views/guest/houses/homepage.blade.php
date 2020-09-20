@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title', 'Homepage | Boolbnb')
+
 @section('content')
 	<div class="home-wrapper">
         <div class="container">
@@ -18,12 +20,12 @@
             </div>
 			{{-- PROMOTED HOUSES LIST --}}
             <div class="title text-center">
-                <h1>Places you might enjoy</h1>
+                <h1>Homes you might enjoy</h1>
                 <hr>
             </div>
             <div class="apartment-description">
 				<div class="row">
-                @forelse ($houses as $house)
+                @foreach ($houses as $house)
                     <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
                         <img src="{{ asset('storage/' . $house->image_path) }}" alt="image of house" class="apartment-img">
                         <h1>{{ $house->title }}</h1>
@@ -32,9 +34,7 @@
                             <p>Sponsored</p>
                         </div>
                     </a>
-                @empty
-                    <p>Your search returned no results.</p>
-                @endforelse
+                @endforeach
             </div>
         </div>
 		</div>

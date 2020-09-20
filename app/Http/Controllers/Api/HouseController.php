@@ -10,11 +10,6 @@ class HouseController extends Controller
 {
 
     public function index(Request $request) {
-		// $input = $request->all();
-		// $services = $request['services'];
-		// $services = [1,6];
-		// dd($services);
-		
 		$query = House::with('services')
 		->where('nr_of_rooms', '>=', $request->rooms ?? 0)
 		->where('nr_of_beds', '>=', $request->beds ?? 0);
@@ -46,6 +41,7 @@ class HouseController extends Controller
 			}
 		}
 
+		/* sort matching homes list by distance */
 		usort($matchingHouses, "self::cmp");
 
 		return response()->json([

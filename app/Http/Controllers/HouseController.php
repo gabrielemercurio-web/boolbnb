@@ -12,16 +12,21 @@ use Illuminate\Support\Carbon;
 
 class HouseController extends Controller
 {
+	/**
+	 * Retrieve advert status data from braintree +
+	 * Show freshly updated advertised homes in view
+	 */
     public function homepage() {
+		/* get all unconfirmed payments */
         $payments = Payment::where('status', '=', 'submitted_for_settlement')->get();
 		foreach ($payments as $payment) {
 			$transaction = Transaction::find($payment->payment_id);
-			
+			/* check whether any has changed status on braintree and update local db */
 			$payment->update(['status' => $transaction->status]);
 			if ($payment->status == 'settled') {
-				// var_dump("I'm in!");
+				/* if the payment is confirmed, mark the advert as active */
 				$payment->house->update(['advertised' => 1]);
-				// var_dump($payment->house);
+				/* set start and end datetime for advert */
 				$payment->update(['starting_datetime' => Carbon::now()]);
 				switch ($payment->advert_id) {
 					case 1:
@@ -36,7 +41,8 @@ class HouseController extends Controller
 				}
 			}
 		}
-
+		
+		/* get all the newly expired adverts and mark the house advert as false*/
 		$advertisedHomes = House::leftJoin('payments', 'houses.id', '=', 'payments.house_id')
 			->where('advertised', 1)
 			->where('starting_datetime', '>', Carbon::now()->subDays(7))
@@ -49,7 +55,8 @@ class HouseController extends Controller
                 $advertHouse->update(['advertised' => 0]);
 			}
 		}
-	
+		
+		/** send all advertised AND visible houses to the view */
 		$houses = House::where('advertised', true)
 			->where('visible', 1)
 			->get();
@@ -72,11 +79,13 @@ class HouseController extends Controller
 		}
 	}
 	
+	/**
+	 * Gather and deliver all the data needed from the upr.houses.search view
+	 */
 	public function search(Request $request) {
 		//get the address inputed in homepage and show it in searchbar in search page
 		$userQuery = $request->user_search_address;
 		$source = $request->search_source;
-		//grab advertised houses to show on top
 		//TODO: randomize houses
 		$houses = House::where('visible', '1')
 					->where('advertised', '1')

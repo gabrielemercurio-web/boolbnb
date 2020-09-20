@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title', 'Search Homes | Boolbnb')
+
 @section('content')
         <div class="container">
             <div class="row">
@@ -79,7 +81,7 @@
 
     </div>
 
-    {{-- HANDLEBARS --}}
+    {{-- HANDLEBARS TEMPLATE --}}
     <script class="house-card-template" type="text/x-handlebars-template">
         <a href="@{{ route }}" class="handle-house-card card-upr col-lg-4 col-md-6">
             <img src="{{ asset('storage')}}/@{{image}}" alt="house">

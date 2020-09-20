@@ -1,12 +1,14 @@
 {{-- pagina inserimento dati nuovo appartamento --}}
 @extends('layouts.app-upr')
 
+@section('page-title', 'Add Home | Boolbnb')
+
 @section('content')
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<div class="d-flex align-items-center">
-					<h1 class="mt-3 mb-3">New apartment</h1>
+					<h1 class="mt-3 mb-3">Add new home</h1>
 				</div>
 				{{-- ERROR HANDLING --}}
 				@if ($errors->any())
@@ -43,15 +45,15 @@
 					
 					<div class="row form-group services-numbers">
 						<div class="form-group col-md-6 col-lg-3">
-							<label for="house-nr_of_rooms">Rooms</label>
+							<label for="house-nr_of_rooms">Total Rooms</label>
 							<input type="number" name="nr_of_rooms" min="0" class="form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('nr_of_rooms') }}">
 						</div>
 						<div class="form-group col-md-6 col-lg-3">
-							<label for="house-nr_of_beds">Beds</label>
+							<label for="house-nr_of_beds">Total Beds</label>
 							<input type="number" name="nr_of_beds" min="0" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds') }}">
 						</div>
 						<div class="form-group col-md-6 col-lg-3">
-							<label for="house-nr_of_bathrooms">Bathrooms</label>
+							<label for="house-nr_of_bathrooms">Total Bathrooms</label>
 							<input type="number" name="nr_of_bathrooms" min="0" class="form-control" id="house-nr_of_bathrooms" placeholder="Bathroom" value="{{ old('nr_of_bathrooms') }}">
 						</div>
 						<div class="form-group col-md-6 col-lg-3">

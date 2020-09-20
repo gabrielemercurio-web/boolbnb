@@ -1,6 +1,8 @@
 {{-- pagina lista appartamenti gestiti dall'utente --}}
 @extends('layouts.app-upr')
 
+@section('page-title', 'My Homes | Boolbnb')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -21,19 +23,19 @@
                             <h1>{{ $house->title }}</h1>
                         </a>
                         <div class="button-my-homes">
-                            <a href="{{ route('upr.houses.edit', ['house'=>$house->id]) }}" class="btn-white">UPDATE</a>
+                            <a href="{{ route('upr.houses.edit', ['house'=>$house->id]) }}" class="btn-white">Update</a>
                             {{-- <a href="{{ route('upr.houses.index', ['house'=>$house->id]) }}" onclick="return confirm(' Do you want to delete?');" class="btn-blue">DELETE</a> --}}
                             <form class="d-inline" action="{{ route('upr.houses.destroy', ['house' => $house->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                   <button  id="btnDelete" type="submit" onclick= "return confirm('Are you sure you want to delete this?')" class="btn btn-warning btn-lg btn-white">Delete</button>
                             </form>
-                            <a href="{{ route('upr.payments.create', ['house' => $house->id]) }}" class="btn-blue">PROMOTE</a>
-                            <a href="{{ route('upr.hits.index', ['house' => $house->id]) }}" class="btn-white">STATS</a>
+                            <a href="{{ route('upr.payments.create', ['house' => $house->id]) }}" class="btn-blue">Advertise</a>
+                            <a href="{{ route('upr.hits.index', ['house' => $house->id]) }}" class="btn-white">Stats</a>
                             @if($house->visible == true)
-                                <a href="{{ route('upr.houses.toggle', ['house' => $house->id]) }}" class="btn-white">HIDE HOME</a>
+                                <a href="{{ route('upr.houses.toggle', ['house' => $house->id]) }}" class="btn-white">Hide home</a>
                             @else
-                                <a href="{{ route('upr.houses.toggle', ['house' => $house->id]) }}" class="btn-white">SHOW HOME</a>
+                                <a href="{{ route('upr.houses.toggle', ['house' => $house->id]) }}" class="btn-white">Show home</a>
                             @endif
                         </div>
                     </div>

@@ -1,5 +1,6 @@
-{{-- pagina di atterragio/homepage del sito con barra di ricerca  --}}
 @extends('layouts.app-upr')
+
+@section('page-title', 'Homepage | Boolbnb')
 
 @section('content')
 	<div class="home-wrapper">
@@ -26,7 +27,7 @@
             </div>
             <div class="apartment-description">
 				<div class="row">
-                    @forelse ($houses as $house)
+                    @foreach ($houses as $house)
                         <a href="{{route('upr.houses.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
                             <img src="{{ asset('storage/' . $house->image_path) }}" alt="image of house" class="apartment-img">
                             <h1>{{ $house->title }}</h1>
@@ -35,9 +36,7 @@
                                 <p>Sponsored</p>
                             </div>
                         </a>
-                    @empty
-                        <p>Your search returned no results.</p>
-                    @endforelse
+                    @endforeach
                 </div>
             </div>
 		</div>
