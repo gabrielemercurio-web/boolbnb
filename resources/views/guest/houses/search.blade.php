@@ -97,10 +97,18 @@
             <span>
                 <h1 class="hbs-title">@{{ title }}</h1>
                 <p class="hbs-description">@{{ description }}</p>
+                <span class="hbs-rooms">@{{{ rooms }}}</span>
+                <span class="hbs-beds">@{{{ beds }}}</span>
+                <span class="hbs-bathrooms">@{{{ bathrooms }}}</span>
+                <span class="hbs-m2">@{{{ m2 }}}</span>
+                <span class="hbs-services"></span>
                 <p class="hbs-distance">@{{ distance }}</p>
-                <p class="hbs-id">@{{ id }}</p>
             </span>
         </a>
+	</script>
+	
+    <script class="house-services-template" type="text/x-handlebars-template">
+        <i class="@{{ service }}"></i>
     </script>
 
 @endsection

@@ -62,10 +62,11 @@ class HouseController extends Controller
 
 		//TODO: address manipulation
 		$houseData = $request->all();//in mezzo ci sono sia le cose che vanno in houses che quelle che vanno in services -> SEPARARE I CAMPI!
-		// $serviceData = ???;
 		$newHouse = new House();
 		$newHouse->fill($houseData);
-		$newHouse->image_path = Storage::put('uploads', $houseData['cover_image']);
+		if(array_key_exists('image_path', $houseData)) {
+			$newHouse->image_path = Storage::put('uploads', $houseData['image_path']);
+		}
 		$newHouse->save();
 		if (!empty($houseData['services_ids'])) {
 			$newHouse->services()->sync($houseData['services_ids']);

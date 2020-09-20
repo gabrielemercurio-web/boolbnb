@@ -80,4 +80,6 @@
 
 // });
 
-document.querySelector('.tt-search-box-input').setAttribute('required', '');
+if ($('#form-create').length || $('#form-edit').length) {
+	document.querySelector('.tt-search-box-input').setAttribute('required', '');
+}

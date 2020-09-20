@@ -40,7 +40,7 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Add image</label>
-						<input type="file" accept=".jpg,.jpeg,.png" name="cover_image" class="form-control-file" id="image" value="{{ old('cover_image') }}">
+						<input type="file" accept=".jpg,.jpeg,.png" name="image_path" class="form-control-file" id="image" value="{{ old('image_path') }}">
 					</div>
 					
 					<div class="row form-group services-numbers">

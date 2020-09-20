@@ -134,7 +134,7 @@ function callFiltering(query) {
 				for (let i = 0; i < data.data.length; i++) {
 					const house = data.data[i];
 						
-					/** HANDLEBARS */
+					/** HANDLEBARS HOME CARDS */
 					var source = $('.house-card-template').html();
 					var template = Handlebars.compile(source);
 					var context = {
@@ -143,10 +143,27 @@ function callFiltering(query) {
 						title: house.title, 
 						description: house.description,
 						distance: house.distance,
-						id: house.id,
+						rooms: ' <i class="fas fa-door-open"></i> ' + house.nr_of_rooms,
+						beds: ' <i class="fas fa-bed"></i> ' + house.nr_of_beds,
+						bathrooms: ' <i class="fas fa-bath"></i> ' + house.nr_of_bathrooms,
+						m2: ' <i class="fas fa-border-style"></i> ' + house.square_mt,
 					};
+
 					var html = template(context);
 					$('.houses-grid-results').append(html);
+
+					/* HANDLEBARS SERVICE ICONS */
+					for (let j = 0; j < house.services.length; j++) {
+						const service = house.services[j].icon_class;
+						
+						let serviceSource = $('.house-services-template').html();
+						let serviceTemplate = Handlebars.compile(serviceSource);
+						let serviceContext = {
+							service: service,
+						};
+						var servicesHtml = serviceTemplate(serviceContext);
+						$('.hbs-services').last().append(servicesHtml);
+					}
 				}
 			} else {
 				$('.houses-grid-results').append('<p>There are no homes matching your search</p>');
