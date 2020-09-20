@@ -93,7 +93,7 @@ function getMonthlyHits(object) {
         // get single hit
         var hit = object[i];
         // get month string from created_at
-        var month = moment(hit.created_at, "YYYY-MM-DD HH:mm:ss").format('MMM');
+		var month = moment(hit.created_at, "YYYY-MM-DD HH:mm:ss").format('MMM');
         // add 1 to its month
         monthlyHits[month] += 1;
     }
