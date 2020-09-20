@@ -50,6 +50,13 @@ if ($('.searchbars').length) {
 $('.search-btn').on('click', function() {
 	let query = $('.searchbars').val();
 	callTomTomSearch(query);
+})
+
+$('#guest-search').on('keypress', function(event) {
+	if (event.which == 13) {
+		let query = $('.searchbars').val();
+		callTomTomSearch(query);
+	}
 });
 
 /* call tomtom API to get address coordinates */

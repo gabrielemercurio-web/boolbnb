@@ -9,12 +9,12 @@
                     <div class="overlay"></div>
                     <div class="col-lg-6">
                         {{-- SEARCHBAR --}}
-                        <form class="search-house input-group">
+                        <div class="search-house input-group">
                             <input type="text" class="form-control searchbars" id="guest-search" placeholder="Search City"data-user-query="{{ $userQuery }}">
                             <div class="input-group-append">
                                 <button type="button" class="btn search-btn" id="guest-search-btn"><i class="fas fa-search search-btn" data-placement="searchguest"></i></button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
