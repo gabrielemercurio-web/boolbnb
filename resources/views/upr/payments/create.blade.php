@@ -4,11 +4,13 @@
     <div class="sponsor-wrapper">
         <div class="container">
             <div class="row">
-                <div class="sponsor-title">
+
+                <div class="sponsor-title col-12">
                     <h1>Sponsor Apartment {{ $house->id }}</h1>
                     <hr>
                 </div>
-                <div class="sponsor-plane text-center">
+                
+                <div class="sponsor-plan sponsor-price col-12">
                     {{-- PAYMENT MESSAGES  --}}
                     @if (session('success_message'))
                         <div>
@@ -25,9 +27,10 @@
                             </ul>
                         </div>
                     @endif
+
                         {{-- END PAYMENT MESSAGES --}}
                     <p>1 - Scegli il piano di sponsorizzazione</p>
-                    <div class="sponsor-price">
+                    <div >
                         @foreach ($adverts as $advert)
                             <div class="price">
                                 <button class="advert-type" value="{{ $advert->price }}">
@@ -37,7 +40,11 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="information-payments text-center">
+
+            </div>
+
+            <div class="row">
+                <div class="information-payments">
                     <p>2 - Inserisci i tuoi dati di pagamento</p>
                     {{-- <form>
                     <div class="form-group number-cc">

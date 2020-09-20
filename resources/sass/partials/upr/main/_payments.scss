@@ -1,53 +1,60 @@
-.sponsor-wrapper{
-    height: 100vh;
-    width: 100%;
-    margin-top: 90px;
-}
-.sponsor-title{
-    background-color: white;
-    height: 200px;
-    width: 100%;
-    h1{
-        color:$main_color;
-        text-transform: uppercase;
-        font-size: 32px;
-    }
-    hr{
-        border: 1px solid $main_color;
+
+.sponsor-wrapper {
+
+    p {
+        color: $main_color;
+        font-weight: bold;
+        margin: 0px;
     }
 }
 
-.sponsor-plane{
-    background-color: white;
-    height: 250px;
-    width: 100%;
-    p{
-        padding-right: 33px;
-        padding-top: $padding_top_bottom;
+.sponsor-title {
+
+    h1 {
         color: $main_color;
-        font-weight: bold;
+        text-transform: uppercase;
+        font-size: clamp( 12px, 1.7rem, 32px);
+        font-weight: 700;
+    }
+
+    hr {
+        border-color: $main_color;
     }
 }
-.sponsor-price{
-    display: inline-block;
+
+.sponsor-price {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0px;
+
+    & > div {
+        margin: 25px 15px 0px; //per il mobile
+    }
 }
 
 .price button, #payment-submit {
-    color: #22B4CE;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 19px;
-    padding-right: 18px;
+    color: $main_color;
+    padding: 10px 20px;
     cursor: pointer;
     border: none;
     font-weight: bold;
     outline: none;
-    border: 1px solid #22B4CE;
+    border: 1px solid $main_color;
     margin: 7px 0;
+    background-color: #fff;
+    trasition: 300ms;
+
+    &:hover {
+        color: #fff;
+        background-color: $main_color;
+    }
 }
 
-.active button{
-    background-color: #22B4CE;
+.active button {
+    background-color: $main_color;
     color: white;
 }
 
@@ -58,86 +65,105 @@
     padding-right: 10px;
 }
 
-.information-payments{
+.information-payments {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: white;
-    height: 250px;
     width: 100%;
-    p{
-        padding-right: 37px;
-        padding-top: $padding_top_bottom;
-        color: #22B4CE;
-        font-weight: bold;
+
+    & > form {
+        margin: 0px 15px 0px; //per il mobile
     }
-}
-.number-cc{
+} 
+
+.number-cc {
     width: 311px;
     display: inline-block;
     color: #C9C9C9;
 }
-.date-and-cvc{
+
+.date-and-cvc {
     display: flex;
     justify-content: center;
 }
-#number-cc{
+
+#number-cc {
     border: 1px solid $main_color;
-    &::placeholder{
+
+    &::placeholder {
         color: $color_rgba;
     }
 }
 
-#date{
+#date {
     width: 235px;
     border: 1px solid $main_color;
-    &::placeholder{
+
+    &::placeholder {
         color: $color_rgba;
     }
 }
 
-#cvc{
+#cvc {
     margin-left: 20px;
     width: 58px;
     border: 1px solid $main_color;
-    &::placeholder{
+
+    &::placeholder {
         color: $color_rgba;
     }
 }
 
-.btn-payments{
-    width: 313px;
-    background-color: $main_color;
-    border:none;
-    cursor: pointer;
-    text-transform: uppercase;
-    padding-top: $padding_top_bottom;
-    padding-bottom: $padding_top_bottom;
-    font-weight: bold;
-    color: white;
-    &:hover{
-        background-color: white;
-        color: $main_color;
-        border-color: $main_color;
-        color: $main_color;
-        border-color: $main_color;
-        border: 1px solid $main_color;
-    }
-    &:focus{
-        background-color: $main_color;
-        outline: $outline_button;
-    }
+#dropin-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-/*** RESPONSIVE ***/
 
-@media screen and (max-width: 477px){
-    .sponsor-plane{
-        margin-top: -76px;
-    }
-}
-/*** for iphone 5/SE ***/
-@media screen and (max-width: 320px){
-    .sponsor-title{
-        margin-top: -40px;
-    }
-    .information-payments p{
-        padding-top: 20px;
-    }
-}
+// .btn-payments {
+//     width: 313px;
+//     background-color: $main_color;
+//     border:none;
+//     cursor: pointer;
+//     text-transform: uppercase;
+//     padding-top: $padding_top_bottom;
+//     padding-bottom: $padding_top_bottom;
+//     font-weight: bold;
+//     color: white;
+
+//     &:hover {
+
+//         background-color: white;
+//         color: $main_color;
+//         border-color: $main_color;
+//         color: $main_color;
+//         border-color: $main_color;
+//         border: 1px solid $main_color;
+//     }
+
+//     &:focus {
+//         background-color: $main_color;
+//         outline: $outline_button;
+//     }
+// }
+
+// /*** RESPONSIVE ***/
+
+// @media screen and (max-width: 477px){
+//     .sponsor-plane{
+//         margin-top: -76px;
+//     }
+// }
+// /*** for iphone 5/SE ***/
+// @media screen and (max-width: 320px){
+//     .sponsor-title{
+//         margin-top: -40px;
+//     }
+//     .information-payments p{
+//         padding-top: 20px;
+//     }
+// }

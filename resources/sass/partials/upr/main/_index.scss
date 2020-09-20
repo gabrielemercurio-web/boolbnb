@@ -170,6 +170,18 @@ div.my-home-title {
             $main_color
         );
     }
+
+    .validate-error {
+        border: 2px solid #c90000;
+        animation-name: border-validator;
+        animation-duration: 5s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes border-validator {
+        from {border: 2px solid #c90000;}
+        to {border: 1px solid #ced4da;}
+    }
 }
 
 

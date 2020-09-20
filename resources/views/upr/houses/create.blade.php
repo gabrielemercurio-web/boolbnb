@@ -28,11 +28,11 @@
                     </div>
 					<div class="form-group">
 						<label for="house-title">Title</label>
-						<input type="text" name="title" class="form-control" id="house-title" placeholder="Title" value="{{ old('title') }}" required>
+						<input type="text" name="title" class="required form-control" id="house-title" placeholder="Title" value="{{ old('title') }}" required>
 					</div>
 					<div class="form-group">
 						<label for="house-description">Description</label>
-						<textarea type="text" name="description" class="form-control" id="house-description" placeholder="Description" required>{{ old('description') }}</textarea>
+						<textarea type="text" name="description" class="required form-control" id="house-description" placeholder="Description" required>{{ old('description') }}</textarea>
 					</div>
 					<div class="form-group">
 						<label for="house-address" class="house-autosearch" value="{{ old('address')}}">Address</label>
@@ -45,12 +45,12 @@
 					
 					<div class="row form-group services-numbers">
 						<div class="form-group col-md-6 col-lg-3">
-							<label for="house-nr_of_rooms">Total Rooms</label>
-							<input type="number" name="nr_of_rooms" min="0" class="form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('nr_of_rooms') }}">
+							<label for="house-nr_of_rooms">Rooms</label>
+							<input type="number" name="nr_of_rooms" min="0" class="required form-control" id="house-nr_of_rooms" placeholder="Rooms" value="{{ old('nr_of_rooms') }}" required>
 						</div>
 						<div class="form-group col-md-6 col-lg-3">
-							<label for="house-nr_of_beds">Total Beds</label>
-							<input type="number" name="nr_of_beds" min="0" class="form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds') }}">
+							<label for="house-nr_of_beds">Beds</label>
+							<input type="number" name="nr_of_beds" min="0" class="required form-control" id="house-nr_of_beds" placeholder="Beds" value="{{ old('nr_of_beds') }}" required>
 						</div>
 						<div class="form-group col-md-6 col-lg-3">
 							<label for="house-nr_of_bathrooms">Total Bathrooms</label>

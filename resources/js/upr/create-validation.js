@@ -63,4 +63,21 @@ $(document).ready(function(){
         }
     });
 
+    $('#btnUpload').click(function(event) {
+        
+        if( $('#form-create').find('input[required]').val() == "" ) {
+            
+            alert('prova');
+
+            // event.preventDefault();
+            // setTimeout(function() {
+            //         $('#form-create').submit()
+            //     }, 1500);
+
+            // if(event.isDefaultPrevented()) {
+            //     $('#form-create .required').addClass('validate-error');
+            // } 
+        } 
+    });
+
 });
