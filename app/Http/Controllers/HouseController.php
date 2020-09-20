@@ -58,7 +58,9 @@ class HouseController extends Controller
 		
 		/** send all advertised AND visible houses to the view */
 		$houses = House::where('advertised', true)
-			->where('visible', 1)
+            ->where('visible', 1)
+            ->inRandomOrder()
+            ->limit(6)
 			->get();
 		return view('guest.houses.homepage', compact('houses'));
 	}

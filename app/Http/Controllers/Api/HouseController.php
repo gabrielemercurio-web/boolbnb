@@ -30,7 +30,7 @@ class HouseController extends Controller
 		
 		/** only keep the homes located within the requested distance */
 		$matchingHouses = [];
-		$standardRadius = 20000;
+		$standardRadius = 20;
 		foreach ($filteredHouses as $house) {
 			$twoPointsDistance = self::getDistance($request['longitude'], $request['latitude'], $house->longitude, $house->latitude);
 			$house->distance = $twoPointsDistance;
