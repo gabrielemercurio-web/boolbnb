@@ -24,12 +24,21 @@
         <div class="container">
             <div class="row bg-sponsored">
                 @forelse ($houses as $house)
-                    <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr card-upr-sponsored col-lg-4 col-md-6">
-                        <img src="{{ asset('storage/' . $house->image_path) }}" alt="image-of-house">
-                        <h1>{{ $house->title }}</h1>
-                        <p>{{ $house->description }}</p>
+                    <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
+                        <img src="{{ asset('storage/' . $house->image_path) }}" alt="image of house" class="apartment-img">
                         <div class="sponsored d-flex justify-content-end">
                             <p>Sponsored</p>
+                        </div>
+                        <h1>{{ $house->title }}</h1>
+                        <p>{{ $house->description }}</p>
+                        <div class="sevices">
+                            <span title="Number of rooms"><i class="fas fa-door-open"></i>{{ $house->nr_of_rooms }}</span>
+                            <span title="Number of beds"><i class="fas fa-bed"></i>{{ $house->nr_of_beds }}</span>
+                            <span title="Number of bathrooms"><i class="fas fa-bath"></i>{{ $house->nr_of_bathrooms }}</span>
+                            <span title="Square meters"><i class="fas fa-border-style"></i>{{ $house->square_mt }}</span>
+                            @foreach ($house->services as $service)
+                                <span title="{{ucfirst($service->name)}}"><i class="{{$service->icon_class}}"></i></span>
+                            @endforeach
                         </div>
                     </a>
                 @empty
