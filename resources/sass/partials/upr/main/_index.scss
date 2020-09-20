@@ -192,6 +192,28 @@ div.my-home-title {
 
 #form-edit{
 
+    // Per settare la larghezza dell'input 
+    // proveniente da TomTom
+    .tt-search-box {
+        width: clamp(288px, 35vw, 1000px);
+    }
+    .services-numbers {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .form-check-inline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        div {
+            width: 180px;
+            margin-bottom: 15px;
+        }
+    }    
     #btnEdit:hover{
         background-color: $main_color;
         outline: none;

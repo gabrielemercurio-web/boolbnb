@@ -14,7 +14,7 @@ class UpdateHitsTable extends Migration
     public function up()
     {
         Schema::table('hits', function (Blueprint $table) {
-            $table->foreignId('house_id')->after('id')->nullable();
+            $table->foreignId('house_id')->after('id');
             // Foreign key reference
             $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
         });

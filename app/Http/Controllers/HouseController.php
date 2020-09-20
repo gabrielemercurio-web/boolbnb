@@ -87,8 +87,8 @@ class HouseController extends Controller
 		$userQuery = $request->user_search_address;
 		//TODO: randomize houses
 		$houses = House::where('visible', '1')
-					->where('advertised', '1')
-					->limit(3)
+                    ->where('advertised', '1')
+                    ->random(3)
 					->get();
 		//get all services, to print filter input items
 		$services = Service::all();

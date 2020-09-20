@@ -14,7 +14,7 @@ class UpdateHousesTable extends Migration
     public function up()
     {
         Schema::table('houses', function (Blueprint $table) {
-            $table->foreignId('user_id')->after('id')->nullable();
+            $table->foreignId('user_id')->after('id');
             // Foreign key reference
             $table->foreign('user_id')->references('id')->on('users');
         });
