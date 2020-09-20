@@ -53,11 +53,11 @@ class HouseController extends Controller
 			'title' => 'required|max:250',
 			'nr_of_rooms' => 'required|integer|min:0',
 			'nr_of_beds' => 'required|integer|min:0',
-			'nr_of_bathrooms' => 'integer|min:0',
-			'square_mt' => 'integer|min:1',
+			'nr_of_bathrooms' => 'integer|min:0|nullable',
+			'square_mt' => 'integer|min:1|nullable',
 			'address' => 'required',
-			'image_path' => 'image',
-			'description' => 'max:2000',
+			'image_path' => 'image|nullable',
+			'description' => 'max:2000|nullable',
 		]);
 
 		//TODO: address manipulation

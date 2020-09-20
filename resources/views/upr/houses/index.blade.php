@@ -18,7 +18,7 @@
             @foreach ($houses as $house)
                 <div class="card-upr card-upr-index col-md-6 col-lg-4">
                     <div>
-                        <a href="{{ route('upr.houses.show', ['house' => $house->id]) }}">
+                        <a href="{{ route('guest.show', ['house' => $house->id]) }}">
                             <img src="{{ asset('storage/' . $house->image_path) }}" alt="house">
                             <h1>{{ $house->title }}</h1>
                         </a>

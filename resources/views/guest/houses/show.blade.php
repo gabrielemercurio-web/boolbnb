@@ -48,14 +48,14 @@
 
                     <div class="form-group">
                         @guest
-    		                <input required type="email" name="sender_email" class="form-control" id="sender-email" placeholder="Your email">
+    		                <input type="email" name="sender_email" class="form-control" id="sender-email" placeholder="Your email" required>
 						@else
-							<input required type="email" name="sender_email" class="form-control" id="sender-email" value=" {{Auth::user()->email}} ">
+							<input type="email" name="sender_email" class="form-control" id="sender-email" value=" {{Auth::user()->email}} " required>
 						@endguest
                     </div>
 
                     <div class="form-group">
-                        <textarea class="form-control" name="message" id="text-message-1" rows="3" placeholder="Your message"></textarea>
+                        <textarea class="form-control" name="message" id="text-message-1" rows="3" placeholder="Your message" required></textarea>
                     </div>
 
                     <div class="d-flex justify-content-end">

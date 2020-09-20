@@ -8,13 +8,13 @@ import "jquery-validation";
 import "bootstrap";
 require('./bootstrap');
 require('./filters_search');
-require('./guest/show');
+// require('./guest/show');
 require('./guest/messages');
 require('./upr/header');
-require('./upr/create-validation');
 require('./upr/adv');
 require('./_tomtom');
 require('./_braintree');
+require('./upr/create-validation');
 require('./hits');
 
 // **** window.Vue = require('vue');
