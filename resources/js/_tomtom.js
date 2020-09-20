@@ -1,7 +1,6 @@
 import tt from '@tomtom-international/web-sdk-maps';
 import tts from '@tomtom-international/web-sdk-services';
 import sb from '@tomtom-international/web-sdk-plugin-searchbox';
-// import { use } from 'vue/types/umd';
 const Handlebars = require("handlebars");
 
 const OWN_HOUSES_API_URL = 'http://localhost:8000/api/houses';
@@ -40,12 +39,9 @@ function drawTomTomMap() {
 /* * * ADDRESS SEARCH FUNCTIONALITIES * * */
 
 /** in search views, if redirected from homepage: grab input and start search */
-if ($('.searchbars').length && $('.searchbars').attr('data-search-source') == 'guest-homepage' ||
-	$('.searchbars').length && $('.searchbars').attr('data-search-source') == 'upr-homepage') {
-	console.log('data-search-source: ', $('.searchbars').attr('data-search-source'));
+if ($('.searchbars').length) {
 	//grab and execute the query that was inputed in the homepage
 	let query = $('.searchbars').attr('data-user-query');
-	console.log('SP guest query: ', query);
 	callTomTomSearch(query);
 }
 
@@ -53,7 +49,6 @@ if ($('.searchbars').length && $('.searchbars').attr('data-search-source') == 'g
 //TODO: add search via enter key - it's already there somehow?
 $('.search-btn').on('click', function() {
 	let query = $('.searchbars').val();
-	console.log('SP query', query); //FIXME: change when the actual view is ready
 	callTomTomSearch(query);
 });
 
@@ -95,7 +90,6 @@ function getFiltersValues() {
 	queryStringObject.longitude = $('.searchbars').attr('data-coordinates-long');
 	queryStringObject.latitude = $('.searchbars').attr('data-coordinates-lat');
 	/* only add optional filters if requested by the user */
-	//TODO: figure out whether we need to make these deletable from the query string, too
 	if ($('#filter-rooms').val() != '') {
 		queryStringObject.rooms = $('#filter-rooms').val();
 	}
@@ -114,10 +108,7 @@ function getFiltersValues() {
 	if(queryStringObject.services.length == ''){
 		delete queryStringObject['services'];
 	}
-	// console.log('services ajax: ', queryStringObject['services']);
 	let queryString = '?' + $.param(queryStringObject);
-	// console.log('query obj: ', queryStringObject);
-	// console.log('query str', queryString);
 	callFiltering(queryString)
 }
 
@@ -132,11 +123,8 @@ function callFiltering(query) {
 			console.log('ajax success data: ', data);
 			$('.handle-house-card').remove();
 			if (data != '[]') {
-				// console.log('data', data.data);
-				// console.log('id', data.id);
 				let previousID = 0;
 				for (let i = 0; i < data.data.length; i++) {
-					// console.log('data length', data.data.length);
 					const house = data.data[i];
 						
 					/** HANDLEBARS */
@@ -154,7 +142,7 @@ function callFiltering(query) {
 					$('.houses-grid-results').append(html);
 				}
 			} else {
-				//WRITE STH LIKE 'NO MATCHES FOR UR SRCH' IN PAGE
+				$('.houses-grid-results').append('<p>There are no homes matching your search</p>');
 			};
 		},
 			'error': function(e) {

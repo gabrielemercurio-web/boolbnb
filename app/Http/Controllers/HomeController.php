@@ -25,6 +25,6 @@ class HomeController extends Controller
     public function index()
     {
 		$houses = House::where('advertised', true)->get();
-		return view('upr.houses.homepage', compact('houses'));
+		return view('guest.homepage', compact('houses'));
     }
 }

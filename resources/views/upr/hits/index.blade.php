@@ -1,4 +1,4 @@
-@extends('layouts.app-upr')
+@extends('layouts.app')
 
 @section('page-title', 'View Stats | Boolbnb')
 

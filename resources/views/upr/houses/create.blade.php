@@ -1,5 +1,5 @@
 {{-- pagina inserimento dati nuovo appartamento --}}
-@extends('layouts.app-upr')
+@extends('layouts.app')
 
 @section('page-title', 'Add Home | Boolbnb')
 

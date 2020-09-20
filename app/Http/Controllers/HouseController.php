@@ -85,18 +85,17 @@ class HouseController extends Controller
 	public function search(Request $request) {
 		//get the address inputed in homepage and show it in searchbar in search page
 		$userQuery = $request->user_search_address;
-		$source = $request->search_source;
 		//TODO: randomize houses
 		$houses = House::where('visible', '1')
 					->where('advertised', '1')
 					->limit(3)
 					->get();
+		//get all services, to print filter input items
 		$services = Service::all();
 		$data = [
 			'userQuery' => $userQuery,
 			'houses' => $houses,
 			'services' => $services,
-			'source' => $source,
 		];
 		return view('guest.houses.search', $data);
 	}

@@ -1,4 +1,4 @@
-@extends('layouts.app-upr')
+@extends('layouts.app')
 
 @section('content')
     <div class="sponsor-wrapper">

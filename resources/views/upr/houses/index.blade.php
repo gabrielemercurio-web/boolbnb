@@ -1,5 +1,5 @@
 {{-- pagina lista appartamenti gestiti dall'utente --}}
-@extends('layouts.app-upr')
+@extends('layouts.app')
 
 @section('page-title', 'My Homes | Boolbnb')
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-// Authentication scaffolding
-Route::get('/home', 'HomeController@index')->name('home');
 
 //guest routes
 Route::get('/', 'HouseController@homepage')->name('guest.homepage');
@@ -25,8 +24,6 @@ Route::post('/sendmessage', 'MessageController@store')->name('guest.messages.sto
 
 //UPR routes
 Route::prefix('upr')->namespace('upr')->name('upr.')->middleware('auth')->group(function() {
-	Route::get('/', 'HouseController@homepage')->name('houses.homepage');
-	Route::get('/search', 'HouseController@search')->name('houses.search');
     Route::resource('/houses', 'HouseController');
 	Route::get('/payments', 'PaymentController@index')->name('payments.index');
     Route::get('/payments/create/{house}', 'PaymentController@create')->name('payments.create');
