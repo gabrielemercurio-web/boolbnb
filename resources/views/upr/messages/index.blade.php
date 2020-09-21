@@ -8,9 +8,9 @@
                 <hr>
             </div>
             <div class="users-message">
-                <div class="row col-lg-12">
-                    <div class="messages col-lg-5">
-                        @forelse ($messages as $message)
+                <div class="row">
+                    <div class="messages col-12 col-lg-5">
+                        @foreach ($messages as $message)
                             <div class="message @if ($loop->first) visible @endif">
                                 <h2 class="hidden">Apartment {{ $message->house_id }}</h2>
                                 <a href="mailto:{{ $message->sender_email }}">{{ $message->sender_email }}</a>
@@ -19,9 +19,7 @@
                                     <span>{!! htmlspecialchars_decode(date('j<\s\up>S</\s\up> F Y h:i A', strtotime($message->created_at))) !!}</span>
                                 </div>
                             </div>
-                        @empty
-                            <p>There are no messages available in the inbox.</p>
-                        @endforelse
+                        @endforeach
                     </div>
 
                 <div class="description-message col-lg-7">

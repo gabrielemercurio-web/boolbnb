@@ -18,10 +18,11 @@
 }
 .messages{
     margin-top: 22px;
+    overflow-y: scroll;
+    height: 450px;
 }
 
 .message{
-    // height: 170px;
     margin-top: 13px;
     border:1px solid black;
     padding-top: 8px;
@@ -54,6 +55,7 @@
 }
 .time{
     margin-left: 148px;
+    text-align: right;
 }
 .description{
     background-color: white;
@@ -81,7 +83,6 @@
 
 @media screen and (max-width: 360px){
     .message{
-        width: 315px;
         p{
             margin-top: 15px;
             overflow: hidden;
@@ -120,6 +121,9 @@
         font-weight: bold;
         font-size: 22px;
     }
+    .time {
+        margin-left: 110px;
+    }
 }
 @media screen and (max-width: 320px){
     .message{
@@ -131,5 +135,8 @@
         text-transform: uppercase;
         font-weight: bold;
         font-size: 22px;
+    }
+    .time {
+        margin-left: 80px;
     }
 }
