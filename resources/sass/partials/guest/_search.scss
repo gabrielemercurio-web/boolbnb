@@ -1,7 +1,7 @@
 .jumbo-search {
     width: 100%;
     height: clamp(150px, 30vh, 300px);
-    background-image: url('../img/house-4.jpg');
+    background-image: url('../img/apartment-5.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -164,6 +164,25 @@ form.form {
 }
 
 .handle-house-card {
+
+    div {
+
+        div.handle-services {
+            display: flex;
+            justify-content: space-around;
+            align-items: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            
+            span {
+                color: $main_color;
+            }
+        }
+
+        p:last-child {
+            margin: 0px;
+        }
+    }
 
     p {
         @include my-overflow-clamp(3)

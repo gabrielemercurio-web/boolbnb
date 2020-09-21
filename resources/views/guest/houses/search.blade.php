@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row bg-sponsored">
                 @forelse ($houses as $house)
-                    <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr col-lg-4 col-md-6">
+                    <a href="{{route('guest.show', ['house' => $house->id])}}" class="card-upr card-upr-sponsored col-lg-4 col-md-6">
                         <img src="{{ asset('storage/' . $house->image_path) }}" alt="image of house" class="apartment-img">
                         <div class="sponsored d-flex justify-content-end">
                             <p>Sponsored</p>
@@ -94,19 +94,21 @@
     <script class="house-card-template" type="text/x-handlebars-template">
         <a href="@{{ route }}" class="handle-house-card card-upr col-lg-4 col-md-6">
             <img src="{{ asset('storage')}}/@{{image}}" alt="house">
-            <span>
+            <div>
                 <h1 class="hbs-title">@{{ title }}</h1>
                 <p class="hbs-description">@{{ description }}</p>
-                <span class="hbs-rooms">@{{{ rooms }}}</span>
-                <span class="hbs-beds">@{{{ beds }}}</span>
-                <span class="hbs-bathrooms">@{{{ bathrooms }}}</span>
-                <span class="hbs-m2">@{{{ m2 }}}</span>
-                <span class="hbs-services"></span>
+                <div class="handle-services">
+                    <span class="hbs-rooms">@{{{ rooms }}}</span>
+                    <span class="hbs-beds">@{{{ beds }}}</span>
+                    <span class="hbs-bathrooms">@{{{ bathrooms }}}</span>
+                    <span class="hbs-m2">@{{{ m2 }}}</span>
+                    <span class="hbs-services"></span>
+                </div>
                 <p class="hbs-distance">@{{ distance }}</p>
-            </span>
+            </div>
         </a>
 	</script>
-	
+
     <script class="house-services-template" type="text/x-handlebars-template">
         <i class="@{{ service }}"></i>
     </script>
