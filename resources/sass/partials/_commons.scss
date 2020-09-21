@@ -89,3 +89,18 @@ a {
         border-color: #fff;
     }
 }
+
+.login-botton-login-page {
+
+    @include my-button (
+        $main_color,
+        #fff,
+        $main_color,
+        #fff,
+        $main_color
+    );
+
+    &:hover {
+        border: 2px solid $main_color;
+    }
+}
